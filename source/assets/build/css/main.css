@@ -508,6 +508,9 @@ video {
 .font-sans {
   font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
+.italic {
+  font-style: italic;
+}
 .text-gray-900 {
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity));
@@ -520,23 +523,13 @@ video {
   --tw-drop-shadow: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1)) drop-shadow(0 1px 1px rgb(0 0 0 / 0.06));
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
-@font-face {
-  font-family: "Overpass";
-  src: url("/assets/fonts/Overpass-VariableFont_wght.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Overpass";
-  src: url("/assets/fonts/Overpass-Italic-VariableFont_wght.ttf")
-    format("truetype");
-  font-weight: normal;
-  font-style: italic;
-}
 :root {
   --fontFamily: Overpass, "Noto Sans", "Noto Sans KR", "Noto Sans JP",
     "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", "Noto Sans Hebrew",
     "Noto Sans Arabic", "Noto Sans Bengali", "Noto Sans Devanagari";
+}
+body > * {
+  font-family: var(--fontFamily);
 }
 .box-shadow {
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3), 0 0 30px rgba(0, 0, 0, 0.2);

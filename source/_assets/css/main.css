@@ -2,24 +2,14 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-@font-face {
-  font-family: "Overpass";
-  src: url("/assets/fonts/Overpass-VariableFont_wght.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Overpass";
-  src: url("/assets/fonts/Overpass-Italic-VariableFont_wght.ttf")
-    format("truetype");
-  font-weight: normal;
-  font-style: italic;
-}
-
 :root {
   --fontFamily: Overpass, "Noto Sans", "Noto Sans KR", "Noto Sans JP",
     "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", "Noto Sans Hebrew",
     "Noto Sans Arabic", "Noto Sans Bengali", "Noto Sans Devanagari";
+}
+
+body > * {
+  font-family: var(--fontFamily);
 }
 
 .box-shadow {

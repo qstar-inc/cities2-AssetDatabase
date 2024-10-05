@@ -47,7 +47,7 @@
                     </div>
                     <div class="mainmenu-info">
                         <div class="mainmenu-info-header">
-                            <span class="mainmenu-info-header-text">WORK-IN-PROGRESS</span>
+                            <div class="mainmenu-info-header-text">WORK-IN-PROGRESS</div>
                         </div>
                     </div>
                     <div class="mainmenu-notification"></div>

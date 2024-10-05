@@ -23,6 +23,21 @@
     <meta property="twitter:url" content="{{ $page->url }}" />
     <title>{{ $page->title }}</title>
 
+    <style>
+        @font-face {
+            font-family: "Overpass";
+            src: url("<?php echo $page->fonts; ?>/Overpass-VariableFont_wght.ttf") format("truetype");
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: "Overpass";
+            src: url("<?php echo $page->fonts; ?>/Overpass-Italic-VariableFont_wght.ttf") format("truetype");
+            font-weight: normal;
+            font-style: italic;
+        }
+    </style>
     <link rel="stylesheet" href="{{ $page->repo . mix('css/main.css', 'assets/build') }}">
     <link rel="stylesheet" href="{{ $page->repo . mix('css/splash.css', 'assets/build') }}">
     <link rel="stylesheet" href="{{ $page->repo . mix('css/main-menu.css', 'assets/build') }}">

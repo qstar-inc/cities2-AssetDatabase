@@ -13,5 +13,6 @@ return [
     'keywords' => 'citiesskylines2, cities-skylines-2, cs2, skylines2, cities2',
     'author' => 'StarQ',
     'images' => $repo . "/assets/images",
+    'fonts' => $repo . "/assets/fonts",
     'repo' => $repo,
 ];

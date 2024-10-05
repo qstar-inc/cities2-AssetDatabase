@@ -78,6 +78,7 @@
 .mainmenu-start-text {
   font-size: 4vh;
   text-transform: uppercase;
+  translate: 0 0.55vh;
 }
 
 .mainmenu-info {
@@ -91,12 +92,14 @@
 .mainmenu-info-header {
   background-color: rgba(16, 19, 29, 0.5);
   text-align: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .mainmenu-info-header-text {
   color: beige;
-  font-size: xx-large;
-  padding: 10px;
+  font-size: 4vh;
+  translate: 0 0.55vh;
 }
 
 .mainmenu-notification {
