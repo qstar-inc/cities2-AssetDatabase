@@ -19,8 +19,13 @@ jobs:
           node-version: "20"
       - name: Install NPM Dependencies
         run: npm install
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
+          extensions: mbstring, xml
       - name: Install Composer Dependencies
-        run: composer install -vvv --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+        run: composer install -vvv --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
       - name: Build website
         run: npm run prod
       - name: Prepare production
