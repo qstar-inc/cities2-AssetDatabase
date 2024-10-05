@@ -20,7 +20,7 @@ jobs:
       - name: Install NPM Dependencies
         run: npm install
       - name: Install Composer Dependencies
-        run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+        run: composer install -vvv --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
       - name: Build website
         run: npm run prod
       - name: Prepare production
