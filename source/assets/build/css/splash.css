@@ -1,0 +1,171 @@
+/* Splash screen styles */
+.splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black; /* Full black background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999; /* Keep it on top */
+}
+
+.logo-container {
+  animation: logoPopUp 2.9s ease-in-out 0.1s forwards; /* Zoom-in effect */
+  opacity: 0;
+}
+
+.logo {
+  width: 200px;
+  height: auto;
+  transform: scale(0.9);
+}
+
+/* Animation for zooming in */
+@keyframes logoPopUp {
+  0% {
+    transform: scale(0.9); /* Start scale */
+    opacity: 0; /* Start fully hidden */
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1); /* End scale */
+    opacity: 0;
+  }
+}
+
+#main-content {
+  display: none;
+}
+
+.circle-container {
+  width: 120px;
+  height: 120px;
+  /* transform: translate(-50%, -50%); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: rgba(255, 255, 255, 0.3); */
+  border-radius: 50%;
+  overflow: hidden;
+  /* backdrop-filter: blur(10px); Optional: Blur background for a nice effect */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  margin: auto;
+  margin-top: 2rem;
+}
+
+.loading-circle {
+  transform: rotate(-90deg); /* Rotate to start at the 6 o'clock position */
+}
+
+.circle-bg {
+  fill: none;
+  stroke: rgba(0, 0, 0, 0); /* Background color of the circular track */
+  stroke-width: 2.9;
+}
+
+.circle {
+  stroke-width: 2.9;
+  stroke-linecap: round;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3), 0 0 30px rgba(0, 0, 0, 0.2);
+}
+
+.circle-1 {
+  fill: none;
+  stroke: #e1f8ff;
+  stroke-dasharray: 130 130;
+  stroke-dashoffset: 100;
+  animation: loadAnimation 0.6s linear forwards;
+}
+.circle-2 {
+  fill: none;
+  stroke: #84e2ff;
+  stroke-dasharray: 100 100;
+  stroke-dashoffset: 100;
+  animation-delay: 1s !important;
+  animation: loadAnimation 2s linear forwards;
+}
+.circle-3 {
+  fill: none;
+  stroke: #12c8ff;
+  stroke-dasharray: 100 100;
+  stroke-dashoffset: 100;
+  animation-delay: 1s !important;
+  animation: loadAnimation 0.6s linear forwards;
+}
+
+@keyframes loadAnimation {
+  0% {
+    stroke-dashoffset: 50;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.preloader-bg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  -o-object-fit: cover;
+     object-fit: cover;
+  z-index: 800;
+}
+
+.preloader-overlays {
+  height: 100%;
+  z-index: 801;
+}
+
+.preloader-logo-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  height: 12rem !important;
+  margin-top: 22rem !important;
+}
+
+.preloader-logo {
+  height: auto;
+  transform: scale(0.5);
+  translate: 0 -20%;
+}
+
+.preloader-loading-text-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+#preloader-loading-text {
+  font-size: 1.8em;
+  text-transform: uppercase;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  color: beige;
+  font-family: var(--fontFamily);
+}
+
+.preloader-tips-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+#preloader-tips-text {
+  font-size: 1.2em;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  color: beige;
+  font-family: var(--fontFamily);
+}
+

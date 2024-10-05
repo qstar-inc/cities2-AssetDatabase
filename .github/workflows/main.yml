@@ -1,0 +1,35 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22.7.4"
+      - name: Install NPM Dependencies
+        run: npm install
+      - name: Install Composer Dependencies
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+      - name: Build website
+        run: npm run prod
+      - name: Prepare production
+        run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
+          git add build_production -f && git commit -m "Build for deploy"
+      - name: Deploy website
+        run: |
+          git remote set-url origin https://${{secrets.DEPLOY_KEY}}@github.com/qstar-inc/cities2-AssetDatabase.git
+          git subtree split --prefix build_production -b gh-pages
+          git push -f origin gh-pages:gh-pages
