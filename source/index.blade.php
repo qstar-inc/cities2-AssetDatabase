@@ -4,11 +4,11 @@
     <div id="main-menu" class="splash-screen" style="display: flex;">
         <div>
             <div class="mainmenu-container">
-                <img src="/assets/images/cities2/mainmenu.jpg" alt="Main Menu" class="mainmenu-bg">
+                <img src="{{ $page->images }}/cities2/mainmenu.jpg" alt="Main Menu" class="mainmenu-bg">
             </div>
             <div class="mainmenu-layout">
-                <div class="mainmenu-logo-container">
-                    <img src="/assets/images/cities2/GameLogo.svg" alt="Cities: Skylines II" class="mainmenu-logo" />
+                <div class="drop-shadow mainmenu-logo-container">
+                    <img src="{{ $page->images }}/cities2/GameLogo.svg" alt="Cities: Skylines II" class="mainmenu-logo" />
                 </div>
                 <div class="mainmenu-center">
                     <div class="mainmenu-start">
@@ -45,10 +45,14 @@
                             <span class="mainmenu-start-text">EIGHT</span>
                         </button> --}}
                     </div>
-                    <div class="mainmenu-info"></div>
+                    <div class="mainmenu-info">
+                        <div class="mainmenu-info-header">
+                            <span class="mainmenu-info-header-text">WORK-IN-PROGRESS</span>
+                        </div>
+                    </div>
                     <div class="mainmenu-notification"></div>
                 </div>
-                <div class="mainmenu-version"></div>
+                <div class="mainmenu-version">0.0.0 (Nothing Works Edition)</div>
                 <div class="mainmenu-user"></div>
             </div>
             {{-- <div class="menu-ui_I8X menu-theme_k91">

@@ -46,19 +46,16 @@
 }
 
 .circle-container {
-  width: 120px;
-  height: 120px;
-  /* transform: translate(-50%, -50%); */
+  width: 15vh;
+  height: 15vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: rgba(255, 255, 255, 0.3); */
   border-radius: 50%;
   overflow: hidden;
-  /* backdrop-filter: blur(10px); Optional: Blur background for a nice effect */
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   margin: auto;
-  margin-top: 2rem;
+  margin-top: 2vh;
 }
 
 .loading-circle {
@@ -130,14 +127,12 @@
   width: 100%;
   justify-content: center;
   align-items: center;
-  height: 12rem !important;
-  margin-top: 22rem !important;
+  height: 45vh !important;
+  margin-top: 7vh !important;
 }
 
 .preloader-logo {
-  height: auto;
-  transform: scale(0.5);
-  translate: 0 -20%;
+  height: 45vh;
 }
 
 .preloader-loading-text-container {
@@ -145,10 +140,11 @@
   width: 100%;
   justify-content: center;
   align-items: center;
+  margin-top: 15vh;
 }
 
 #preloader-loading-text {
-  font-size: 1.8em;
+  font-size: 4vh;
   text-transform: uppercase;
   text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
   color: beige;
@@ -158,11 +154,11 @@
 .preloader-tips-container {
   display: flex;
   justify-content: center;
-  margin-top: 1rem;
+  margin-top: 4vh;
 }
 
 #preloader-tips-text {
-  font-size: 1.2em;
+  font-size: 2vh;
   text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
   color: beige;
   font-family: var(--fontFamily);
