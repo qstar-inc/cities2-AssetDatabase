@@ -12,25 +12,25 @@
                 </div>
                 <div class="mainmenu-center">
                     <div class="mainmenu-start">
+                        <a class="mainmenu-start-button" href="game">
+                            <div class="mainmenu-start-icon"></div>
+                            <span class="mainmenu-start-text">Start Game</span>
+                        </a>
                         <button id="mainmenu-button-continue" class="mainmenu-start-button">
                             <div class="mainmenu-start-icon"></div>
                             <span class="mainmenu-start-text">Show Loading Screen</span>
                         </button>
                         <button class="mainmenu-start-button" disabled>
                             <div class="mainmenu-start-icon"></div>
-                            <span class="mainmenu-start-text">TWO</span>
+                            <span class="mainmenu-start-text">Disabled</span>
                         </button>
                         <button class="mainmenu-start-button" disabled>
                             <div class="mainmenu-start-icon"></div>
-                            <span class="mainmenu-start-text">THREE</span>
+                            <span class="mainmenu-start-text">Disabled</span>
                         </button>
                         <button class="mainmenu-start-button" disabled>
                             <div class="mainmenu-start-icon"></div>
-                            <span class="mainmenu-start-text">FOUR</span>
-                        </button>
-                        <button class="mainmenu-start-button" disabled>
-                            <div class="mainmenu-start-icon"></div>
-                            <span class="mainmenu-start-text">FIVE</span>
+                            <span class="mainmenu-start-text">Disabled</span>
                         </button>
                         <button class="mainmenu-start-button" onclick="window.close();">
                             <div class="mainmenu-start-icon"></div>

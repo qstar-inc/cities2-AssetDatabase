@@ -7,65 +7,73 @@
   \*************************************/
 /***/ (() => {
 
-var skipSplash = false;
-var skipSplash1 = false;
-var skipSplash2 = false;
-var timeout1, timeout2;
-function showNextSplash(currentSplashId, nextSplashId, nextTimeoutFunction) {
-  var time;
-  if (nextSplashId == "preloader-screen") {
-    time = 5000;
-  } else {
-    time = 3000;
-  }
-  document.getElementById(currentSplashId).style.display = "none";
-  document.getElementById(nextSplashId).style.display = "flex";
-  if (!skipSplash) {
-    timeout2 = setTimeout(function () {
-      nextTimeoutFunction();
-    }, time);
-  }
-}
-function hideSplashScreens() {
-  document.getElementById("preloader-screen").style.display = "none";
+var referrer = document.referrer;
+var currentDomain = window.location.origin;
+if (referrer && referrer.startsWith(currentDomain)) {
+  document.getElementById("splash-screen-1").style.display = "none";
+  document.getElementById("splash-screen-2").style.display = "none";
   document.getElementById("main-content").style.display = "block";
-}
-timeout1 = setTimeout(function () {
-  if (!skipSplash1) {
+} else {
+  var showNextSplash = function showNextSplash(currentSplashId, nextSplashId, nextTimeoutFunction) {
+    var time;
+    if (nextSplashId == "preloader-screen") {
+      time = 5000;
+    } else {
+      time = 3000;
+    }
+    document.getElementById(currentSplashId).style.display = "none";
+    document.getElementById(nextSplashId).style.display = "flex";
+    if (!skipSplash) {
+      timeout2 = setTimeout(function () {
+        nextTimeoutFunction();
+      }, time);
+    }
+  };
+  var hideSplashScreens = function hideSplashScreens() {
+    document.getElementById("preloader-screen").style.display = "none";
+    document.getElementById("main-content").style.display = "block";
+  };
+  var skipSplash = false;
+  var skipSplash1 = false;
+  var skipSplash2 = false;
+  var timeout1, timeout2;
+  timeout1 = setTimeout(function () {
+    if (!skipSplash1) {
+      skipSplash1 = true;
+      showNextSplash("splash-screen-1", "splash-screen-2", function () {
+        if (skipSplash2 == false) {
+          skipSplash2 = true;
+          showNextSplash("splash-screen-2", "preloader-screen", hideSplashScreens);
+        }
+      });
+    }
+  }, 3000);
+  document.getElementById("splash-screen-1").addEventListener("click", function () {
+    clearTimeout(timeout1);
     skipSplash1 = true;
     showNextSplash("splash-screen-1", "splash-screen-2", function () {
-      if (skipSplash2 == false) {
-        skipSplash2 = true;
-        showNextSplash("splash-screen-2", "preloader-screen", hideSplashScreens);
-      }
+      clearTimeout(timeout2);
+      showNextSplash("splash-screen-2", "preloader-screen", hideSplashScreens);
     });
-  }
-}, 3000);
-document.getElementById("splash-screen-1").addEventListener("click", function () {
-  clearTimeout(timeout1);
-  skipSplash1 = true;
-  showNextSplash("splash-screen-1", "splash-screen-2", function () {
+  });
+  document.getElementById("splash-screen-2").addEventListener("click", function () {
     clearTimeout(timeout2);
+    skipSplash2 = true;
     showNextSplash("splash-screen-2", "preloader-screen", hideSplashScreens);
   });
-});
-document.getElementById("splash-screen-2").addEventListener("click", function () {
-  clearTimeout(timeout2);
-  skipSplash2 = true;
-  showNextSplash("splash-screen-2", "preloader-screen", hideSplashScreens);
-});
-document.getElementById("preloader-skip-button").addEventListener("click", function () {
-  skipSplash = true;
-  hideSplashScreens();
-});
-document.addEventListener("DOMContentLoaded", function () {
-  var tips = ["Save your game frequently to avoid losing progress.", "You can zoom in by scrolling your mouse wheel.", "Right-click to deselect any tool.", "Keybinds help speed up your workflow.", "You cannot undo most actions."];
-  function randomTipSelector() {
-    var randomIndex = Math.floor(Math.random() * tips.length);
-    return tips[randomIndex];
-  }
-  document.getElementById("preloader-tips-text").innerText = randomTipSelector();
-});
+  document.getElementById("preloader-skip-button").addEventListener("click", function () {
+    skipSplash = true;
+    hideSplashScreens();
+  });
+  document.addEventListener("DOMContentLoaded", function () {
+    var tips = ["Save your game frequently to avoid losing progress.", "You can zoom in by scrolling your mouse wheel.", "Right-click to deselect any tool.", "Keybinds help speed up your workflow.", "You cannot undo most actions."];
+    function randomTipSelector() {
+      var randomIndex = Math.floor(Math.random() * tips.length);
+      return tips[randomIndex];
+    }
+    document.getElementById("preloader-tips-text").innerText = randomTipSelector();
+  });
+}
 
 /***/ }),
 

@@ -529,6 +529,9 @@ video {
   --mainmenu-white-color: rgba(226, 226, 226, 0.8);
   --dark-blackish-color: rgba(49, 49, 49, 0.8);
 }
+body {
+  background-color: rgba(0, 0, 0, 1);
+}
 body > * {
   font-family: var(--fontFamily);
 }
