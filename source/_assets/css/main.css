@@ -6,6 +6,9 @@
   --fontFamily: Overpass, "Noto Sans", "Noto Sans KR", "Noto Sans JP",
     "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", "Noto Sans Hebrew",
     "Noto Sans Arabic", "Noto Sans Bengali", "Noto Sans Devanagari";
+  --filter-drop-shadow: drop-shadow(10px 10px 15px rgba(0, 0, 0, 0.5));
+  --box-shadow: 0 0 15px rgba(0, 0, 0, 0.3), 0 0 30px rgba(0, 0, 0, 0.2);
+  --mainmenu-white-color: rgba(226, 226, 226, 0.8);
 }
 
 body > * {
@@ -13,9 +16,21 @@ body > * {
 }
 
 .box-shadow {
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3), 0 0 30px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--box-shadow);
 }
 
 .drop-shadow {
-  filter: drop-shadow(10px 10px 15px rgba(0, 0, 0, 0.5));
+  filter: var(--filter-drop-shadow);
+}
+
+* {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+img {
+  pointer-events: none;
+  -webkit-user-drag: none;
 }

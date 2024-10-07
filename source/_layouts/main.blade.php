@@ -78,6 +78,7 @@
                     </svg>
                 </div>
                 <div class="preloader-tips-container"><span id="preloader-tips-text">Tooltips</span></div>
+                <div class="preloader-skip-button-container drop-shadow" id="preloader-skip-button"><button class="preloader-skip-button">SKIP&nbsp;⏭</button></div>
             </div>
         </div>
     </div>
@@ -137,6 +138,11 @@
             clearTimeout(timeout2);
             skipSplash2 = true;
             showNextSplash('splash-screen-2', 'preloader-screen', hideSplashScreens);
+        });
+
+        document.getElementById('preloader-skip-button').addEventListener('click', function() {
+            skipSplash = true;
+            hideSplashScreens();
         });
 
         document.addEventListener("DOMContentLoaded", function() {

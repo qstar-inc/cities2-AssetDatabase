@@ -165,3 +165,23 @@
   font-family: var(--fontFamily);
 }
 
+.preloader-skip-button-container {
+  background-color: #398025;
+  color: white;
+  padding: 1vh 1vw;
+  text-align: center;
+  font-size: 1vh;
+  position: fixed;
+  top: 98vh;
+  translate: -100% -100%;
+  left: 98vw;
+  border-radius: 1vh;
+}
+
+.preloader-skip-button-container:hover {
+  outline-color: transparent;
+  outline-style: solid;
+  box-shadow: 0 0 0 0.5vh #12c8ff;
+  transition: 0.7s;
+}
+
