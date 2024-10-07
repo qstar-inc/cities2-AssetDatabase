@@ -1,0 +1,96 @@
+.game-bg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.pause-overlay {
+  z-index: 999999;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  right: 0;
+  border: 0.3vh rgba(246, 0, 0, 0.667) solid;
+  transition: border-top-color 250ms, border-left-color 250ms,
+    border-bottom-color 250ms, border-right-color 250ms, transform 250ms;
+  box-shadow: inset 0 0 0.5vh 0.5vh rgba(246, 0, 0, 0.5);
+  pointer-events: none;
+}
+
+.toolbar {
+  color: var(--mainmenu-white-color);
+}
+.bottom-bar {
+  position: fixed;
+  top: 95vh;
+  bottom: 0vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: var(--dark-blackish-color);
+  gap: 10vw;
+  margin: auto;
+  justify-content: center;
+}
+
+.asset-bar {
+  position: fixed;
+  top: 88.89vh;
+  bottom: 5vh;
+  width: 100vw;
+  padding: 0.5vh calc(10vh / 8vh);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: rgba(77, 77, 77, 0.6);
+  gap: 5vw;
+  margin: auto;
+  justify-content: center;
+}
+
+.asset-panel {
+  position: fixed;
+  left: 31.69vw;
+  right: calc(100% - 68.33%);
+  top: 68.33vh;
+  bottom: calc(100% - 88.33%);
+  background-color: blueviolet;
+  display: none;
+}
+
+.tools-panel {
+  position: fixed;
+  right: calc(100% - 31.35%);
+  bottom: calc(100% - 88.33%);
+  background-color: rgb(19, 212, 93);
+}
+
+.round-border {
+  border-radius: 1vh;
+}
+
+.asset-menu-group {
+  display: flex;
+  gap: 1vw;
+}
+
+.asset-menu-icon {
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.asset-menu-icon:hover {
+  border-radius: 100vh;
+  background-color: var(--dark-blackish-color);
+}
+
+.asset-menu-icon:active {
+  border-radius: 100vh 100vh;
+  background-color: greenyellow;
+}

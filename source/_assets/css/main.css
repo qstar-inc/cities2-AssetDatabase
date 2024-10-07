@@ -9,6 +9,7 @@
   --filter-drop-shadow: drop-shadow(10px 10px 15px rgba(0, 0, 0, 0.5));
   --box-shadow: 0 0 15px rgba(0, 0, 0, 0.3), 0 0 30px rgba(0, 0, 0, 0.2);
   --mainmenu-white-color: rgba(226, 226, 226, 0.8);
+  --dark-blackish-color: rgba(49, 49, 49, 0.8);
 }
 
 body > * {

@@ -1,6 +1,9 @@
 {
-    "/js/main.js": "/js/main.js?id=678f1017558711110668cb01c9298965",
-    "/css/main-menu.css": "/css/main-menu.css?id=248216a963fe614bd848f5d76c770c9a",
-    "/css/splash.css": "/css/splash.css?id=e1a8864d9a44f3ac5f66bfa223ae2823",
-    "/css/main.css": "/css/main.css?id=545c11d7f5fd42913c9c9360eff644ab"
+    "/js/splash.js": "/js/splash.js?id=1bb98f45c2ce09743cc14fa851e624c5",
+    "/js/main.js": "/js/main.js?id=23880338f17ca517d97a3c70c168b9dc",
+    "/js/game.js": "/js/game.js?id=295e9fa5c0bd2bd4b5bf5d64147ee599",
+    "/css/game.css": "/css/game.css?id=ed721584e4da82b0f8cf24fd250eb3b8",
+    "/css/main-menu.css": "/css/main-menu.css?id=6ff8756c867e81a6e29f41ac00bd3d1b",
+    "/css/splash.css": "/css/splash.css?id=29f85b664be4d4f024bea60c492d7a0d",
+    "/css/main.css": "/css/main.css?id=503ee70f6a9d46a0bc453d481377be8d"
 }
