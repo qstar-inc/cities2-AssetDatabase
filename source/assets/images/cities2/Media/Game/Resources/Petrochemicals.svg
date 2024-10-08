@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="40" viewBox="0 0 40 40">
+  <defs>
+    <clipPath id="clip-Petrochemicals">
+      <rect width="40" height="40"/>
+    </clipPath>
+  </defs>
+  <g id="Petrochemicals" clip-path="url(#clip-Petrochemicals)">
+    <g id="ResourceCrudeOil" transform="translate(9.718 5.12)">
+      <path id="Path_688" data-name="Path 688" d="M6057.3-5254.055s-9.763,12.412-9.763,19.852,4.621,9.909,9.763,9.909,10.8-2.469,10.8-9.909S6057.3-5254.055,6057.3-5254.055Z" transform="translate(-6047.535 5254.055)" fill="#ea912b"/>
+      <circle id="Ellipse_297" data-name="Ellipse 297" cx="6.5" cy="6.5" r="6.5" transform="translate(1 14.555)" fill="#fcb460"/>
+      <circle id="Ellipse_298" data-name="Ellipse 298" cx="3.5" cy="3.5" r="3.5" transform="translate(3 17.555)" fill="#ffddba"/>
+    </g>
+  </g>
+</svg>

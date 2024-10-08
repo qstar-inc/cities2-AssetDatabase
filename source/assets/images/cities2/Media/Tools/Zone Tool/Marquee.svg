@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <clipPath id="clip-Marquee">
+      <rect width="32" height="32"/>
+    </clipPath>
+  </defs>
+  <g id="Marquee" clip-path="url(#clip-Marquee)">
+    <path id="Path_3217" data-name="Path 3217" d="M-937-315h-3v-2h2a1,1,0,0,0,1-1v-2h2v3A2,2,0,0,1-937-315Zm-6,0h-4v-2h4v2Zm-7,0h-3a2,2,0,0,1-2-2v-3h2v2a1,1,0,0,0,1,1h2v2Zm15-8h-2v-4h2v4Zm-18,0h-2v-4h2v4Zm18-7h-2v-2a1,1,0,0,0-1-1h-2v-2h3a2,2,0,0,1,2,2v3Zm-18,0h-2v-3a2,2,0,0,1,2-2h3v2h-2a1,1,0,0,0-1,1v2Zm10-3h-4v-2h4v2Z" transform="translate(961 341.001)" fill="#fff"/>
+  </g>
+</svg>

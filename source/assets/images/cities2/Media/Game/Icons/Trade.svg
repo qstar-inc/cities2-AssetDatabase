@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <clipPath id="clip-Trade">
+      <rect width="32" height="32"/>
+    </clipPath>
+  </defs>
+  <g id="Trade" clip-path="url(#clip-Trade)">
+    <path id="Path_2269" data-name="Path 2269" d="M262.4-430.408l1.083,11.279,2.645-1.614,8.843,7.837-1.646,1.67v1.059l12.4,1.386v-1.153l-6.544-9.489v-1.309l-7.29-4.806,3.084-1.874v-1.172Z" transform="translate(-257.903 435.992)" fill="#616060"/>
+    <path id="Path_2268" data-name="Path 2268" d="M262.055-430.107l1.311,10.585,2.637-1.8,9.815,8.5-2.733,2.561,12.623,1.442-1.659-10.7-2.186,1.939-9.754-8.089,3.1-1.885Z" transform="translate(-257.881 435.034)" fill="#f3f1f1"/>
+    <g id="Economy" transform="translate(8.129 9.818)">
+      <path id="Path_3206" data-name="Path 3206" d="M-.046,9.76,10.2,3.7l5,4.578L5.153,13.846Z" fill="#616060"/>
+      <g id="Group_2352" data-name="Group 2352" transform="translate(0 0)">
+        <path id="Path_264" data-name="Path 264" d="M4,15.694l5.117,3.384,10.624-5.4-4.9-3.142Z" transform="translate(-4 -10.536)" fill="#c1ff67"/>
+        <path id="Path_267" data-name="Path 267" d="M22.424,15.229v3.6L11.8,24.449l0-3.82Z" transform="translate(-6.683 -12.086)" fill="#72ab5e"/>
+        <path id="Path_265" data-name="Path 265" d="M9.117,25.445,4,21.623V18.239l5.117,3.384Z" transform="translate(-4 -13.081)" fill="#9adf4b"/>
+      </g>
+      <ellipse id="Ellipse_535" data-name="Ellipse 535" cx="2.76" cy="1.269" rx="2.76" ry="1.269" transform="translate(5.111 3.048)" fill="#6ab119"/>
+    </g>
+  </g>
+</svg>

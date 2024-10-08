@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="128" height="128" viewBox="0 0 128 128">
+  <defs>
+    <filter id="Path_2107" x="12.224" y="25.511" width="103.553" height="82.979" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <clipPath id="clip-MarkerOutsideConnectionRoad">
+      <rect width="128" height="128"/>
+    </clipPath>
+  </defs>
+  <g id="MarkerOutsideConnectionRoad" clip-path="url(#clip-MarkerOutsideConnectionRoad)">
+    <circle id="Ellipse_691" data-name="Ellipse 691" cx="64" cy="64" r="64" fill="#42c7ff"/>
+    <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Path_2107)">
+      <path id="Path_2107-2" data-name="Path 2107" d="M1223.505-1118.6l48.09,40.843,37.462-24.608-48.469-40.371Z" transform="translate(-1202.28 1174.25)" fill="#fff"/>
+    </g>
+    <path id="Path_2108" data-name="Path 2108" d="M740.345-307.26l47.844,39.918,4.15-2.648L743.955-309.5Z" transform="translate(-702.342 352.421)" fill="#42c7ff"/>
+  </g>
+</svg>

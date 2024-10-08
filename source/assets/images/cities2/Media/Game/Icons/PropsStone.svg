@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <clipPath id="clip-Rocks">
+      <rect width="64" height="64"/>
+    </clipPath>
+  </defs>
+  <g id="Rocks" clip-path="url(#clip-Rocks)">
+    <path id="Path_3513" data-name="Path 3513" d="M925.448-754.509l3.868,10.714,17.56,5.922,10.964-3.06,4.1-6.969v-9.533l-13.212-5.288h-8.215l-12.078-4.732Z" transform="translate(-917 791)" fill="#8e8e8e"/>
+    <path id="Path_3514" data-name="Path 3514" d="M928.392-767.516l9.824-11.432,12.083-1.814,11.638,1.814,4.792,5.716,2.533,8.215-7.325,8.01-14.821-3.457-12.562,3.457Z" transform="translate(-917 791)" fill="#b0acac"/>
+    <path id="Path_3515" data-name="Path 3515" d="M957.623-740.9l4.313-7.449v-9.139l7.325-7.53v10.508l-7.325,10.474Z" transform="translate(-917 791)" fill="#676666"/>
+  </g>
+</svg>

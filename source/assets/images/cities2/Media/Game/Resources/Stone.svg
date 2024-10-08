@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="40" viewBox="0 0 40 40">
+  <defs>
+    <clipPath id="clip-Stone">
+      <rect width="40" height="40"/>
+    </clipPath>
+  </defs>
+  <g id="Stone" clip-path="url(#clip-Stone)">
+    <g id="ResourceStone" transform="translate(5.197 10.616)">
+      <path id="Path_530" data-name="Path 530" d="M6050.567-5428.482l-5.494-11.168,7.9-7.433h11.185l8.98,7.433,1.546,7.224-5.494,3.944Z" transform="translate(-6045.073 5447.249)" fill="#8b8383"/>
+      <path id="Path_536" data-name="Path 536" d="M6034.074-5595.211l5.962,4.956,7.261-3.593,3.25,2.209,8.956-5.7-6.62-5.308h-10.927Z" transform="translate(-6034.074 5602.645)" fill="#fff" opacity="0.3"/>
+    </g>
+  </g>
+</svg>

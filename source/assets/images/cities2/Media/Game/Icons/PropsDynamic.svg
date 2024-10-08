@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <clipPath id="clip-PropsDynamic">
+      <rect width="64" height="64"/>
+    </clipPath>
+  </defs>
+  <g id="PropsDynamic" clip-path="url(#clip-PropsDynamic)">
+    <path id="Path_3574" data-name="Path 3574" d="M1007.573-1019.408l7.113-2.473,1.683,15.879,2.383,1.892,1.192,9.235-11.023,4.171Z" transform="translate(-974 1038)" fill="#8e8e8e"/>
+    <path id="Path_3573" data-name="Path 3573" d="M996.707-1001.339,999-1023.281l8.729,3.784,1,25.412Z" transform="translate(-974 1038)" fill="#b8b8b8"/>
+    <path id="Path_3567" data-name="Path 3567" d="M991.151-1002.71l-9.727,5.854,20.89,6.488,9.955-7.743Z" transform="translate(-974 1038)" fill="#d4d4d4"/>
+    <path id="Path_3568" data-name="Path 3568" d="M981.057-997v8.849l20.538,5.918V-990.7Z" transform="translate(-973.704 1038)" fill="#b8b8b8"/>
+    <path id="Path_3569" data-name="Path 3569" d="M1001.771-981.871l11.6-7.39-1.37-8.7-10.233,7.448Z" transform="translate(-974 1038)" fill="#8e8e8e"/>
+    <path id="Path_3570" data-name="Path 3570" d="M1015.177-996.539l8.654,3.749,7.433-6.346-8.639-2.89Z" transform="translate(-974 1038)" fill="#d4d4d4"/>
+    <path id="Path_3571" data-name="Path 3571" d="M1014.284-989.915l1.192-6.643,8.639,3.068-.894,6.256Z" transform="translate(-974 1038)" fill="#b8b8b8"/>
+    <path id="Path_3572" data-name="Path 3572" d="M1023.221-987.233l9.831-7.448-2.07-4.767-6.956,5.467Z" transform="translate(-974 1038)" fill="#8e8e8e"/>
+    <path id="Path_3575" data-name="Path 3575" d="M999.195-1023.281l6.763-2.681,8.625,3.977-6.941,3.277Z" transform="translate(-974 1038)" fill="#d4d4d4"/>
+  </g>
+</svg>

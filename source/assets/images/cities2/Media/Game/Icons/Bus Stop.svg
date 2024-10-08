@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <clipPath id="clip-Bus_Stop_4">
+      <rect width="64" height="64"/>
+    </clipPath>
+  </defs>
+  <g id="Bus_Stop_4" data-name="Bus Stop – 4" clip-path="url(#clip-Bus_Stop_4)">
+    <g id="InfoIconPublicTransport" transform="translate(19.047 14.05)">
+      <rect id="Rectangle_856" data-name="Rectangle 856" width="4.09" height="5.454" rx="2" transform="translate(1.364 25.905)" fill="#fff"/>
+      <rect id="Rectangle_1285" data-name="Rectangle 1285" width="4.09" height="5.454" rx="2" transform="translate(20.452 25.905)" fill="#fff"/>
+      <path id="Rectangle_857" data-name="Rectangle 857" d="M3,0H22.905a3,3,0,0,1,3,3V26.269a1,1,0,0,1-1,1H1a1,1,0,0,1-1-1V3A3,3,0,0,1,3,0Z" transform="translate(0 0)" fill="#fff"/>
+      <path id="Path_381" data-name="Path 381" d="M2.279,0A2.256,2.256,0,0,1,4.572,2.2,2.224,2.224,0,0,1,2.293,4.383,2.256,2.256,0,0,1,0,2.185,2.224,2.224,0,0,1,2.279,0Z" transform="matrix(0.998, -0.07, 0.07, 0.998, 2.26, 19.107)" fill="#00b0b0"/>
+      <path id="Path_382" data-name="Path 382" d="M2.279,0A2.256,2.256,0,0,1,4.572,2.2,2.224,2.224,0,0,1,2.293,4.383,2.256,2.256,0,0,1,0,2.185,2.224,2.224,0,0,1,2.279,0Z" transform="matrix(0.998, -0.07, 0.07, 0.998, 19.636, 19.107)" fill="#00b0b0"/>
+      <rect id="Rectangle_861" data-name="Rectangle 861" width="23.178" height="10.907" rx="2" transform="translate(1.364 5.454)" fill="#00b0b0"/>
+      <rect id="Rectangle_869" data-name="Rectangle 869" width="12.271" transform="translate(8.181 2.727)" fill="#f3e195"/>
+    </g>
+  </g>
+</svg>

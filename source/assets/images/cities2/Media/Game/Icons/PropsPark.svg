@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <clipPath id="clip-ParksProps">
+      <rect width="64" height="64"/>
+    </clipPath>
+  </defs>
+  <g id="ParksProps" clip-path="url(#clip-ParksProps)">
+    <g id="ButtonParksAndRecreations" transform="translate(10.491 8.883)">
+      <ellipse id="Ellipse_205" data-name="Ellipse 205" cx="8.852" cy="2.951" rx="8.852" ry="2.951" transform="translate(4.426 40.154)" fill="#2f2f2f"/>
+      <path id="Path_475" data-name="Path 475" d="M6-.3c3.314,0,5.907.754,5.907,1.583S9.314,3,6,3-.036,2.112-.036,1.284,2.686-.3,6-.3Z" transform="translate(26.59 41.946)" fill="#2f2f2f"/>
+      <path id="Path_473" data-name="Path 473" d="M0,0H5.476V9.752a5.646,5.646,0,0,1-2.762.991A5.374,5.374,0,0,1,0,9.752Z" transform="translate(10.327 32.554)" fill="#b28e5e"/>
+      <path id="Path_470" data-name="Path 470" d="M13.277,0l8.575,14.472,4.7,4.706a37.934,37.934,0,0,1-13.277,2.928A37.934,37.934,0,0,1,0,19.178s.72.088,4.039-4.706S13.277,0,13.277,0Z" transform="translate(0 14.315)" fill="#367c01"/>
+      <path id="Path_471" data-name="Path 471" d="M11.761,0S15.5,6.039,18.437,9.719a23.065,23.065,0,0,0,5.085,5,37.9,37.9,0,0,1-11.761,2.248A37.9,37.9,0,0,1,0,14.721a28.4,28.4,0,0,0,4.785-5C7.725,6.039,11.761,0,11.761,0Z" transform="translate(1.558 10.488)" fill="#54b60b"/>
+      <path id="Path_472" data-name="Path 472" d="M7.523,0a45.479,45.479,0,0,0,3.055,8.336,28.332,28.332,0,0,0,4.469,6.258,17.181,17.181,0,0,1-7.523,2.228A17.181,17.181,0,0,1,0,14.594,31.264,31.264,0,0,0,4.3,8.336,53.494,53.494,0,0,0,7.523,0Z" transform="translate(5.984)" fill="#83e637"/>
+      <path id="Path_474" data-name="Path 474" d="M28.635,32.172v4.85a3.924,3.924,0,0,0,2.7.722A3.721,3.721,0,0,0,34,37.022v-4.85a41.712,41.712,0,0,0,5.7-.678,17.009,17.009,0,0,0,4.674-1.726l.138-2.9L18,26.935v2.5a17.881,17.881,0,0,0,4.9,2.055A31.757,31.757,0,0,0,28.635,32.172Z" transform="translate(1.177 5.483)" fill="#b28e5e"/>
+      <ellipse id="Ellipse_204" data-name="Ellipse 204" cx="13.277" cy="2.951" rx="13.277" ry="2.951" transform="translate(19.178 29.514)" fill="#e0b98c"/>
+    </g>
+  </g>
+</svg>

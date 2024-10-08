@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <clipPath id="clip-TreeChild">
+      <rect width="32" height="32"/>
+    </clipPath>
+  </defs>
+  <g id="TreeChild" clip-path="url(#clip-TreeChild)">
+    <g id="InfoIconNaturalResources" transform="translate(19.476 15.332) rotate(17)">
+      <path id="Path_758" data-name="Path 758" d="M27.488.9s-1.173-2.411,0-4.118A7.03,7.03,0,0,1,30.31-5.228a8.509,8.509,0,0,0,2.044-1.695S33-2.453,31.823-.746,27.488.9,27.488.9Z" transform="translate(-26.967 6.923)" fill="#fff"/>
+    </g>
+    <g id="InfoIconNaturalResources-2" data-name="InfoIconNaturalResources" transform="translate(16.532 19.288) rotate(163)">
+      <path id="Path_758-2" data-name="Path 758" d="M.638-.012S-.846,3.229.53,5.468A8.1,8.1,0,0,0,3.9,8.068a9.994,9.994,0,0,1,2.432,2.2s.894-5.965-.482-8.2S.638-.012.638-.012Z" transform="translate(0 0)" fill="#fff"/>
+    </g>
+    <path id="Path_2277" data-name="Path 2277" d="M389.734-568.2a12,12,0,0,1,1.343-3.138,15.222,15.222,0,0,1,2.4-2.776,15.55,15.55,0,0,0-1.992,2.928,11.789,11.789,0,0,0-.97,3.107Z" transform="translate(-522.115 452.885) rotate(17)" fill="#fff"/>
+    <path id="Path_2278" data-name="Path 2278" d="M3.234-7.836S1.753-7.658.647-4.751c-1.07,2.811.832,6.96,1.362,7.871a11.206,11.206,0,0,0,3.6,3.126A17.855,17.855,0,0,1,2.3,2.155a7,7,0,0,1-.386-5.688A5.846,5.846,0,0,1,6.051-6.974Z" transform="translate(16.673 18.84) rotate(163)" fill="#fff"/>
+    <path id="Path_2279" data-name="Path 2279" d="M130.165-600.775a19.633,19.633,0,0,0,4.906.755,17.318,17.318,0,0,0,4.717-.755s-1.576-3.151-4.717-2.962A6.845,6.845,0,0,0,130.165-600.775Z" transform="translate(-119.435 629)" fill="#fff"/>
+    <g id="InfoIconNaturalResources-3" data-name="InfoIconNaturalResources" transform="translate(19.477 15.332) rotate(17)">
+      <path id="Path_758-3" data-name="Path 758" d="M27.488.9s-1.173-2.411,0-4.118A7.03,7.03,0,0,1,30.31-5.228a8.509,8.509,0,0,0,2.044-1.695S33-2.453,31.823-.746,27.488.9,27.488.9Z" transform="translate(-26.967 6.923)" fill="#fff"/>
+    </g>
+    <g id="InfoIconNaturalResources-4" data-name="InfoIconNaturalResources" transform="translate(16.532 19.288) rotate(163)">
+      <path id="Path_758-4" data-name="Path 758" d="M.638-.012S-.846,3.229.53,5.468A8.1,8.1,0,0,0,3.9,8.068a9.994,9.994,0,0,1,2.432,2.2s.894-5.965-.482-8.2S.638-.012.638-.012Z" transform="translate(0 0)" fill="#fff"/>
+    </g>
+    <path id="Path_3540" data-name="Path 3540" d="M389.734-568.2a12,12,0,0,1,1.343-3.138,15.222,15.222,0,0,1,2.4-2.776,15.55,15.55,0,0,0-1.992,2.928,11.789,11.789,0,0,0-.97,3.107Z" transform="translate(-522.114 452.885) rotate(17)" fill="#fff"/>
+    <path id="Path_3541" data-name="Path 3541" d="M3.234-7.836S1.753-7.658.647-4.751c-1.07,2.811.832,6.96,1.362,7.871a11.206,11.206,0,0,0,3.6,3.126A17.855,17.855,0,0,1,2.3,2.155a7,7,0,0,1-.386-5.688A5.846,5.846,0,0,1,6.051-6.974Z" transform="translate(16.673 18.84) rotate(163)" fill="#fff"/>
+    <path id="Path_3542" data-name="Path 3542" d="M130.165-600.775a19.633,19.633,0,0,0,4.906.755,17.318,17.318,0,0,0,4.717-.755s-1.576-3.151-4.717-2.962A6.845,6.845,0,0,0,130.165-600.775Z" transform="translate(-119.435 629)" fill="#fff"/>
+  </g>
+</svg>

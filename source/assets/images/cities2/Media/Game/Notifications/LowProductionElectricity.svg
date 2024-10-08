@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 128 128" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g id="Vehicles" transform="matrix(0.976563,0,0,0.942198,1.5,1.5)">
+        <path d="M64,0L119.426,33.167L119.426,99.501L64,132.668L8.574,99.501L8.574,33.167L64,0Z" style="fill:rgb(229,99,51);"/>
+        <clipPath id="_clip1">
+            <path d="M64,0L119.426,33.167L119.426,99.501L64,132.668L8.574,99.501L8.574,33.167L64,0Z"/>
+        </clipPath>
+        <g clip-path="url(#_clip1)">
+            <g id="LowProductionElectricity" transform="matrix(6.07985,0,0,6.30159,23.043,24.5953)">
+                <g>
+                    <g transform="matrix(0.958373,0,0,0.898748,-9401.1,26.6126)">
+                        <path d="M9816.23,-28.8L9811.53,-22.776L9816.23,-22.776L9823.17,-28.8L9816.23,-28.8Z" style="fill:rgb(255,209,100);fill-rule:nonzero;"/>
+                    </g>
+                    <g transform="matrix(0.958373,0,0,0.898748,-9398.06,14.7716)">
+                        <path d="M9813.07,-9.6L9817.32,-9.6L9806.58,-2.507L9813.07,-9.6Z" style="fill:rgb(255,203,79);fill-rule:nonzero;"/>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

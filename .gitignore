@@ -10,4 +10,4 @@ npm-debug.log
 /build_staging/
 /build_production/
 /source/assets/build/
-/source/assets/images/cities2/Media
+# /source/assets/images/cities2/Media

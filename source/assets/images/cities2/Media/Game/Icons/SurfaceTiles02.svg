@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <clipPath id="clip-SurfaceTiles02">
+      <rect width="64" height="64"/>
+    </clipPath>
+  </defs>
+  <g id="SurfaceTiles02" clip-path="url(#clip-SurfaceTiles02)">
+    <path id="Path_2186" data-name="Path 2186" d="M722.072-295.333l29.712,25.316,34.037-20.612v-2.55l-63.749-4.737Z" transform="translate(-722.04 327.13)" fill="#606060"/>
+    <path id="Path_2192" data-name="Path 2192" d="M1224.123-1129.9l29.871,25.1,34.079-20.276-29.7-24.869Z" transform="translate(-1224.047 1159.002)" fill="#6d6656"/>
+    <path id="Path_3484" data-name="Path 3484" d="M2125.672,1283.243c.545-.995,9.459-21.534,9.459-21.534l6.992,1.731-10.263,24.71Z" transform="translate(-2110 -1241)" fill="#887b64"/>
+    <path id="Path_3485" data-name="Path 3485" d="M2144.3,1264.08l-2.631,7.169,26.8,6.46,4.906-3-5.724-4.907Z" transform="translate(-2110 -1241)" fill="#887b64"/>
+    <path id="Path_3486" data-name="Path 3486" d="M2133.9,1290.521l7.5-17.718,8.45,2.085-6.91,18.44-2.726,1.363Z" transform="translate(-2110 -1241)" fill="#887b64"/>
+    <path id="Path_3487" data-name="Path 3487" d="M2152.576,1275.529l-2.372,7.264,6.733,1.908,9.895-5.724Z" transform="translate(-2110 -1241)" fill="#887b64"/>
+    <path id="Path_3488" data-name="Path 3488" d="M2146.934,1290.793l2.276-6,6.092,1.363Z" transform="translate(-2110 -1241)" fill="#887b64"/>
+    <path id="Path_3489" data-name="Path 3489" d="M2123.682,1281.526l11.449-25.719-12.812,7.455-5.452,12.348Z" transform="translate(-2110 -1241)" fill="#887b64"/>
+    <path id="Path_3490" data-name="Path 3490" d="M2115,1274.166l3.585-8.45-7.987,4.443Z" transform="translate(-2110 -1241)" fill="#887b64"/>
+    <path id="Path_3491" data-name="Path 3491" d="M2136.671,1259.719l26.168,6.174-11.081-9.172-12.266-3.189Z" transform="translate(-2110 -1241)" fill="#887b64"/>
+    <path id="Path_3492" data-name="Path 3492" d="M2141.081,1252.055l7.756,1.858-4.526-3.719Z" transform="translate(-2110 -1241)" fill="#887b64"/>
+  </g>
+</svg>

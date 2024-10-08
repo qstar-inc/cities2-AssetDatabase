@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <clipPath id="clip-TreeAdult">
+      <rect width="32" height="32"/>
+    </clipPath>
+  </defs>
+  <g id="TreeAdult" clip-path="url(#clip-TreeAdult)">
+    <path id="Path_3538" data-name="Path 3538" d="M5682.913,3607.521a40.886,40.886,0,0,0,2.293-9.281,64.048,64.048,0,0,0,0-12.252,68.317,68.317,0,0,1,4.091,12.252,23.049,23.049,0,0,1,0,9.281Z" transform="translate(-5672.399 -3579.755)" fill="#fff"/>
+    <ellipse id="Ellipse_869" data-name="Ellipse 869" cx="9" cy="8.5" rx="9" ry="8.5" transform="translate(7 4)" fill="#fff"/>
+    <circle id="Ellipse_870" data-name="Ellipse 870" cx="6" cy="6" r="6" transform="translate(4 11)" fill="#fff"/>
+    <circle id="Ellipse_871" data-name="Ellipse 871" cx="6" cy="6" r="6" transform="translate(13 10)" fill="#fff"/>
+  </g>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <clipPath id="clip-LoanInterest">
+      <rect width="32" height="32"/>
+    </clipPath>
+  </defs>
+  <g id="LoanInterest" clip-path="url(#clip-LoanInterest)">
+    <g id="Economy" transform="translate(8.129 12.784)">
+      <g id="Group_2352" data-name="Group 2352" transform="translate(0 0)">
+        <path id="Path_264" data-name="Path 264" d="M4,15.694l5.117,3.384,10.624-5.4-4.9-3.142Z" transform="translate(-4 -10.536)" fill="#c1ff67"/>
+        <path id="Path_267" data-name="Path 267" d="M22.424,15.229v3.6L11.8,24.449l0-3.82Z" transform="translate(-6.683 -12.086)" fill="#72ab5e"/>
+        <path id="Path_265" data-name="Path 265" d="M9.117,25.445,4,21.623V18.239l5.117,3.384Z" transform="translate(-4 -13.081)" fill="#9adf4b"/>
+      </g>
+      <ellipse id="Ellipse_535" data-name="Ellipse 535" cx="2.76" cy="1.269" rx="2.76" ry="1.269" transform="translate(5.111 3.048)" fill="#6ab119"/>
+    </g>
+    <path id="Path_3210" data-name="Path 3210" d="M-135.989,1085.754h5.811v-4.588h2.951l-5.811-4.282-6.315,4.282h3.364Z" transform="translate(148.29 -1070.033)" fill="#e37b4f"/>
+  </g>
+</svg>

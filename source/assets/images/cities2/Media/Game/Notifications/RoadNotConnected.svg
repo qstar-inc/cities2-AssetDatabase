@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 128 128" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g id="Event" transform="matrix(0.976563,0,0,0.976563,1.5,1.5)">
+        <path d="M64,0L128,64L64,128L0,64L64,0Z" style="fill:rgb(255,231,185);"/>
+    </g>
+    <g id="Event1" serif:id="Event" transform="matrix(0.976563,0,0,0.976563,1.5,1.5)">
+        <path d="M64,0L128,64L64,128L0,64L64,0Z" style="fill:rgb(255,184,14);"/>
+        <clipPath id="_clip1">
+            <path d="M64,0L128,64L64,128L0,64L64,0Z"/>
+        </clipPath>
+        <g clip-path="url(#_clip1)">
+            <g id="RoadNotConnected" transform="matrix(2.34289,0,0,2.34289,18.0418,16.5377)">
+                <g transform="matrix(1,0,0,1,-730,320.306)">
+                    <path d="M733.5,-302.422L751.573,-286.936L765.673,-296.328L765.673,-297.948L733.5,-304.027L733.5,-302.422Z" style="fill:rgb(67,67,67);fill-rule:nonzero;"/>
+                </g>
+                <g transform="matrix(1,0,0,1,-1220,1149.89)">
+                    <path d="M1223.5,-1133.65L1241.62,-1118.26L1255.73,-1127.53L1237.47,-1142.74L1223.5,-1133.65Z" style="fill:rgb(128,128,128);fill-rule:nonzero;"/>
+                </g>
+                <g transform="matrix(1,0,0,1,-729.414,321.622)">
+                    <path d="M740.478,-308.616L743.608,-305.98L744.993,-306.895L741.873,-309.5L740.478,-308.616Z" style="fill:rgb(212,212,212);fill-rule:nonzero;"/>
+                </g>
+                <g transform="matrix(1,0,0,1,-716.136,332.797)">
+                    <path d="M740.386,-308.926L743.516,-306.29L744.901,-307.205L741.781,-309.81L740.386,-308.926Z" style="fill:rgb(212,212,212);fill-rule:nonzero;"/>
+                </g>
+                <g transform="matrix(1,0,0,1,-723.76,327.228)">
+                    <path d="M741.151,-309.033L744.281,-306.397L745.666,-307.312L742.546,-309.917L741.151,-309.033Z" style="fill:rgb(212,212,212);fill-rule:nonzero;"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

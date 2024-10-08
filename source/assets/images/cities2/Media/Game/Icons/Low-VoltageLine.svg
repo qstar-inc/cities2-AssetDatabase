@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <clipPath id="clip-Low-VoltageLine">
+      <rect width="64" height="64"/>
+    </clipPath>
+  </defs>
+  <g id="Low-VoltageLine" clip-path="url(#clip-Low-VoltageLine)">
+    <ellipse id="Ellipse_560" data-name="Ellipse 560" cx="9.5" cy="6" rx="9.5" ry="6" transform="translate(21 44)" fill="#585858"/>
+    <path id="Path_1586" data-name="Path 1586" d="M4,0C6.209,0,8.031,2.315,8.031,2.315L8,40a4,4,0,0,1-8,0L.047,2.49S1.791,0,4,0Z" transform="translate(26 8)" fill="#816f57"/>
+    <path id="Path_1585" data-name="Path 1585" d="M3.193-.14l-.2,43.04S0,42.209,0,40L.078,2.421C.078.211,3.193-.14,3.193-.14Z" transform="translate(26 9)" fill="#8c7a62"/>
+    <ellipse id="Ellipse_545" data-name="Ellipse 545" cx="4" cy="2.5" rx="4" ry="2.5" transform="translate(26 8)" fill="#c8ab8a"/>
+    <path id="Path_1584" data-name="Path 1584" d="M1965.134-479.858a117.837,117.837,0,0,0,11.329,9.534c7.8,5.953,18.05,4.484,18.05,4.484v-1.978s-9.663,1.493-17.282-4.493-11.646-9.918-11.646-9.918Z" transform="translate(-1938 498)" fill="#666"/>
+    <ellipse id="Ellipse_546" data-name="Ellipse 546" cx="1.5" cy="2" rx="1.5" ry="2" transform="translate(25 15)" fill="#4e4e4e"/>
+  </g>
+</svg>

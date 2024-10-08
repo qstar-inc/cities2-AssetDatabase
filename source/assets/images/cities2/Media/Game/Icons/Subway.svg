@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="58" height="28" viewBox="0 0 58 28">
+  <defs>
+    <clipPath id="clip-Subway">
+      <rect width="58" height="28"/>
+    </clipPath>
+  </defs>
+  <g id="Subway" clip-path="url(#clip-Subway)">
+    <g id="SubMetro" transform="translate(2.179 5.407)">
+      <rect id="Rectangle_828" data-name="Rectangle 828" width="54" transform="translate(-0.179 14.593)"/>
+      <path id="Path_178" data-name="Path 178" d="M15726.175,4423.5l1.008,2.923h6.836l1.307-2.923Z" transform="translate(-15718.544 -4409.554)" fill="#231e2e"/>
+      <path id="Path_2076" data-name="Path 2076" d="M15726.175,4423.5l1.008,2.923h6.836l1.307-2.923Z" transform="translate(-15688.544 -4409.554)" fill="#231e2e"/>
+      <rect id="Rectangle_827" data-name="Rectangle 827" width="15" height="1" transform="translate(19.821 14.593)"/>
+      <circle id="Ellipse_494" data-name="Ellipse 494" cx="1.5" cy="1.5" r="1.5" transform="translate(6.821 14.593)" fill="#707070"/>
+      <circle id="Ellipse_588" data-name="Ellipse 588" cx="1.5" cy="1.5" r="1.5" transform="translate(36.821 14.593)" fill="#707070"/>
+      <circle id="Ellipse_495" data-name="Ellipse 495" cx="1.5" cy="1.5" r="1.5" transform="translate(14.821 14.593)" fill="#707070"/>
+      <circle id="Ellipse_587" data-name="Ellipse 587" cx="1.5" cy="1.5" r="1.5" transform="translate(44.821 14.593)" fill="#707070"/>
+      <path id="Path_180" data-name="Path 180" d="M4.233,0h43.45c1.827,0,4.6,2.039,4.6,3.413V14H0V3.413C0,2.039,2.406,0,4.233,0Z" transform="translate(0.235)" fill="#da6f48"/>
+      <g id="Rectangle_819" data-name="Rectangle 819" transform="translate(19.821 1.593)" fill="#da6f48" stroke="#3c3b3b" stroke-width="1">
+        <rect width="9" height="13" stroke="none"/>
+        <rect x="0.5" y="0.5" width="8" height="12" fill="none"/>
+      </g>
+      <g id="Rectangle_821" data-name="Rectangle 821" transform="translate(26.821 1.593)" fill="#da6f48" stroke="#2d2b2b" stroke-width="1">
+        <rect width="8" height="13" stroke="none"/>
+        <rect x="0.5" y="0.5" width="7" height="12" fill="none"/>
+      </g>
+      <rect id="Rectangle_820" data-name="Rectangle 820" width="6" height="6" rx="2" transform="translate(20.821 3.593)" fill="#384554"/>
+      <rect id="Rectangle_822" data-name="Rectangle 822" width="6" height="6" rx="2" transform="translate(27.821 3.593)" fill="#384554"/>
+      <rect id="Rectangle_823" data-name="Rectangle 823" width="9" height="7" rx="2" transform="translate(7.821 2.593)" fill="#314750"/>
+      <rect id="Rectangle_825" data-name="Rectangle 825" width="4" height="7" rx="2" transform="translate(1.821 2.593)" fill="#314750"/>
+      <rect id="Rectangle_826" data-name="Rectangle 826" width="4" height="7" rx="2" transform="translate(46.821 2.593)" fill="#314750"/>
+      <rect id="Rectangle_824" data-name="Rectangle 824" width="8" height="7" rx="2" transform="translate(36.821 2.593)" fill="#314750"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="80" viewBox="0 0 40 80">
+  <defs>
+    <clipPath id="clip-Underground">
+      <rect width="40" height="80"/>
+    </clipPath>
+  </defs>
+  <g id="Underground" clip-path="url(#clip-Underground)">
+    <g id="InfoIconBuildingLevels" transform="translate(9.187 10.073)">
+      <path id="HouseLevelFull" d="M-5119.83-8624.518v-8.83h-2.776l10.613-10.371,2.558,3.186v-3.911h2.969v6.267l5.487,4.83h-2.843v8.83Z" transform="translate(5122.605 8644.444)" fill="#c2f0ff"/>
+    </g>
+    <path id="Path_2603" data-name="Path 2603" d="M.156,1.214a56.17,56.17,0,0,1,18.86-4.165c10-.254,21.14,4.165,21.14,4.165L40,10H0Z" transform="translate(0 30)" fill="#54b60a"/>
+    <rect id="Rectangle_3954" data-name="Rectangle 3954" width="40" height="40" transform="translate(0 40)" fill="#5e5449"/>
+    <circle id="Ellipse_548" data-name="Ellipse 548" cx="1" cy="1" r="1" transform="translate(32 70)" fill="#9c8770"/>
+    <circle id="Ellipse_550" data-name="Ellipse 550" cx="0.5" cy="0.5" r="0.5" transform="translate(29 69)" fill="#9c8770"/>
+    <circle id="Ellipse_549" data-name="Ellipse 549" cx="0.5" cy="0.5" r="0.5" transform="translate(5 47)" fill="#9c8770"/>
+    <rect id="Rectangle_3989" data-name="Rectangle 3989" width="40" height="2" transform="translate(0 52)" fill="#82d1ff"/>
+    <rect id="Rectangle_3991" data-name="Rectangle 3991" width="40" height="2" transform="translate(0 59)" fill="#fcdb69"/>
+    <rect id="Rectangle_3993" data-name="Rectangle 3993" width="40" height="2" transform="translate(0 66)" fill="#a8ff82"/>
+    <rect id="Rectangle_3990" data-name="Rectangle 3990" width="40" height="2" transform="translate(0 54)" fill="#80afcb"/>
+    <rect id="Rectangle_3992" data-name="Rectangle 3992" width="40" height="2" transform="translate(0 61)" fill="#dbb841"/>
+    <g id="Rectangle_3994" data-name="Rectangle 3994" transform="translate(0 68)" fill="#80afcb" stroke="#80b669" stroke-width="1">
+      <rect width="40" height="2" stroke="none"/>
+      <rect x="0.5" y="0.5" width="39" height="1" fill="none"/>
+    </g>
+    <rect id="Rectangle_3995" data-name="Rectangle 3995" width="2" height="2" transform="translate(9 51)" fill="#82d1ff"/>
+    <rect id="Rectangle_3997" data-name="Rectangle 3997" width="2" height="2" transform="translate(33 58)" fill="#fcdb69"/>
+    <rect id="Rectangle_3999" data-name="Rectangle 3999" width="2" height="2" transform="translate(15 65)" fill="#a8ff82"/>
+    <rect id="Rectangle_3996" data-name="Rectangle 3996" width="2" height="2" transform="translate(9 55)" fill="#80afcb"/>
+    <rect id="Rectangle_3998" data-name="Rectangle 3998" width="2" height="2" transform="translate(33 62)" fill="#dbb841"/>
+    <rect id="Rectangle_4000" data-name="Rectangle 4000" width="2" height="2" transform="translate(15 69)" fill="#80b669"/>
+    <rect id="Rectangle_4001" data-name="Rectangle 4001" width="40" height="6" transform="translate(0 40)" fill="#79634c"/>
+  </g>
+</svg>

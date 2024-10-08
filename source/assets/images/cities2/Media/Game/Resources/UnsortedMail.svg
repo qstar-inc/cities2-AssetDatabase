@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="40" viewBox="0 0 40 40">
+  <defs>
+    <clipPath id="clip-UnsortedMail">
+      <rect width="40" height="40"/>
+    </clipPath>
+  </defs>
+  <g id="UnsortedMail" clip-path="url(#clip-UnsortedMail)">
+    <path id="Path_1413" data-name="Path 1413" d="M0,0H21V15H0Z" transform="matrix(0.985, -0.174, 0.174, 0.985, 6.13, 16.669)" fill="#8e7962"/>
+    <path id="Path_1410" data-name="Path 1410" d="M0,0H21V15H0Z" transform="matrix(0.966, -0.259, 0.259, 0.966, 9.703, 17.705)" fill="#a0886a"/>
+    <path id="Path_1411" data-name="Path 1411" d="M187.832,444.8l10.359,7.507,10.616-7.407v-1.043l-20.975-.02Z" transform="matrix(0.966, -0.259, 0.259, 0.966, -286.634, -362.356)" fill="#a68f76"/>
+    <path id="Path_1412" data-name="Path 1412" d="M188,444.812l10.193,7.5,10.711-7.522Z" transform="matrix(0.966, -0.259, 0.259, 0.966, -287.008, -363.291)" fill="#c5aa8c"/>
+    <path id="Path_1402" data-name="Path 1402" d="M0,0H21V15H0Z" transform="translate(7.524 11.11) rotate(-9)" fill="#b89975"/>
+    <path id="Path_1403" data-name="Path 1403" d="M187.832,444.8l10.359,7.507,10.616-7.407v-1.043l-20.975-.02Z" transform="translate(-247.397 -397.854) rotate(-9)" fill="#a68f76"/>
+    <path id="Path_1401" data-name="Path 1401" d="M188,444.812l10.193,7.5,10.711-7.522Z" transform="translate(-247.671 -398.823) rotate(-9)" fill="#c5aa8c"/>
+  </g>
+</svg>

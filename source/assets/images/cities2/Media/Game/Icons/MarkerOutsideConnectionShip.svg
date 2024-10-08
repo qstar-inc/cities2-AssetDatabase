@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="128" height="128" viewBox="0 0 128 128">
+  <defs>
+    <clipPath id="clip-MarkerOutsideConnectionShip">
+      <rect width="128" height="128"/>
+    </clipPath>
+  </defs>
+  <g id="MarkerOutsideConnectionShip" clip-path="url(#clip-MarkerOutsideConnectionShip)">
+    <circle id="Ellipse_691" data-name="Ellipse 691" cx="64" cy="64" r="64" fill="#4255ff"/>
+    <path id="Path_2854" data-name="Path 2854" d="M0,0H34.831V11.586H0Z" transform="translate(46.083 25.863)" fill="#fff"/>
+    <rect id="Rectangle_4176" data-name="Rectangle 4176" width="41.717" height="17.879" transform="translate(42.967 36.18)" fill="#e5e5e5"/>
+    <path id="Path_2853" data-name="Path 2853" d="M0,11.76,25.912,4.08v38.2L9,40.305s-5.209-3.163-7.147-7.064C.34,25.529,0,11.76,0,11.76Z" transform="translate(37.394 43.465)" fill="#fff"/>
+    <path id="Path_2855" data-name="Path 2855" d="M0,11.76,25.912,4.08V36.671L9,34.7s-5.209,2.441-7.147-1.46C.34,25.529,0,11.76,0,11.76Z" transform="translate(37.394 49.979)" fill="#fff"/>
+    <path id="Path_2857" data-name="Path 2857" d="M29.553,11.774,3.641,4.094v38.2l16.916-1.97s5.209-3.163,7.147-7.064C29.213,25.543,29.553,11.774,29.553,11.774Z" transform="translate(59.663 43.491)" fill="#e5e5e5"/>
+    <path id="Path_2858" data-name="Path 2858" d="M29.553,11.774,3.641,4.094l.442,32.4L21,34.524s4.859-3.113,6.8-7.014A111.926,111.926,0,0,0,29.553,11.774Z" transform="translate(59.663 50.005)" fill="#e5e5e5"/>
+    <rect id="Rectangle_4177" data-name="Rectangle 4177" width="43.852" height="3.132" transform="translate(42.967 38.738)" fill="#3f518f"/>
+    <rect id="Rectangle_4178" data-name="Rectangle 4178" width="43.852" height="3.132" transform="translate(42.967 45.773)" fill="#3f518f"/>
+    <path id="Path_2859" data-name="Path 2859" d="M0,0S6.651,3.374,13.043,3.374,25.568,0,25.568,0,32.06,3.374,37.43,3.374A17.219,17.219,0,0,0,47.05,0S53.8,3.374,60.76,3.374,74.871,0,74.871,0V17.278H0Z" transform="translate(25.807 72.59)" fill="#fff"/>
+    <path id="Path_2856" data-name="Path 2856" d="M0,0H34.831V2.9H0Z" transform="translate(46.084 29.119)" fill="#3f518f"/>
+  </g>
+</svg>

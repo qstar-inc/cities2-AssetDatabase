@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 128 128" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g id="Vehicles" transform="matrix(0.976563,0,0,0.942198,1.5,1.5)">
+        <path d="M64,0L119.426,33.167L119.426,99.501L64,132.668L8.574,99.501L8.574,33.167L64,0Z" style="fill:rgb(255,184,14);"/>
+        <clipPath id="_clip1">
+            <path d="M64,0L119.426,33.167L119.426,99.501L64,132.668L8.574,99.501L8.574,33.167L64,0Z"/>
+        </clipPath>
+        <g clip-path="url(#_clip1)">
+            <g id="BadServiceElectricity" transform="matrix(2.20218,0,0,2.2825,-5.44965,-23.9048)">
+                <g transform="matrix(0.653114,0,0,0.542629,-0.432879,-3.65896)">
+                    <path d="M57.828,74.296L83.799,58.943L84.118,100.26L59.245,86.07L38.654,86.07L13.781,100.26L14.1,58.943L40.071,74.296L57.828,74.296Z"/>
+                </g>
+                <g id="electric" transform="matrix(2.71994,0,0,2.71994,13.2138,21.5195)">
+                    <g>
+                        <g transform="matrix(0.958373,0,0,0.898748,-9401.1,26.6126)">
+                            <path d="M9816.23,-28.8L9811.53,-22.776L9816.23,-22.776L9823.17,-28.8L9816.23,-28.8Z" style="fill:white;fill-rule:nonzero;"/>
+                        </g>
+                        <g transform="matrix(0.958373,0,0,0.898748,-9398.06,14.7716)">
+                            <path d="M9813.07,-9.6L9817.32,-9.6L9806.58,-2.507L9813.07,-9.6Z" style="fill:white;fill-rule:nonzero;"/>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

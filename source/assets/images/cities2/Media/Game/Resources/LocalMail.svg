@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="40" viewBox="0 0 40 40">
+  <defs>
+    <clipPath id="clip-LocalMail">
+      <rect width="40" height="40"/>
+    </clipPath>
+  </defs>
+  <g id="LocalMail" clip-path="url(#clip-LocalMail)">
+    <path id="Path_1404" data-name="Path 1404" d="M0,0H21V15H0Z" transform="translate(9.5 12.511)" fill="#b89975"/>
+    <path id="Path_1405" data-name="Path 1405" d="M187.832,444.8l10.359,7.507,10.616-7.407v-1.043l-20.975-.02Z" transform="translate(-178.307 -431.296)" fill="#a68f76"/>
+    <path id="Path_1406" data-name="Path 1406" d="M188,444.812l10.193,7.5,10.711-7.522Z" transform="translate(-178.426 -432.296)" fill="#c5aa8c"/>
+  </g>
+</svg>

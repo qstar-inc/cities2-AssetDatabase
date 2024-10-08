@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <clipPath id="clip-ServiceFees">
+      <rect width="32" height="32"/>
+    </clipPath>
+  </defs>
+  <g id="ServiceFees" clip-path="url(#clip-ServiceFees)">
+    <path id="Rectangle_4372" data-name="Rectangle 4372" d="M2,0H12a2,2,0,0,1,2,2V16a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0V2A2,2,0,0,1,2,0Z" transform="translate(13 2.712)" fill="#fff8e3"/>
+    <path id="Icon_awesome-hand-holding" data-name="Icon awesome-hand-holding" d="M22.711,21.6a1.293,1.293,0,0,0-1.664,0c-4.051,3.242-4.642,4.6-5.212,4.6-4.965,0-5.676-.534-5.835-.572s-1.131-1.9,2.272-1.9c1.12-.38,1.133-.614,1.234-1.227a1.251,1.251,0,0,0-1.234-1.461L7.224,22.206a4.233,4.233,0,0,0-2.618,1.321l-1.894.889L.625,25A.627.627,0,0,0,0,25.625v3.15a.627.627,0,0,0,.625.625l14.527.547a2.5,2.5,0,0,0,1.562-.547l5.946-5.889A1.249,1.249,0,0,0,22.711,21.6Z" transform="translate(2.375 -0.659)" fill="#bdbdbd"/>
+    <path id="Path_3211" data-name="Path 3211" d="M0,0H20L18.8,2H1.458Z" transform="translate(9.625 18.5)" fill="#ededed"/>
+    <g id="Group_2374" data-name="Group 2374" transform="translate(16 5.604)">
+      <path id="Path_2182" data-name="Path 2182" d="M6.125-14.542a3.349,3.349,0,0,0,3.159-1.605L8.014-17.166a2.009,2.009,0,0,1-1.888,1.019c-1.907,0-2.143-1.326-2.208-2.516.093-1.11.166-2.533,2.208-2.533a2.008,2.008,0,0,1,1.888.836L9.2-21.35a3.285,3.285,0,0,0-3.078-1.434,3.8,3.8,0,0,0-3.949,4.121C2.176-16.637,3.238-14.542,6.125-14.542Z" transform="translate(-2.176 24.519)" fill="#72ab5e"/>
+      <rect id="Rectangle_3960" data-name="Rectangle 3960" width="1.425" height="2.374" transform="translate(3.245 0)" fill="#72ab5e"/>
+      <rect id="Rectangle_3961" data-name="Rectangle 3961" width="1.425" height="2.374" transform="translate(3.245 9.022)" fill="#72ab5e"/>
+    </g>
+  </g>
+</svg>

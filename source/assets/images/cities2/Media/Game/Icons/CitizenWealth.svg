@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="26" height="26" viewBox="0 0 26 26">
+  <defs>
+    <clipPath id="clip-CitizenWealth">
+      <rect width="26" height="26"/>
+    </clipPath>
+  </defs>
+  <g id="CitizenWealth" clip-path="url(#clip-CitizenWealth)">
+    <g id="InfoIconCompanyProfit" transform="translate(4.988 6.968)">
+      <g id="Group_241" data-name="Group 241">
+        <path id="Path_264" data-name="Path 264" d="M9936.705,111.707l5.064,3.778,9.982-5.721-4.691-3.631Z" transform="translate(-9936.705 -106.133)" fill="#c1ff67"/>
+        <path id="Path_267" data-name="Path 267" d="M9968.708,118.5v3.7l-9.892,5.77v-3.9Z" transform="translate(-9953.66 -114.916)" fill="#72ab5e"/>
+        <path id="Path_265" data-name="Path 265" d="M9941.434,133.829l-4.7-3.924-.064-3.473,4.76,3.473Z" transform="translate(-9936.279 -120.779)" fill="#9adf4b"/>
+        <ellipse id="Ellipse_165" data-name="Ellipse 165" cx="3" cy="1.5" rx="3" ry="1.5" transform="translate(5.012 3.032)" fill="#458100"/>
+      </g>
+    </g>
+  </g>
+</svg>

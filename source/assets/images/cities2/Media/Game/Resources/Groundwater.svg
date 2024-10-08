@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="40" viewBox="0 0 40 40">
+  <defs>
+    <clipPath id="clip-Groundwater">
+      <rect width="40" height="40"/>
+    </clipPath>
+  </defs>
+  <g id="Groundwater" clip-path="url(#clip-Groundwater)">
+    <path id="Rectangle_4345" data-name="Rectangle 4345" d="M2,0H32a2,2,0,0,1,2,2V19A11,11,0,0,1,23,30H11A11,11,0,0,1,0,19V2A2,2,0,0,1,2,0Z" transform="translate(3 5)" fill="#884c1e"/>
+    <g id="Water" transform="translate(4.22 4.051)">
+      <path id="Icon_ionic-ios-water" data-name="Icon ionic-ios-water" d="M18.228,8.929a23.745,23.745,0,0,0-4.071-5.453.323.323,0,0,0-.466-.006A23.467,23.467,0,0,0,9.633,8.918a19.956,19.956,0,0,0-2.878,9.646c0,.068,0,.141,0,.209a9.037,9.037,0,0,0,.489,2.941A8.626,8.626,0,0,0,7.92,23.2a7,7,0,0,0,6,3.658c3.963,0,7.178-3.618,7.178-8.083A20.082,20.082,0,0,0,18.228,8.929Z" transform="translate(1.856 0.834)" fill="#39c2ff"/>
+    </g>
+  </g>
+</svg>

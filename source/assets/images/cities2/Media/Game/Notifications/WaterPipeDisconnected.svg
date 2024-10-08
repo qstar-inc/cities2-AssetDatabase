@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 128 128" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g id="Event" transform="matrix(0.976563,0,0,0.976563,1.5,1.5)">
+        <path d="M64,0L128,64L64,128L0,64L64,0Z" style="fill:rgb(255,184,14);"/>
+        <clipPath id="_clip1">
+            <path d="M64,0L128,64L64,128L0,64L64,0Z"/>
+        </clipPath>
+        <g clip-path="url(#_clip1)">
+            <g id="WaterPipeDisconnected" transform="matrix(1.54208,0,0,1.54208,18.172,7.28506)">
+                <g id="Path_1126" transform="matrix(1,0,0,1,1189.41,-4.91062)">
+                    <path d="M-1176.56,36.024L-1152.88,21.637C-1152.09,20.872 -1151.14,20.289 -1150.1,19.93C-1145.4,18.312 -1139.99,21.656 -1138.01,27.4C-1136.12,32.879 -1138.04,38.561 -1142.3,40.479L-1165.31,54.589L-1176.56,36.024Z" style="fill:rgb(57,138,209);fill-rule:nonzero;"/>
+                </g>
+                <g id="Path_1125" transform="matrix(1,0,0,1,1189.41,-4.91062)">
+                    <path d="M-1175.69,35.497L-1152.88,21.637C-1152.09,20.872 -1151.14,20.289 -1150.1,19.93C-1144.44,18.13 -1140.54,22.993 -1140.54,22.993L-1170.38,41.689L-1175.69,35.497Z" style="fill:rgb(118,180,234);fill-rule:nonzero;"/>
+                </g>
+                <g id="Ellipse_453" transform="matrix(0.945519,-0.325568,0.325568,0.945519,6.909,32.529)">
+                    <ellipse cx="9" cy="11" rx="9" ry="11" style="fill:rgb(71,156,230);"/>
+                </g>
+                <g id="Ellipse_455" transform="matrix(0.945519,-0.325568,0.325568,0.945519,10.909,34.529)">
+                    <ellipse cx="6" cy="7.5" rx="6" ry="7.5" style="fill:rgb(11,64,110);"/>
+                </g>
+                <g id="InfoIconWater" transform="matrix(1,0,0,1,9.85,40.387)">
+                    <g id="Water">
+                        <g transform="matrix(1.03038,0,0,1.02633,-14.8851,-39.4087)">
+                            <path d="M21.21,40.172C21.21,40.172 16.791,47.615 16.791,50.805C16.791,53.253 18.771,55.241 21.21,55.241C23.649,55.241 25.629,53.253 25.629,50.805C25.629,47.615 21.21,40.172 21.21,40.172Z" style="fill:rgb(57,194,255);"/>
+                        </g>
+                        <g id="Ellipse_120" transform="matrix(1,0,0,1,4.15,10.613)">
+                            <ellipse cx="1.5" cy="2" rx="1.5" ry="2" style="fill:rgb(210,249,255);"/>
+                        </g>
+                        <g id="Ellipse_121" transform="matrix(1,0,0,1,9.15,14.613)">
+                            <circle cx="0.5" cy="0.5" r="0.5" style="fill:rgb(164,236,255);"/>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

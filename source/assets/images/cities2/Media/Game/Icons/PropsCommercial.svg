@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <clipPath id="clip-PropsCommercial">
+      <rect width="64" height="64"/>
+    </clipPath>
+  </defs>
+  <g id="PropsCommercial" clip-path="url(#clip-PropsCommercial)">
+    <g id="ZoneCommercial" transform="translate(4.142 14.871)">
+      <path id="Path_760" data-name="Path 760" d="M-10008-10475.7l30.364,18.955,25.352-18.955-30.975-15.3Z" transform="translate(10007.998 10491.001)" fill="#00c1ff"/>
+      <path id="Path_761" data-name="Path 761" d="M-9906.375-10476.847l16.176,9.345.271-9.345-16.454-8.972Z" transform="translate(9920.778 10493.618)" fill="#0089cf"/>
+      <path id="Path_762" data-name="Path 762" d="M-9888.849-10467.352l10.844-7.773v-8.758l-10.844,7.217Z" transform="translate(9919.433 10493.642)" fill="#0071a9"/>
+      <path id="Path_763" data-name="Path 763" d="M-9906.28-10486.039l16.317,8.981,10.526-7.2-16.231-8.136Z" transform="translate(9920.79 10494.03)" fill="#73e0fc"/>
+      <path id="Path_764" data-name="Path 764" d="M-9902.629-10485.988l12.861,6.56,7.063-4.689-12.43-6.165Z" transform="translate(9920.512 10493.863)" fill="#3ed2ff"/>
+      <path id="Path_765" data-name="Path 765" d="M-9904.524-10480.6l-1.812,2.5,16.168,8.7,1.9-2.753Z" transform="translate(9918.953 10492.446)" fill="#73e0fc"/>
+      <path id="Path_766" data-name="Path 766" d="M-9894.631-10480.482l7.172,3.871v-4.469l-7.172-3.873Z" transform="translate(9918.035 10492.711)" fill="#0089cf"/>
+    </g>
+  </g>
+</svg>
