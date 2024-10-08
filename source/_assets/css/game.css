@@ -24,6 +24,7 @@
 
 .toolbar {
   color: var(--mainmenu-white-color);
+  font-size: 2vh;
 }
 .bottom-bar {
   position: fixed;
@@ -49,19 +50,9 @@
   flex-direction: row;
   align-items: center;
   background-color: rgba(77, 77, 77, 0.6);
-  gap: 5vw;
+  gap: 1vw;
   margin: auto;
   justify-content: center;
-}
-
-.asset-panel {
-  position: fixed;
-  left: 31.69vw;
-  right: calc(100% - 68.33%);
-  top: 68.33vh;
-  bottom: calc(100% - 88.33%);
-  background-color: blueviolet;
-  display: none;
 }
 
 .tools-panel {
@@ -77,7 +68,7 @@
 
 .asset-menu-group {
   display: flex;
-  gap: 1vw;
+  gap: 0.1vw;
 }
 
 .asset-menu-icon {
@@ -92,5 +83,100 @@
 
 .asset-menu-icon:active {
   border-radius: 100vh 100vh;
-  background-color: greenyellow;
+  background-color: #268fff;
+}
+
+.asset-menu-icon > img {
+  height: 4vh;
+  width: 4vh;
+}
+
+.asset-panel {
+  position: fixed;
+  left: 31.69vw;
+  right: calc(100% - 68.33%);
+  top: 66.73vh;
+  bottom: calc(100% - 88.33%);
+  background-color: rgba(39, 39, 39, 0.76);
+  display: none;
+}
+
+.asset-panel-header {
+  border-bottom: 0.3vh #5187f281 solid;
+  display: flex;
+  padding-top: 0.5vh;
+  background-color: rgba(21, 21, 21, 0.03);
+}
+
+.asset-panel-header-close {
+  margin-left: auto;
+  width: 2vw;
+  height: 2vw;
+  display: flex;
+}
+
+.asset-panel-header-close > button {
+  margin: auto;
+}
+
+.asset-panel-header-tabs {
+  display: flex;
+  margin-left: 2.85%;
+  flex-grow: 1;
+  gap: 0.2vw;
+}
+
+.asset-panel-header-tab-single,
+.asset-panel-header-tab-multiple {
+  position: relative;
+  width: calc(9.7% - 2.85%);
+  border-top-left-radius: 0.6vh;
+  border-top-right-radius: 0.6vh;
+  background-color: #ffffff2e;
+  cursor: pointer;
+}
+
+.asset-panel-header-tab-single.active,
+.asset-panel-header-tab-multiple.active {
+  background-color: #5187f281;
+}
+
+.asset-panel-header-tab-single > img,
+.asset-panel-header-tab-multiple > img {
+  height: 4vh;
+  width: 4vh;
+  margin: auto;
+}
+
+.asset-panel-items {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 0.3vh;
+  padding: 0.3vh;
+  padding-left: 1.2vh;
+  padding-right: 1.2vh;
+  max-height: calc(100% - 5.6vh);
+  overflow-y: auto;
+}
+
+.asset-panel-item {
+  width: calc((100% - 2.4vh) / 9);
+  height: calc((100% - 2.4vh) / 9);
+  text-align: center;
+  background-color: rgba(80, 80, 80, 0.274);
+}
+
+.asset-panel-item-inner {
+  padding: 0.1vw;
+}
+
+.asset-quick-info {
+  position: fixed;
+  left: 31.69vw;
+  right: calc(100% - 68.33%);
+  top: 47.67vh;
+  bottom: calc(100% - 66.33%);
+  background-color: rgba(39, 39, 39, 0.76);
+  display: none;
 }

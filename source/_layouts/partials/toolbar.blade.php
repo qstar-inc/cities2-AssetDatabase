@@ -11,12 +11,8 @@
     <div>Map Tiles</div>
     <div>Milestone</div>
     <div>Demand</div>
-    <div id="asset-group-1" class="asset-menu-group">
-        <button class="asset-menu-icon">Zones</button>
-        <button class="asset-menu-icon">Area</button>
-        <button class="asset-menu-icon">Signature</button>
-    </div>
-    <div>Asset Group 2</div>
+    <div id="asset-group-1" class="asset-menu-group"></div>
+    <div id="asset-group-2" class="asset-menu-group"></div>
     <div>Bulldozer</div>
     <div>Budget</div>
     <div>Transit</div>
@@ -25,7 +21,11 @@
     <div>Camera</div>
 </div>
 <div id="asset-panel" class="asset-panel round-border">
-    <div class="asset-panel-header"></div>
-    <div class="asset-panel-item"></div>
+    <div class="asset-panel-header">
+        <div id="asset-panel-header-tabs" class="asset-panel-header-tabs"></div>
+        <div class="asset-panel-header-close"><button onclick=closeAssetPanel()>×</button></div>
+    </div>
+    <div id="asset-panel-items" class="asset-panel-items"></div>
 </div>
+<div id="asset-quick-info" class="asset-quick-info round-border"></div>
 <div class="tools-panel round-border"></div>

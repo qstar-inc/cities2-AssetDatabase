@@ -12,7 +12,7 @@
                 </div>
                 <div class="mainmenu-center">
                     <div class="mainmenu-start">
-                        <a class="mainmenu-start-button" href="game">
+                        <a id="mainmenu-button-1" class="mainmenu-start-button disabled-link" href="game">
                             <div class="mainmenu-start-icon"></div>
                             <span class="mainmenu-start-text">Start Game</span>
                         </a>
@@ -22,15 +22,15 @@
                         </button>
                         <button class="mainmenu-start-button" disabled>
                             <div class="mainmenu-start-icon"></div>
-                            <span class="mainmenu-start-text">Disabled</span>
+                            <span class="mainmenu-start-text">Options (WIP)</span>
                         </button>
                         <button class="mainmenu-start-button" disabled>
                             <div class="mainmenu-start-icon"></div>
-                            <span class="mainmenu-start-text">Disabled</span>
+                            <span class="mainmenu-start-text">Legal (WIP)</span>
                         </button>
                         <button class="mainmenu-start-button" disabled>
                             <div class="mainmenu-start-icon"></div>
-                            <span class="mainmenu-start-text">Disabled</span>
+                            <span class="mainmenu-start-text">Credits (WIP)</span>
                         </button>
                         <button class="mainmenu-start-button" onclick="window.close();">
                             <div class="mainmenu-start-icon"></div>
@@ -57,6 +57,7 @@
 @endsection
 
 @section('js')
+    <script defer src="{{ $page->repo . mix('js/main-menu.js', 'assets/build') }}"></script>
     <script>
         document.getElementById('mainmenu-button-continue').addEventListener('click', function() {
             skipSplash = true;

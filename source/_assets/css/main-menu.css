@@ -81,7 +81,7 @@
 
 .mainmenu-start-button:hover * {
   transform: translateX(1vw);
-  transition: transform 0.3s ease; /* Adds a smooth transition */
+  transition: transform 0.3s ease;
 }
 
 .mainmenu-start-text {
@@ -162,4 +162,9 @@
   color: var(--mainmenu-white-color);
   width: 100%;
   text-align: start;
+}
+
+.disabled-link.mainmenu-start-button {
+  background-color: #fff0;
+  backdrop-filter: brightness(100%) contrast(10%) blur(-1px);
 }

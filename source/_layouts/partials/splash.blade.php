@@ -1,12 +1,12 @@
 <div id="splash-container">
     <div id="splash-screen-1" class="splash-screen">
         <div class="logo-container">
-            <img src="{{ $page->images }}/starq.svg" alt="StarQ" class="logo">
+            <img src="{{ $page->images }}/starq.svg" alt="StarQ" class="splash-logo">
         </div>
     </div>
     <div id="splash-screen-2" class="splash-screen" style="display: none;">
         <div class="logo-container">
-            <img src="{{ $page->images }}/cities2/GameLogo.svg" alt="Cities: Skylines II" class="logo">
+            <img src="{{ $page->images }}/cities2/GameLogo.svg" alt="Cities: Skylines II" class="splash-logo">
         </div>
     </div>
     <div id="preloader-screen" class="splash-screen" style="display: none;">
