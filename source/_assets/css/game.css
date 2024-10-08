@@ -171,6 +171,10 @@
   padding: 0.1vw;
 }
 
+.asset-panel-item-inner > img {
+  width: 100vw;
+}
+
 .asset-quick-info {
   position: fixed;
   left: 31.69vw;
