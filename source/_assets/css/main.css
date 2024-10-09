@@ -10,6 +10,8 @@
   --box-shadow: 0 0 15px rgba(0, 0, 0, 0.3), 0 0 30px rgba(0, 0, 0, 0.2);
   --mainmenu-white-color: rgba(226, 226, 226, 0.8);
   --dark-blackish-color: rgba(49, 49, 49, 0.8);
+  --vanilla-blue-accent-light: #4bc3f1;
+  --vanilla-blue-accent-dark: #1e83aa;
 }
 
 body {

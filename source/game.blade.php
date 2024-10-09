@@ -2,6 +2,7 @@
 
 @section('style')
     <link rel="stylesheet" href="{{ $page->repo . mix('css/game.css', 'assets/build') }}">
+    <link rel="stylesheet" href="{{ $page->repo . mix('css/lds-ripple.css', 'assets/build') }}">
 @endsection
 
 @section('body')

@@ -21,9 +21,10 @@ $(document).ready(function () {
 });
 
 function enableButtons() {
-  document
-    .getElementById("mainmenu-button-1")
-    .classList.remove("disabled-link");
+  const button = document.getElementById("mainmenu-button-1");
+  button.classList.remove("disabled-link");
+  const span = button.querySelector(".mainmenu-start-text");
+  span.innerHTML = "Start Game";
 }
 
 function sendNotification(val, error = null) {

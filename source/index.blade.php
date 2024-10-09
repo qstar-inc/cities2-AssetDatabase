@@ -14,21 +14,21 @@
                     <div class="mainmenu-start">
                         <a id="mainmenu-button-1" class="mainmenu-start-button disabled-link" href="game">
                             <div class="mainmenu-start-icon"></div>
-                            <span class="mainmenu-start-text">Start Game</span>
+                            <span class="mainmenu-start-text">Loading....</span>
                         </a>
                         <button id="mainmenu-button-continue" class="mainmenu-start-button">
                             <div class="mainmenu-start-icon"></div>
                             <span class="mainmenu-start-text">Show Loading Screen</span>
                         </button>
-                        <button class="mainmenu-start-button" disabled>
+                        <button class="mainmenu-start-button disabled-link" disabled>
                             <div class="mainmenu-start-icon"></div>
                             <span class="mainmenu-start-text">Options (WIP)</span>
                         </button>
-                        <button class="mainmenu-start-button" disabled>
+                        <button class="mainmenu-start-button disabled-link" disabled>
                             <div class="mainmenu-start-icon"></div>
                             <span class="mainmenu-start-text">Legal (WIP)</span>
                         </button>
-                        <button class="mainmenu-start-button" disabled>
+                        <button class="mainmenu-start-button disabled-link" disabled>
                             <div class="mainmenu-start-icon"></div>
                             <span class="mainmenu-start-text">Credits (WIP)</span>
                         </button>

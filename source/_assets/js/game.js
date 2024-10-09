@@ -1,36 +1,3 @@
-// $(document).ready(function () {
-//   fetch(atob(u) + "cities2_get_data", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify({
-//       Authorization: auth,
-//       reqType: "asset-group-1",
-//     }),
-//   })
-//     .then((response) => {
-//       if (!response.ok) {
-//         throw new Error("Network response was not ok " + response.statusText);
-//       }
-//       return response.json();
-//     })
-//     .then((data) => {
-//       data = data.data;
-//       const ag1 = document.getElementById("asset-group-1");
-//       ag1.innerHTML = "";
-//       data.forEach((element) => {
-//         const button = document.createElement("button");
-//         button.className = "asset-menu-icon";
-//         button.innerHTML = `<img src="${imageBasePath}/cities2/${element.icon}"/>`;
-//         ag1.appendChild(button);
-//       });
-//     })
-//     .catch((error) => {
-//       console.error(error);
-//     });
-// });
-
 $(document).ready(function () {
   fetch(atob(u) + "cities2_get_data", {
     method: "POST",
@@ -56,36 +23,22 @@ $(document).ready(function () {
     });
 });
 
-// $(document).ready(function () {
-//   fetch(atob(u) + "cities2_get_data", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify({
-//       Authorization: auth,
-//       reqType: "asset-group-2",
-//     }),
-//   })
-//     .then((response) => {
-//       if (!response.ok) {
-//         throw new Error("Network response was not ok " + response.statusText);
-//       }
-//       return response.json();
-//     })
-//     .then((data) => {
-//       proceesAssetGroup(data.data, "asset-group-2");
-//     })
-//     .catch((error) => {
-//       console.error(error);
-//     });
-// });
-
 function addAssetBarIconTrigger() {
   var assetPanel = document.getElementById("asset-panel");
   const assetIcons = document.querySelectorAll(".asset-menu-icon");
   assetIcons.forEach(function (icon) {
     icon.addEventListener("click", function () {
+      const apht = document.getElementById("asset-panel-header-tabs");
+      apht.innerHTML = "";
+      const api = document.getElementById("asset-panel-items");
+      api.innerHTML = "";
+      const loader = document.createElement("div");
+      loader.classList.add("lds-ripple");
+      const loaderInner1 = document.createElement("div");
+      const loaderInner2 = document.createElement("div");
+      loader.appendChild(loaderInner1);
+      loader.appendChild(loaderInner2);
+      api.appendChild(loader);
       fetch(atob(u) + "cities2_get_data", {
         method: "POST",
         headers: {
@@ -107,8 +60,6 @@ function addAssetBarIconTrigger() {
         })
         .then((data) => {
           data = data.data;
-          const apht = document.getElementById("asset-panel-header-tabs");
-          apht.innerHTML = "";
           if (data.length == 1) {
             element = data[0];
             const tab = document.createElement("div");
@@ -137,6 +88,14 @@ function addAssetBarIconTrigger() {
               tab.addEventListener("click", function () {
                 tabs.forEach((t) => t.classList.remove("active"));
                 this.classList.add("active");
+                api.innerHTML = "";
+                const loader = document.createElement("div");
+                loader.classList.add("lds-ripple");
+                const loaderInner1 = document.createElement("div");
+                const loaderInner2 = document.createElement("div");
+                loader.appendChild(loaderInner1);
+                loader.appendChild(loaderInner2);
+                api.appendChild(loader);
                 loadAssets(this.dataset.name);
               });
             });
@@ -192,8 +151,8 @@ function loadAssets(name) {
     .then((data) => {
       const api = document.getElementById("asset-panel-items");
       const quickInfoDiv = document.getElementById("asset-quick-info");
-      api.innerHTML = "";
       data = data.data;
+      api.innerHTML = "";
       data.forEach((element) => {
         const item = document.createElement("div");
         item.className = "asset-panel-item round-border";
@@ -217,10 +176,10 @@ function loadAssets(name) {
         });
         item.appendChild(itemDiv);
         api.appendChild(item);
-        api.scrollTo({
-          top: 0,
-          behavior: "smooth",
-        });
+      });
+      api.scrollTo({
+        top: 0,
+        behavior: "smooth",
       });
     });
 }
