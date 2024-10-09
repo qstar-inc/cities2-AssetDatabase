@@ -1,4 +1,4 @@
-var u = "aHR0cHM6Ly9hcGkuc2sta20uY29tLmJkLw=="; //web
+var u = "aHR0cHM6Ly9hcGkuc2sta20uY29tLmJkL2FwaS8="; //web
 // var u = "aHR0cDovL2xvY2FsaG9zdDoxNTAv"; //local
 var auth = "ZUJImMyi0d7ycNC9Nnrixku9WM4nbWY9";
 

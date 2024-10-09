@@ -154,8 +154,8 @@
   width: 100%;
   gap: 0.3vh;
   padding: 0.3vh;
-  padding-left: 1.2vh;
-  padding-right: 1.2vh;
+  padding-left: 1.5vh;
+  padding-right: 1.5vh;
   max-height: calc(100% - 5.6vh);
   overflow-y: auto;
 }
