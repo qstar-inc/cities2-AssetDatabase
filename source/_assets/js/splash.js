@@ -1,22 +1,19 @@
 const referrer = document.referrer;
 const currentDomain = window.location.origin;
 
-document.addEventListener("DOMContentLoaded", function () {
-  const tips = [
-    "Save your game frequently to avoid losing progress.",
-    "You can zoom in by scrolling your mouse wheel.",
-    "Right-click to deselect any tool.",
-    "Keybinds help speed up your workflow.",
-    "You cannot undo most actions.",
-  ];
+const tips = [
+  "Save your game frequently to avoid losing progress.",
+  "You can zoom in by scrolling your mouse wheel.",
+  "Right-click to deselect any tool.",
+  "Keybinds help speed up your workflow.",
+  "You cannot undo most actions.",
+  "You can skip this loading screen with the Skip button on bottom-right.",
+];
 
-  function randomTipSelector() {
-    const randomIndex = Math.floor(Math.random() * tips.length);
-    return tips[randomIndex];
-  }
-  document.getElementById("preloader-tips-text").innerText =
-    randomTipSelector();
-});
+function randomTipSelector() {
+  const randomIndex = Math.floor(Math.random() * tips.length);
+  return tips[randomIndex];
+}
 
 function randomizeCircleAnimation(className) {
   const element = document.querySelector(className);
@@ -41,6 +38,8 @@ function hideSplashScreens() {
 function showNextSplash(currentSplashId, nextSplashId, nextTimeoutFunction) {
   let time;
   if (nextSplashId == "preloader-screen") {
+    document.getElementById("preloader-tips-text").innerText =
+      randomTipSelector();
     time = random(3000, 5000);
   } else {
     time = 3000;
@@ -64,6 +63,8 @@ document
 if (referrer && referrer.startsWith(currentDomain)) {
   document.getElementById("splash-screen-1").style.display = "none";
   document.getElementById("splash-screen-2").style.display = "none";
+  document.getElementById("preloader-tips-text").innerText =
+    randomTipSelector();
   document.getElementById("preloader-screen").style.display = "flex";
   setTimeout(function () {
     hideSplashScreens();
@@ -111,3 +112,4 @@ if (referrer && referrer.startsWith(currentDomain)) {
 }
 
 window.showNextSplash = showNextSplash;
+window.hideSplashScreens = hideSplashScreens;
