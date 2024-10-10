@@ -46,3 +46,17 @@ img {
   pointer-events: none;
   text-decoration: none;
 }
+
+.round-border {
+  border-radius: 1vh;
+}
+
+.round-border-top {
+  border-top-left-radius: 1vh;
+  border-top-right-radius: 1vh;
+}
+
+.round-border-bottom {
+  border-bottom-left-radius: 1vh;
+  border-bottom-right-radius: 1vh;
+}

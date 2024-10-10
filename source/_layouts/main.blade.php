@@ -55,6 +55,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         const imageBasePath = "{{ $page->images }}";
+        const dataBasePath = "{{ $page->data }}";
     </script>
     <script defer src="{{ $page->repo . mix('js/main.js', 'assets/build') }}"></script>
     <script defer src="{{ $page->repo . mix('js/splash.js', 'assets/build') }}"></script>

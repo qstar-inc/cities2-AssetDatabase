@@ -12,37 +12,37 @@
                 </div>
                 <div class="mainmenu-center">
                     <div class="mainmenu-start">
-                        <a id="mainmenu-button-1" class="mainmenu-start-button disabled-link" href="game">
+                        <a id="mainmenu-button-1" class="mainmenu-start-button disabled-link rounded-border" href="game">
                             <div class="mainmenu-start-icon"></div>
                             <span class="mainmenu-start-text">Loading....</span>
                         </a>
-                        <button id="mainmenu-button-continue" class="mainmenu-start-button">
+                        <button id="mainmenu-button-continue" class="mainmenu-start-button rounded-border">
                             <div class="mainmenu-start-icon"></div>
                             <span class="mainmenu-start-text">Show Loading Screen</span>
                         </button>
-                        <button class="mainmenu-start-button disabled-link" disabled>
+                        <button class="mainmenu-start-button disabled-link rounded-border" disabled>
                             <div class="mainmenu-start-icon"></div>
                             <span class="mainmenu-start-text">Options (WIP)</span>
                         </button>
-                        <button class="mainmenu-start-button disabled-link" disabled>
+                        <button class="mainmenu-start-button disabled-link rounded-border" disabled>
                             <div class="mainmenu-start-icon"></div>
                             <span class="mainmenu-start-text">Legal (WIP)</span>
                         </button>
-                        <button class="mainmenu-start-button disabled-link" disabled>
+                        <button class="mainmenu-start-button disabled-link rounded-border" disabled>
                             <div class="mainmenu-start-icon"></div>
                             <span class="mainmenu-start-text">Credits (WIP)</span>
                         </button>
-                        <button class="mainmenu-start-button" onclick="window.close();">
+                        <button class="mainmenu-start-button rounded-border" onclick="window.close();">
                             <div class="mainmenu-start-icon"></div>
                             <span class="mainmenu-start-text">Exit</span>
                         </button>
                     </div>
                     <div class="mainmenu-info">
-                        <div class="mainmenu-info-header">
+                        <div class="mainmenu-info-header rounded-border-top">
                             <div class="mainmenu-info-header-text">WORK-IN-PROGRESS</div>
                         </div>
                     </div>
-                    <div class="mainmenu-notification"></div>
+                    <div class="mainmenu-notification rounded-border"></div>
                 </div>
                 <div class="mainmenu-version">0.0.0 (Nothing Works Edition)</div>
                 <button class="mainmenu-top-right">

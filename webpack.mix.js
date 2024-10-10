@@ -6,6 +6,8 @@ mix.setPublicPath("source/assets/build");
 
 mix
   .jigsaw()
+  .js("source/_assets/js/backend.js", "js")
+  .js("source/_assets/js/db.js", "js")
   .js("source/_assets/js/main.js", "js")
   .js("source/_assets/js/splash.js", "js")
   .js("source/_assets/js/main-menu.js", "js")

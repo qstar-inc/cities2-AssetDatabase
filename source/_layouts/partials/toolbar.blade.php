@@ -27,5 +27,15 @@
     </div>
     <div id="asset-panel-items" class="asset-panel-items"></div>
 </div>
-<div id="asset-quick-info" class="asset-quick-info round-border"></div>
-<div class="tools-panel round-border"></div>
+<div id="asset-quick-info" class="asset-quick-info">
+    <div id="asset-quick-info-header" class="asset-quick-info-header round-border-top">
+        <div id="asset-quick-info-header-title" class="asset-quick-info-header-title"></div>
+        <div id="asset-quick-info-header-money" class="asset-quick-info-header-money"></div>
+    </div>
+    <div id="asset-quick-info-body" class="asset-quick-info-body">
+        <div id="asset-quick-info-body-image" class="asset-quick-info-body-image round-border"></div>
+        <div id="asset-quick-info-body-desc" class="asset-quick-info-body-desc"></div>
+    </div>
+    <div id="asset-quick-info-footer" class="asset-quick-info-footer round-border-bottom"></div>
+</div>
+<div id="tools-panel" class="tools-panel round-border">Delete Database and Restart</div>

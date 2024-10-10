@@ -6,6 +6,8 @@
   right: 0;
   object-fit: cover;
   z-index: -1;
+  filter: blur(0px);
+  transition: filter 1s;
 }
 
 .pause-overlay {
@@ -60,10 +62,6 @@
   right: calc(100% - 31.35%);
   bottom: calc(100% - 88.33%);
   background-color: rgb(19, 212, 93);
-}
-
-.round-border {
-  border-radius: 1vh;
 }
 
 .asset-menu-group {
@@ -162,7 +160,7 @@
   padding: 0.3vh;
   padding-left: 1.5vh;
   padding-right: 1.5vh;
-  max-height: calc(100% - 5.6vh);
+  max-height: calc(100% - 5.5vh);
   overflow-y: auto;
 }
 
@@ -183,22 +181,12 @@
   width: 100vw;
 }
 
-.asset-quick-info {
-  position: fixed;
-  left: 31.69vw;
-  right: calc(100% - 68.33%);
-  top: 47.67vh;
-  bottom: calc(100% - 66.33%);
-  background-color: rgba(39, 39, 39, 0.76);
-  display: none;
-}
-
 .lds-ripple-container {
   width: 2vh !important;
   height: 2vh !important;
   animation: spin 1s linear infinite;
   margin: 5.8vh auto !important;
-  border: 1px solid var(--vanilla-blue-accent);
+  border: 1px solid var(--vanilla-blue-accent-light);
   border-radius: 45%;
   display: flex;
 }
@@ -210,4 +198,65 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+.asset-quick-info {
+  position: fixed;
+  left: 31.69vw;
+  right: calc(100% - 68.33%);
+  /* top: 47.67vh; */
+  bottom: calc(100% - 66.33%);
+  display: none;
+}
+
+.asset-quick-info-header {
+  display: flex;
+  height: 4vh;
+  background-color: rgba(39, 39, 39, 0.76);
+  padding-left: 1vh;
+  padding-top: 0.8vh;
+}
+
+.asset-quick-info-header-title {
+  flex-grow: 1;
+  text-transform: uppercase;
+  color: var(--vanilla-blue-accent-light);
+}
+
+.asset-quick-info-header-money {
+  float: right;
+}
+
+.asset-quick-info-body {
+  background-color: rgba(39, 39, 39, 0.26);
+  display: flex;
+  min-height: 10vh;
+}
+
+.asset-quick-info-body-image {
+  background-color: rgba(39, 39, 39, 0.26);
+  display: flex;
+  flex-shrink: 0;
+  margin: 1vh;
+  margin-left: 1vw;
+  width: 10vh;
+  height: 10vh;
+}
+.asset-quick-info-body-image > img {
+  margin: auto;
+  width: 10vh;
+}
+
+.asset-quick-info-body-desc {
+  margin: 1vh;
+  margin-left: 1vh;
+  margin-left: 0;
+  font-size: 0.8vw;
+  text-align: justify;
+}
+
+.asset-quick-info-footer {
+  display: flex;
+  height: 2vh;
+  background-color: rgba(39, 39, 39, 0.76);
 }

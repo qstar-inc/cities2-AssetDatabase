@@ -65,10 +65,6 @@
   align-items: center;
   background-color: rgba(16, 19, 29, 0.3);
   backdrop-filter: brightness(60%) contrast(90%) blur(7px);
-  border-top-left-radius: 1vh;
-  border-top-right-radius: 1vh;
-  border-bottom-left-radius: 1vh;
-  border-bottom-right-radius: 1vh;
   color: var(--mainmenu-white-color);
   padding: 0 1vw;
   transition: padding-left 150ms;
@@ -95,17 +91,11 @@
 
 .mainmenu-info {
   background-color: rgba(16, 19, 29, 0.3);
-  border-top-left-radius: 1vh;
-  border-top-right-radius: 1vh;
-  border-bottom-left-radius: 1vh;
-  border-bottom-right-radius: 1vh;
 }
 
 .mainmenu-info-header {
   background-color: rgba(16, 19, 29, 0.5);
   text-align: center;
-  border-top-left-radius: 1vh;
-  border-top-right-radius: 1vh;
   height: 7.5vh;
 }
 
@@ -117,10 +107,6 @@
 
 .mainmenu-notification {
   background-color: rgba(16, 19, 29, 0.3);
-  border-top-left-radius: 1vh;
-  border-top-right-radius: 1vh;
-  border-bottom-left-radius: 1vh;
-  border-bottom-right-radius: 1vh;
 }
 
 .mainmenu-version {

@@ -1,6 +1,6 @@
 .lds-ripple {
   /* change color here */
-  color: var(--vanilla-blue-accent);
+  color: var(--vanilla-blue-accent-dark);
 }
 .lds-ripple,
 .lds-ripple div {
