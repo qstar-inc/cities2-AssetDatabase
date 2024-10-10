@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <clipPath id="clip-Humid">
+      <rect width="32" height="32"/>
+    </clipPath>
+  </defs>
+  <g id="Humid" clip-path="url(#clip-Humid)">
+    <path id="Path_2035" data-name="Path 2035" d="M-461.692,800.48c3.666,1.958,13.816,1.59,19.388.9,3.806-.468,3.627-4.317,3.533-4.849-.641-3.024-4.292-2.767-4.292-2.767s2.21-7.38-5.765-7.891-9.892,5.162-9.553,7.038c0,0-2.294-.452-3.312.4a3.587,3.587,0,0,0-.925,2.617S-465.358,798.522-461.692,800.48Z" transform="translate(466.168 -781.769)" fill="#a5b4bf"/>
+    <rect id="Rectangle_3927" data-name="Rectangle 3927" width="2" height="5" rx="1" transform="matrix(0.966, 0.259, -0.259, 0.966, 19.681, 21.826)" fill="#4cdbff"/>
+    <rect id="Rectangle_4407" data-name="Rectangle 4407" width="2" height="5" rx="1" transform="matrix(0.966, 0.259, -0.259, 0.966, 10.681, 21.826)" fill="#4cdbff"/>
+    <rect id="Rectangle_3928" data-name="Rectangle 3928" width="2" height="5" rx="1" transform="matrix(0.966, 0.259, -0.259, 0.966, 14.681, 23.826)" fill="#4cdbff"/>
+    <rect id="Rectangle_4406" data-name="Rectangle 4406" width="2" height="5" rx="1" transform="matrix(0.966, 0.259, -0.259, 0.966, 5.681, 23.826)" fill="#4cdbff"/>
+    <rect id="Rectangle_3932" data-name="Rectangle 3932" width="2" height="5" rx="1" transform="matrix(0.966, 0.259, -0.259, 0.966, 23.681, 23.826)" fill="#4cdbff"/>
+  </g>
+</svg>

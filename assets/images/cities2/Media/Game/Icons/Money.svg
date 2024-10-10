@@ -1,0 +1,6 @@
+<svg id="money" version="1.1" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+ <path d="m3 14.343 8.4515 5.4741 17.548-8.735-8.101-5.0828z" fill="#c1ff67" stroke-width=".92857"/>
+ <path d="m11.452 26.001-8.4515-6.184v-5.4738l8.4515 5.4741z" fill="#9adf4b" stroke-width=".92857"/>
+ <ellipse cx="16" cy="12.908" rx="4.1786" ry="1.8571" fill="#c9f19c" stroke="#8fc83d" stroke-width="1.3929"/>
+ <path d="m29 11.083-17.549 8.7351 0.000928 6.1834 17.548-9.0975z" fill="#72ab5e" stroke-width=".92857"/>
+</svg>

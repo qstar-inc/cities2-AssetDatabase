@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <clipPath id="clip-SurfaceTiles03">
+      <rect width="64" height="64"/>
+    </clipPath>
+  </defs>
+  <g id="SurfaceTiles03" clip-path="url(#clip-SurfaceTiles03)">
+    <path id="Path_2186" data-name="Path 2186" d="M722.072-295.333l29.712,25.316,34.037-20.612v-2.55l-63.749-4.737Z" transform="translate(-722.04 327.13)" fill="#606060"/>
+    <path id="Path_2192" data-name="Path 2192" d="M1224.123-1129.9l29.871,25.1,34.079-20.276-29.7-24.869Z" transform="translate(-1224.047 1159.001)" fill="#555453"/>
+    <path id="Path_3483" data-name="Path 3483" d="M2029.8,1281.86l15.307-9.436-13.839-11.4,3.565-1.751,13.137,11.05,16.219-8.88,2.516,2.17-16.281,8.807,13.765,11.669-3.292,1.887-13.42-11.47-15.443,9.583Z" transform="translate(-2016 -1241)" fill="#3c3c3b"/>
+  </g>
+</svg>

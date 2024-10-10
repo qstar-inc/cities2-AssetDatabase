@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="128" height="128" viewBox="0 0 128 128">
+  <defs>
+    <filter id="Path_1252" x="30.612" y="76.495" width="35.048" height="31.825" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Path_1253" x="62.34" y="76.692" width="35.048" height="31.825" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-2"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Path_1250" x="33.556" y="27.99" width="60.611" height="70.241" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-3"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-3"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <clipPath id="clip-MarkerOutsideConnectionTrain">
+      <rect width="128" height="128"/>
+    </clipPath>
+  </defs>
+  <g id="MarkerOutsideConnectionTrain" clip-path="url(#clip-MarkerOutsideConnectionTrain)">
+    <circle id="Ellipse_691" data-name="Ellipse 691" cx="64" cy="64" r="64" fill="#3c9442"/>
+    <path id="Path_1248" data-name="Path 1248" d="M2411.99,196.008h17.682l-8.917,7.173Z" transform="translate(-2351.832 -126.908)" fill="#f2eeee"/>
+    <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Path_1252)">
+      <path id="Path_1252-2" data-name="Path 1252" d="M1044.42,244,1036,257.825h12.735L1053.047,244Z" transform="translate(-996.39 -161.51)" fill="#fff"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Path_1253)">
+      <path id="Path_1253-2" data-name="Path 1253" d="M1044.625,244l8.422,13.825h-12.735L1036,244Z" transform="translate(-964.66 -161.31)" fill="#fff"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Path_1250)">
+      <path id="Path_1250-2" data-name="Path 1250" d="M7.519,0H35.091A7.519,7.519,0,0,1,42.61,7.519V42.61c0,4.153-7.519,7.519-7.519,7.519A49.715,49.715,0,0,1,21.66,52.241,58.62,58.62,0,0,1,7.519,50.13S0,46.763,0,42.61V7.519A7.519,7.519,0,0,1,7.519,0Z" transform="translate(42.56 33.99)" fill="#fff"/>
+    </g>
+    <path id="Path_1251" data-name="Path 1251" d="M5.013,0H32.584C35.353,0,37.6,3.205,37.6,7.159v7.159c0,3.954-2.306,5.139-5.013,7.159,0,0-6.568,5.824-13.461,5.824S5.013,21.477,5.013,21.477C1.787,19.087,0,18.272,0,14.318V7.159C0,3.205,2.244,0,5.013,0Z" transform="translate(45.494 44.016)" fill="#3c9442"/>
+    <rect id="Rectangle_1825" data-name="Rectangle 1825" width="20.458" transform="translate(60.072 44.303)" fill="#f3e195"/>
+    <rect id="Rectangle_1826" data-name="Rectangle 1826" width="20.458" height="14.613" rx="2" transform="translate(54.064 31.483)" fill="#fff"/>
+    <circle id="Ellipse_491" data-name="Ellipse 491" cx="3.978" cy="3.978" r="3.978" transform="translate(59.747 34.442)" fill="#3c9442"/>
+    <rect id="Rectangle_1828" data-name="Rectangle 1828" width="10.202" height="5.101" rx="1" transform="translate(68.999 73.553) rotate(-19)" fill="#3c9442"/>
+    <rect id="Rectangle_1827" data-name="Rectangle 1827" width="10.168" height="5.084" rx="1" transform="translate(49.55 70.231) rotate(17)" fill="#3c9442"/>
+  </g>
+</svg>

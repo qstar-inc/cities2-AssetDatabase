@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="40" viewBox="0 0 40 40">
+  <defs>
+    <clipPath id="clip-Entertainment">
+      <rect width="40" height="40"/>
+    </clipPath>
+  </defs>
+  <g id="Entertainment" clip-path="url(#clip-Entertainment)">
+    <g id="ResourceEntertainment" transform="translate(7.109 10.196)">
+      <g id="Group_233" data-name="Group 233" transform="matrix(0.998, -0.07, 0.07, 0.998, 10.567, 2.848)">
+        <path id="Path_624" data-name="Path 624" d="M.68,0,13.35,0s1.64,7.213,0,11.413S8,16.839,6.783,16.8,2.2,15.615.678,11.415.68,0,.68,0Z" transform="translate(0 0)" fill="#d3b98c"/>
+        <path id="Path_627" data-name="Path 627" d="M0,0A13.037,13.037,0,0,0,4.869,1.154,11.812,11.812,0,0,0,9.583,0S7.318,3.352,4.869,3.353,0,0,0,0Z" transform="matrix(-1, 0.017, -0.017, -1, 11.841, 12.701)" fill="#31372d"/>
+        <path id="Path_625" data-name="Path 625" d="M0,.006a4.8,4.8,0,0,0,2.341.8A4.4,4.4,0,0,0,4.608,0S3.516,2.348,2.339,2.35,0,.006,0,.006Z" transform="translate(6.46 6.285) rotate(155)" fill="#31372d"/>
+        <path id="Path_626" data-name="Path 626" d="M0,0A4.818,4.818,0,0,0,2.342.81,4.381,4.381,0,0,0,4.607,0S3.521,2.351,2.343,2.35,0,0,0,0Z" transform="matrix(-0.891, -0.454, 0.454, -0.891, 11.949, 8.285)" fill="#31372d"/>
+      </g>
+      <g id="Group_232" data-name="Group 232" transform="translate(2.338 0) rotate(8)">
+        <path id="Path_620" data-name="Path 620" d="M.676,0,13.347.005s1.644,7.213,0,11.412S8.005,16.841,6.789,16.8,2.209,15.612.681,11.412.676,0,.676,0Z" transform="translate(0 0)" fill="#d0eaa3"/>
+        <path id="Path_621" data-name="Path 621" d="M0,0A13.049,13.049,0,0,0,4.87,1.155,11.8,11.8,0,0,0,9.584,0S7.32,3.355,4.871,3.354,0,0,0,0Z" transform="translate(2.233 10.663)" fill="#31372d"/>
+        <path id="Path_622" data-name="Path 622" d="M0,0A4.8,4.8,0,0,0,2.34.808,4.385,4.385,0,0,0,4.6,0S3.517,2.349,2.34,2.349,0,0,0,0Z" transform="translate(6.305 7.076) rotate(173)" fill="#31372d"/>
+        <path id="Path_623" data-name="Path 623" d="M0,0A4.813,4.813,0,0,0,2.341.81,4.382,4.382,0,0,0,4.606,0S3.52,2.351,2.342,2.35,0,0,0,0Z" transform="translate(12.521 7.715) rotate(-171)" fill="#31372d"/>
+      </g>
+    </g>
+  </g>
+</svg>
