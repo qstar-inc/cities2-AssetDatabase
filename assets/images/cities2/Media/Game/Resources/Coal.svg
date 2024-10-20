@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="40" viewBox="0 0 40 40">
+  <defs>
+    <clipPath id="clip-Coal">
+      <rect width="40" height="40"/>
+    </clipPath>
+  </defs>
+  <g id="Coal" clip-path="url(#clip-Coal)">
+    <g id="Group_294" data-name="Group 294" transform="translate(10 10.035)">
+      <path id="Path_768" data-name="Path 768" d="M6057.14-5486.62l-8.963,12,3.291,7.125h11.572l5.91-13.831-2.263-5.923Z" transform="translate(-6048.173 5487.577)" fill="#4b4e54"/>
+      <path id="Path_769" data-name="Path 769" d="M6056.51-5486.57l2.664,13.009,9.075-7.766-2.2-5.98Z" transform="translate(-6047.474 5487.577)" fill="#63676e"/>
+      <path id="Path_770" data-name="Path 770" d="M6051.26-5467.51h11.572l5.91-13.831-2.242-5.99-6.784,13.478Z" transform="translate(-6047.965 5487.594)" fill="#212528"/>
+    </g>
+    <g id="Group_295" data-name="Group 295" transform="translate(13.291 23.775)">
+      <path id="Path_771" data-name="Path 771" d="M6051.26-5468.5h11.572l-3.116-6.343Z" transform="translate(-6051.256 5474.844)" fill="#18191a"/>
+    </g>
+  </g>
+</svg>

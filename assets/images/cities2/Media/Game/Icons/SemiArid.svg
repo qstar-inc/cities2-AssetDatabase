@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <clipPath id="clip-SemiArid">
+      <rect width="32" height="32"/>
+    </clipPath>
+  </defs>
+  <g id="SemiArid" clip-path="url(#clip-SemiArid)">
+    <circle id="Ellipse_838" data-name="Ellipse 838" cx="3.387" cy="3.387" r="3.387" transform="translate(12.404 9.145)" fill="#ffcb00"/>
+    <rect id="Rectangle_4396" data-name="Rectangle 4396" width="1.505" height="3.513" rx="0.753" transform="translate(14.662 4.843)" fill="#ffcb00"/>
+    <rect id="Rectangle_4399" data-name="Rectangle 4399" width="1.444" height="3.368" rx="0.722" transform="matrix(0.719, 0.695, -0.695, 0.719, 20.86, 6.771)" fill="#ffcb00"/>
+    <rect id="Rectangle_4397" data-name="Rectangle 4397" width="1.434" height="3.346" rx="0.717" transform="translate(11.651 12.012) rotate(90)" fill="#ffcb00"/>
+    <rect id="Rectangle_4395" data-name="Rectangle 4395" width="1.444" height="3.368" rx="0.722" transform="matrix(-0.695, 0.719, -0.719, -0.695, 12.805, 9.211)" fill="#ffcb00"/>
+    <rect id="Rectangle_4401" data-name="Rectangle 4401" width="1.505" height="3.513" rx="0.753" transform="translate(14.662 16.314)" fill="#ffcb00"/>
+    <rect id="Rectangle_4398" data-name="Rectangle 4398" width="1.444" height="3.368" rx="0.722" transform="matrix(0.719, 0.695, -0.695, 0.719, 12.203, 14.524)" fill="#ffcb00"/>
+    <rect id="Rectangle_4402" data-name="Rectangle 4402" width="1.434" height="3.346" rx="0.717" transform="translate(23.694 12.012) rotate(90)" fill="#ffcb00"/>
+    <rect id="Rectangle_4400" data-name="Rectangle 4400" width="1.444" height="3.368" rx="0.722" transform="matrix(-0.695, 0.719, -0.719, -0.695, 21.743, 16.698)" fill="#ffcb00"/>
+    <rect id="Rectangle_4403" data-name="Rectangle 4403" width="2" height="5" rx="1" transform="matrix(0.966, 0.259, -0.259, 0.966, 14.681, 21.826)" fill="#4cdbff"/>
+    <rect id="Rectangle_4404" data-name="Rectangle 4404" width="2" height="5" rx="1" transform="matrix(0.966, 0.259, -0.259, 0.966, 8.681, 23.826)" fill="#4cdbff"/>
+    <rect id="Rectangle_4405" data-name="Rectangle 4405" width="2" height="5" rx="1" transform="matrix(0.966, 0.259, -0.259, 0.966, 20.681, 23.826)" fill="#4cdbff"/>
+  </g>
+</svg>

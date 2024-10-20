@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <clipPath id="clip-Overcast">
+      <rect width="32" height="32"/>
+    </clipPath>
+  </defs>
+  <g id="Overcast" clip-path="url(#clip-Overcast)">
+    <path id="Path_2034" data-name="Path 2034" d="M-461.692,800.375c3.666,1.944,13.816,1.579,19.388.9,3.806-.465,3.627-4.286,3.533-4.814-.641-3-4.292-2.747-4.292-2.747s2.21-7.327-5.765-7.834-9.892,5.125-9.553,6.987c0,0-2.294-.449-3.312.4a3.545,3.545,0,0,0-.925,2.6S-465.358,798.431-461.692,800.375Z" transform="translate(467 -782)" fill="#e6f2fa" opacity="0.73"/>
+  </g>
+</svg>

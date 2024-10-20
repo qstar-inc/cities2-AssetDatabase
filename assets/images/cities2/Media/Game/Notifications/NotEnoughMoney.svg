@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 128 128" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g id="While-Building" serif:id="While Building" transform="matrix(0.976563,0,0,0.976563,1.5,1.5)">
+        <circle cx="64" cy="64" r="64" style="fill:rgb(229,99,51);"/>
+        <clipPath id="_clip1">
+            <circle cx="64" cy="64" r="64"/>
+        </clipPath>
+        <g clip-path="url(#_clip1)">
+            <g id="Not-Enough-Money" serif:id="Not Enough Money" transform="matrix(1.7044,0,0,1.7044,5.18078,-4.41523)">
+                <g>
+                    <g id="NotEnoughMoney">
+                        <g>
+                            <g id="Layer8" transform="matrix(2.11127,0,0,2.26241,-47.9204,-46.1107)">
+                                <g>
+                                    <path d="M26.677,43.769L41.3,33.53L52.089,35.028L38.771,46.174L26.677,43.769Z" style="fill:rgb(88,233,78);"/>
+                                    <path d="M26.685,43.752L26.719,45.436L38.834,48.082L51.988,36.382L52.083,35.031L38.78,46.169L26.685,43.752Z" style="fill:rgb(28,154,11);"/>
+                                </g>
+                            </g>
+                            <g id="Layer81" serif:id="Layer8" transform="matrix(2.11127,0,0,2.26241,-48.6459,-52.1741)">
+                                <g>
+                                    <path d="M26.677,43.769L41.3,33.53L52.089,35.028L38.771,46.174L26.677,43.769Z" style="fill:rgb(88,233,78);"/>
+                                    <path d="M26.685,43.752L26.719,45.436L38.834,48.082L51.988,36.382L52.083,35.031L38.78,46.169L26.685,43.752Z" style="fill:rgb(28,154,11);"/>
+                                </g>
+                            </g>
+                            <g id="Layer82" serif:id="Layer8" transform="matrix(2.11127,0,0,2.26241,-49.3543,-58.2472)">
+                                <g>
+                                    <path d="M26.677,43.769L41.3,33.53L52.089,35.028L38.771,46.174L26.677,43.769Z" style="fill:rgb(88,233,78);"/>
+                                    <path d="M26.685,43.752L26.719,45.436L38.834,48.082L51.988,36.382L52.083,35.031L38.78,46.169L26.685,43.752Z" style="fill:rgb(28,154,11);"/>
+                                    <g transform="matrix(0.980831,0.194863,-0.183479,0.923532,5.76401,-5.36377)">
+                                        <path d="M43.283,36.846C45.548,36.846 46.808,37.994 46.54,39.489C46.311,40.765 44.036,41.962 41.77,41.962C39.504,41.962 37.921,40.784 38.33,39.326C38.813,37.605 41.017,36.846 43.283,36.846Z" style="fill:rgb(28,154,11);"/>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

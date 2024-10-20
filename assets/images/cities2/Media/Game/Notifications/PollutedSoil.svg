@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 128 128" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g id="Vehicles" transform="matrix(0.976563,0,0,0.942198,1.5,1.5)">
+        <path d="M64,0L119.426,33.167L119.426,99.501L64,132.668L8.574,99.501L8.574,33.167L64,0Z" style="fill:rgb(255,184,14);"/>
+        <clipPath id="_clip1">
+            <path d="M64,0L119.426,33.167L119.426,99.501L64,132.668L8.574,99.501L8.574,33.167L64,0Z"/>
+        </clipPath>
+        <g clip-path="url(#_clip1)">
+            <g id="PollutedSoil" transform="matrix(3.71216,0,0,3.84755,15.7419,19.0771)">
+                <g transform="matrix(1,0,0,1,4,12)">
+                    <path d="M0,0L18,0L18,5C18,6.097 17.097,7 16,7L2,7C0.903,7 0,6.097 0,5L0,0Z" style="fill:rgb(113,66,19);fill-rule:nonzero;"/>
+                </g>
+                <g transform="matrix(1,0,0,1,4,9)">
+                    <path d="M0,0L4.782,0C4.727,-0.661 4.515,-1.299 4.164,-1.861C3.737,-2.482 3.24,-3.053 2.683,-3.561C3.902,-3.399 5.078,-3.001 6.145,-2.389C6.241,-3.248 6.637,-4.047 7.263,-4.643C8.207,-5.433 9.265,-6.076 10.4,-6.551C9.725,-5.852 9.161,-5.055 8.727,-4.186C8.382,-3.367 8.194,-2.489 8.175,-1.6C8.647,-2.508 9.441,-3.208 10.4,-3.565C11.67,-3.833 12.983,-3.833 14.253,-3.565C13.202,-3.319 12.191,-2.922 11.253,-2.388C10.71,-2.056 10.384,-1.457 10.4,-0.82L13.388,0L18,0L18,3L0,3L0,0Z" style="fill:rgb(205,255,36);fill-rule:nonzero;"/>
+                </g>
+                <g transform="matrix(1,0,0,1,14,10)">
+                    <circle cx="2.5" cy="2.5" r="2.5" style="fill:rgb(205,255,36);"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
