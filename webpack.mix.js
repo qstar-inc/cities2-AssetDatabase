@@ -12,6 +12,7 @@ mix
   .js("source/_assets/js/splash.js", "js")
   .js("source/_assets/js/main-menu.js", "js")
   .js("source/_assets/js/game.js", "js")
+  .js("source/_assets/js/game_data_process.js", "js")
   .css("source/_assets/css/main.css", "css", [
     require("postcss-import"),
     require("tailwindcss"),

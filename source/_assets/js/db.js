@@ -11,7 +11,7 @@ function initDB() {
   console.log("Starting InitDB");
   request.onerror = function (event) {
     console.log(
-      "Why didn't you allow my web app to use IndexedDB?: " +
+      "Why didn't you allow cities2-AssetDatabase to use IndexedDB?: " +
         event.target.errorCode
     );
   };
@@ -24,6 +24,7 @@ function initDB() {
       !db.objectStoreNames.contains("assetGroupData") ||
       !db.objectStoreNames.contains("assetTabData") ||
       !db.objectStoreNames.contains("assetPanelData") ||
+      !db.objectStoreNames.contains("assetData") ||
       !db.objectStoreNames.contains("timeSince")
     ) {
       db.close();
@@ -56,16 +57,15 @@ function initDB() {
 }
 
 let lines = [];
-function loadFile() {
-  return fetch(dataBasePath + "/ail_list.txt")
-    .then((response) => response.text())
-    .then((text) => {
-      lines = text.split("\n");
-      console.log("File loaded and stored in memory");
-    })
-    .catch((error) => {
-      console.error("Error reading the file:", error);
-    });
+async function loadFile() {
+  try {
+    const response = await fetch(dataBasePath + "/ail_list.txt");
+    const text = await response.text();
+    lines = text.split("\n");
+    console.log("AIL list loaded and stored in memory");
+  } catch (error) {
+    console.error("Error reading AIL list:", error);
+  }
 }
 
 function findValueInLines(value) {
@@ -105,6 +105,13 @@ function createDBs(db) {
     assetPanelData.createIndex("id", "id", { unique: true });
   }
 
+  if (!db.objectStoreNames.contains("assetData")) {
+    let assetPanelData = db.createObjectStore("assetData", {
+      keyPath: "id",
+    });
+    assetPanelData.createIndex("id", "id", { unique: true });
+  }
+
   if (!db.objectStoreNames.contains("timeSince")) {
     let timeSince = db.createObjectStore("timeSince", {
       keyPath: "name",
@@ -118,7 +125,7 @@ function addAssetGroupData(data) {
   let transaction_t = db.transaction(["timeSince"], "readwrite");
 
   transaction.oncomplete = function () {
-    console.log("Transaction completed");
+    console.log("Asset Group Data saved");
   };
 
   transaction.onerror = function (event) {
@@ -129,7 +136,7 @@ function addAssetGroupData(data) {
     objectStore.put({
       name: asset.name,
       icon: asset.icon,
-      ui_group: asset.ui_group,
+      group: asset.group,
       priority: asset.priority,
     });
   });
@@ -149,7 +156,7 @@ function getAssetGroupData() {
   request.onsuccess = async function (event) {
     let timeSince = await getTimeSince("assetGroupData");
     let currentTime = new Date().getTime();
-    var result = event.target.result;
+    let result = event.target.result;
 
     if (result.length === 0 || result.length === undefined) {
       fetchAssetGroupData();
@@ -167,119 +174,200 @@ function getAssetGroupData() {
   };
 }
 
-function addAssetTabData(name, data) {
-  let transaction = db.transaction(["assetTabData"], "readwrite");
-  let transaction_t = db.transaction(["timeSince"], "readwrite");
+function addAssetTabData(groupedData) {
+  let transaction = db.transaction(["assetTabData", "timeSince"], "readwrite");
 
   transaction.oncomplete = function () {
-    console.log("Transaction completed");
+    console.log("Asset Tab Data saved");
   };
 
   transaction.onerror = function (event) {
     console.log("Transaction error:", event);
   };
-  let i = 0;
-  data.forEach((asset) => {
-    let objectStore = transaction.objectStore("assetTabData");
-    objectStore.put({
-      id: `${name}___${asset.name}`,
-      name: name,
-      tab: asset.name,
-      icon: asset.icon,
-      priority: i,
-    });
-    i++;
-  });
 
-  let objectStore_t = transaction_t.objectStore("timeSince");
-  objectStore_t.put({
-    name: `assetTabData-${name}`,
-    time: new Date().getTime(),
+  let assetObjectStore = transaction.objectStore("assetTabData");
+  let timeObjectStore = transaction.objectStore("timeSince");
+
+  const currentTime = new Date().getTime();
+
+  groupedData.forEach(({ groupName, tabData }) => {
+    tabData.forEach((asset) => {
+      assetObjectStore.put(asset);
+    });
+
+    timeObjectStore.put({
+      name: `assetTabData-${groupName}`,
+      time: currentTime,
+    });
   });
-  getAssetTabData(name);
 }
 
 function getAssetTabData(name) {
   let transaction = db.transaction(["assetTabData"], "readonly");
   let objectStore = transaction.objectStore("assetTabData");
-  let index = objectStore.index("name");
 
-  let request = index.getAll(name);
+  if (name === undefined) {
+    let request = objectStore.getAll();
 
-  request.onsuccess = async function (event) {
-    let timeSince = await getTimeSince(`assetTabData-${name}`);
-    let currentTime = new Date().getTime();
-    var result = event.target.result;
+    request.onsuccess = async function (event) {
+      let result = event.target.result;
 
-    if (result.length === 0 || result.length === undefined) {
-      fetchAssetTabData(name);
-    } else {
-      if (currentTime - timeSince < 60 * 60 * 100) {
-        processAssetTab(result);
-      } else {
-        fetchAssetTabData(name);
+      if (result.length === 0 || result === undefined) {
+        fetchAssetTabDataAll();
       }
-    }
-  };
+    };
 
-  request.onerror = function (event) {
-    console.log("Error retrieving data:", event);
-  };
+    request.onerror = function (event) {
+      console.log("Error retrieving data:", event);
+    };
+  } else {
+    let index = objectStore.index("name");
+
+    let request = index.getAll(name);
+
+    request.onsuccess = async function (event) {
+      let timeSince = await getTimeSince(`assetTabData-${name}`);
+      let currentTime = new Date().getTime();
+      let result = event.target.result;
+
+      if (result.length === 0 || result.length === undefined) {
+        fetchAssetTabDataAll();
+      } else {
+        if (currentTime - timeSince < 60 * 60 * 100) {
+          processAssetTab(result);
+        } else {
+          fetchAssetTabDataAll();
+        }
+      }
+    };
+
+    request.onerror = function (event) {
+      console.log("Error retrieving data:", event);
+    };
+  }
 }
 
-function addAssetPanelData(name, data) {
-  let transaction = db.transaction(["assetPanelData"], "readwrite");
-  let transaction_t = db.transaction(["timeSince"], "readwrite");
+function addAssetPanelData(groupedData) {
+  let transaction = db.transaction(
+    ["assetPanelData", "timeSince"],
+    "readwrite"
+  );
 
   transaction.oncomplete = function () {
-    console.log("Transaction completed");
+    console.log("Asset Panel Data saved");
   };
 
   transaction.onerror = function (event) {
     console.log("Transaction error:", event);
   };
-  let i = 0;
-  data.forEach((asset) => {
-    let objectStore = transaction.objectStore("assetPanelData");
-    objectStore.put({
-      id: `${name}___${asset.name}`,
-      tab: name,
-      name: asset.name,
-      icon: asset.icon,
-      lang_name: asset.lang_name,
-      lang_desc: asset.lang_desc,
-      priority: i,
-    });
-    i++;
-  });
+  let assetObjectStore = transaction.objectStore("assetPanelData");
+  let timeObjectStore = transaction.objectStore("timeSince");
 
-  let objectStore_t = transaction_t.objectStore("timeSince");
-  objectStore_t.put({
-    name: `assetPanelData-${name}`,
-    time: new Date().getTime(),
+  const currentTime = new Date().getTime();
+
+  groupedData.forEach(({ tabName, panelData }) => {
+    panelData.forEach((asset) => {
+      assetObjectStore.put(asset);
+    });
+
+    timeObjectStore.put({
+      name: `assetPanelData-${tabName}`,
+      time: currentTime,
+    });
   });
-  getAssetPanelData(name);
 }
 
 function getAssetPanelData(name) {
   let transaction = db.transaction(["assetPanelData"], "readonly");
   let objectStore = transaction.objectStore("assetPanelData");
-  let index = objectStore.index("tab");
+  if (name === undefined) {
+    let request = objectStore.getAll();
 
-  let request = index.getAll(name);
+    request.onsuccess = async function (event) {
+      let result = event.target.result;
+
+      if (result.length === 0 || result === undefined) {
+        fetchAssetPanelDataAll();
+      }
+    };
+
+    request.onerror = function (event) {
+      console.log("Error retrieving data:", event);
+    };
+  } else {
+    let index = objectStore.index("tab");
+
+    let request = index.getAll(name);
+
+    request.onsuccess = async function (event) {
+      let timeSince = await getTimeSince(`assetPanelData-${name}`);
+      let currentTime = new Date().getTime();
+      let result = event.target.result;
+
+      if (result.length === 0 || result.length === undefined) {
+        fetchAssetPanelDataAll();
+      } else {
+        if (currentTime - timeSince < 60 * 60 * 100) {
+          processAssetPanel(event.target.result);
+        } else {
+          fetchAssetPanelDataAll();
+        }
+      }
+    };
+
+    request.onerror = function (event) {
+      console.log("Error retrieving data:", event);
+    };
+  }
+}
+
+function addAssetData(prefab, data) {
+  let transaction = db.transaction(["assetData"], "readwrite");
+  let transaction_t = db.transaction(["timeSince"], "readwrite");
+
+  transaction.oncomplete = function () {
+    console.log(`${prefab} data saved`);
+  };
+
+  transaction.onerror = function (event) {
+    console.log("Transaction error:", event);
+  };
+  data.forEach((asset) => {
+    let objectStore = transaction.objectStore("assetData");
+    objectStore.put({
+      name: asset.Name,
+      id: prefab,
+      details: asset.Details,
+    });
+  });
+
+  let objectStore_t = transaction_t.objectStore("timeSince");
+  objectStore_t.put({
+    name: `assetData-${prefab}`,
+    time: new Date().getTime(),
+  });
+
+  getAssetData(prefab);
+}
+
+function getAssetData(prefab) {
+  let transaction = db.transaction(["assetData"], "readonly");
+  let objectStore = transaction.objectStore("assetData");
+
+  let request = objectStore.get(prefab);
 
   request.onsuccess = async function (event) {
-    let timeSince = await getTimeSince(`assetPanelData-${name}`);
-    let currentTime = new Date().getTime();
-    var result = event.target.result;
+    let result = event.target.result;
 
-    if (result.length === 0 || result.length === undefined) {
-      fetchAssetPanelData(name);
+    if (!result) {
+      fetchAssetData(prefab);
     } else {
+      let timeSince = await getTimeSince(`assetData-${prefab}`);
+      let currentTime = new Date().getTime();
       if (currentTime - timeSince < 60 * 60 * 100) {
-        processAssetPanel(event.target.result);
+        processAssetData(event.target.result);
       } else {
-        fetchAssetPanelData(name);
+        fetchAssetData(prefab);
       }
     }
   };
@@ -344,5 +432,7 @@ window.getAssetTabData = getAssetTabData;
 window.addAssetTabData = addAssetTabData;
 window.getAssetPanelData = getAssetPanelData;
 window.addAssetPanelData = addAssetPanelData;
+window.getAssetData = getAssetData;
+window.addAssetData = addAssetData;
 window.loadFile = loadFile;
 window.findValueInLines = findValueInLines;

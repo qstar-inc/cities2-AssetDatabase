@@ -19,6 +19,9 @@
         </div>
         <div class="chirper-icons"></div>
         <div class="info-panel"></div>
+        <div class="details-pane">
+            @include('_layouts.partials.detailsPane')
+        </div>
         <div class="pause-overlay"></div>
     </div>
 @endsection
@@ -26,6 +29,7 @@
 @section('js')
     <script defer src="{{ $page->repo . mix('js/backend.js', 'assets/build') }}"></script>
     <script defer src="{{ $page->repo . mix('js/db.js', 'assets/build') }}"></script>
+    <script defer src="{{ $page->repo . mix('js/game_data_process.js', 'assets/build') }}"></script>
     <script defer src="{{ $page->repo . mix('js/game.js', 'assets/build') }}"></script>
     <script>
         document.getElementById('game-bg').src = '{{ $page->images }}/cities2/mainmenu.jpg';
