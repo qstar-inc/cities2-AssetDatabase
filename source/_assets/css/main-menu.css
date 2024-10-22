@@ -33,7 +33,7 @@
 }
 
 .mainmenu-center {
-  width: 50vw;
+  min-width: 50vw;
   height: 50vh;
   margin-left: auto;
   margin-right: auto;
@@ -53,7 +53,8 @@
   flex-direction: column;
   align-items: center;
   gap: 1vh;
-  overflow: scroll;
+  overflow: clip scroll;
+  min-width: calc((100% - 3vh) / 2);
 }
 
 .mainmenu-start-button {
@@ -91,12 +92,16 @@
 
 .mainmenu-info {
   background-color: rgba(16, 19, 29, 0.3);
+  backdrop-filter: brightness(60%) contrast(90%) blur(7px);
+  border-radius: 1vh;
+  min-width: calc((100% - 3vh) / 2);
 }
 
 .mainmenu-info-header {
   background-color: rgba(16, 19, 29, 0.5);
   text-align: center;
   height: 7.5vh;
+  overflow: clip;
 }
 
 .mainmenu-info-header-text {
@@ -107,6 +112,8 @@
 
 .mainmenu-notification {
   background-color: rgba(16, 19, 29, 0.3);
+  backdrop-filter: brightness(60%) contrast(90%) blur(7px);
+  border-radius: 1vh;
 }
 
 .mainmenu-version {

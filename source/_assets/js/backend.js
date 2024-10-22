@@ -168,9 +168,50 @@ function fetchAssetData(prefab) {
     });
 }
 
+let batchSize = 10000;
+let currentOffset = 0;
+let allDataLoaded = false;
+let dataLoaded = 0;
+function fetchAssetDataAll() {
+  if (allDataLoaded) return;
+  fetch(atob(u) + "cities2_get_data", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      Authorization: auth,
+      reqType: "asset-data-all",
+      offset: currentOffset,
+      limit: batchSize,
+    }),
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok " + response.statusText);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      dataLoaded += data.data.length;
+      if (data.data.length === 0) {
+        allDataLoaded = true;
+        console.log(`All ${dataLoaded} asset data loaded.`);
+        return;
+      }
+      addAssetDataAll(data.data);
+      currentOffset += batchSize;
+      fetchAssetDataAll();
+    })
+    .catch((error) => {
+      console.error("Error loading asset data batch:", error);
+    });
+}
+
 window.fetchAssetGroupData = fetchAssetGroupData;
 // window.fetchAssetTabData = fetchAssetTabData;
 window.fetchAssetTabDataAll = fetchAssetTabDataAll;
 // window.fetchAssetPanelData = fetchAssetPanelData;
 window.fetchAssetPanelDataAll = fetchAssetPanelDataAll;
 window.fetchAssetData = fetchAssetData;
+window.fetchAssetDataAll = fetchAssetDataAll;

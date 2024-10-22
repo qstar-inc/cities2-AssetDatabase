@@ -57,6 +57,8 @@
 @endsection
 
 @section('js')
+    <script defer src="{{ $page->repo . mix('js/backend.js', 'assets/build') }}"></script>
+    <script defer src="{{ $page->repo . mix('js/db.js', 'assets/build') }}"></script>
     <script defer src="{{ $page->repo . mix('js/main-menu.js', 'assets/build') }}"></script>
     <script>
         document.getElementById('mainmenu-button-continue').addEventListener('click', function() {

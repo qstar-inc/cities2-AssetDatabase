@@ -38,4 +38,4 @@
     </div>
     <div id="asset-quick-info-footer" class="asset-quick-info-footer round-border-bottom"></div>
 </div>
-<div id="tools-panel" class="tools-panel round-border">Delete Database and Restart</div>
+<div id="tools-panel" class="tools-panel round-border"></div>

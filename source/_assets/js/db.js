@@ -1,3 +1,5 @@
+const expiryTime = 24 * 60 * 60 * 100;
+
 let db;
 const indexedDB =
   window.indexedDB ||
@@ -6,7 +8,7 @@ const indexedDB =
   window.msIndexedDB ||
   window.shimIndexedDB;
 
-function initDB() {
+function initDB(bool = false) {
   const request = indexedDB.open("cities2-AssetDatabase");
   console.log("Starting InitDB");
   request.onerror = function (event) {
@@ -28,26 +30,31 @@ function initDB() {
       !db.objectStoreNames.contains("timeSince")
     ) {
       db.close();
-      let upgradeRequest = indexedDB.open(
-        "cities2-AssetDatabase",
-        currentVersion + 1
-      );
-      upgradeRequest.onupgradeneeded = function (event) {
-        db = event.target.result;
-        createDBs(db);
-      };
+      deleteIndexedDB();
+      createDBs(db);
+      // let upgradeRequest = indexedDB.open(
+      //   "cities2-AssetDatabase",
+      //   currentVersion + 1
+      // );
+      // upgradeRequest.onupgradeneeded = function (event) {
+      //   db = event.target.result;
+      //   createDBs(db);
+      // };
 
-      upgradeRequest.onsuccess = function (event) {
-        db = event.target.result;
-        console.log("Database upgraded successfully to version", db.version);
-      };
+      // upgradeRequest.onsuccess = function (event) {
+      //   db = event.target.result;
+      //   console.log("Database upgraded successfully to version", db.version);
+      // };
 
-      upgradeRequest.onerror = function (event) {
-        console.error("Error upgrading IndexedDB:", event.target.errorCode);
-      };
+      // upgradeRequest.onerror = function (event) {
+      //   console.error("Error upgrading IndexedDB:", event.target.errorCode);
+      // };
     }
-
-    getAssetGroupData();
+    if (bool == true) {
+      return true;
+    } else {
+      getAssetGroupData();
+    }
   };
 
   request.onupgradeneeded = function (event) {
@@ -161,9 +168,13 @@ function getAssetGroupData() {
     if (result.length === 0 || result.length === undefined) {
       fetchAssetGroupData();
     } else {
-      if (currentTime - timeSince < 60 * 60 * 100) {
+      if (typeof processAssetGroup !== "function") {
+        return;
+      }
+      if (currentTime - timeSince < expiryTime) {
         processAssetGroup(event.target.result);
       } else {
+        alert(`Expired: ${currentTime - timeSince}`);
         fetchAssetGroupData();
       }
     }
@@ -203,6 +214,7 @@ function addAssetTabData(groupedData) {
 }
 
 function getAssetTabData(name) {
+  console.log("GettingAssetTabData: " + name);
   let transaction = db.transaction(["assetTabData"], "readonly");
   let objectStore = transaction.objectStore("assetTabData");
 
@@ -233,9 +245,10 @@ function getAssetTabData(name) {
       if (result.length === 0 || result.length === undefined) {
         fetchAssetTabDataAll();
       } else {
-        if (currentTime - timeSince < 60 * 60 * 100) {
+        if (currentTime - timeSince < expiryTime) {
           processAssetTab(result);
         } else {
+          alert(`Expired: ${currentTime - timeSince}`);
           fetchAssetTabDataAll();
         }
       }
@@ -307,9 +320,10 @@ function getAssetPanelData(name) {
       if (result.length === 0 || result.length === undefined) {
         fetchAssetPanelDataAll();
       } else {
-        if (currentTime - timeSince < 60 * 60 * 100) {
+        if (currentTime - timeSince < expiryTime) {
           processAssetPanel(event.target.result);
         } else {
+          alert(`Expired: ${currentTime - timeSince}`);
           fetchAssetPanelDataAll();
         }
       }
@@ -350,31 +364,73 @@ function addAssetData(prefab, data) {
   getAssetData(prefab);
 }
 
+function addAssetDataAll(data) {
+  let transaction = db.transaction(["assetData"], "readwrite");
+  let transaction_t = db.transaction(["timeSince"], "readwrite");
+
+  transaction.oncomplete = function () {
+    // console.log(`Asset data saved`);
+  };
+
+  transaction.onerror = function (event) {
+    console.log("Transaction error:", event);
+  };
+  let objectStore = transaction.objectStore("assetData");
+  let objectStore_t = transaction_t.objectStore("timeSince");
+  data.forEach((asset) => {
+    objectStore.put({
+      name: asset.Name,
+      id: asset.PrefabID,
+      details: asset.Details,
+    });
+    objectStore_t.put({
+      name: `assetData-${asset.PrefabID}`,
+      time: new Date().getTime(),
+    });
+  });
+}
+
 function getAssetData(prefab) {
   let transaction = db.transaction(["assetData"], "readonly");
   let objectStore = transaction.objectStore("assetData");
+  if (prefab === undefined) {
+    let request = objectStore.getAll();
 
-  let request = objectStore.get(prefab);
+    request.onsuccess = async function (event) {
+      let result = event.target.result;
 
-  request.onsuccess = async function (event) {
-    let result = event.target.result;
-
-    if (!result) {
-      fetchAssetData(prefab);
-    } else {
-      let timeSince = await getTimeSince(`assetData-${prefab}`);
-      let currentTime = new Date().getTime();
-      if (currentTime - timeSince < 60 * 60 * 100) {
-        processAssetData(event.target.result);
-      } else {
-        fetchAssetData(prefab);
+      if (result.length === 0 || result === undefined) {
+        fetchAssetDataAll();
       }
-    }
-  };
+    };
 
-  request.onerror = function (event) {
-    console.log("Error retrieving data:", event);
-  };
+    request.onerror = function (event) {
+      console.log("Error retrieving data:", event);
+    };
+  } else {
+    let request = objectStore.get(prefab);
+
+    request.onsuccess = async function (event) {
+      let result = event.target.result;
+
+      if (!result) {
+        fetchAssetData(prefab);
+      } else {
+        let timeSince = await getTimeSince(`assetData-${prefab}`);
+        let currentTime = new Date().getTime();
+        if (currentTime - timeSince < expiryTime) {
+          processAssetData(event.target.result);
+        } else {
+          alert(`Expired: ${currentTime - timeSince}`);
+          fetchAssetData(prefab);
+        }
+      }
+    };
+
+    request.onerror = function (event) {
+      console.log("Error retrieving data:", event);
+    };
+  }
 }
 
 function getTimeSince(name) {
@@ -434,5 +490,6 @@ window.getAssetPanelData = getAssetPanelData;
 window.addAssetPanelData = addAssetPanelData;
 window.getAssetData = getAssetData;
 window.addAssetData = addAssetData;
+window.addAssetDataAll = addAssetDataAll;
 window.loadFile = loadFile;
 window.findValueInLines = findValueInLines;

@@ -1,58 +1,89 @@
+const assetGroups = {
+  "asset-group-1": "0d743b09aa1b82040bfb8a3acb2f18a3",
+  "asset-group-2": "78b77cd071c12434a934336e627b4683",
+};
+
+const BLUR_ON = "1vh";
+const BLUR_OFF = "0vh";
+
+const assetBar = document.querySelector(".asset-bar");
+const bottomBar = document.querySelector(".bottom-bar");
+const assetDetailsPaneContainer = document.querySelector(
+  ".asset-details-pane-container"
+);
 const api = document.getElementById("asset-panel-items");
 const apht = document.getElementById("asset-panel-header-tabs");
 const assetPanel = document.getElementById("asset-panel");
+const quickInfoDiv = document.getElementById("asset-quick-info");
+const quickInfoHeaderTitle = document.getElementById(
+  "asset-quick-info-header-title"
+);
+const quickInfoBodyImage = document.getElementById(
+  "asset-quick-info-body-image"
+);
+const quickInfoBodyDescription = document.getElementById(
+  "asset-quick-info-body-desc"
+);
+const gameBgElement = document.getElementById("game-bg");
+
 let isAssetPanelOpen = false;
+let isAssetPanelFlexed = false;
 
 $(document).ready(function () {
-  initDB();
+  initDB(false);
   loadFile();
 });
 
-const toolsPanel = document.getElementById("tools-panel");
-toolsPanel.addEventListener("click", function () {
-  deleteIndexedDB()
-    .then((message) => console.log(message))
-    .catch((error) => console.error(error));
-});
+// const toolsPanel = document.getElementById("tools-panel");
+// toolsPanel.addEventListener("click", function () {
+//   deleteIndexedDB()
+//     .then((message) => console.log(message))
+//     .catch((error) => console.error(error));
+// });
+
+function createButton(element) {
+  const button = document.createElement("button");
+  button.className = "asset-menu-icon";
+  button.setAttribute("data-name", element.name);
+  button.innerHTML = `<img src="${imageBasePath}/cities2/${element.icon}"/>`;
+  return button;
+}
 
 function processAssetGroup(data) {
   data.sort((a, b) => a.priority - b.priority);
-  groupNames = ["asset-group-1", "asset-group-2"];
-  groupNames.forEach((groupName) => {
-    const ag = document.getElementById(groupName);
-    ag.innerHTML = "";
+  Object.entries(assetGroups).forEach(([groupName, groupId]) => {
+    const groupElement = document.getElementById(groupName);
+    groupElement.innerHTML = "";
     data.forEach((element) => {
-      if (
-        (groupName == "asset-group-1" &&
-          element.group == "0d743b09aa1b82040bfb8a3acb2f18a3") ||
-        (groupName == "asset-group-2" &&
-          element.group == "78b77cd071c12434a934336e627b4683")
-      ) {
-        const button = document.createElement("button");
-        button.className = "asset-menu-icon";
-        button.setAttribute("data-name", element.name);
-        // button.setAttribute("data-guid", element.guid);
-        button.innerHTML = `<img src="${imageBasePath}/cities2/${element.icon}"/>`;
-        ag.appendChild(button);
+      if (element.group === groupId) {
+        const button = createButton(element);
+        groupElement.appendChild(button);
       }
     });
   });
   getAssetTabData();
   getAssetPanelData();
   addAssetBarIconTrigger();
+  getAssetData();
 }
 
 function addAssetBarIconTrigger() {
-  const assetIcons = document.querySelectorAll(".asset-menu-icon");
-  assetIcons.forEach(function (icon) {
-    icon.addEventListener("click", function () {
-      addBlur();
-      const name = this.dataset.name;
-      apht.innerHTML = "";
-      api.innerHTML = "";
-      assetPanel.style.display = "block";
-      addLoader(api);
-      getAssetTabData(name);
+  const assetGroupContainers = document.querySelectorAll("[id^=asset-group-]");
+  assetGroupContainers.forEach((assetContainer) => {
+    assetContainer.addEventListener("click", function (event) {
+      if (event.target.closest(".asset-menu-icon")) {
+        const icon = event.target.closest(".asset-menu-icon");
+        if (icon) {
+          toggleBlur(true);
+          const name = icon.dataset.name;
+          apht.innerHTML = "";
+          api.innerHTML = "";
+          assetPanel.classList.add("opened");
+          addLoader(api);
+
+          getAssetTabData(name);
+        }
+      }
     });
   });
 }
@@ -62,7 +93,10 @@ function processAssetTab(data) {
   if (data.length == 1) {
     element = data[0];
     const tab = document.createElement("div");
-    tab.className = "asset-panel-header-tab-single round-border-top active";
+    tab.className = "asset-panel-header-tab single round-border-top active";
+    if (isAssetPanelFlexed) {
+      tab.classList.add("flexed");
+    }
     tab.innerHTML = `<img src="${imageBasePath}/cities2/${element.icon}"/>`;
     apht.appendChild(tab);
     getAssetPanelData(element.id);
@@ -76,12 +110,15 @@ function processAssetTab(data) {
       }
       const tab = document.createElement("div");
       tab.className =
-        "asset-panel-header-tab-multiple round-border-top" + active;
+        "asset-panel-header-tab multiple round-border-top" + active;
+      if (isAssetPanelFlexed) {
+        tab.classList.add("flexed");
+      }
       tab.setAttribute("data-id", element.id);
       tab.innerHTML = `<img src="${imageBasePath}/cities2/${element.icon}"/>`;
       apht.appendChild(tab);
     });
-    const tabs = document.querySelectorAll(".asset-panel-header-tab-multiple");
+    const tabs = document.querySelectorAll(".asset-panel-header-tab.multiple");
     tabs.forEach((tab) => {
       tab.addEventListener("click", function () {
         tabs.forEach((t) => t.classList.remove("active"));
@@ -94,49 +131,53 @@ function processAssetTab(data) {
   }
 }
 
+function createAssetPanelItem(element) {
+  const item = document.createElement("div");
+  item.className = "asset-panel-item round-border";
+  if (isAssetPanelFlexed) {
+    item.classList.add("flexed");
+  }
+  item.dataset.prefab = element.prefab;
+
+  const itemDiv = document.createElement("div");
+  itemDiv.className = "asset-panel-item-inner";
+  const icon = element.icon
+    ? imageBasePath + "/cities2/" + decodeURIComponent(element.icon)
+    : ailFinder(element.name);
+  itemDiv.innerHTML = `<img src="${icon}"/>`;
+  item.appendChild(itemDiv);
+
+  item.addEventListener("mouseover", function () {
+    if (!isAssetPanelFlexed) {
+      quickInfoHeaderTitle.innerHTML = element.lang_name ?? "";
+      quickInfoBodyImage.innerHTML = `<img src="${icon}"/>`;
+      quickInfoBodyDescription.innerHTML = element.lang_desc ?? "";
+      quickInfoBodyDescription.innerHTML = quickInfoBodyDescription.innerHTML
+        .replace(/ \n/g, "<br>")
+        .replace(/\n/g, "<br>");
+      setDisplay(quickInfoDiv, "block");
+    }
+  });
+
+  item.addEventListener("mouseout", function () {
+    if (!isAssetPanelFlexed) {
+      setDisplay(quickInfoDiv, "none");
+    }
+  });
+
+  item.addEventListener("click", function () {
+    getAssetData(this.dataset.prefab);
+  });
+
+  return item;
+}
+
 function processAssetPanel(data) {
   data.sort((a, b) => a.priority - b.priority);
-  const quickInfoDiv = document.getElementById("asset-quick-info");
-  const quickInfoHeaderTitle = document.getElementById(
-    "asset-quick-info-header-title"
-  );
-  const quickInfoBodyImage = document.getElementById(
-    "asset-quick-info-body-image"
-  );
-  const quickInfoBodyDescription = document.getElementById(
-    "asset-quick-info-body-desc"
-  );
   api.innerHTML = "";
 
   data.forEach((element) => {
-    const item = document.createElement("div");
-    item.className = "asset-panel-item round-border";
-    const itemDiv = document.createElement("div");
-    item.dataset.prefab = element.prefab;
-    itemDiv.className = "asset-panel-item-inner";
-    if (element.icon == null || element.icon == "") {
-      var icon = ailFinder(element.name);
-    } else {
-      var icon = imageBasePath + "/cities2/" + decodeURIComponent(element.icon);
-    }
-    itemDiv.innerHTML = `<img src="${icon}"/>`;
-    item.addEventListener("mouseover", function () {
-      quickInfoHeaderTitle.innerHTML = element.lang_name;
-      quickInfoBodyImage.innerHTML = `<img src="${icon}"/>`;
-      quickInfoBodyDescription.innerHTML = element.lang_desc
-        .replace(/ \n/g, "<br>")
-        .replace(/\n/g, "<br>");
-      quickInfoDiv.style.display = "block";
-    });
-    item.addEventListener("mouseout", function () {
-      quickInfoDiv.style.display = "none";
-    });
-
-    item.addEventListener("click", function () {
-      getAssetData(this.dataset.prefab);
-    });
-
-    item.appendChild(itemDiv);
+    const item = createAssetPanelItem(element);
     api.appendChild(item);
   });
   api.scrollTo({
@@ -191,16 +232,15 @@ function processAssetData(data) {
   );
 
   assetDetailsPane.classList.add("open");
+  window.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && isAssetPanelOpen == true) {
+      processCloseDetailsPane(event);
+    }
+  });
   isAssetPanelOpen = true;
-  // assetDetailsPane.style.display = "block";
-  closeAssetPanel();
-  addBlur();
-  closeDetailsPane();
-}
-
-function loadAssets(name) {
-  console.log("loadAssets(" + name + ")");
-  // getAssetPanelData(name);
+  transformAssetPanel();
+  toggleBlur(true);
+  toggleDetailsPane();
 }
 
 function addLoader(div) {
@@ -213,76 +253,124 @@ function addLoader(div) {
   div.appendChild(loader);
 }
 
-function addBlur() {
-  const element = document.getElementById("game-bg");
-  element.style.filter = "blur(1vh)";
-}
-
-function removeBlur() {
-  const element = document.getElementById("game-bg");
-  element.style.filter = "blur(0vh)";
+function toggleBlur(shouldBlur) {
+  gameBgElement.style.filter = shouldBlur
+    ? `blur(${BLUR_ON})`
+    : `blur(${BLUR_OFF})`;
 }
 
 function closeAssetPanel() {
-  document.getElementById("asset-panel").style.display = "none";
-  removeBlur();
+  assetPanel.classList.remove("opened");
+  toggleBlur(false);
 }
 
-function processCloseDetailsPane(event) {
-  const assetBar = document.querySelector(".asset-bar");
-  const bottomBar = document.querySelector(".bottom-bar");
-  const assetDetailsPaneContainer = document.querySelector(
-    ".asset-details-pane-container"
+function transformAssetPanel() {
+  const assetPanelItem = document.querySelectorAll(".asset-panel-item");
+  const assetPanelItems = document.querySelectorAll(".asset-panel-items");
+  const assetPanelTab = document.querySelectorAll(".asset-panel-header-tab");
+  const closeButton = document.querySelectorAll(".asset-panel-header-close");
+  closeButton.forEach((item) => {
+    setDisplay(item, "none");
+  });
+  setDisplay(quickInfoDiv, "none");
+  assetPanel.classList.add("flexed");
+  assetPanelItem.forEach((item) => {
+    item.classList.add("flexed");
+  });
+  assetPanelItems.forEach((item) => {
+    item.classList.add("flexed");
+  });
+  assetPanelTab.forEach((item) => {
+    item.classList.add("flexed");
+  });
+  isAssetPanelFlexed = true;
+  bottomBar.classList.add("minimized");
+  assetBar.classList.add("minimized");
+  toggleBlur(false);
+  const assetBarChildren = document.querySelectorAll(
+    ".asset-bar.minimized > *"
   );
-  if (
-    event.target === assetBar ||
-    event.target === bottomBar ||
-    event.target === assetDetailsPaneContainer
-  ) {
-    document.getElementById("asset-details-pane").classList.remove("open");
-    removeBlur();
-    isAssetPanelOpen = false;
-    closeDetailsPane();
+  assetBarChildren.forEach((item) => {
+    if (!item.id.startsWith("asset-group-")) {
+      setDisplay(item, "none");
+    }
+  });
+}
+
+function revertAssetPanel() {
+  const assetPanelItem = document.querySelectorAll(".asset-panel-item");
+  const assetPanelItems = document.querySelectorAll(".asset-panel-items");
+  const assetPanelTab = document.querySelectorAll(".asset-panel-header-tab");
+  const closeButton = document.querySelectorAll(".asset-panel-header-close");
+  const assetBarChildren = document.querySelectorAll(
+    ".asset-bar.minimized > *"
+  );
+  assetBarChildren.forEach((item) => {
+    if (!item.id.startsWith("asset-group-")) {
+      setDisplay(item, "unset");
+    }
+  });
+  closeButton.forEach((item) => {
+    setDisplay(item, "flex");
+  });
+  assetPanel.classList.remove("flexed");
+  assetPanelItem.forEach((item) => {
+    item.classList.remove("flexed");
+  });
+  assetPanelItems.forEach((item) => {
+    item.classList.remove("flexed");
+  });
+  assetPanelTab.forEach((item) => {
+    item.classList.remove("flexed");
+  });
+  isAssetPanelFlexed = false;
+  bottomBar.classList.remove("minimized");
+  assetBar.classList.remove("minimized");
+  toggleBlur(true);
+}
+
+function setDisplay(x, y) {
+  if (x) {
+    x.style.display = y;
   }
 }
 
-function closeDetailsPane() {
-  const assetBar = document.querySelector(".asset-bar");
-  const bottomBar = document.querySelector(".bottom-bar");
+function processCloseDetailsPane(event) {
+  if (
+    event.target === assetBar ||
+    event.target === bottomBar ||
+    event.target === assetDetailsPaneContainer ||
+    event.key === "Escape"
+  ) {
+    document.getElementById("asset-details-pane").classList.remove("open");
+    toggleBlur(false);
+    isAssetPanelOpen = false;
+    toggleDetailsPane();
+    revertAssetPanel();
+  }
+}
+
+function toggleDetailsPane() {
   const assetDetailsPaneContainer = document.querySelector(
     ".asset-details-pane-container"
   );
+  window.removeEventListener("keydown", function (event) {
+    if (event.key === "Escape" && isAssetPanelOpen == true) {
+      toggleDetailsPane();
+    }
+  });
 
   if (!isAssetPanelOpen) {
-    assetBar.removeEventListener("click", processCloseDetailsPane);
-    bottomBar.removeEventListener("click", processCloseDetailsPane);
     assetDetailsPaneContainer.removeEventListener(
       "click",
       processCloseDetailsPane
     );
   } else {
-    assetBar.addEventListener("click", processCloseDetailsPane);
-    bottomBar.addEventListener("click", processCloseDetailsPane);
     assetDetailsPaneContainer.addEventListener(
       "click",
       processCloseDetailsPane
     );
   }
-
-  const toggleForBar = (bar) => {
-    if (bar) {
-      const children = bar.children;
-      const isBlurred = children[0].style.filter === "blur(1vh)";
-
-      for (let child of children) {
-        child.style.filter = isBlurred ? "none" : "blur(1vh)";
-        child.style.pointerEvents = isBlurred ? "auto" : "none";
-      }
-    }
-  };
-
-  toggleForBar(assetBar);
-  toggleForBar(bottomBar);
 }
 
 function ailFinder(name) {
@@ -297,7 +385,7 @@ function ailFinder(name) {
 }
 
 window.closeAssetPanel = closeAssetPanel;
-window.closeDetailsPane = closeDetailsPane;
+window.toggleDetailsPane = toggleDetailsPane;
 window.processAssetGroup = processAssetGroup;
 window.processAssetTab = processAssetTab;
 window.processAssetPanel = processAssetPanel;
