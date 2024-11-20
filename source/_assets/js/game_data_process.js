@@ -199,6 +199,46 @@ function processAssetPanelUIData(name, data, assetDetailsPaneBodyRightBoxes) {
         div.appendChild(header);
         div.appendChild(body);
         assetDetailsPaneBodyRightBoxes.appendChild(div);
+      } else if (key == "PoliceStation") {
+        const div = document.createElement("div");
+        const header = document.createElement("div");
+        const body = document.createElement("div");
+        div.dataset.name = getSl(key);
+        div.classList.add("asset-details-pane-body-right-box");
+        header.classList.add("asset-details-pane-body-right-box-header");
+        body.classList.add("asset-details-pane-body-right-box-body");
+        header.innerHTML = "PoliceStation";
+
+        value = removePrefix(value, "[");
+        value = removeSuffix(value, "]");
+        [patrol, helicopter, jail, purpose] = value.split(",");
+        let patrolText, helicopterText, jailText, purposeText;
+        if (patrol != 0) {
+          patrolText = `${patrol} ${pluralize("Police Car", patrol)}`;
+        }
+        if (helicopter != 0) {
+          helicopterText = `${helicopter} ${pluralize(
+            "Helicopter",
+            helicopter
+          )}`;
+        }
+        if (jail != 0) {
+          jailText = `${jail} Jail Capacity`;
+        }
+        if (purpose != 0) {
+          purposeText = `Purpose: ${getPolicePurposes(purpose)}`;
+        }
+
+        body.innerHTML = sanitizeArray([
+          patrolText,
+          helicopterText,
+          jailText,
+          purposeText,
+        ]);
+
+        div.appendChild(header);
+        div.appendChild(body);
+        assetDetailsPaneBodyRightBoxes.appendChild(div);
       } else if (key == "Pollution") {
         const div = document.createElement("div");
         const header = document.createElement("div");
@@ -697,6 +737,16 @@ function enumAllowedWaterTypes(id) {
 function enumWorkplaceComplexity(id) {
   data = ["Manual", "Simple", "Complex", "Hitech"];
   return data[id];
+}
+
+function getPolicePurposes(value) {
+  const PolicePurpose = {
+    Patrol: 1,
+    Emergency: 2,
+    Intelligence: 4,
+  };
+
+  return Object.keys(PolicePurpose).filter((key) => value & PolicePurpose[key]);
 }
 
 function removePrefix(str, prefix) {
