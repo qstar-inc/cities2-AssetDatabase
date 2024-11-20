@@ -50,6 +50,11 @@ function createButton(element) {
 }
 
 function processAssetGroup(data) {
+  data.forEach((x) => {
+    if (x.name === "Zones") {
+      x.priority = 10;
+    }
+  });
   data.sort((a, b) => a.priority - b.priority);
   Object.entries(assetGroups).forEach(([groupName, groupId]) => {
     const groupElement = document.getElementById(groupName);
@@ -57,6 +62,34 @@ function processAssetGroup(data) {
     data.forEach((element) => {
       if (element.group === groupId) {
         const button = createButton(element);
+
+        const tooltip = document.createElement("div");
+        tooltip.className = "asset-group-tooltip";
+
+        const tooltipHeader = document.createElement("div");
+        tooltipHeader.className = "asset-group-tooltip-header";
+        tooltipHeader.textContent = element.langTitle;
+        tooltip.appendChild(tooltipHeader);
+
+        const tooltipBody = document.createElement("div");
+        tooltipBody.className = "asset-group-tooltip-body";
+        tooltipBody.textContent = element.langDescription;
+        tooltip.appendChild(tooltipBody);
+
+        const arrow = document.createElement("div");
+        arrow.className = "asset-group-tooltip-arrow";
+        tooltip.appendChild(arrow);
+
+        button.appendChild(tooltip);
+
+        button.addEventListener("mouseover", () => {
+          tooltip.style.visibility = "visible";
+        });
+
+        button.addEventListener("mouseout", () => {
+          tooltip.style.visibility = "hidden";
+        });
+
         groupElement.appendChild(button);
       }
     });

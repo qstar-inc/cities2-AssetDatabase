@@ -1,4 +1,4 @@
-const expiryTime = 24 * 60 * 60 * 100;
+const expiryTime = 24 * 60 * 60 * 1000;
 
 let db;
 const indexedDB =
@@ -145,6 +145,8 @@ function addAssetGroupData(data) {
       icon: asset.icon,
       group: asset.group,
       priority: asset.priority,
+      langTitle: asset.LangTitle,
+      langDescription: asset.LangDescription,
     });
   });
 
@@ -174,7 +176,7 @@ function getAssetGroupData() {
       if (currentTime - timeSince < expiryTime) {
         processAssetGroup(event.target.result);
       } else {
-        alert(`Expired: ${currentTime - timeSince}`);
+        // alert(`Expired: ${currentTime - timeSince}`);
         fetchAssetGroupData();
       }
     }
@@ -248,7 +250,7 @@ function getAssetTabData(name) {
         if (currentTime - timeSince < expiryTime) {
           processAssetTab(result);
         } else {
-          alert(`Expired: ${currentTime - timeSince}`);
+          // alert(`Expired: ${currentTime - timeSince}`);
           fetchAssetTabDataAll();
         }
       }
@@ -323,7 +325,7 @@ function getAssetPanelData(name) {
         if (currentTime - timeSince < expiryTime) {
           processAssetPanel(event.target.result);
         } else {
-          alert(`Expired: ${currentTime - timeSince}`);
+          // alert(`Expired: ${currentTime - timeSince}`);
           fetchAssetPanelDataAll();
         }
       }
@@ -421,7 +423,7 @@ function getAssetData(prefab) {
         if (currentTime - timeSince < expiryTime) {
           processAssetData(event.target.result);
         } else {
-          alert(`Expired: ${currentTime - timeSince}`);
+          // alert(`Expired: ${currentTime - timeSince}`);
           fetchAssetData(prefab);
         }
       }

@@ -79,13 +79,50 @@
 
 .asset-bar.minimized > * {
   transition: all 0.5s ease;
-  gap: 3vw;
+  gap: 1vw;
 }
 
 .tools-panel {
   position: fixed;
   right: calc(100% - 31.35%);
   bottom: calc(100% - 88.33%);
+}
+
+.asset-group-tooltip {
+  background: #232528;
+  color: #fff;
+  text-align: left;
+  padding: 1.5vh;
+  border-radius: 0.5vh;
+  margin-bottom: 5.5vh;
+  max-width: 24vw;
+  position: absolute;
+  transform: translate(-50%, 0%);
+  bottom: 0;
+  z-index: 1000;
+  visibility: hidden;
+}
+
+.asset-group-tooltip-header {
+  text-transform: uppercase;
+  padding-bottom: 1vh;
+}
+
+.asset-group-tooltip-body {
+  font-size: 80%;
+}
+
+.asset-group-tooltip-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 6px 10px 0 10px;
+  border-color: #232528 transparent transparent transparent;
+  left: 50%;
+  bottom: -5px;
+  transform: translateX(41.5%);
+  z-index: 1000;
 }
 
 .asset-menu-group {
@@ -99,8 +136,8 @@
 }
 
 .asset-menu-icon:hover {
-  border-radius: 100vh;
-  background-color: rgba(32, 32, 32, 0.8);
+  border-radius: 120vh;
+  background-color: #555e5f;
 }
 
 .asset-menu-icon.active {
