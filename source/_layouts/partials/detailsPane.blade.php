@@ -2,7 +2,7 @@
     <div id="asset-details-pane" class="asset-details-pane">
         <div id="asset-details-pane-header" class="asset-details-pane-header round-border-top">
             <div id="asset-details-pane-header-title" class="asset-details-pane-header-title"></div>
-            <div class="asset-details-pane-header-close"><button onclick=closeDetailsPane()>×</button></div>
+            <div class="asset-details-pane-header-close"><button id="details-pane-x">×</button></div>
         </div>
         <div id="asset-details-pane-body" class="asset-details-pane-body">
             <div id="asset-details-pane-body-left" class="asset-details-pane-body-left">

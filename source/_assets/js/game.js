@@ -11,6 +11,8 @@ const bottomBar = document.querySelector(".bottom-bar");
 const assetDetailsPaneContainer = document.querySelector(
   ".asset-details-pane-container"
 );
+
+const assetDetailsPaneX = document.getElementById("details-pane-x");
 const api = document.getElementById("asset-panel-items");
 const apht = document.getElementById("asset-panel-header-tabs");
 const assetPanel = document.getElementById("asset-panel");
@@ -82,11 +84,16 @@ function processAssetGroup(data) {
 
         button.appendChild(tooltip);
 
+        let tooltipTimeout;
+
         button.addEventListener("mouseover", () => {
-          tooltip.style.visibility = "visible";
+          tooltipTimeout = setTimeout(() => {
+            tooltip.style.visibility = "visible";
+          }, 100);
         });
 
         button.addEventListener("mouseout", () => {
+          clearTimeout(tooltipTimeout);
           tooltip.style.visibility = "hidden";
         });
 
@@ -123,45 +130,69 @@ function addAssetBarIconTrigger() {
 
 function processAssetTab(data) {
   data.sort((a, b) => a.priority - b.priority);
-  if (data.length == 1) {
-    element = data[0];
+  // if (data.length == 1) {
+  //   element = data[0];
+  //   const tab = document.createElement("div");
+  //   tab.className = "asset-panel-header-tab single round-border-top active";
+  //   if (isAssetPanelFlexed) {
+  //     tab.classList.add("flexed");
+  //   }
+  //   tab.innerHTML = `<img src="${imageBasePath}/cities2/${element.icon}"/>`;
+  //   apht.appendChild(tab);
+  //   getAssetPanelData(element.id);
+  // } else {
+  data.forEach((element) => {
+    let className = "multiple";
+    if (data.length == 1) {
+      className = "single";
+    }
+    if (element == data[0]) {
+      var active = " active";
+      getAssetPanelData(data[0].id);
+    } else {
+      var active = "";
+    }
     const tab = document.createElement("div");
-    tab.className = "asset-panel-header-tab single round-border-top active";
+    tab.className = `asset-panel-header-tab ${className} round-border-top ${active}`;
     if (isAssetPanelFlexed) {
       tab.classList.add("flexed");
     }
-    tab.innerHTML = `<img src="${imageBasePath}/cities2/${element.icon}"/>`;
+    const imgSrc = `<img src="${imageBasePath}/cities2/${element.icon}"/>`;
+    tab.setAttribute("data-id", element.id);
+    tab.innerHTML = imgSrc;
+
+    tab.addEventListener("mouseover", function () {
+      if (!isAssetPanelFlexed) {
+        quickInfoHeaderTitle.innerHTML = element.langTitle ?? "";
+        quickInfoBodyImage.innerHTML = imgSrc;
+        quickInfoBodyDescription.innerHTML = element.langDescription ?? "";
+        quickInfoBodyDescription.innerHTML = quickInfoBodyDescription.innerHTML
+          .replace(/ \n/g, "<br>")
+          .replace(/\n/g, "<br>");
+        setDisplay(quickInfoDiv, "block");
+      }
+      tab.classList.add("hover");
+    });
+
+    tab.addEventListener("mouseout", function () {
+      if (!isAssetPanelFlexed) {
+        setDisplay(quickInfoDiv, "none");
+      }
+      tab.classList.remove("hover");
+    });
+
     apht.appendChild(tab);
-    getAssetPanelData(element.id);
-  } else {
-    data.forEach((element) => {
-      if (element == data[0]) {
-        var active = " active";
-        getAssetPanelData(data[0].id);
-      } else {
-        var active = "";
-      }
-      const tab = document.createElement("div");
-      tab.className =
-        "asset-panel-header-tab multiple round-border-top" + active;
-      if (isAssetPanelFlexed) {
-        tab.classList.add("flexed");
-      }
-      tab.setAttribute("data-id", element.id);
-      tab.innerHTML = `<img src="${imageBasePath}/cities2/${element.icon}"/>`;
-      apht.appendChild(tab);
+  });
+  const tabs = document.querySelectorAll(".asset-panel-header-tab.multiple");
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", function () {
+      tabs.forEach((t) => t.classList.remove("active"));
+      this.classList.add("active");
+      api.innerHTML = "";
+      addLoader(api);
+      getAssetPanelData(this.dataset.id);
     });
-    const tabs = document.querySelectorAll(".asset-panel-header-tab.multiple");
-    tabs.forEach((tab) => {
-      tab.addEventListener("click", function () {
-        tabs.forEach((t) => t.classList.remove("active"));
-        this.classList.add("active");
-        api.innerHTML = "";
-        addLoader(api);
-        getAssetPanelData(this.dataset.id);
-      });
-    });
-  }
+  });
 }
 
 function createAssetPanelItem(element) {
@@ -270,6 +301,11 @@ function processAssetData(data) {
       processCloseDetailsPane(event);
     }
   });
+  assetDetailsPaneX.addEventListener("click", function (event) {
+    if (isAssetPanelOpen == true) {
+      processCloseDetailsPane(event);
+    }
+  });
   isAssetPanelOpen = true;
   transformAssetPanel();
   toggleBlur(true);
@@ -369,10 +405,12 @@ function setDisplay(x, y) {
 }
 
 function processCloseDetailsPane(event) {
+  console.log(event);
   if (
     event.target === assetBar ||
     event.target === bottomBar ||
     event.target === assetDetailsPaneContainer ||
+    event.target === assetDetailsPaneX ||
     event.key === "Escape"
   ) {
     document.getElementById("asset-details-pane").classList.remove("open");
@@ -403,6 +441,7 @@ function toggleDetailsPane() {
       "click",
       processCloseDetailsPane
     );
+    assetDetailsPaneX.removeEventListener("click", processCloseDetailsPane);
   }
 }
 

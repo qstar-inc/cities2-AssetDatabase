@@ -72,6 +72,8 @@ function fetchAssetTabDataAll() {
           tab: asset.name,
           icon: asset.icon,
           priority: asset.priority,
+          langTitle: asset.LangTitle,
+          langDescription: asset.LangDescription,
         })),
       }));
 
