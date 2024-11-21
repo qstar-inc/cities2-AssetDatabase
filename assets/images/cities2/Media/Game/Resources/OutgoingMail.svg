@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="40" viewBox="0 0 40 40">
+  <defs>
+    <clipPath id="clip-OutgoingMail">
+      <rect width="40" height="40"/>
+    </clipPath>
+  </defs>
+  <g id="OutgoingMail" clip-path="url(#clip-OutgoingMail)">
+    <path id="Path_1407" data-name="Path 1407" d="M0,0H21V15H0Z" transform="translate(11.75 12.511)" fill="#b89975"/>
+    <path id="Path_1408" data-name="Path 1408" d="M187.832,444.8l10.359,7.507,10.616-7.407v-1.043l-20.975-.02Z" transform="translate(-176.057 -431.296)" fill="#a68f76"/>
+    <path id="Path_1409" data-name="Path 1409" d="M188,444.812l10.193,7.5,10.711-7.522Z" transform="translate(-176.176 -432.296)" fill="#c5aa8c"/>
+    <rect id="Rectangle_1377" data-name="Rectangle 1377" width="8" height="1" rx="0.5" transform="translate(8.25 17)" fill="#e2fcfe"/>
+    <rect id="Rectangle_1379" data-name="Rectangle 1379" width="12" height="1" rx="0.5" transform="translate(10.25 23)" fill="#e2fcfe"/>
+    <rect id="Rectangle_1378" data-name="Rectangle 1378" width="12" height="1" rx="0.5" transform="translate(7.25 20)" fill="#e2fcfe"/>
+  </g>
+</svg>

@@ -1,0 +1,1 @@
+window.u="aHR0cDovL2xvY2FsaG9zdDoxNTAvYXBpLw==",window.auth="ZUJImMyi0d7ycNC9Nnrixku9WM4nbWY9",window.random=function(o,n){return o=Math.ceil(o),n=Math.floor(n),Math.floor(Math.random()*(n-o+1))+o},window.clearCacheAndRedirect=function(){localStorage.clear(),window.location.href="/"};

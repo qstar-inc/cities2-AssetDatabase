@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="40" viewBox="0 0 40 40">
+  <defs>
+    <clipPath id="clip-Wood">
+      <rect width="40" height="40"/>
+    </clipPath>
+  </defs>
+  <g id="Wood" clip-path="url(#clip-Wood)">
+    <g id="ResourceWood" transform="translate(4.896 7.882)">
+      <path id="Path_531" data-name="Path 531" d="M6064.746-4809.282l-6.522,5.083-3.173,1.827-1.516-4.08-2.219,2.253v1.827l-7.625,4.5,4.909,11.008,6.45-4.762,9.7-5.875,5.1-2.466s1.276-4.156,0-6.485S6064.746-4809.282,6064.746-4809.282Z" transform="translate(-6040.056 4809.282)" fill="#884c1e"/>
+      <path id="Path_538" data-name="Path 538" d="M4.365.008C6.68-.057,8.485,2.624,8.4,6S6.36,12.153,4.045,12.218-.076,9.6.013,6.23,2.05.072,4.365.008Z" transform="translate(-0.163 12.831) rotate(-21)" fill="#b26528"/>
+      <path id="Path_779" data-name="Path 779" d="M3.378.006c1.788-.05,3.179,2.149,3.107,4.911S4.905,9.961,3.118,10.011-.061,7.863.01,5.1,1.59.056,3.378.006Z" transform="translate(1.064 13.652) rotate(-21)" fill="#e09458"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="StarQ">
+    <meta name="description" content="A complete asset database for Cities: Skylines II">
+    <meta name="keywords" content="citiesskylines2, cities-skylines-2, cs2, skylines2, cities2">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    <meta name="robots" content="index, follow">
+    <meta name="title" content="Work-In-Progress">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:description" content="A complete asset database for Cities: Skylines II" />
+    
+    <meta property="og:title" content="Work-In-Progress" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://qstar-inc.github.io/cities2-AssetDatabase" />
+    
+    <meta property="twitter:description" content="A complete asset database for Cities: Skylines II" />
+    
+    <meta property="twitter:title" content="Work-In-Progress" />
+    <meta property="twitter:url" content="https://qstar-inc.github.io/cities2-AssetDatabase" />
+    <title>Work-In-Progress</title>
+
+    <style>
+        @font-face {
+            font-family: "Overpass";
+            src: url("/cities2-AssetDatabase/assets/fonts/Overpass-VariableFont_wght.ttf") format("truetype");
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: "Overpass";
+            src: url("/cities2-AssetDatabase/assets/fonts/Overpass-Italic-VariableFont_wght.ttf") format("truetype");
+            font-weight: normal;
+            font-style: italic;
+        }
+    </style>
+    <link rel="stylesheet" href="/cities2-AssetDatabase/assets/build/css/main.css?id=55f80d3d27a1206751f8363b2e2757b8">
+    <link rel="stylesheet" href="/cities2-AssetDatabase/assets/build/css/splash.css?id=4c3772fd64ee7d8e7a1fd12ce8005517">
+    <link rel="stylesheet" href="/cities2-AssetDatabase/assets/build/css/main-menu.css?id=cb5947c14747397db1f92079ec77711b">
+        <link rel="stylesheet" href="/cities2-AssetDatabase/assets/build/css/game.css?id=0fdada2e5a86ac5efd671fd491da439d">
+    <link rel="stylesheet" href="/cities2-AssetDatabase/assets/build/css/lds-ripple.css?id=9cd8049bfd8f904bcc7094a3eb2b718d">
+</head>
+
+<body class="text-gray-900 font-sans antialiased">
+    <div id="splash-container">
+    <div id="splash-screen-1" class="splash-screen">
+        <div class="logo-container">
+            <img src="/cities2-AssetDatabase/assets/images/starq.svg" alt="StarQ" class="splash-logo">
+        </div>
+    </div>
+    <div id="splash-screen-2" class="splash-screen" style="display: none;">
+        <div class="logo-container">
+            <img src="/cities2-AssetDatabase/assets/images/cities2/GameLogo.svg" alt="Cities: Skylines II" class="splash-logo">
+        </div>
+    </div>
+    <div id="preloader-screen" class="splash-screen" style="display: none;">
+        <div class="preloader-container">
+            <img src="/cities2-AssetDatabase/assets/images/cities2/preloader.png" alt="Preloader" class="preloader-bg">
+        </div>
+        <div class="preloader-overlays">
+            <div class="preloader-logo-container">
+                <img class="preloader-logo drop-shadow" src="/cities2-AssetDatabase/assets/images/cities2/GameLogo.svg" alt="Cities: Skylines II">
+            </div>
+            <div class="drop-shadow preloader-loading-text-container"><span id="preloader-loading-text">LOADING...</span></div>
+            <div class="drop-shadow circle-container">
+                <svg class="loading-circle" viewBox="0 0 44 44">
+                    <path class="circle-bg outer-circle" d="M22 3a19 19 0 1 1 0 38a19 19 0 1 1 0-38" />
+                    <path class="circle circle-1" d="M22 3a19 19 0 1 1 0 38a19 19 0 1 1 0-38" />
+
+                    <path class="circle-bg middle-circle" d="M22 6a16 16 0 1 1 0 32a16 16 0 1 1 0-32" />
+                    <path class="circle circle-2" d="M22 6a16 16 0 1 1 0 32a16 16 0 1 1 0-32" />
+
+                    <path class="circle-bg inner-circle" d="M22 9a13 13 0 1 1 0 26a13 13 0 1 1 0-26" />
+                    <path class="circle circle-3" d="M22 9a13 13 0 1 1 0 26a13 13 0 1 1 0-26" />
+                </svg>
+            </div>
+            <div class="preloader-tips-container"><span id="preloader-tips-text">Tooltips</span></div>
+            <div class="preloader-skip-button-container drop-shadow" id="preloader-skip-button"><button class="preloader-skip-button">SKIP&nbsp;⏭</button></div>
+        </div>
+    </div>
+</div>
+    <div id="main-content" style="display:none">
+            <div class="game-bg-container">
+        <img id="game-bg" class="game-bg" src="" />
+    </div>
+    <div class="game-onscreen">
+        <div class="toolbar">
+            <div class="bottom-bar">
+    <div>Time Control</div>
+    <div>Speed Control</div>
+    <div>Temparature</div>
+    <div>City Name</div>
+    <div>Population</div>
+    <div>Money</div>
+    <div>Happiness</div>
+</div>
+<div class="asset-bar">
+    <div>Map Tiles</div>
+    <div>Milestone</div>
+    <div>Demand</div>
+    <div id="asset-group-1" class="asset-menu-group"></div>
+    <div id="asset-group-2" class="asset-menu-group"></div>
+    <div>Bulldozer</div>
+    <div>Budget</div>
+    <div>Transit</div>
+    <div>Economy</div>
+    <div>Underground</div>
+    <div>Camera</div>
+</div>
+<div id="asset-panel" class="asset-panel round-border">
+    <div class="asset-panel-header">
+        <div id="asset-panel-header-tabs" class="asset-panel-header-tabs"></div>
+        <div class="asset-panel-header-close"><button onclick=closeAssetPanel()>×</button></div>
+    </div>
+    <div id="asset-panel-items" class="asset-panel-items"></div>
+</div>
+<div id="asset-quick-info" class="asset-quick-info">
+    <div id="asset-quick-info-header" class="asset-quick-info-header round-border-top">
+        <div id="asset-quick-info-header-title" class="asset-quick-info-header-title"></div>
+        <div id="asset-quick-info-header-money" class="asset-quick-info-header-money"></div>
+    </div>
+    <div id="asset-quick-info-body" class="asset-quick-info-body round-border-bottom">
+        <div id="asset-quick-info-body-image" class="asset-quick-info-body-image round-border"></div>
+        <div id="asset-quick-info-body-desc" class="asset-quick-info-body-desc"></div>
+    </div>
+    
+</div>
+<div id="tools-panel" class="tools-panel round-border"></div>
+        </div>
+        <div class="top-icons">
+            <div class="left-icons"></div>
+            <div class="right-icons"></div>
+        </div>
+        <div class="chirper-icons"></div>
+        <div class="info-panel"></div>
+        <div class="details-pane">
+            <div id="asset-details-pane-container" class="asset-details-pane-container">
+    <div id="asset-details-pane" class="asset-details-pane">
+        <div id="asset-details-pane-header" class="asset-details-pane-header round-border-top">
+            <div id="asset-details-pane-header-title" class="asset-details-pane-header-title"></div>
+            <div class="asset-details-pane-header-close"><button id="details-pane-x">×</button></div>
+        </div>
+        <div id="asset-details-pane-body" class="asset-details-pane-body">
+            <div id="asset-details-pane-body-left" class="asset-details-pane-body-left">
+                <div id="asset-details-pane-image" class="asset-details-pane-image round-border"></div>
+                <div id="asset-details-pane-desc" class="asset-details-pane-desc round-border"></div>
+            </div>
+            <div id="asset-details-pane-body-right" class="asset-details-pane-body-right">
+                <div id="temp"></div>
+                <div id="asset-details-pane-body-right-boxes" class="asset-details-pane-body-right-boxes"></div>
+            </div>
+        </div>
+        <div id="asset-details-pane-footer" class="asset-details-pane-footer round-border-bottom"></div>
+    </div>
+</div>
+        </div>
+        <div class="pause-overlay"></div>
+    </div>
+    </div>
+
+    <!-- Jquery JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        const imageBasePath = "/cities2-AssetDatabase/assets/images";
+        const dataBasePath = "/cities2-AssetDatabase/assets/data";
+    </script>
+    <script defer src="/cities2-AssetDatabase/assets/build/js/main.js?id=db20f40ba97cb741ac684e662debc1b8"></script>
+    <script defer src="/cities2-AssetDatabase/assets/build/js/splash.js?id=f80c6148139214edfeaeb890cacb9143"></script>
+        <script defer src="/cities2-AssetDatabase/assets/build/js/backend.js?id=98841651389daf8e9eeebc3387e420a1"></script>
+    <script defer src="/cities2-AssetDatabase/assets/build/js/db.js?id=11e2c3bc280f027a9da8c6abf1f6d729"></script>
+    <script defer src="/cities2-AssetDatabase/assets/build/js/game_data_process.js?id=3af375fd9c0d837aa72251d66bb98ac9"></script>
+    <script defer src="/cities2-AssetDatabase/assets/build/js/game.js?id=b31c8d1386129e59d0185636dcb91483"></script>
+    <script>
+        document.getElementById('game-bg').src = '/cities2-AssetDatabase/assets/images/cities2/mainmenu.jpg';
+    </script>
+</body>
+
+</html>

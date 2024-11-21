@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="StarQ">
+    <meta name="description" content="A complete asset database for Cities: Skylines II">
+    <meta name="keywords" content="citiesskylines2, cities-skylines-2, cs2, skylines2, cities2">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    <meta name="robots" content="index, follow">
+    <meta name="title" content="Work-In-Progress">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:description" content="A complete asset database for Cities: Skylines II" />
+    
+    <meta property="og:title" content="Work-In-Progress" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://qstar-inc.github.io/cities2-AssetDatabase" />
+    
+    <meta property="twitter:description" content="A complete asset database for Cities: Skylines II" />
+    
+    <meta property="twitter:title" content="Work-In-Progress" />
+    <meta property="twitter:url" content="https://qstar-inc.github.io/cities2-AssetDatabase" />
+    <title>Work-In-Progress</title>
+
+    <style>
+        @font-face {
+            font-family: "Overpass";
+            src: url("/cities2-AssetDatabase/assets/fonts/Overpass-VariableFont_wght.ttf") format("truetype");
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: "Overpass";
+            src: url("/cities2-AssetDatabase/assets/fonts/Overpass-Italic-VariableFont_wght.ttf") format("truetype");
+            font-weight: normal;
+            font-style: italic;
+        }
+    </style>
+    <link rel="stylesheet" href="/cities2-AssetDatabase/assets/build/css/main.css?id=55f80d3d27a1206751f8363b2e2757b8">
+    <link rel="stylesheet" href="/cities2-AssetDatabase/assets/build/css/splash.css?id=4c3772fd64ee7d8e7a1fd12ce8005517">
+    <link rel="stylesheet" href="/cities2-AssetDatabase/assets/build/css/main-menu.css?id=cb5947c14747397db1f92079ec77711b">
+    </head>
+
+<body class="text-gray-900 font-sans antialiased">
+    <div id="splash-container">
+    <div id="splash-screen-1" class="splash-screen">
+        <div class="logo-container">
+            <img src="/cities2-AssetDatabase/assets/images/starq.svg" alt="StarQ" class="splash-logo">
+        </div>
+    </div>
+    <div id="splash-screen-2" class="splash-screen" style="display: none;">
+        <div class="logo-container">
+            <img src="/cities2-AssetDatabase/assets/images/cities2/GameLogo.svg" alt="Cities: Skylines II" class="splash-logo">
+        </div>
+    </div>
+    <div id="preloader-screen" class="splash-screen" style="display: none;">
+        <div class="preloader-container">
+            <img src="/cities2-AssetDatabase/assets/images/cities2/preloader.png" alt="Preloader" class="preloader-bg">
+        </div>
+        <div class="preloader-overlays">
+            <div class="preloader-logo-container">
+                <img class="preloader-logo drop-shadow" src="/cities2-AssetDatabase/assets/images/cities2/GameLogo.svg" alt="Cities: Skylines II">
+            </div>
+            <div class="drop-shadow preloader-loading-text-container"><span id="preloader-loading-text">LOADING...</span></div>
+            <div class="drop-shadow circle-container">
+                <svg class="loading-circle" viewBox="0 0 44 44">
+                    <path class="circle-bg outer-circle" d="M22 3a19 19 0 1 1 0 38a19 19 0 1 1 0-38" />
+                    <path class="circle circle-1" d="M22 3a19 19 0 1 1 0 38a19 19 0 1 1 0-38" />
+
+                    <path class="circle-bg middle-circle" d="M22 6a16 16 0 1 1 0 32a16 16 0 1 1 0-32" />
+                    <path class="circle circle-2" d="M22 6a16 16 0 1 1 0 32a16 16 0 1 1 0-32" />
+
+                    <path class="circle-bg inner-circle" d="M22 9a13 13 0 1 1 0 26a13 13 0 1 1 0-26" />
+                    <path class="circle circle-3" d="M22 9a13 13 0 1 1 0 26a13 13 0 1 1 0-26" />
+                </svg>
+            </div>
+            <div class="preloader-tips-container"><span id="preloader-tips-text">Tooltips</span></div>
+            <div class="preloader-skip-button-container drop-shadow" id="preloader-skip-button"><button class="preloader-skip-button">SKIP&nbsp;⏭</button></div>
+        </div>
+    </div>
+</div>
+    <div id="main-content" style="display:none">
+            <div id="main-menu" class="splash-screen" style="display: flex;">
+        <div>
+            <div class="mainmenu-container">
+                <img src="/cities2-AssetDatabase/assets/images/cities2/mainmenu.jpg" alt="Main Menu" class="mainmenu-bg">
+            </div>
+            <div class="mainmenu-layout">
+                <div class="drop-shadow mainmenu-logo-container">
+                    <img src="/cities2-AssetDatabase/assets/images/cities2/GameLogo.svg" alt="Cities: Skylines II" class="mainmenu-logo" />
+                </div>
+                <div class="mainmenu-center">
+                    <div class="mainmenu-start">
+                        <a id="mainmenu-button-1" class="mainmenu-start-button disabled-link round-border" href="game">
+                            <div class="mainmenu-start-icon"></div>
+                            <span class="mainmenu-start-text">Loading....</span>
+                        </a>
+                        <button id="mainmenu-button-continue" class="mainmenu-start-button round-border">
+                            <div class="mainmenu-start-icon"></div>
+                            <span class="mainmenu-start-text">Show Loading Screen</span>
+                        </button>
+                        <button class="mainmenu-start-button disabled-link round-border" disabled>
+                            <div class="mainmenu-start-icon"></div>
+                            <span class="mainmenu-start-text">Options (WIP)</span>
+                        </button>
+                        <button class="mainmenu-start-button disabled-link round-border" disabled>
+                            <div class="mainmenu-start-icon"></div>
+                            <span class="mainmenu-start-text">Legal (WIP)</span>
+                        </button>
+                        <button class="mainmenu-start-button disabled-link round-border" disabled>
+                            <div class="mainmenu-start-icon"></div>
+                            <span class="mainmenu-start-text">Credits (WIP)</span>
+                        </button>
+                        <button class="mainmenu-start-button round-border" onclick="window.close();">
+                            <div class="mainmenu-start-icon"></div>
+                            <span class="mainmenu-start-text">Exit</span>
+                        </button>
+                    </div>
+                    <div class="mainmenu-info">
+                        <div class="mainmenu-info-header round-border-top">
+                            <div class="mainmenu-info-header-text">WORK-IN-PROGRESS</div>
+                        </div>
+                    </div>
+                    <div class="mainmenu-notification round-border"></div>
+                </div>
+                <div class="mainmenu-version">0.0.0 (Nothing Works Edition)</div>
+                <button class="mainmenu-top-right">
+                    <img class="mainmenu-top-right-img" src="/cities2-AssetDatabase/assets/images/starq.svg" />
+                    <div class="mainmenu-top-right-text">
+                        StarQ
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Jquery JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        const imageBasePath = "/cities2-AssetDatabase/assets/images";
+        const dataBasePath = "/cities2-AssetDatabase/assets/data";
+    </script>
+    <script defer src="/cities2-AssetDatabase/assets/build/js/main.js?id=db20f40ba97cb741ac684e662debc1b8"></script>
+    <script defer src="/cities2-AssetDatabase/assets/build/js/splash.js?id=f80c6148139214edfeaeb890cacb9143"></script>
+        <script defer src="/cities2-AssetDatabase/assets/build/js/backend.js?id=98841651389daf8e9eeebc3387e420a1"></script>
+    <script defer src="/cities2-AssetDatabase/assets/build/js/db.js?id=11e2c3bc280f027a9da8c6abf1f6d729"></script>
+    <script defer src="/cities2-AssetDatabase/assets/build/js/main-menu.js?id=c1996c8cc426f32d15c62fee8d642ba1"></script>
+    <script>
+        document.getElementById('mainmenu-button-continue').addEventListener('click', function() {
+            skipSplash = true;
+            showNextSplash('main-content', 'preloader-screen', hideSplashScreens);
+        });
+    </script>
+</body>
+
+</html>

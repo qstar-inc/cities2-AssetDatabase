@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="128" height="128" viewBox="0 0 128 128">
+  <defs>
+    <filter id="Icon_awesome-power-off" x="10.831" y="13.119" width="106.338" height="107.763" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <clipPath id="clip-TurnedOff">
+      <rect width="128" height="128"/>
+    </clipPath>
+  </defs>
+  <g id="TurnedOff" clip-path="url(#clip-TurnedOff)">
+    <path id="Path_3220" data-name="Path 3220" d="M64,0A64,64,0,1,1,0,64,64,64,0,0,1,64,0Z" fill="#455763"/>
+    <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Icon_awesome-power-off)">
+      <path id="Icon_awesome-power-off-2" data-name="Icon awesome-power-off" d="M70.378,9.635a44.164,44.164,0,1,1-51.329.018,4.288,4.288,0,0,1,6.234,1.371l2.814,5a4.273,4.273,0,0,1-1.175,5.521,29.918,29.918,0,1,0,35.6-.018,4.249,4.249,0,0,1-1.158-5.5l2.814-5a4.269,4.269,0,0,1,6.2-1.389ZM51.856,47.019V4.274A4.264,4.264,0,0,0,47.581,0h-5.7a4.264,4.264,0,0,0-4.274,4.274V47.019a4.264,4.264,0,0,0,4.274,4.274h5.7A4.264,4.264,0,0,0,51.856,47.019Z" transform="translate(19.27 19.12)" fill="#fcaf42"/>
+    </g>
+  </g>
+</svg>

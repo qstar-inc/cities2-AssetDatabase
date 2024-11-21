@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 128 128" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g id="While-Building" serif:id="While Building" transform="matrix(0.976563,0,0,0.976563,1.5,1.5)">
+        <circle cx="64" cy="64" r="64" style="fill:rgb(255,184,14);"/>
+        <clipPath id="_clip1">
+            <circle cx="64" cy="64" r="64"/>
+        </clipPath>
+        <g clip-path="url(#_clip1)">
+            <g transform="matrix(2.26386,0,0,3.19604,-15.8877,-55.2576)">
+                <g id="ExceedsCityLimits">
+                    <g id="Layer24">
+                        <g>
+                            <g transform="matrix(0.888132,0,0,0.130115,-10.5712,37.1926)">
+                                <rect x="35.023" y="20.225" width="17.984" height="72.31" style="fill:white;"/>
+                            </g>
+                            <g transform="matrix(0.340587,0,0,0.354167,16.5917,16.4601)">
+                                <rect x="35.023" y="20.225" width="17.984" height="72.31" style="fill:white;"/>
+                            </g>
+                            <g transform="matrix(0.496503,0,0,0.227915,-0.578064,17.7113)">
+                                <rect x="67.244" y="38.958" width="23.229" height="55.825" style="fill:rgb(255,184,14);"/>
+                            </g>
+                            <g transform="matrix(0.5,0,0,0.393206,0.0102163,11.9637)">
+                                <rect x="67.244" y="38.958" width="23.229" height="55.825" style="fill:white;"/>
+                            </g>
+                            <g transform="matrix(0.245256,0,0,0.412654,24.0687,8.75285)">
+                                <rect x="86.352" y="81.286" width="24.974" height="16.811" style="fill:white;"/>
+                            </g>
+                            <g transform="matrix(0.645833,0,0,0.137175,13.8869,36.5393)">
+                                <rect x="35.023" y="20.225" width="17.984" height="72.31" style="fill:white;"/>
+                            </g>
+                            <g transform="matrix(0.340587,0,0,0.130115,12.2324,27.806)">
+                                <rect x="35.023" y="20.225" width="17.984" height="72.31" style="fill:rgb(255,184,14);"/>
+                            </g>
+                            <g transform="matrix(0.340587,0,0,0.24003,13.2324,26.2913)">
+                                <rect x="35.023" y="20.225" width="17.984" height="72.31" style="fill:white;"/>
+                            </g>
+                            <g transform="matrix(0.382941,0,0,0.301992,6.54359,16.5026)">
+                                <rect x="54.003" y="52.543" width="7.997" height="5.499" style="fill:rgb(255,184,14);"/>
+                            </g>
+                            <g transform="matrix(0.5,0,0,0.354167,-5.01705,7.77085)">
+                                <rect x="80.307" y="57.791" width="5.748" height="6.209" style="fill:rgb(255,184,14);"/>
+                            </g>
+                            <g transform="matrix(0.532837,0,0,0.27309,-15.5673,21.3623)">
+                                <rect x="80.307" y="49.086" width="5.748" height="6.081" style="fill:rgb(255,184,14);"/>
+                            </g>
+                            <g transform="matrix(0.335736,-0.170946,0.264011,0.260158,-4.48761,30.9113)">
+                                <rect x="4.261" y="69.974" width="115.093" height="7.6" style="fill:rgb(193,33,14);"/>
+                                <path d="M122.636,69.974C122.636,68.317 121.166,66.974 119.354,66.974L4.261,66.974C2.448,66.974 0.979,68.317 0.979,69.974L0.979,77.575C0.979,79.232 2.448,80.575 4.261,80.575L119.354,80.575C121.166,80.575 122.636,79.232 122.636,77.575L122.636,69.974ZM119.354,69.974L4.261,69.974L4.261,77.575L119.354,77.575L119.354,69.974Z" style="fill:rgb(255,184,14);"/>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
