@@ -60,3 +60,25 @@ img {
   border-bottom-left-radius: 1vh;
   border-bottom-right-radius: 1vh;
 }
+
+#hof {
+  color: antiquewhite;
+  position: absolute;
+  bottom: 10vh;
+  left: 3vw;
+  display: none;
+  transition: filter 1s, opacity 1s;
+  opacity: 1;
+}
+
+#hof-title {
+  font-size: 300%;
+}
+
+#hof-creator {
+  font-size: 200%;
+}
+
+#hof-creator::before {
+  content: "by ";
+}

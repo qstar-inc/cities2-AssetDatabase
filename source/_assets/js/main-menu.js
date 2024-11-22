@@ -1,46 +1,62 @@
-$(document).ready(function () {
-  db_found = initDB(true);
-  if (db_found) {
-    enableButtons();
-  } else {
-    fetch(atob(u) + "cities2_ad_ping", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        Authorization: auth,
-      }),
-    })
-      .then((response) => {
-        if (response.ok && response.status === 200) {
-          getAssetGroupData();
-          getAssetTabData();
-          getAssetPanelData();
-          getAssetData();
-          enableButtons();
-        } else {
-          sendNotification(1);
-        }
+const button1 = document.getElementById("mainmenu-button-1");
+const button1text = button1.querySelector(".mainmenu-start-text");
+
+let db_found = false;
+
+$(document).ready(async function () {
+  document.addEventListener("dbInitialized", () => {
+    const db_found = true;
+    if (db_found) {
+      enableButtons();
+    } else {
+      fetch(atob(u) + "cities2_ad_ping", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          Authorization: auth,
+        }),
       })
-      .catch((error) => {
-        sendNotification(2, error);
-      });
-  }
+        .then(async (response) => {
+          if (response.ok && response.status === 200) {
+            await getAssetGroupData();
+            getAssetTabData();
+            getAssetPanelData();
+            getAssetData();
+            enableButtons();
+          } else {
+            sendNotification(1);
+          }
+        })
+        .catch((error) => {
+          sendNotification(2, error);
+        });
+    }
+  });
+  await initDB(true);
 });
 
 function enableButtons() {
-  const button = document.getElementById("mainmenu-button-1");
-  button.classList.remove("disabled-link");
-  const span = button.querySelector(".mainmenu-start-text");
-  span.innerHTML = "Open Database";
+  button1.classList.remove("disabled-link");
+  button1text.innerHTML = "Open Database";
 }
 
 function sendNotification(val, error = null) {
-  if (val == 1) {
-    console.log("Server Disconnected");
+  let text = "";
+  switch (val) {
+    case 1:
+      text = "Server Disconnected...";
+      console.log("Server Disconnected");
+      break;
+    case 2:
+      text = "Database Offline...";
+      break;
+    default:
+      break;
   }
-  if (val == 2) {
+  if (error) {
     console.error("Error:", error);
   }
+  button1text.innerHTML = text;
 }

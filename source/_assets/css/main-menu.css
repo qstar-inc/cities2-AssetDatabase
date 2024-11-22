@@ -6,6 +6,8 @@
   right: 0;
   object-fit: cover;
   z-index: 798;
+  transition: filter 1s, opacity 0.5s;
+  opacity: 1;
 }
 
 .mainmenu-layout {

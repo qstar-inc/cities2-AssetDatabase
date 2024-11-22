@@ -1,26 +1,30 @@
-function fetchAssetGroupData() {
-  fetch(atob(u) + "cities2_get_data", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      Authorization: auth,
-      reqType: "asset-group-all",
-    }),
-  })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok " + response.statusText);
-      }
-      return response.json();
+async function fetchAssetGroupData() {
+  return new Promise((resolve, reject) => {
+    fetch(atob(u) + "cities2_get_data", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        Authorization: auth,
+        reqType: "asset-group-all",
+      }),
     })
-    .then((data) => {
-      addAssetGroupData(data.data);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok " + response.statusText);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        addAssetGroupData(data.data);
+        resolve();
+      })
+      .catch((error) => {
+        console.error(error);
+        reject();
+      });
+  });
 }
 
 // function fetchAssetTabData(name) {

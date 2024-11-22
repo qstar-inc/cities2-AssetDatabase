@@ -2,61 +2,37 @@ const pluralize = require("pluralize");
 
 function processAssetPanelUIData(name, data, assetDetailsPaneBodyRightBoxes) {
   const detailsArray = Object.entries(data);
+
+  let hasBuildingData = false;
+  let buildingData = {};
+
+  let hasTags = false;
+  let tags = [];
+  let resources = {};
+
   detailsArray.forEach(([key, value]) => {
     if (value != "null" && value != null) {
       if (key == "BuildingPrefab") {
-        const div = document.createElement("div");
-        const header = document.createElement("div");
-        const body = document.createElement("div");
-        div.dataset.name = getSl(key);
-        div.classList.add("asset-details-pane-body-right-box");
-        header.classList.add("asset-details-pane-body-right-box-header");
-        body.classList.add("asset-details-pane-body-right-box-body");
-        header.innerHTML = "Building Data";
+        hasBuildingData = true;
 
         value = removePrefix(value, "[");
         value = removeSuffix(value, "]");
         [access, lot_x, lot_y] = value.split(",");
-        accessText = `Access Type: ${enumBuildingAccessType(access)}`;
-        lotText = `Lot Size: ${lot_x}x${lot_y}`;
-        body.innerHTML = sanitizeArray([accessText, lotText]);
-        div.appendChild(header);
-        div.appendChild(body);
-        assetDetailsPaneBodyRightBoxes.appendChild(div);
+        buildingData.access = enumBuildingAccessType(access);
+        buildingData.lot_x = lot_x;
+        buildingData.lot_y = lot_y;
       } else if (key == "CityServiceBuilding") {
-        const div = document.createElement("div");
-        const header = document.createElement("div");
-        const body = document.createElement("div");
-        div.dataset.name = getSl(key);
-        div.classList.add("asset-details-pane-body-right-box");
-        header.classList.add("asset-details-pane-body-right-box-header");
-        body.classList.add("asset-details-pane-body-right-box-body");
-        header.innerHTML = "City Service Building";
-
-        data = JSON.parse(value);
-        if (data.length > 0 && data[0].length > 0) {
-          data.forEach((subData) => {
-            scale = "";
-            if (subData[2] == true) {
-              scale = " (Scales with Usage)";
-            }
-            body.innerHTML += `${subData[1]} ${pluralize(
-              enumResourceInEditor(subData[0]),
-              subData[1]
-            )} ${scale}<br/>`;
-          });
-        }
-        div.appendChild(header);
-        div.appendChild(body);
-        assetDetailsPaneBodyRightBoxes.appendChild(div);
+        hasTags = true;
+        tags.push("City Service Building");
+        resources.Consumable = JSON.parse(value);
       } else if (key == "Hospital") {
         const div = document.createElement("div");
         const header = document.createElement("div");
         const body = document.createElement("div");
         div.dataset.name = getSl(key);
-        div.classList.add("asset-details-pane-body-right-box");
-        header.classList.add("asset-details-pane-body-right-box-header");
-        body.classList.add("asset-details-pane-body-right-box-body");
+        div.classList.add("asset-details-pane-body-bottom-box");
+        header.classList.add("asset-details-pane-body-bottom-box-header");
+        body.classList.add("asset-details-pane-body-bottom-box-body");
         header.innerHTML = "Hospital";
 
         value = removePrefix(value, "[");
@@ -117,43 +93,15 @@ function processAssetPanelUIData(name, data, assetDetailsPaneBodyRightBoxes) {
         div.appendChild(body);
         assetDetailsPaneBodyRightBoxes.appendChild(div);
       } else if (key == "InitialResources") {
-        const div = document.createElement("div");
-        const header = document.createElement("div");
-        const body = document.createElement("div");
-        div.dataset.name = getSl(key);
-        div.classList.add("asset-details-pane-body-right-box");
-        header.classList.add("asset-details-pane-body-right-box-header");
-        body.classList.add("asset-details-pane-body-right-box-body");
-        header.innerHTML = "Initial Resources";
-
-        value = removePrefix(value, "[");
-        value = removeSuffix(value, "]");
-        const regexX = /\[(.+?),(.+?)\]/g; // [ ... , ... ]
-        const matches = value.matchAll(regexX);
-
-        function processInit(resource, amount) {
-          return `${amount} ${pluralize(
-            enumResourceInEditor(resource),
-            amount
-          )}`;
-        }
-
-        initArray = [];
-        for (const match of matches) {
-          initArray.push(processInit(match[1], match[2]));
-        }
-        body.innerHTML += sanitizeArray(initArray);
-        div.appendChild(header);
-        div.appendChild(body);
-        assetDetailsPaneBodyRightBoxes.appendChild(div);
+        resources.Initial = JSON.parse(value);
       } else if (key == "ObsoleteIdentifiers") {
         const div = document.createElement("div");
         const header = document.createElement("div");
         const body = document.createElement("div");
         div.dataset.name = getSl(key);
-        div.classList.add("asset-details-pane-body-right-box");
-        header.classList.add("asset-details-pane-body-right-box-header");
-        body.classList.add("asset-details-pane-body-right-box-body");
+        div.classList.add("asset-details-pane-body-bottom-box");
+        header.classList.add("asset-details-pane-body-bottom-box-header");
+        body.classList.add("asset-details-pane-body-bottom-box-body");
         header.innerHTML = "Obsolete Identifiers:";
 
         value = removePrefix(value, "[");
@@ -178,9 +126,9 @@ function processAssetPanelUIData(name, data, assetDetailsPaneBodyRightBoxes) {
         const header = document.createElement("div");
         const body = document.createElement("div");
         div.dataset.name = getSl(key);
-        div.classList.add("asset-details-pane-body-right-box");
-        header.classList.add("asset-details-pane-body-right-box-header");
-        body.classList.add("asset-details-pane-body-right-box-body");
+        div.classList.add("asset-details-pane-body-bottom-box");
+        header.classList.add("asset-details-pane-body-bottom-box-header");
+        body.classList.add("asset-details-pane-body-bottom-box-body");
         header.innerHTML = "Placeable Object";
 
         value = removePrefix(value, "[");
@@ -204,9 +152,9 @@ function processAssetPanelUIData(name, data, assetDetailsPaneBodyRightBoxes) {
         const header = document.createElement("div");
         const body = document.createElement("div");
         div.dataset.name = getSl(key);
-        div.classList.add("asset-details-pane-body-right-box");
-        header.classList.add("asset-details-pane-body-right-box-header");
-        body.classList.add("asset-details-pane-body-right-box-body");
+        div.classList.add("asset-details-pane-body-bottom-box");
+        header.classList.add("asset-details-pane-body-bottom-box-header");
+        body.classList.add("asset-details-pane-body-bottom-box-body");
         header.innerHTML = "PoliceStation";
 
         value = removePrefix(value, "[");
@@ -244,9 +192,9 @@ function processAssetPanelUIData(name, data, assetDetailsPaneBodyRightBoxes) {
         const header = document.createElement("div");
         const body = document.createElement("div");
         div.dataset.name = getSl(key);
-        div.classList.add("asset-details-pane-body-right-box");
-        header.classList.add("asset-details-pane-body-right-box-header");
-        body.classList.add("asset-details-pane-body-right-box-body");
+        div.classList.add("asset-details-pane-body-bottom-box");
+        header.classList.add("asset-details-pane-body-bottom-box-header");
+        body.classList.add("asset-details-pane-body-bottom-box-body");
         header.innerHTML = "Pollution";
 
         value = removePrefix(value, "[");
@@ -281,9 +229,9 @@ function processAssetPanelUIData(name, data, assetDetailsPaneBodyRightBoxes) {
         const header = document.createElement("div");
         const body = document.createElement("div");
         div.dataset.name = getSl(key);
-        div.classList.add("asset-details-pane-body-right-box");
-        header.classList.add("asset-details-pane-body-right-box-header");
-        body.classList.add("asset-details-pane-body-right-box-body");
+        div.classList.add("asset-details-pane-body-bottom-box");
+        header.classList.add("asset-details-pane-body-bottom-box-header");
+        body.classList.add("asset-details-pane-body-bottom-box-body");
         header.innerHTML = "Prison";
 
         value = removePrefix(value, "[");
@@ -318,9 +266,9 @@ function processAssetPanelUIData(name, data, assetDetailsPaneBodyRightBoxes) {
         const header = document.createElement("div");
         const body = document.createElement("div");
         div.dataset.name = getSl(key);
-        div.classList.add("asset-details-pane-body-right-box");
-        header.classList.add("asset-details-pane-body-right-box-header");
-        body.classList.add("asset-details-pane-body-right-box-body");
+        div.classList.add("asset-details-pane-body-bottom-box");
+        header.classList.add("asset-details-pane-body-bottom-box-header");
+        body.classList.add("asset-details-pane-body-bottom-box-body");
         header.innerHTML = "Resource Consumer";
 
         body.innerHTML = "";
@@ -333,9 +281,9 @@ function processAssetPanelUIData(name, data, assetDetailsPaneBodyRightBoxes) {
         const header = document.createElement("div");
         const body = document.createElement("div");
         div.dataset.name = getSl(key);
-        div.classList.add("asset-details-pane-body-right-box");
-        header.classList.add("asset-details-pane-body-right-box-header");
-        body.classList.add("asset-details-pane-body-right-box-body");
+        div.classList.add("asset-details-pane-body-bottom-box");
+        header.classList.add("asset-details-pane-body-bottom-box-header");
+        body.classList.add("asset-details-pane-body-bottom-box-body");
         header.innerHTML = "Service Consumption";
 
         value = removePrefix(value, "[");
@@ -374,9 +322,9 @@ function processAssetPanelUIData(name, data, assetDetailsPaneBodyRightBoxes) {
         const header = document.createElement("div");
         const body = document.createElement("div");
         div.dataset.name = getSl(key);
-        div.classList.add("asset-details-pane-body-right-box");
-        header.classList.add("asset-details-pane-body-right-box-header");
-        body.classList.add("asset-details-pane-body-right-box-body");
+        div.classList.add("asset-details-pane-body-bottom-box");
+        header.classList.add("asset-details-pane-body-bottom-box-header");
+        body.classList.add("asset-details-pane-body-bottom-box-body");
         header.innerHTML = "Service Coverage";
 
         value = removePrefix(value, "[");
@@ -407,9 +355,9 @@ function processAssetPanelUIData(name, data, assetDetailsPaneBodyRightBoxes) {
         const header = document.createElement("div");
         const body = document.createElement("div");
         div.dataset.name = getSl(key);
-        div.classList.add("asset-details-pane-body-right-box");
-        header.classList.add("asset-details-pane-body-right-box-header");
-        body.classList.add("asset-details-pane-body-right-box-body");
+        div.classList.add("asset-details-pane-body-bottom-box");
+        header.classList.add("asset-details-pane-body-bottom-box-header");
+        body.classList.add("asset-details-pane-body-bottom-box-body");
         header.innerHTML = "Service Fee Collector";
 
         body.innerHTML = "";
@@ -422,9 +370,9 @@ function processAssetPanelUIData(name, data, assetDetailsPaneBodyRightBoxes) {
         const header = document.createElement("div");
         const body = document.createElement("div");
         div.dataset.name = getSl(key);
-        div.classList.add("asset-details-pane-body-right-box");
-        header.classList.add("asset-details-pane-body-right-box-header");
-        body.classList.add("asset-details-pane-body-right-box-body");
+        div.classList.add("asset-details-pane-body-bottom-box");
+        header.classList.add("asset-details-pane-body-bottom-box-header");
+        body.classList.add("asset-details-pane-body-bottom-box-body");
         header.innerHTML = "Service Object";
 
         value = removePrefix(value, "[");
@@ -439,9 +387,9 @@ function processAssetPanelUIData(name, data, assetDetailsPaneBodyRightBoxes) {
         const header = document.createElement("div");
         const body = document.createElement("div");
         div.dataset.name = getSl(key);
-        div.classList.add("asset-details-pane-body-right-box");
-        header.classList.add("asset-details-pane-body-right-box-header");
-        body.classList.add("asset-details-pane-body-right-box-body");
+        div.classList.add("asset-details-pane-body-bottom-box");
+        header.classList.add("asset-details-pane-body-bottom-box-header");
+        body.classList.add("asset-details-pane-body-bottom-box-body");
         header.innerHTML = "Shoreline Object";
 
         value = removePrefix(value, "[");
@@ -465,9 +413,9 @@ function processAssetPanelUIData(name, data, assetDetailsPaneBodyRightBoxes) {
         const header = document.createElement("div");
         const body = document.createElement("div");
         div.dataset.name = getSl(key);
-        div.classList.add("asset-details-pane-body-right-box");
-        header.classList.add("asset-details-pane-body-right-box-header");
-        body.classList.add("asset-details-pane-body-right-box-body");
+        div.classList.add("asset-details-pane-body-bottom-box");
+        header.classList.add("asset-details-pane-body-bottom-box-header");
+        body.classList.add("asset-details-pane-body-bottom-box-body");
         header.innerHTML = "Signature Building";
 
         value = removePrefix(value, "[");
@@ -487,30 +435,15 @@ function processAssetPanelUIData(name, data, assetDetailsPaneBodyRightBoxes) {
         div.appendChild(body);
         assetDetailsPaneBodyRightBoxes.appendChild(div);
       } else if (key == "StorageLimit") {
-        const div = document.createElement("div");
-        const header = document.createElement("div");
-        const body = document.createElement("div");
-        div.dataset.name = getSl(key);
-        div.classList.add("asset-details-pane-body-right-box");
-        header.classList.add("asset-details-pane-body-right-box-header");
-        body.classList.add("asset-details-pane-body-right-box-body");
-        header.innerHTML = "Storage Limit";
-
-        value = removePrefix(value, "[");
-        value = removeSuffix(value, "]");
-        body.innerHTML = `${value} units`;
-
-        div.appendChild(header);
-        div.appendChild(body);
-        assetDetailsPaneBodyRightBoxes.appendChild(div);
+        resources.Storage = JSON.parse(value);
       } else if (key == "ThemeObject") {
         const div = document.createElement("div");
         const header = document.createElement("div");
         const body = document.createElement("div");
         div.dataset.name = getSl(key);
-        div.classList.add("asset-details-pane-body-right-box");
-        header.classList.add("asset-details-pane-body-right-box-header");
-        body.classList.add("asset-details-pane-body-right-box-body");
+        div.classList.add("asset-details-pane-body-bottom-box");
+        header.classList.add("asset-details-pane-body-bottom-box-header");
+        body.classList.add("asset-details-pane-body-bottom-box-body");
         header.innerHTML = "Theme Object";
 
         value = removePrefix(value, "[");
@@ -525,9 +458,9 @@ function processAssetPanelUIData(name, data, assetDetailsPaneBodyRightBoxes) {
         const header = document.createElement("div");
         const body = document.createElement("div");
         div.dataset.name = getSl(key);
-        div.classList.add("asset-details-pane-body-right-box");
-        header.classList.add("asset-details-pane-body-right-box-header");
-        body.classList.add("asset-details-pane-body-right-box-body");
+        div.classList.add("asset-details-pane-body-bottom-box");
+        header.classList.add("asset-details-pane-body-bottom-box-header");
+        body.classList.add("asset-details-pane-body-bottom-box-body");
         header.innerHTML = "Unlock Requirements";
 
         value = removePrefix(value, "[");
@@ -563,9 +496,9 @@ function processAssetPanelUIData(name, data, assetDetailsPaneBodyRightBoxes) {
         const header = document.createElement("div");
         const body = document.createElement("div");
         div.dataset.name = getSl(key);
-        div.classList.add("asset-details-pane-body-right-box");
-        header.classList.add("asset-details-pane-body-right-box-header");
-        body.classList.add("asset-details-pane-body-right-box-body");
+        div.classList.add("asset-details-pane-body-bottom-box");
+        header.classList.add("asset-details-pane-body-bottom-box-header");
+        body.classList.add("asset-details-pane-body-bottom-box-body");
         header.innerHTML = "Water Pumping Station";
 
         value = removePrefix(value, "[");
@@ -594,9 +527,9 @@ function processAssetPanelUIData(name, data, assetDetailsPaneBodyRightBoxes) {
         const header = document.createElement("div");
         const body = document.createElement("div");
         div.dataset.name = getSl(key);
-        div.classList.add("asset-details-pane-body-right-box");
-        header.classList.add("asset-details-pane-body-right-box-header");
-        body.classList.add("asset-details-pane-body-right-box-body");
+        div.classList.add("asset-details-pane-body-bottom-box");
+        header.classList.add("asset-details-pane-body-bottom-box-header");
+        body.classList.add("asset-details-pane-body-bottom-box-body");
         header.innerHTML = "Workplace";
 
         value = removePrefix(value, "[");
@@ -641,9 +574,122 @@ function processAssetPanelUIData(name, data, assetDetailsPaneBodyRightBoxes) {
       }
     }
   });
-  const divs = Array.from(assetDetailsPaneBodyRightBoxes.children);
-  divs.sort((a, b) => a.dataset.name.localeCompare(b.dataset.name));
-  divs.forEach((div) => assetDetailsPaneBodyRightBoxes.appendChild(div));
+  if (hasBuildingData) {
+    const div = document.createElement("div");
+    if (buildingData.lot_x && buildingData.lot_y) {
+      div.innerHTML += `Width: ${buildingData.lot_x}`;
+      div.innerHTML += `<br/>Depth: ${buildingData.lot_y}`;
+    }
+    if (buildingData.access) {
+      div.innerHTML += `<br/>Access: ${buildingData.access}`;
+    }
+    assetDetailsPaneBodyRightBoxes.appendChild(div);
+  }
+  if (hasTags) {
+    const div = document.createElement("div");
+    tags.forEach((tag) => {
+      const tagElement = document.createElement("span");
+      tagElement.className = "asset-tag";
+      tagElement.textContent = tag;
+      div.appendChild(tagElement);
+    });
+    assetDetailsPaneBodyRightBoxes.appendChild(div);
+  }
+
+  if (resources) {
+    let serviceUsageArray = [];
+    let hasResourceUsage = false;
+
+    if (
+      resources.Initial &&
+      resources.Initial.length > 0 &&
+      resources.Initial[0].length > 0
+    ) {
+      hasResourceUsage = true;
+      resources.Initial.forEach((subData) => {
+        serviceUsageArray.push([subData[0], subData[1], "Initial"]);
+      });
+    }
+
+    if (
+      resources.Consumable &&
+      resources.Consumable.length > 0 &&
+      resources.Consumable[0].length > 0
+    ) {
+      hasResourceUsage = true;
+      resources.Consumable.forEach((subData) => {
+        let resType = "Non-scalable Consumable";
+        if (subData[2] == true) {
+          resType = "Scalable Consumable";
+        }
+        serviceUsageArray.push([subData[0], subData[1], resType]);
+      });
+    }
+
+    if (resources.Storage && resources.Storage.length > 0) {
+      hasResourceUsage = true;
+      resources.Storage.forEach((subData) => {
+        serviceUsageArray.push(["Any", subData, "Storage Limit"]);
+      });
+    }
+
+    if (hasResourceUsage) {
+      const div = document.createElement("div");
+      const span = document.createElement("span");
+      span.innerHTML = "Resource Usage:<br/>";
+      div.appendChild(span);
+      div.appendChild(createResourceUseTable(serviceUsageArray));
+      assetDetailsPaneBodyRightBoxes.appendChild(div);
+    }
+  }
+  // const divs = Array.from(assetDetailsPaneBodyRightBoxes.children);
+  // divs.sort((a, b) => a.dataset.name.localeCompare(b.dataset.name));
+  // divs.forEach((div) => assetDetailsPaneBodyRightBoxes.appendChild(div));
+}
+
+function processResource(subData) {
+  scale = "";
+  if (subData[2] == true) {
+    scale = "<br/>(Scales with Usage)";
+  }
+  return `${subData[1]} ${pluralize(
+    enumResourceInEditor(subData[0]),
+    subData[1]
+  )} ${scale}`;
+}
+
+function createResourceUseTable(resourceData) {
+  const mainDiv = document.createElement("div");
+  mainDiv.classList.add("resource-use-table");
+  resourceData.forEach((resource) => {
+    // const div = document.createElement("div");
+    const divIcon = document.createElement("div");
+    const divRes = document.createElement("div");
+    const divAmount = document.createElement("div");
+    const divType = document.createElement("div");
+
+    if (resource[0] === "Any") {
+      divRes.innerHTML = "Anything";
+    } else {
+      divRes.innerHTML = enumResourceInEditor(resource[0]);
+    }
+
+    if (resource[0] === "Any" || resource[2] === "Initial") {
+      divIcon.classList.add("storage");
+      divRes.classList.add("storage");
+      divAmount.classList.add("storage");
+      divType.classList.add("storage");
+    }
+    divAmount.innerHTML = resource[1];
+    divType.innerHTML = resource[2];
+
+    mainDiv.appendChild(divIcon);
+    mainDiv.appendChild(divRes);
+    mainDiv.appendChild(divAmount);
+    mainDiv.appendChild(divType);
+    // mainDiv.appendChild(div);
+  });
+  return mainDiv;
 }
 
 function floatToPercent(value) {
@@ -717,14 +763,14 @@ function enumResourceInEditor(id) {
 
 function enumBuildingAccessType(id) {
   data = [
-    "Front",
-    "LeftCorner",
-    "RightCorner",
-    "LeftAndRightCorner",
-    "LeftAndBackCorner",
-    "RightAndBackCorner",
-    "FrontAndBack",
-    "All",
+    "Front only",
+    "Left Corner only",
+    "Right Corner only",
+    "Left And Right Corners only",
+    "Left And Back Corners only",
+    "Right And Back Corners only",
+    "Front And Back only",
+    "Everywhere",
   ];
   return data[id];
 }

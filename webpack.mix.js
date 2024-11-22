@@ -8,11 +8,12 @@ mix
   .jigsaw()
   .js("source/_assets/js/backend.js", "js")
   .js("source/_assets/js/db.js", "js")
-  .js("source/_assets/js/main.js", "js")
-  .js("source/_assets/js/splash.js", "js")
-  .js("source/_assets/js/main-menu.js", "js")
   .js("source/_assets/js/game.js", "js")
   .js("source/_assets/js/game_data_process.js", "js")
+  .js("source/_assets/js/hall-of-fame.js", "js")
+  .js("source/_assets/js/main.js", "js")
+  .js("source/_assets/js/main-menu.js", "js")
+  .js("source/_assets/js/splash.js", "js")
   .css("source/_assets/css/main.css", "css", [
     require("postcss-import"),
     require("tailwindcss"),

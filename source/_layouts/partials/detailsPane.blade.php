@@ -5,13 +5,13 @@
             <div class="asset-details-pane-header-close"><button id="details-pane-x">×</button></div>
         </div>
         <div id="asset-details-pane-body" class="asset-details-pane-body">
-            <div id="asset-details-pane-body-left" class="asset-details-pane-body-left">
+            <div id="asset-details-pane-body-top" class="asset-details-pane-body-top">
                 <div id="asset-details-pane-image" class="asset-details-pane-image round-border"></div>
                 <div id="asset-details-pane-desc" class="asset-details-pane-desc round-border"></div>
             </div>
-            <div id="asset-details-pane-body-right" class="asset-details-pane-body-right">
+            <div id="asset-details-pane-body-bottom" class="asset-details-pane-body-bottom">
                 <div id="temp"></div>
-                <div id="asset-details-pane-body-right-boxes" class="asset-details-pane-body-right-boxes"></div>
+                <div id="asset-details-pane-body-bottom-boxes" class="asset-details-pane-body-bottom-boxes"></div>
             </div>
         </div>
         <div id="asset-details-pane-footer" class="asset-details-pane-footer round-border-bottom"></div>

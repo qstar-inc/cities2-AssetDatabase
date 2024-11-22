@@ -31,8 +31,8 @@ const gameBgElement = document.getElementById("game-bg");
 let isAssetPanelOpen = false;
 let isAssetPanelFlexed = false;
 
-$(document).ready(function () {
-  initDB(false);
+$(document).ready(async function () {
+  await initDB(false);
   loadFile();
 });
 
@@ -286,7 +286,7 @@ function processAssetData(data) {
   const temp = document.getElementById("temp");
   temp.innerHTML = "";
   const assetDetailsPaneBodyRightBoxes = document.getElementById(
-    "asset-details-pane-body-right-boxes"
+    "asset-details-pane-body-bottom-boxes"
   );
   assetDetailsPaneBodyRightBoxes.innerHTML = "";
   processAssetPanelUIData(
@@ -326,6 +326,7 @@ function toggleBlur(shouldBlur) {
   gameBgElement.style.filter = shouldBlur
     ? `blur(${BLUR_ON})`
     : `blur(${BLUR_OFF})`;
+  hof.style.filter = shouldBlur ? `blur(${BLUR_ON})` : `blur(${BLUR_OFF})`;
 }
 
 function closeAssetPanel() {

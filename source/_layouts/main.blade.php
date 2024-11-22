@@ -59,6 +59,7 @@
     </script>
     <script defer src="{{ $page->repo . mix('js/main.js', 'assets/build') }}"></script>
     <script defer src="{{ $page->repo . mix('js/splash.js', 'assets/build') }}"></script>
+    <script defer src="{{ $page->repo . mix('js/hall-of-fame.js', 'assets/build') }}"></script>
     @yield('js')
 </body>
 

@@ -7,6 +7,7 @@
                 <img src="{{ $page->images }}/cities2/mainmenu.jpg" alt="Main Menu" class="mainmenu-bg">
             </div>
             <div class="mainmenu-layout">
+                @include('_layouts.partials.hof')
                 <div class="drop-shadow mainmenu-logo-container">
                     <img src="{{ $page->images }}/cities2/GameLogo.svg" alt="Cities: Skylines II" class="mainmenu-logo" />
                 </div>

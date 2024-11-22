@@ -10,6 +10,7 @@
         <img id="game-bg" class="game-bg" src="" />
     </div>
     <div class="game-onscreen">
+        @include('_layouts.partials.hof')
         <div class="toolbar">
             @include('_layouts.partials.toolbar')
         </div>

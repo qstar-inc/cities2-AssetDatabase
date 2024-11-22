@@ -8,7 +8,7 @@ const indexedDB =
   window.msIndexedDB ||
   window.shimIndexedDB;
 
-function initDB(bool = false) {
+async function initDB(bool = fals) {
   const request = indexedDB.open("cities2-AssetDatabase");
   console.log("Starting InitDB");
   request.onerror = function (event) {
@@ -18,7 +18,7 @@ function initDB(bool = false) {
     );
   };
 
-  request.onsuccess = function (event) {
+  request.onsuccess = async function (event) {
     db = event.target.result;
     console.log("IndexedDB opened successfully");
     currentVersion = db.version;
@@ -50,10 +50,16 @@ function initDB(bool = false) {
       //   console.error("Error upgrading IndexedDB:", event.target.errorCode);
       // };
     }
-    if (bool == true) {
-      return true;
+    let hasEntry = await checkAssetGroupData();
+    if (!hasEntry) {
+      await getAssetGroupData();
+      hasEntry = await checkAssetGroupData();
+    }
+    if (hasEntry && bool) {
+      const customEvent = new Event("dbInitialized");
+      document.dispatchEvent(customEvent);
     } else {
-      getAssetGroupData();
+      await getAssetGroupData();
     }
   };
 
@@ -127,7 +133,7 @@ function createDBs(db) {
   }
 }
 
-function addAssetGroupData(data) {
+async function addAssetGroupData(data) {
   let transaction = db.transaction(["assetGroupData"], "readwrite");
   let transaction_t = db.transaction(["timeSince"], "readwrite");
 
@@ -153,38 +159,67 @@ function addAssetGroupData(data) {
   let objectStore_t = transaction_t.objectStore("timeSince");
   objectStore_t.put({ name: "assetGroupData", time: new Date().getTime() });
 
-  getAssetGroupData();
+  await getAssetGroupData();
 }
 
-function getAssetGroupData() {
-  let transaction = db.transaction(["assetGroupData"], "readonly");
-  let objectStore = transaction.objectStore("assetGroupData");
+function checkAssetGroupData() {
+  return new Promise((resolve, reject) => {
+    let transaction = db.transaction(["assetGroupData"], "readonly");
+    let objectStore = transaction.objectStore("assetGroupData");
 
-  let request = objectStore.getAll();
+    let request = objectStore.getAll();
 
-  request.onsuccess = async function (event) {
-    let timeSince = await getTimeSince("assetGroupData");
-    let currentTime = new Date().getTime();
-    let result = event.target.result;
+    request.onsuccess = async function (event) {
+      let result = event.target.result;
+      if (result.length === 0 || result.length === undefined) {
+        resolve(false);
+      }
+      resolve(true);
+    };
 
-    if (result.length === 0 || result.length === undefined) {
-      fetchAssetGroupData();
-    } else {
-      if (typeof processAssetGroup !== "function") {
+    request.onerror = function (event) {
+      console.log("Error retrieving data:", event);
+      reject(event);
+    };
+  });
+}
+
+async function getAssetGroupData() {
+  return new Promise((resolve, reject) => {
+    let transaction = db.transaction(["assetGroupData"], "readonly");
+    let objectStore = transaction.objectStore("assetGroupData");
+
+    let request = objectStore.getAll();
+
+    request.onsuccess = async function (event) {
+      let timeSince = await getTimeSince("assetGroupData");
+      let currentTime = new Date().getTime();
+      let result = event.target.result;
+
+      if (result.length === 0 || result.length === undefined) {
+        await fetchAssetGroupData();
+        resolve();
         return;
-      }
-      if (currentTime - timeSince < expiryTime) {
-        processAssetGroup(event.target.result);
       } else {
-        // alert(`Expired: ${currentTime - timeSince}`);
-        fetchAssetGroupData();
+        if (typeof processAssetGroup !== "function") {
+          resolve();
+          return;
+        }
+        if (currentTime - timeSince < expiryTime) {
+          processAssetGroup(event.target.result);
+        } else {
+          // alert(`Expired: ${currentTime - timeSince}`);
+          await fetchAssetGroupData();
+        }
+        resolve();
       }
-    }
-  };
+    };
 
-  request.onerror = function (event) {
-    console.log("Error retrieving data:", event);
-  };
+    request.onerror = function (event) {
+      console.log("Error retrieving data:", event);
+      reject(event);
+    };
+  });
 }
 
 function addAssetTabData(groupedData) {
@@ -484,6 +519,7 @@ function deleteIndexedDB() {
 window.db = db;
 window.initDB = initDB;
 window.addAssetGroupData = addAssetGroupData;
+window.checkAssetGroupData = checkAssetGroupData;
 window.getAssetGroupData = getAssetGroupData;
 window.deleteIndexedDB = deleteIndexedDB;
 window.getAssetTabData = getAssetTabData;
