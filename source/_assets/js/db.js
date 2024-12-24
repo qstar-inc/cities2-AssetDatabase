@@ -74,7 +74,7 @@ async function loadFile() {
   try {
     const response = await fetch(dataBasePath + "/ail_list.txt");
     const text = await response.text();
-    lines = text.split("\n");
+    lines = text.split("\n").map(line => line.trim());
     console.log("AIL list loaded and stored in memory");
   } catch (error) {
     console.error("Error reading AIL list:", error);
@@ -84,10 +84,34 @@ async function loadFile() {
 function findValueInLines(value) {
   if (!lines.length) {
     console.error("File is not loaded yet!");
-    return false;
+    return null;
   }
 
-  return lines.some((line) => line.includes(value));
+  const getNameWithoutExtension = (line) => {
+    return line.substring(0, line.lastIndexOf(".")) || line;
+  };
+
+  const inWhiteFolder = lines.find(line => {
+    const nameWithoutExtension = getNameWithoutExtension(line);
+    return nameWithoutExtension === "White\\"+value && line.startsWith("White\\");
+  });
+
+  if (inWhiteFolder) {
+    return inWhiteFolder;
+  }
+
+  const inRoot = lines.find(line => {
+    const nameWithoutExtension = getNameWithoutExtension(line);
+    return nameWithoutExtension === value;
+  });
+
+  if (inRoot) {
+    return inRoot;
+  }
+
+  return null;
+
+  // return lines.some((line) => line.includes(value));
 }
 
 function createDBs(db) {
@@ -260,7 +284,6 @@ function getAssetTabData(name) {
 
     request.onsuccess = async function (event) {
       let result = event.target.result;
-
       if (result.length === 0 || result === undefined) {
         fetchAssetTabDataAll();
       }

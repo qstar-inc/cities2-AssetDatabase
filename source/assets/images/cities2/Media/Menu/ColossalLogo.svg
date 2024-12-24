@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="502" height="497" viewBox="0 0 502 497">
+    <rect width="502" height="497" fill="#01aef0"/>
+    <path d="M90.93,140.57H288.52v53.49H147.43l-.33,126H288.52v53.5H90.93Z" transform="translate(-55 -99.31)" fill="#fff"/>
+    <path d="M321.32,140.57H518.91v233H321.32Zm56.18,53.49.16,126h85.08v-126Z" transform="translate(-55 -99.31)" fill="#fff"/>
+    <path d="M88.69,384.2h46.77v12.95H102.07L102,427.67h33.47v12.95H88.69Z" transform="translate(-55 -99.31)" fill="#fff"/>
+    <path d="M143.23,384.2H190v56.42H143.23Zm13.29,12.95v30.52H176.7V397.15Z" transform="translate(-55 -99.31)" fill="#fff"/>
+    <path d="M197.72,384.2H211v43.54h33.51v13H197.72Z" transform="translate(-55 -99.31)" fill="#fff"/>
+    <path d="M252.41,384.2h46.76v56.42H252.41Zm13.29,12.95v30.52h20.14V397.15Z" transform="translate(-55 -99.31)" fill="#fff"/>
+    <path d="M306.94,384.2h46.69l.08,12.95H320.24V406h33.47v34.67H306.94v-13h33.47v-8.83H306.94Z" transform="translate(-55 -99.31)" fill="#fff"/>
+    <path d="M361.47,384.2h46.69l.08,12.95H374.77V406h33.47v34.67H361.47v-13h33.47v-8.83H361.47Z" transform="translate(-55 -99.31)" fill="#fff"/>
+    <path d="M416,384.2h46.77v56.42H449.44V429.76H429.26v10.86H416Zm13.3,12.95v19.66h20.18V397.15Z" transform="translate(-55 -99.31)" fill="#fff"/>
+    <path d="M470.61,384.2h13.3v43.54h33.51v13H470.61Z" transform="translate(-55 -99.31)" fill="#fff"/>
+    <path d="M89.18,449.2H164.7v97.55H89.18Zm21.47,22.4.06,52.75h32.52V471.6Z" transform="translate(-55 -99.31)" fill="#fff"/>
+    <path d="M177.1,449.2h75.52v59.94H229.47l23.15,24.21v13.4H231.15l-32.58-34.24v34.24H177.1Zm21.47,22.4v15.21h32.58V471.6Z" transform="translate(-55 -99.31)" fill="#fff"/>
+    <path d="M265.21,449.2h58.33l17.19,17.93v61.69l-17.19,17.93H265.21Zm21.47,22.4v52.75h32.58V471.6Z" transform="translate(-55 -99.31)" fill="#fff"/>
+    <path d="M353.45,449.2H429v22.4H375v15.21h36v22.33H375.79l-.13,15.21H429v22.4H353.45Z" transform="translate(-55 -99.31)" fill="#fff"/>
+    <path d="M441.62,449.2h75.51v59.94H494l23.14,24.21v13.4H495.67l-32.58-34.24v34.24H441.62Zm21.47,22.4v15.21h32.58V471.6Z" transform="translate(-55 -99.31)" fill="#fff"/>
+</svg>

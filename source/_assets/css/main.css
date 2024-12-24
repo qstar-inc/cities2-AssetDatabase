@@ -12,6 +12,13 @@
   --dark-blackish-color: rgba(49, 49, 49, 0.8);
   --vanilla-blue-accent-light: #4bc3f1;
   --vanilla-blue-accent-dark: #1e83aa;
+  --orange: rgb(232, 123, 57); /*rgb(255, 204, 110);*/
+  --grey: #373737;
+  --brown: #502f2f;
+  --green: #2a572a;
+  --dark-blue: #114255;
+  --almost-black: #00000069;
+  --dark-purple: #4e009b;
 }
 
 body {
@@ -20,6 +27,7 @@ body {
 
 body > * {
   font-family: var(--fontFamily);
+  font-size: 2vh;
 }
 
 .box-shadow {
@@ -45,20 +53,6 @@ img {
 .disabled-link {
   pointer-events: none;
   text-decoration: none;
-}
-
-.round-border {
-  border-radius: 1vh;
-}
-
-.round-border-top {
-  border-top-left-radius: 1vh;
-  border-top-right-radius: 1vh;
-}
-
-.round-border-bottom {
-  border-bottom-left-radius: 1vh;
-  border-bottom-right-radius: 1vh;
 }
 
 #hof {

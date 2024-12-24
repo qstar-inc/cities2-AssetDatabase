@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <clipPath id="clip-SmallRoundabout109">
+      <rect width="64" height="64"/>
+    </clipPath>
+  </defs>
+  <g id="SmallRoundabout109" clip-path="url(#clip-SmallRoundabout109)">
+    <path id="Path_1137" data-name="Path 1137" d="M11.149,0C17.306.006,22.3,3.446,22.3,7.686s-4.989,7.676-11.146,7.674S0,11.918,0,7.678,4.992,0,11.149,0Z" transform="matrix(0.998, -0.07, 0.07, 0.998, 20.414, 25.6)" fill="#595959"/>
+    <path id="Path_1136" data-name="Path 1136" d="M11.149,0C17.306.006,22.3,3.446,22.3,7.686s-4.989,7.676-11.146,7.674S0,11.918,0,7.678,4.992,0,11.149,0Z" transform="matrix(0.998, -0.07, 0.07, 0.998, 20.414, 23.893)" fill="#777874"/>
+    <ellipse id="Ellipse_457" data-name="Ellipse 457" cx="9.436" cy="5.975" rx="9.436" ry="5.975" transform="matrix(0.998, -0.07, 0.07, 0.998, 22.219, 25.433)" fill="#c8ab8a"/>
+    <g id="Group_2708" data-name="Group 2708" transform="translate(-8.237 46.624)">
+      <ellipse id="Ellipse_885" data-name="Ellipse 885" cx="6" cy="5" rx="6" ry="5" transform="translate(34.237 -24.624)" fill="#54b60b"/>
+      <ellipse id="Ellipse_886" data-name="Ellipse 886" cx="4.5" cy="5" rx="4.5" ry="5" transform="translate(33.237 -26.624)" fill="#54b60b"/>
+      <path id="Path_3565" data-name="Path 3565" d="M5,0a4.751,4.751,0,0,1,5,4.449c0,2.457-2.241,4.224-5,4.224S0,6.906,0,4.449A4.751,4.751,0,0,1,5,0Z" transform="translate(35.214 -25.665)" fill="#79dd2c"/>
+      <ellipse id="Ellipse_887" data-name="Ellipse 887" cx="4.5" cy="4" rx="4.5" ry="4" transform="translate(33.237 -26.624)" fill="#79dd2c"/>
+      <circle id="Ellipse_883" data-name="Ellipse 883" cx="2.5" cy="2.5" r="2.5" transform="translate(42.237 -23.624)" fill="#54b60b"/>
+      <ellipse id="Ellipse_888" data-name="Ellipse 888" cx="6" cy="5" rx="6" ry="5" transform="translate(34.237 -29.624)" fill="#79dd2c"/>
+      <ellipse id="Ellipse_889" data-name="Ellipse 889" cx="2.5" cy="2" rx="2.5" ry="2" transform="translate(41.237 -24.624)" fill="#79dd2c"/>
+    </g>
+  </g>
+</svg>

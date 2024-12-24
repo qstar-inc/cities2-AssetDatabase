@@ -1,0 +1,37 @@
+.round-border {
+  border-radius: 1vh;
+}
+
+.round-border-top {
+  border-top-left-radius: 1vh;
+  border-top-right-radius: 1vh;
+}
+
+.round-border-bottom {
+  border-bottom-left-radius: 1vh;
+  border-bottom-right-radius: 1vh;
+}
+
+.round-border-top-left {
+  border-top-left-radius: 1vh;
+}
+
+.round-border-bottom-left {
+  border-bottom-left-radius: 1vh;
+}
+
+.round-border-top-right {
+  border-top-right-radius: 1vh;
+}
+
+.round-border-bottom-right {
+  border-bottom-right-radius: 1vh;
+}
+
+.allcaps {
+  text-transform: uppercase;
+}
+
+.smalltext {
+  font-size: 80%;
+}

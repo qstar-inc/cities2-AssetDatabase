@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="40" viewBox="0 0 40 40">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36" height="36" viewBox="0 0 36 36">
   <defs>
     <clipPath id="clip-Minerals">
-      <rect width="40" height="40"/>
+      <rect width="36" height="36"/>
     </clipPath>
   </defs>
   <g id="Minerals" clip-path="url(#clip-Minerals)">
-    <g id="ResourceMinerals" transform="translate(4.813 9.03)">
+    <g id="ResourceMinerals" transform="translate(2.813 7.03)">
       <g id="Group_207" data-name="Group 207" transform="translate(0 0)">
         <path id="Path_543" data-name="Path 543" d="M6173.854-5578.73l-4.787-10.393,6.2-9.577,10.086-1.363,5.438,10.94-5.438,10.393Z" transform="translate(-6164.43 5600.063)" fill="#09b099"/>
         <path id="Path_544" data-name="Path 544" d="M6175.7-5588.5l-2.925-5.634,2.925-5.931h6.419l3.5,5.931-3.5,5.634Z" transform="translate(-6155.243 5610.439)" fill="#31d7c0"/>

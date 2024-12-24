@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="40" viewBox="0 0 40 40">
+  <defs>
+    <clipPath id="clip-CityIndoors">
+      <rect width="40" height="40"/>
+    </clipPath>
+  </defs>
+  <g id="CityIndoors" clip-path="url(#clip-CityIndoors)">
+    <path id="Path_760" data-name="Path 760" d="M-10008-10481.777l17.855,11.426,14.908-11.426-18.214-9.223Z" transform="translate(10011.559 10506.961)" fill="#a1886c"/>
+    <path id="Path_3595" data-name="Path 3595" d="M-1222.382-437.438s.393,9.2,0,10.02,14.76-8.876,14.76-8.876v-9.794Z" transform="translate(1225.94 452.285)" fill="#dbd1c6"/>
+    <path id="Path_3596" data-name="Path 3596" d="M-1207.652-441.77l18.165,8.6v10.407l-18.165-9.179Z" transform="translate(1225.936 448)" fill="#f9f2ea"/>
+    <path id="Path_3597" data-name="Path 3597" d="M-1217.051-431.721c.453-.113,5.612-3.174,5.612-3.174v5.385l-5.612,3.344Z" transform="translate(1226 446)" fill="#8f9fae"/>
+    <path id="Path_3598" data-name="Path 3598" d="M-1202.2-427.073v-8.163l5.272,2.551v8.333Z" transform="translate(1226 446)" fill="#926f6f"/>
+  </g>
+</svg>

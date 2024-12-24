@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="40" viewBox="0 0 40 40">
+  <defs>
+    <clipPath id="clip-Travel">
+      <rect width="40" height="40"/>
+    </clipPath>
+  </defs>
+  <g id="Travel" clip-path="url(#clip-Travel)">
+    <rect id="Rectangle_4548" data-name="Rectangle 4548" width="28" height="18" rx="3" transform="translate(6 14)" fill="#8ed6db"/>
+    <g id="Rectangle_4549" data-name="Rectangle 4549" transform="translate(15 10)" fill="none" stroke="#8ed6db" stroke-width="2">
+      <rect width="10" height="7" rx="2" stroke="none"/>
+      <rect x="1" y="1" width="8" height="5" rx="1" fill="none"/>
+    </g>
+    <rect id="Rectangle_4550" data-name="Rectangle 4550" width="3" height="18" transform="translate(10 14)" fill="#a18585"/>
+    <rect id="Rectangle_4551" data-name="Rectangle 4551" width="3" height="18" transform="translate(27 14)" fill="#a18585"/>
+  </g>
+</svg>

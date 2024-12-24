@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="40" viewBox="0 0 40 40">
+  <defs>
+    <clipPath id="clip-SIghtseeing">
+      <rect width="40" height="40"/>
+    </clipPath>
+  </defs>
+  <g id="SIghtseeing" clip-path="url(#clip-SIghtseeing)">
+    <g id="Component_3" data-name="Component 3" transform="translate(8.682 9.593)">
+      <path id="Path_280" data-name="Path 280" d="M.84,0H3.781a.953.953,0,0,1,.84,1.035V3.1a.953.953,0,0,1-.84,1.035H.84A.953.953,0,0,1,0,3.1V1.035A.953.953,0,0,1,.84,0Z" transform="translate(2.814)" fill="#585a59"/>
+      <path id="Path_383" data-name="Path 383" d="M2.475,0h17.29c2.965,0,2.6,2.92,2.6,6.522v5.435c0,3.6.365,6.522-2.6,6.522H2.475C-.49,18.478,0,15.558,0,11.956V6.522C0,2.92-.49,0,2.475,0Z" transform="translate(0.257 2.335)" fill="#768b8f"/>
+      <rect id="Rectangle_860" data-name="Rectangle 860" width="22.412" height="11.641" transform="translate(0.224 6.205)" fill="#3e4244"/>
+      <circle id="Ellipse_164" data-name="Ellipse 164" cx="5.821" cy="5.821" r="5.821" transform="translate(5.821 6.205)"/>
+      <path id="Ellipse_164_-_Outline" data-name="Ellipse 164 - Outline" d="M5.821,2A3.821,3.821,0,1,0,9.641,5.821,3.825,3.825,0,0,0,5.821,2m0-2A5.821,5.821,0,1,1,0,5.821,5.821,5.821,0,0,1,5.821,0Z" transform="translate(5.821 6.205)" fill="#bcdede"/>
+      <g id="Ellipse_167" data-name="Ellipse 167" transform="translate(8.731 12.026)" fill="#83b7eb" stroke="#334565" stroke-width="1">
+        <ellipse cx="2.91" rx="2.91" stroke="none"/>
+        <ellipse cx="2.91" rx="2.41" ry="0.5" fill="none"/>
+      </g>
+    </g>
+  </g>
+</svg>

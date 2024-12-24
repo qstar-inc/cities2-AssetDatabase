@@ -108,7 +108,7 @@ function fetchAssetPanelDataAll() {
         panelData: element.panelData.map((asset) => {
           const uiObject = asset.UIObject;
           const matches = uiObject.match(/\[(.*?)\]/);
-          const values =
+          const uiVal =
             matches && matches[1]
               ? matches[1].split(",").map((value) => value.trim())
               : [];
@@ -116,10 +116,10 @@ function fetchAssetPanelDataAll() {
             id: `${element.tabName}___${asset.Name}`,
             tab: element.tabName,
             name: asset.Name,
-            icon: values[3],
+            icon: uiVal[2],
             lang_name: asset.lang_name,
             lang_desc: asset.lang_desc,
-            priority: values[2],
+            priority: uiVal[1],
             prefab: asset.PrefabID,
           };
         }),

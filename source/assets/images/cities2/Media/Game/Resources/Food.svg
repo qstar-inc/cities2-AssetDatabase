@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="40" viewBox="0 0 40 40">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36" height="36" viewBox="0 0 36 36">
   <defs>
     <clipPath id="clip-Food">
-      <rect width="40" height="40"/>
+      <rect width="36" height="36"/>
     </clipPath>
   </defs>
   <g id="Food" clip-path="url(#clip-Food)">
-    <g id="Group_2481" data-name="Group 2481" transform="translate(0.674 -0.491)">
+    <g id="Group_2481" data-name="Group 2481" transform="translate(-1.326 -2.491)">
       <path id="Path_2930" data-name="Path 2930" d="M0,13.284S.539,6.167,2.318,3.8s4.795,0,4.795,0S10.476,0,12.787,0s2.344,2.847,3.57,3.8,3.19-2.372,5.141,0,2.664,9.488,2.664,9.488Z" transform="matrix(1, -0.017, 0.017, 1, 7.742, 9.42)" fill="#6dc11a"/>
       <path id="Path_2931" data-name="Path 2931" d="M-939.41-199.646A11.868,11.868,0,0,1-936.342-205c2.228-1.948,3-2.435,5.844-2.435s4.146.487,5.528,2.435,0,5.357,0,5.357Z" transform="translate(956.38 220.677)" fill="#e75520"/>
       <rect id="Rectangle_4252" data-name="Rectangle 4252" width="7.644" height="17.2" rx="3.822" transform="translate(3.651 10.577) rotate(-34)" fill="#ecbe66"/>

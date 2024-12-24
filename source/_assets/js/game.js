@@ -205,9 +205,10 @@ function createAssetPanelItem(element) {
 
   const itemDiv = document.createElement("div");
   itemDiv.className = "asset-panel-item-inner";
-  const icon = element.icon
-    ? imageBasePath + "/cities2/" + decodeURIComponent(element.icon)
-    : ailFinder(element.name);
+  var icon = iconDecider(element.name, element.icon);
+  // const icon = element.icon
+  //   ? imageBasePath + "/cities2/" + decodeURIComponent(element.icon)
+  //   : ailFinder(element.name);
   itemDiv.innerHTML = `<img src="${icon}"/>`;
   item.appendChild(itemDiv);
 
@@ -258,11 +259,12 @@ function processAssetData(data) {
   const assetDetailsPaneImage = document.getElementById(
     "asset-details-pane-image"
   );
-  const assetDetailsPaneDesc = document.getElementById(
-    "asset-details-pane-desc"
+  const assetDetailsPaneDescText = document.getElementById(
+    "asset-details-pane-desc-text"
   );
+  const tagContainer = document.getElementById("tag-container");
+  const notifContainer = document.getElementById("notif-container");
 
-  addLoader(assetDetailsPaneDesc);
   let uiObject = data.details.UIObject;
   const uiObjectMatches = uiObject.match(/\[(.*?)\]/);
   const uiObjectValues =
@@ -271,29 +273,29 @@ function processAssetData(data) {
           .split(",")
           .map((uiObjectValues) => uiObjectValues.trim())
       : [];
-  if (uiObjectValues[3] == null || uiObjectValues[3] == "") {
-    var icon = ailFinder(data.name);
-  } else {
-    var icon = imageBasePath + "/cities2/" + decodeURIComponent(data.Name);
-  }
+  var icon = iconDecider(data.name, uiObjectValues[2]);
 
   assetDetailsPaneHeaderTitle.innerHTML = data.details.Lang_Title ?? "";
   assetDetailsPaneImage.innerHTML = `<img src="${icon}"/>`;
-  assetDetailsPaneDesc.innerHTML =
+  assetDetailsPaneDescText.innerHTML =
     data.details.Lang_Description ??
     "".replace(/ \n/g, "<br>").replace(/\n/g, "<br>");
 
   const temp = document.getElementById("temp");
   temp.innerHTML = "";
-  const assetDetailsPaneBodyRightBoxes = document.getElementById(
+  const adpbrb = document.getElementById(
     "asset-details-pane-body-bottom-boxes"
   );
-  assetDetailsPaneBodyRightBoxes.innerHTML = "";
-  processAssetPanelUIData(
-    data.name,
-    data.details,
-    assetDetailsPaneBodyRightBoxes
-  );
+  adpbrb.innerHTML = "";
+  tagContainer.innerHTML = "";
+  notifContainer.innerHTML = "";
+
+  processAssetPanelUIData(data.name, data.details, [
+    adpbrb,
+    tagContainer,
+    notifContainer,
+    temp,
+  ]);
 
   assetDetailsPane.classList.add("open");
   window.addEventListener("keydown", function (event) {
@@ -406,7 +408,6 @@ function setDisplay(x, y) {
 }
 
 function processCloseDetailsPane(event) {
-  console.log(event);
   if (
     event.target === assetBar ||
     event.target === bottomBar ||
@@ -446,13 +447,14 @@ function toggleDetailsPane() {
   }
 }
 
-function ailFinder(name) {
-  if (findValueInLines(`${name}.png`)) {
-    var icon = `https://raw.githubusercontent.com/JadHajjar/AssetIconLibrary-CSII/master/AssetIconLibrary/Thumbnails/${name}.png`;
-  } else if (findValueInLines(`${name}.svg`)) {
-    var icon = `https://raw.githubusercontent.com/JadHajjar/AssetIconLibrary-CSII/master/AssetIconLibrary/Thumbnails/${name}.svg`;
+function iconDecider(name, ogicon) {
+  var icon = findValueInLines(name)
+  if (icon != null) {
+    icon = `https://raw.githubusercontent.com/JadHajjar/AssetIconLibrary-CSII/master/AssetIconLibrary/Thumbnails/${icon}`;
+  } else if (icon == null && ogicon != undefined) {
+    icon = imageBasePath + "/cities2/" + decodeURIComponent(ogicon);
   } else {
-    var icon = imageBasePath + "/cities2/Media/Placeholder.svg";
+    icon = imageBasePath + "/cities2/Media/Placeholder.svg";
   }
   return icon;
 }

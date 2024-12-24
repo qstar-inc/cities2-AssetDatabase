@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="40" viewBox="0 0 40 40">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36" height="36" viewBox="0 0 36 36">
   <defs>
     <clipPath id="clip-ConvenienceFood">
-      <rect width="40" height="40"/>
+      <rect width="36" height="36"/>
     </clipPath>
   </defs>
   <g id="ConvenienceFood" clip-path="url(#clip-ConvenienceFood)">
-    <g id="ResourceConvenienceFood" transform="translate(5.873 11.449)">
+    <g id="ResourceConvenienceFood" transform="translate(3.873 9.449)">
       <path id="Path_606" data-name="Path 606" d="M5591-6057.58l7.66-14.219a3.3,3.3,0,0,1,.9-1.023,3.527,3.527,0,0,1,1.308-.477h16.583s1.112-.137,1.519.3,0,1.2,0,1.2l-4.984,14.33a1.109,1.109,0,0,1-.716.857,4.4,4.4,0,0,1-1.015.4h-20.352s-.679-.055-.905-.4S5591-6057.58,5591-6057.58Z" transform="translate(-5590.901 6073.318)" fill="#b8b8b8"/>
       <path id="Path_607" data-name="Path 607" d="M5591.372-6066.676l3.162-6.1a1.483,1.483,0,0,1,.385-.468,1.439,1.439,0,0,1,.558-.218l6.709-.051s.474-.062.647.138,0,.548,0,.548l-2.675,6.156a.507.507,0,0,1-.306.392,1.785,1.785,0,0,1-.433.181l-7.662.051s-.29-.025-.386-.181A.653.653,0,0,1,5591.372-6066.676Z" transform="translate(-5585.882 6074.205)" fill="#555252"/>
       <path id="Path_609" data-name="Path 609" d="M5590.948-6066.119l3.574-6.5a1.519,1.519,0,0,1,.421-.468,1.669,1.669,0,0,1,.61-.218H5613.1s.519-.062.708.138,0,.548,0,.548l-2.292,6.377s-.009.236-.334.392a2.083,2.083,0,0,1-.474.181l-19.339.177s-.317-.025-.422-.181S5590.948-6066.119,5590.948-6066.119Z" transform="translate(-5589.687 6081.818)" fill="#555252"/>

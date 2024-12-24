@@ -41,6 +41,7 @@
     <link rel="stylesheet" href="{{ $page->repo . mix('css/main.css', 'assets/build') }}">
     <link rel="stylesheet" href="{{ $page->repo . mix('css/splash.css', 'assets/build') }}">
     <link rel="stylesheet" href="{{ $page->repo . mix('css/main-menu.css', 'assets/build') }}">
+    <link rel="stylesheet" href="{{ $page->repo . mix('css/starqstrap.css', 'assets/build') }}">
     @yield('style')
 </head>
 

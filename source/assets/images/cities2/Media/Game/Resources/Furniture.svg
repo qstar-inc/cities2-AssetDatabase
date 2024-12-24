@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="40" viewBox="0 0 40 40">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36" height="36" viewBox="0 0 36 36">
   <defs>
     <clipPath id="clip-Furniture">
-      <rect width="40" height="40"/>
+      <rect width="36" height="36"/>
     </clipPath>
   </defs>
   <g id="Furniture" clip-path="url(#clip-Furniture)">
-    <g id="ResourceFurniture" transform="translate(10.876 5.64)">
+    <g id="ResourceFurniture" transform="translate(8.876 3.64)">
       <path id="Path_595" data-name="Path 595" d="M5653.257-5812.079V-5822.2l9.776,3.2v10.646l-2.267-.881v-7.744l-5.242-2.021v7.846Z" transform="translate(-5653.257 5837.079)" fill="#e9b994"/>
       <path id="Path_596" data-name="Path 596" d="M5729.043-5902.269l1.923-1.062v-7.6l4.74-2.3.216,7.193,1.592-.8v-22.613l-1.808.7v12.918l-6.663,2.947Z" transform="translate(-5719.266 5930.989)" fill="#af6e2e"/>
       <path id="Path_597" data-name="Path 597" d="M5653.849-5839.915l6.883-2.562,9.578,2.782-6.765,2.965Z" transform="translate(-5653.772 5854.831)" fill="#ffd1aa"/>

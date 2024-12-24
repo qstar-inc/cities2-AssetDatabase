@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="40" viewBox="0 0 40 40">
+  <defs>
+    <clipPath id="clip-CItyPark">
+      <rect width="40" height="40"/>
+    </clipPath>
+  </defs>
+  <g id="CItyPark" clip-path="url(#clip-CItyPark)">
+    <g id="ButtonParksAndRecreations" transform="translate(5 4.582)">
+      <ellipse id="Ellipse_205" data-name="Ellipse 205" cx="6" cy="2" rx="6" ry="2" transform="translate(3 26.418)" fill="#2f2f2f"/>
+      <path id="Path_475" data-name="Path 475" d="M6-.3c3.314,0,5.907.754,5.907,1.583S9.314,3,6,3-.036,2.112-.036,1.284,2.686-.3,6-.3Z" transform="translate(16 27.418)" fill="#2f2f2f"/>
+      <path id="Path_473" data-name="Path 473" d="M0,0H3.712V6.61a3.827,3.827,0,0,1-1.873.671A3.642,3.642,0,0,1,0,6.61Z" transform="translate(7 21.418)" fill="#b28e5e"/>
+      <path id="Path_470" data-name="Path 470" d="M9,0l5.813,9.81L18,13a25.713,25.713,0,0,1-9,1.985A25.713,25.713,0,0,1,0,13s.488.06,2.738-3.19S9,0,9,0Z" transform="translate(0 9.418)" fill="#367c01"/>
+      <path id="Path_471" data-name="Path 471" d="M7.972,0S10.5,4.093,12.5,6.588a15.634,15.634,0,0,0,3.447,3.391A25.687,25.687,0,0,1,7.972,11.5,25.687,25.687,0,0,1,0,9.979,19.248,19.248,0,0,0,3.243,6.588C5.236,4.093,7.972,0,7.972,0Z" transform="translate(1.056 6.901)" fill="#54b60b"/>
+      <path id="Path_472" data-name="Path 472" d="M5.1,0A30.828,30.828,0,0,0,7.17,5.651,19.2,19.2,0,0,0,10.2,9.893,11.646,11.646,0,0,1,5.1,11.4,11.646,11.646,0,0,1,0,9.893,21.193,21.193,0,0,0,2.917,5.651,36.261,36.261,0,0,0,5.1,0Z" transform="translate(4.056)" fill="#83e637"/>
+      <path id="Path_474" data-name="Path 474" d="M25.208,30.462V33.75a2.66,2.66,0,0,0,1.833.489,2.523,2.523,0,0,0,1.8-.489V30.462A28.274,28.274,0,0,0,32.707,30a11.53,11.53,0,0,0,3.168-1.17l.094-1.969L18,26.912v1.7A12.121,12.121,0,0,0,21.319,30,21.527,21.527,0,0,0,25.208,30.462Z" transform="translate(-5 -5.582)" fill="#b28e5e"/>
+      <ellipse id="Ellipse_204" data-name="Ellipse 204" cx="9" cy="2" rx="9" ry="2" transform="translate(13 19.418)" fill="#e0b98c"/>
+    </g>
+  </g>
+</svg>

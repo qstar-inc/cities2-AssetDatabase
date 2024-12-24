@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="40" viewBox="0 0 40 40">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36" height="36" viewBox="0 0 36 36">
   <defs>
     <clipPath id="clip-Concrete">
-      <rect width="40" height="40"/>
+      <rect width="36" height="36"/>
     </clipPath>
   </defs>
   <g id="Concrete" clip-path="url(#clip-Concrete)">
-    <g id="ResourceConcrete" transform="translate(6.457 6.208)">
+    <g id="ResourceConcrete" transform="translate(4.457 4.208)">
       <path id="Path_549" data-name="Path 549" d="M5439.392-6641.492l8.438,4.087,18.647-6.853v-16.984l-8.917-3.745-18.168,5.066Z" transform="translate(-5439.392 6664.988)" fill="#b3b2b2"/>
       <path id="Path_550" data-name="Path 550" d="M5471.09-6627.239v-18.607l18.757-5.243v17.189Z" transform="translate(-5462.776 6654.822)" fill="#909090"/>
       <path id="Path_551" data-name="Path 551" d="M5439.712-6659.872l8.319,3.773,18.613-5.145-8.871-3.681Z" transform="translate(-5439.628 6664.941)" fill="#fff" opacity="0.28"/>

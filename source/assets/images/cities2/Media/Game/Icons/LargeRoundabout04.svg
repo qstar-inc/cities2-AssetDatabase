@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <clipPath id="clip-LargeRoundabout04">
+      <rect width="64" height="64"/>
+    </clipPath>
+  </defs>
+  <g id="LargeRoundabout04" clip-path="url(#clip-LargeRoundabout04)">
+    <path id="Path_1137" data-name="Path 1137" d="M20.62,0C32.066.089,41.392,5.9,41.451,12.99S32.279,25.753,20.833,25.668.061,19.769,0,12.682,9.174-.081,20.62,0Z" transform="matrix(0.998, -0.07, 0.07, 0.998, 10.429, 22.066)" fill="#595959"/>
+    <path id="Path_1136" data-name="Path 1136" d="M20.62,0C32.066.089,41.392,5.9,41.451,12.99S32.279,25.753,20.833,25.668.061,19.769,0,12.682,9.174-.081,20.62,0Z" transform="matrix(0.998, -0.07, 0.07, 0.998, 10.429, 19.216)" fill="#c3c2c2"/>
+    <path id="Path_1138" data-name="Path 1138" d="M17.455,0C27.14.075,35.028,4.6,35.074,10.114s-7.768,9.922-17.453,9.851S.047,15.366,0,9.854,7.77-.069,17.455,0Z" transform="matrix(0.998, -0.07, 0.07, 0.998, 13.76, 21.766)" fill="#f3d53e"/>
+    <path id="Path_3933" data-name="Path 3933" d="M15.9,0C24.718.063,31.9,4.01,31.946,8.819s-7.074,8.657-15.895,8.6S.044,13.408,0,8.6,7.075-.058,15.9,0Z" transform="matrix(0.998, -0.07, 0.07, 0.998, 15.528, 22.862)" fill="#9c9a90"/>
+    <g id="Group_2757" data-name="Group 2757" transform="translate(-9 40.097)">
+      <ellipse id="Ellipse_884" data-name="Ellipse 884" cx="6" cy="1.5" rx="6" ry="1.5" transform="translate(35 -11.097)" fill="#010101"/>
+      <path id="Path_3564" data-name="Path 3564" d="M.35,0H2.505l.627,5.38a3.3,3.3,0,0,1-1.58.547A3.139,3.139,0,0,1,0,5.38Z" transform="translate(39.345 -15.422)" fill="#976c4f"/>
+      <ellipse id="Ellipse_885" data-name="Ellipse 885" cx="6" cy="5.5" rx="6" ry="5.5" transform="translate(35 -24.097)" fill="#54b60b"/>
+      <ellipse id="Ellipse_886" data-name="Ellipse 886" cx="5" cy="5.5" rx="5" ry="5.5" transform="translate(33 -26.097)" fill="#54b60b"/>
+      <path id="Path_3565" data-name="Path 3565" d="M5.525,0C8.576,0,11.05,2.2,11.05,4.911S8.576,9.574,5.525,9.574,0,7.623,0,4.911,2.474,0,5.525,0Z" transform="translate(35.456 -25.286)" fill="#79dd2c"/>
+      <ellipse id="Ellipse_887" data-name="Ellipse 887" cx="5" cy="4.5" rx="5" ry="4.5" transform="translate(33 -26.097)" fill="#79dd2c"/>
+      <circle id="Ellipse_883" data-name="Ellipse 883" cx="3" cy="3" r="3" transform="translate(43 -23.097)" fill="#54b60b"/>
+      <ellipse id="Ellipse_888" data-name="Ellipse 888" cx="6" cy="5.5" rx="6" ry="5.5" transform="translate(35 -29.097)" fill="#79dd2c"/>
+      <ellipse id="Ellipse_889" data-name="Ellipse 889" cx="3" cy="2.5" rx="3" ry="2.5" transform="translate(42 -24.097)" fill="#79dd2c"/>
+    </g>
+  </g>
+</svg>

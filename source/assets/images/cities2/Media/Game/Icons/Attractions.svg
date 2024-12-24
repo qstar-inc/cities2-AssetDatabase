@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="40" viewBox="0 0 40 40">
+  <defs>
+    <clipPath id="clip-Attractions">
+      <rect width="40" height="40"/>
+    </clipPath>
+  </defs>
+  <g id="Attractions" clip-path="url(#clip-Attractions)">
+    <g id="ZoneResidential" transform="translate(5.149 12.387)">
+      <path id="Path_780" data-name="Path 780" d="M-10008-10482.843l16.188,10.105,13.515-10.105-16.512-8.157Z" transform="translate(10008 10492.43)" fill="#436900"/>
+    </g>
+    <path id="Path_1776" data-name="Path 1776" d="M819.858-153.059l11.833,6.866,4.758-3.457-12.334-6.474Z" transform="translate(-808.339 174.619)" fill="#2c4401"/>
+    <path id="Path_1769" data-name="Path 1769" d="M823.641-151.621l3.985-2.52v-6.872l-4.239.225Z" transform="translate(-808.339 174.619)" fill="#878374"/>
+    <path id="Path_1766" data-name="Path 1766" d="M820.495-155.68l3.12,1.71v-6.267s.231-1.744,2.253-1.179a4.029,4.029,0,0,1,2.567,2.756v7.567l3.159,1.984.148-13.244-11.248-4.96Z" transform="translate(-808.339 176.997)" fill="#b8b0a7"/>
+    <path id="Path_1767" data-name="Path 1767" d="M833.019-148.831l4.008-2.762.3-12.817-4.178,2.3Z" transform="translate(-809.75 176.678)" fill="#878374"/>
+    <path id="Path_1768" data-name="Path 1768" d="M820.495-164.935l11.3,5.041,4.123-2.431L824.586-166.7Z" transform="translate(-808.339 174.619)" fill="#e0d9d0"/>
+    <path id="Path_1770" data-name="Path 1770" d="M820.875-161.954l2.329,1.11v2.8l-2.329-1.2Z" transform="translate(-808.339 175.865)" fill="#a49d95"/>
+    <path id="Path_1773" data-name="Path 1773" d="M820.875-161.954l2.329,1.11v2.8l-2.329-1.2Z" transform="translate(-800.339 179.865)" fill="#a49d95"/>
+    <path id="Path_1772" data-name="Path 1772" d="M820.511-162.5l11.208,5.105v1.052l-11.208-5.25Z" transform="translate(-808.339 174.619)" fill="#8e8a85"/>
+    <path id="Path_1774" data-name="Path 1774" d="M831.742-157.413c.081-.02,4.055-2.217,4.055-2.217v.947l-4.055,2.355Z" transform="translate(-808.339 174.619)" fill="#65635a"/>
+    <path id="Path_1775" data-name="Path 1775" d="M821.7-164.9l3.116-1.286,9.8,3.892-2.852,1.708Z" transform="translate(-808.339 174.619)" fill="#f9f2f2"/>
+  </g>
+</svg>

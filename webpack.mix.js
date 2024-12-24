@@ -22,6 +22,7 @@ mix
   .css("source/_assets/css/lds-ripple.css", "css")
   .css("source/_assets/css/main-menu.css", "css")
   .css("source/_assets/css/splash.css", "css")
+  .css("source/_assets/css/starqstrap.css", "css")
   .options({
     processCssUrls: false,
   })

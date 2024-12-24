@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="40" viewBox="0 0 40 40">
+  <defs>
+    <clipPath id="clip-Relaxation">
+      <rect width="40" height="40"/>
+    </clipPath>
+  </defs>
+  <g id="Relaxation" clip-path="url(#clip-Relaxation)">
+    <ellipse id="Ellipse_913" data-name="Ellipse 913" cx="11.5" cy="2.5" rx="11.5" ry="2.5" transform="translate(10 28)" fill="#e8d9a9"/>
+    <path id="Path_3600" data-name="Path 3600" d="M0,0H2l.7,15.867L.35,15.192Z" transform="translate(16.938 15.727) rotate(-16)" fill="#c8ab8a"/>
+    <path id="Path_3599" data-name="Path 3599" d="M-1152.778-479.053h27.744s-4.367-8.541-14.265-8.432A15.047,15.047,0,0,0-1152.778-479.053Z" transform="translate(1245.082 162.906) rotate(-16)" fill="#8de667"/>
+    <path id="Path_3601" data-name="Path 3601" d="M-1147.487-478.806a13.934,13.934,0,0,1,1.15-5.461,12.356,12.356,0,0,1,3.353-4.119,14.885,14.885,0,0,1,5.173,2.108,17.521,17.521,0,0,1,3.736,3.832Z" transform="translate(1159 497)" fill="#fff3cc"/>
+  </g>
+</svg>

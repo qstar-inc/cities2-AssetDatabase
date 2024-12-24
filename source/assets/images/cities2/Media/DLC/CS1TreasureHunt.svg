@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="40" viewBox="0 0 40 40">
+  <defs>
+    <clipPath id="clip-CS1TreasureHunt">
+      <rect width="40" height="40"/>
+    </clipPath>
+  </defs>
+  <g id="CS1TreasureHunt" clip-path="url(#clip-CS1TreasureHunt)">
+    <g id="Group_2620" data-name="Group 2620" transform="translate(35.092 40)">
+      <path id="Path_3383" data-name="Path 3383" d="M1.908-40h-34a3,3,0,0,0-3,3V-3a3,3,0,0,0,3,3h34a3,3,0,0,0,3-3V-37A3,3,0,0,0,1.908-40Z" fill="#3152ff"/>
+    </g>
+    <g id="Group_2621" data-name="Group 2621" transform="translate(33.812 1.342)">
+      <path id="Path_3384" data-name="Path 3384" d="M0,37.316H-27.625A4.845,4.845,0,0,1-32.47,32.47V4.846A4.845,4.845,0,0,1-27.625,0H-1.97L4.846,6.816V32.47A4.846,4.846,0,0,1,0,37.316" fill="#001626"/>
+    </g>
+    <path id="Path_3451" data-name="Path 3451" d="M1323,2179.095h18.175a1.818,1.818,0,0,0-.519-1.385,8.071,8.071,0,0,0-1.964-1.324h-13.965a5.881,5.881,0,0,0-1.376,1.324A2.332,2.332,0,0,0,1323,2179.095Z" transform="translate(-1311.61 -2164)" fill="#fff"/>
+    <path id="Path_3452" data-name="Path 3452" d="M1322.994,2185l3.645-2.219-3.645-3.8h18.233l-3.054,3.8,3.054,2.219Z" transform="translate(-1311.61 -2164)" fill="#aaa"/>
+    <path id="GameLogo" d="M4.535,11.789.416,9.423a.818.818,0,0,1-.41-.709V6.86l4.529,2.6ZM2.009,4.813,4.535,3.356V1.03L.413,3.421a.818.818,0,0,0-.407.707V5.921a.591.591,0,0,0,.292.51l1.71,1Zm3.06-1.456L9.6,5.959V4.105a.818.818,0,0,0-.41-.709L5.069,1.03ZM7.6,8.006,5.069,9.463v2.326L9.191,9.4A.818.818,0,0,0,9.6,8.691V6.9a.591.591,0,0,0-.292-.51l-1.71-1Z" transform="translate(15.707 14.065)" fill="#fff"/>
+    <path id="Rectangle_4452" data-name="Rectangle 4452" d="M0,0H18a0,0,0,0,1,0,0V5a2,2,0,0,1-2,2H2A2,2,0,0,1,0,5V0A0,0,0,0,1,0,0Z" transform="translate(11.39 21)" fill="#fff"/>
+    <circle id="Ellipse_863" data-name="Ellipse 863" cx="1.5" cy="1.5" r="1.5" transform="translate(19 22)" fill="#aaa"/>
+    <path id="Path_3453" data-name="Path 3453" d="M0,0H1l.364,3H-.345Z" transform="translate(20 24)" fill="#aaa"/>
+  </g>
+</svg>
