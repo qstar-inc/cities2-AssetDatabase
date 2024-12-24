@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36" height="36" viewBox="0 0 36 36">
+  <defs>
+    <clipPath id="clip-Paper">
+      <rect width="36" height="36"/>
+    </clipPath>
+  </defs>
+  <g id="Paper" clip-path="url(#clip-Paper)">
+    <g id="ResourcePaper" transform="translate(4.729 6.267)">
+      <path id="Path_585" data-name="Path 585" d="M5830-5835.832l13.487,5.833,13.056-11.69-13.056-5.522Z" transform="translate(-5830 5853.465)" fill="#7a7369"/>
+      <path id="Path_587" data-name="Path 587" d="M5830-5835.832l13.487,5.833,13.056-11.69-13.056-5.522Z" transform="translate(-5830 5851.316)" fill="#9d9587"/>
+      <path id="Path_588" data-name="Path 588" d="M5830-5835.832l13.487,5.833,13.056-11.69-13.056-5.522Z" transform="translate(-5830 5849.362)" fill="#beb4a5"/>
+      <path id="Path_586" data-name="Path 586" d="M5830-5835.832l13.487,5.833,13.056-11.69-13.056-5.522Z" transform="translate(-5830 5847.212)" fill="#fcf1e0"/>
+    </g>
+  </g>
+</svg>

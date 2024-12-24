@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="40" viewBox="0 0 40 40">
+  <defs>
+    <clipPath id="clip-LandmarkBuildings">
+      <rect width="40" height="40"/>
+    </clipPath>
+  </defs>
+  <g id="LandmarkBuildings" clip-path="url(#clip-LandmarkBuildings)">
+    <g id="Group_2620" data-name="Group 2620" transform="translate(35.092 40)">
+      <path id="Path_3383" data-name="Path 3383" d="M1.908-40h-34a3,3,0,0,0-3,3V-3a3,3,0,0,0,3,3h34a3,3,0,0,0,3-3V-37A3,3,0,0,0,1.908-40Z" fill="#3152ff"/>
+    </g>
+    <g id="Group_2621" data-name="Group 2621" transform="translate(33.812 1.342)">
+      <path id="Path_3384" data-name="Path 3384" d="M0,37.316H-27.625A4.845,4.845,0,0,1-32.47,32.47V4.846A4.845,4.845,0,0,1-27.625,0H-1.97L4.846,6.816V32.47A4.846,4.846,0,0,1,0,37.316" fill="#001626"/>
+    </g>
+    <g id="a" transform="translate(2.052 5.369)">
+      <path id="Path_3442" data-name="Path 3442" d="M823.683-150.1l4.629-2.926v-7.983l-4.923.261Z" transform="translate(-810.958 170.348)" fill="#cacaca"/>
+      <path id="Path_3443" data-name="Path 3443" d="M820.494-153.8l3.624,1.987v-7.28s.268-2.026,2.617-1.37a4.678,4.678,0,0,1,2.981,3.2v8.789l3.67,2.3.172-15.384-13.065-5.761Z" transform="translate(-811.425 172.102)" fill="#fff"/>
+      <path id="Path_3444" data-name="Path 3444" d="M833.019-146.315l4.655-3.21.354-14.889-4.854,2.668Z" transform="translate(-811.041 172.197)" fill="#cacaca"/>
+      <path id="Path_3445" data-name="Path 3445" d="M820.495-164.655l13.1,5.845,4.781-2.819L825.238-166.7Z" transform="translate(-811.426 169.444)" fill="#cacaca"/>
+      <path id="Path_3446" data-name="Path 3446" d="M820.875-161.954l2.705,1.289v3.258l-2.705-1.4Z" transform="translate(-811.364 171.643)" fill="#cacaca"/>
+      <path id="Path_3447" data-name="Path 3447" d="M820.875-161.954l2.705,1.289v3.258l-2.705-1.4Z" transform="translate(-802.071 176.281)" fill="#cacaca"/>
+      <path id="Path_3448" data-name="Path 3448" d="M820.511-162.5l13.019,5.93v1.221l-13.019-6.095Z" transform="translate(-811.423 170.116)" fill="#cacaca"/>
+      <path id="Path_3449" data-name="Path 3449" d="M831.742-157.055c.095-.024,4.71-2.575,4.71-2.575v1.1l-4.71,2.735Z" transform="translate(-809.608 170.57)" fill="#b1b1b1"/>
+      <path id="Path_3450" data-name="Path 3450" d="M821.7-164.694l3.613-1.491,11.368,4.513-3.306,1.981Z" transform="translate(-811.229 169.525)" fill="#e3e1e1"/>
+    </g>
+  </g>
+</svg>

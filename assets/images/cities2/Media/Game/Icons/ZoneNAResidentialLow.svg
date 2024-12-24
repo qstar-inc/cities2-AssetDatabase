@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <clipPath id="clip-ZoneNAResidentialLow">
+      <rect width="32" height="32"/>
+    </clipPath>
+  </defs>
+  <g id="ZoneNAResidentialLow" clip-path="url(#clip-ZoneNAResidentialLow)">
+    <g id="ZoneResidential" transform="translate(1.488 8.767)">
+      <path id="Path_780" data-name="Path 780" d="M-10008-10482.843l16.188,10.105,13.515-10.105-16.512-8.157Z" transform="translate(10008 10492.43)" fill="#23eb4e"/>
+      <path id="Path_783" data-name="Path 783" d="M-9991.32-10493.283l7.213,3.893,4.807-3.077-9.381-4.354Z" transform="translate(9998.5 10498.199)" fill="#bc8459"/>
+      <path id="Path_849" data-name="Path 849" d="M12.321,13.382l4.571,2.658V11.873l-2.5-2.817-2.068.351Z" transform="translate(-0.532 0.123)" fill="#f9f3dd"/>
+      <path id="Path_781" data-name="Path 781" d="M-9991.4-10483.969l6.187,3.685.961-2.827-2.451-1.307-1.354-2.12-1.306.7-2.037-1.087Z" transform="translate(9998.546 10491.886)" fill="#f9f3dd"/>
+      <path id="Path_850" data-name="Path 850" d="M17.078,11.127,24.12,6.755,21.651,4.034l-7.21,4.355Z" transform="translate(-0.749 0.818)" fill="#946949"/>
+      <path id="Path_851" data-name="Path 851" d="M10.9,4.455l3.4-1.408L12.224,6.579Z" transform="translate(-0.386 0.955)" fill="#946949"/>
+      <path id="Path_852" data-name="Path 852" d="M18.715,6.167,19.624,10l2.528-4.145L20.236,5Z" transform="translate(-1.188 0.684)" fill="#bc8459"/>
+      <path id="Path_782" data-name="Path 782" d="M-9977.011-10482.621l6.81-4.875v-3.557l-.978.606-1.232-1.527-2.332,3.765-2.268,1.42Z" transform="translate(9993.372 10498.627)" fill="#008f15"/>
+      <path id="Path_853" data-name="Path 853" d="M12.22,13.708V10.869l3.534,1.912V15.8Z" fill="#008620"/>
+    </g>
+  </g>
+</svg>

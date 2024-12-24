@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <clipPath id="clip-TreeElderly">
+      <rect width="32" height="32"/>
+    </clipPath>
+  </defs>
+  <g id="TreeElderly" clip-path="url(#clip-TreeElderly)">
+    <path id="Path_3539" data-name="Path 3539" d="M5682.913,3607.521a40.886,40.886,0,0,0,2.293-9.281,64.048,64.048,0,0,0,0-12.252,68.317,68.317,0,0,1,4.091,12.252,23.049,23.049,0,0,1,0,9.281Z" transform="translate(-5671.332 -3579.755)" fill="#fff"/>
+    <ellipse id="Ellipse_869" data-name="Ellipse 869" cx="6.5" cy="7" rx="6.5" ry="7" transform="translate(12 1)" fill="#fff"/>
+    <ellipse id="Ellipse_872" data-name="Ellipse 872" cx="4" cy="3.5" rx="4" ry="3.5" transform="translate(7 4)" fill="#fff"/>
+    <ellipse id="Ellipse_870" data-name="Ellipse 870" cx="4.5" cy="5" rx="4.5" ry="5" transform="translate(6 11)" fill="#fff"/>
+    <circle id="Ellipse_871" data-name="Ellipse 871" cx="5" cy="5" r="5" transform="translate(16 12)" fill="#fff"/>
+  </g>
+</svg>

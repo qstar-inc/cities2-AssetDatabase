@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36" height="36" viewBox="0 0 36 36">
+  <defs>
+    <clipPath id="clip-Pharmaceuticals">
+      <rect width="36" height="36"/>
+    </clipPath>
+  </defs>
+  <g id="Pharmaceuticals" clip-path="url(#clip-Pharmaceuticals)">
+    <g id="ResourcePharmaceuticals" transform="translate(5 3.949)">
+      <g id="Group_292" data-name="Group 292" transform="translate(6.546 0) rotate(14)">
+        <path id="Path_579" data-name="Path 579" d="M5.027,0a5.027,5.027,0,0,1,5.027,5.027v13.2A5.027,5.027,0,0,1,0,18.224V5.027A5.027,5.027,0,0,1,5.027,0Z" transform="matrix(0.875, 0.485, -0.485, 0.875, 15.378, 1.848)" fill="#3c6bd8"/>
+        <path id="Path_782" data-name="Path 782" d="M1.257,0A1.257,1.257,0,0,1,2.514,1.257V16.024a1.257,1.257,0,0,1-2.514,0V1.257A1.257,1.257,0,0,1,1.257,0Z" transform="matrix(0.875, 0.485, -0.485, 0.875, 15.229, 5.358)" fill="#7c99de"/>
+        <rect id="Rectangle_1262" data-name="Rectangle 1262" width="10.054" height="23.251" rx="5.027" fill="#d83c3c"/>
+        <rect id="Rectangle_1263" data-name="Rectangle 1263" width="2.514" height="17.281" rx="1.257" transform="translate(1.571 3.142)" fill="#e98181"/>
+      </g>
+    </g>
+  </g>
+</svg>

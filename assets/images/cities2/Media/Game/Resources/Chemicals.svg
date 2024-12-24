@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36" height="36" viewBox="0 0 36 36">
+  <defs>
+    <clipPath id="clip-Chemicals">
+      <rect width="36" height="36"/>
+    </clipPath>
+  </defs>
+  <g id="Chemicals" clip-path="url(#clip-Chemicals)">
+    <g id="ResourceChemicals" transform="translate(8.125 2.825)">
+      <path id="Path_567" data-name="Path 567" d="M5647.973-6637.046c.49.8.608,1.07,3.274,1.567a27.789,27.789,0,0,0,6.644.63,41.839,41.839,0,0,0,6.029-.653c3.193-.469,3.081-.9,3.654-1.952s-1.826-3.853-1.826-3.853l-5-8.1v-10.309a7.742,7.742,0,0,0-2.852-.493,7.8,7.8,0,0,0-2.858.493v10.309l-4.934,8.1S5647.483-6637.845,5647.973-6637.046Z" transform="translate(-5647.912 6665.186)" fill="#caddec"/>
+      <path id="Path_568" data-name="Path 568" d="M5651.9-6600.532c.38.748,3.919,1.45,8.263,1.45s8.755-.722,9.065-1.66-5.18-8.094-5.18-8.094a21.177,21.177,0,0,0-3.489-.357,24.228,24.228,0,0,0-3.637.357S5651.519-6601.28,5651.9-6600.532Z" transform="translate(-5650.707 6628.442)" fill="#93e22b"/>
+      <ellipse id="Ellipse_254" data-name="Ellipse 254" cx="3.547" cy="0.42" rx="3.547" ry="0.42" transform="translate(6.233 19.302)" fill="#fff" opacity="0.38"/>
+      <ellipse id="Ellipse_255" data-name="Ellipse 255" cx="0.443" cy="0.42" rx="0.443" ry="0.42" transform="translate(8.007 25.177)" fill="#fff" opacity="0.56"/>
+      <ellipse id="Ellipse_256" data-name="Ellipse 256" cx="0.443" cy="0.42" rx="0.443" ry="0.42" transform="translate(9.78 23.499)" fill="#fff" opacity="0.56"/>
+      <ellipse id="Ellipse_257" data-name="Ellipse 257" cx="0.443" cy="0.42" rx="0.443" ry="0.42" transform="translate(8.894 21.54)" fill="#fff" opacity="0.56"/>
+      <path id="Path_569" data-name="Path 569" d="M5655.75-6635.65l6.1-12.837v-10.377a3.205,3.205,0,0,1,.775-.146,3.245,3.245,0,0,1,.791,0l.015.6.249,9.919-5.176,13.419a11.263,11.263,0,0,1-1.476-.188A7.869,7.869,0,0,1,5655.75-6635.65Z" transform="translate(-5654.024 6664.339)" fill="#fff" opacity="0.77"/>
+      <path id="Path_570" data-name="Path 570" d="M5686.673-6658.388l.658.178v10.418l6.707,11.479a1.973,1.973,0,0,1-.473.561,2.557,2.557,0,0,1-.711.351l-6.369-12.39Z" transform="translate(-5675.083 6663.875)" fill="#fff" opacity="0.52"/>
+      <ellipse id="Ellipse_258" data-name="Ellipse 258" cx="1.33" cy="1.259" rx="1.33" ry="1.259" transform="translate(9.189 2.518)" fill="#8fed32"/>
+      <ellipse id="Ellipse_259" data-name="Ellipse 259" cx="0.887" cy="0.839" rx="0.887" ry="0.839" transform="translate(7.711 1.399)" fill="#8fed32"/>
+      <path id="Path_767" data-name="Path 767" d="M.739,0a.72.72,0,0,1,.739.7.72.72,0,0,1-.739.7A.72.72,0,0,1,0,.7.72.72,0,0,1,.739,0Z" transform="translate(9.78)" fill="#8fed32"/>
+    </g>
+  </g>
+</svg>

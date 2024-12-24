@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#8a6d00"/>
+      <stop offset="1" stop-color="#f1bf00"/>
+    </linearGradient>
+    <clipPath id="clip-PropsIndustrial">
+      <rect width="64" height="64"/>
+    </clipPath>
+  </defs>
+  <g id="PropsIndustrial" clip-path="url(#clip-PropsIndustrial)">
+    <g id="ZoneIndustrial" transform="translate(3.796 12.45)">
+      <path id="Path_767" data-name="Path 767" d="M-10008-10475.917l29.932,18.685,24.988-18.685-30.53-15.082Z" transform="translate(10008 10496.333)" fill="#ffdc00"/>
+      <path id="Path_768" data-name="Path 768" d="M-9906.375-10476.974l15.944,9.211.268-9.211-16.22-8.843Z" transform="translate(9920.574 10497.898)" fill="#d6a900"/>
+      <path id="Path_769" data-name="Path 769" d="M-9888.85-10467.587l10.69-7.661v-8.633l-10.69,7.113Z" transform="translate(9918.997 10497.894)" fill="#a48700"/>
+      <path id="Path_770" data-name="Path 770" d="M-9906.279-10486.129l16.084,8.854,10.377-7.1-16-8.018Z" transform="translate(9920.582 10498.397)" fill="#fff69f"/>
+      <path id="Path_771" data-name="Path 771" d="M-9902.63-10486.051l9.666,4.821,6.645-4.484-8.908-4.568Z" transform="translate(9920.257 10498.204)" fill="#f29d00"/>
+      <path id="Path_772" data-name="Path 772" d="M2.274-14.7a3.254,3.254,0,0,1,1.77.525c.217.1.5,14.328.5,14.733,0,.779-1.018,1.413-2.274,1.413S0,1.337,0,.555C0,.329.086-13.733.445-14.13A2.617,2.617,0,0,1,2.274-14.7Z" transform="translate(31.833 14.703)" fill="url(#linear-gradient)"/>
+      <path id="Path_773" data-name="Path 773" d="M1.349-.412c.753,0,1.358.211,1.358.47S2.1.531,1.349.531-.017.319-.017.058.594-.412,1.349-.412Z" transform="translate(32.745 0.685)" fill="#504200"/>
+    </g>
+  </g>
+</svg>

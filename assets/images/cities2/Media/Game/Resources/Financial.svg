@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36" height="36" viewBox="0 0 36 36">
+  <defs>
+    <clipPath id="clip-Financial">
+      <rect width="36" height="36"/>
+    </clipPath>
+  </defs>
+  <g id="Financial" clip-path="url(#clip-Financial)">
+    <g id="Economy" transform="translate(8.305 16.876)">
+      <g id="Group_2352" data-name="Group 2352" transform="translate(0 0)">
+        <path id="Path_264" data-name="Path 264" d="M4,16.328l6.3,3.8,13.086-6.063-6.041-3.528Z" transform="translate(-4 -10.536)" fill="#567b49"/>
+        <path id="Path_267" data-name="Path 267" d="M24.887,15.229V19.27L11.8,25.582l0-4.29Z" transform="translate(-5.498 -11.7)" fill="#72ab5e"/>
+        <path id="Path_265" data-name="Path 265" d="M10.3,26.331,4,22.039v-3.8l6.3,3.8Z" transform="translate(-4 -12.447)" fill="#9adf4b"/>
+      </g>
+    </g>
+    <g id="Economy-2" data-name="Economy" transform="translate(8.305 11.058)">
+      <g id="Group_2352-2" data-name="Group 2352" transform="translate(0 0)">
+        <path id="Path_264-2" data-name="Path 264" d="M4,16.328l6.3,3.8,13.086-6.063-6.041-3.528Z" transform="translate(-4 -10.536)" fill="#567b49"/>
+        <path id="Path_267-2" data-name="Path 267" d="M24.887,15.229V19.27L11.8,25.582l0-4.29Z" transform="translate(-5.498 -11.7)" fill="#72ab5e"/>
+        <path id="Path_265-2" data-name="Path 265" d="M10.3,26.331,4,22.039v-3.8l6.3,3.8Z" transform="translate(-4 -12.447)" fill="#9adf4b"/>
+      </g>
+    </g>
+    <g id="Economy-3" data-name="Economy" transform="translate(8.305 5.24)">
+      <g id="Group_2352-3" data-name="Group 2352" transform="translate(0 0)">
+        <path id="Path_264-3" data-name="Path 264" d="M4,16.328l6.3,3.8,13.086-6.063-6.041-3.528Z" transform="translate(-4 -10.536)" fill="#c1ff67"/>
+        <path id="Path_267-3" data-name="Path 267" d="M24.887,15.229V19.27L11.8,25.582l0-4.29Z" transform="translate(-5.498 -11.7)" fill="#72ab5e"/>
+        <path id="Path_265-3" data-name="Path 265" d="M10.3,26.331,4,22.039v-3.8l6.3,3.8Z" transform="translate(-4 -12.447)" fill="#9adf4b"/>
+      </g>
+      <ellipse id="Ellipse_535" data-name="Ellipse 535" cx="3.399" cy="1.425" rx="3.399" ry="1.425" transform="translate(6.295 3.423)" fill="#6ab119"/>
+    </g>
+  </g>
+</svg>

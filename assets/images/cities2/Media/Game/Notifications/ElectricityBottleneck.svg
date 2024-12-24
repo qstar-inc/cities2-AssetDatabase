@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 128 128" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g id="Vehicles" transform="matrix(0.976563,0,0,0.942198,1.5,1.5)">
+        <path d="M64,0L119.426,33.167L119.426,99.501L64,132.668L8.574,99.501L8.574,33.167L64,0Z" style="fill:rgb(229,99,51);"/>
+        <clipPath id="_clip1">
+            <path d="M64,0L119.426,33.167L119.426,99.501L64,132.668L8.574,99.501L8.574,33.167L64,0Z"/>
+        </clipPath>
+        <g clip-path="url(#_clip1)">
+            <g transform="matrix(0.702006,0,0,0.72761,19.2986,21.8738)">
+                <g id="ElectricityBottleneck">
+                    <g>
+                        <g transform="matrix(1.1238,0,0,1.6261,-8.08413,-39.4806)">
+                            <path d="M50.128,74.753L6.874,92.356L6.938,32.772L49.361,50.949L78.67,50.949L120.837,31.357L120.773,92.356L78.824,74.612L50.128,74.753Z" style="fill:rgb(255,184,14);"/>
+                        </g>
+                        <g transform="matrix(1,0,0,1,7.10543e-15,-16.1684)">
+                            <path d="M121.065,39.622L121.353,114.128L82.21,92.633L46.359,92.824L7.222,114.128L6.935,42.523C16.787,48.297 46.837,65.967 46.258,66.335L82.996,65.978L121.065,39.622Z"/>
+                        </g>
+                        <circle cx="64.381" cy="62.479" r="6.439" style="fill:rgb(193,33,14);"/>
+                        <g transform="matrix(1,0,0,1,18.8559,7.10543e-15)">
+                            <circle cx="64.381" cy="62.479" r="6.439" style="fill:rgb(193,33,14);"/>
+                        </g>
+                        <g transform="matrix(1,0,0,1,-18.8559,7.10543e-15)">
+                            <circle cx="64.381" cy="62.479" r="6.439" style="fill:rgb(193,33,14);"/>
+                        </g>
+                        <g transform="matrix(1.58929,0,0,1.58929,-79.6747,-36.8179)">
+                            <circle cx="64.381" cy="62.479" r="6.439" style="fill:rgb(255,184,14);"/>
+                        </g>
+                        <g transform="matrix(1.58929,0,0,1.58929,3.79728,-36.8179)">
+                            <circle cx="64.381" cy="62.479" r="6.439" style="fill:rgb(255,184,14);"/>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

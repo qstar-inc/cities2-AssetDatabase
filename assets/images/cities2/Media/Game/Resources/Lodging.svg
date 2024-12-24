@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36" height="36" viewBox="0 0 36 36">
+  <defs>
+    <clipPath id="clip-Lodging">
+      <rect width="36" height="36"/>
+    </clipPath>
+  </defs>
+  <g id="Lodging" clip-path="url(#clip-Lodging)">
+    <g id="ResourceLodging" transform="translate(4.5 8.811)">
+      <path id="Path_628" data-name="Path 628" d="M5720.646-6085.267v-9.278h27v9.278H5744.7v-4.626H5723.77v4.626Z" transform="translate(-5720.646 6103.645)" fill="#b69c7a"/>
+      <path id="Path_629" data-name="Path 629" d="M5757.3-6123.328h19.871a12.743,12.743,0,0,0-6.591-7.216c-4.968-2.117-13.279-1.25-13.279-1.25Z" transform="translate(-5750.456 6131.97)" fill="#699aae"/>
+      <ellipse id="Ellipse_295" data-name="Ellipse 295" cx="3.172" cy="3.749" rx="3.172" ry="3.749" transform="translate(0.39 0.575)" fill="#dda68b"/>
+      <path id="Path_630" data-name="Path 630" d="M5731.259-6107.392a11.89,11.89,0,0,0-4.125-.672c-1.432.237-1.045.275-1.6.946a3.473,3.473,0,0,0-.625,1.738h6.35Z" transform="translate(-5724.47 6114.123)" fill="#c6f0f3"/>
+    </g>
+  </g>
+</svg>

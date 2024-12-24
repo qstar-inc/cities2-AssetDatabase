@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <clipPath id="clip-Tram_Stop_2">
+      <rect width="64" height="64"/>
+    </clipPath>
+  </defs>
+  <g id="Tram_Stop_2" data-name="Tram Stop – 2" clip-path="url(#clip-Tram_Stop_2)">
+    <g id="InfoIconPublicTransport" transform="translate(20.346 17.108)">
+      <path id="Rectangle_857" data-name="Rectangle 857" d="M3,0H20a3,3,0,0,1,3,3V23a1,1,0,0,1-1,1H1a1,1,0,0,1-1-1V3A3,3,0,0,1,3,0Z" transform="translate(0.311 -0.108)" fill="#fff"/>
+      <path id="Path_381" data-name="Path 381" d="M2.012,0A1.991,1.991,0,0,1,4.035,1.94,1.963,1.963,0,0,1,2.023,3.868,1.991,1.991,0,0,1,0,1.928,1.963,1.963,0,0,1,2.012,0Z" transform="matrix(0.998, -0.07, 0.07, 0.998, 1.994, 16.864)" fill="#d942ff"/>
+      <path id="Path_382" data-name="Path 382" d="M2.012,0A1.991,1.991,0,0,1,4.035,1.94,1.963,1.963,0,0,1,2.023,3.868,1.991,1.991,0,0,1,0,1.928,1.963,1.963,0,0,1,2.012,0Z" transform="matrix(0.998, -0.07, 0.07, 0.998, 17.331, 16.864)" fill="#d942ff"/>
+      <rect id="Rectangle_861" data-name="Rectangle 861" width="19.317" height="10" rx="2" transform="translate(1.994 4.892)" fill="#d942ff"/>
+      <rect id="Rectangle_869" data-name="Rectangle 869" width="11" transform="translate(7.311 2.892)" fill="#f3e195"/>
+    </g>
+    <rect id="Rectangle_1786" data-name="Rectangle 1786" width="13" height="3" transform="translate(25.657 12)" fill="#fff"/>
+    <rect id="Rectangle_1787" data-name="Rectangle 1787" width="3" height="4" transform="translate(27.657 13)" fill="#fff"/>
+    <rect id="Rectangle_1788" data-name="Rectangle 1788" width="3" height="4" transform="translate(33.657 13)" fill="#fff"/>
+    <path id="Path_1166" data-name="Path 1166" d="M1039.514,244,1036,248.977h5.317l1.8-4.977Z" transform="translate(-1015.655 -203)" fill="#fff"/>
+    <path id="Path_1167" data-name="Path 1167" d="M1039.6,244l3.516,4.977H1037.8L1036,244Z" transform="translate(-999.705 -203)" fill="#fff"/>
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36" height="36" viewBox="0 0 36 36">
+  <defs>
+    <clipPath id="clip-Recreation">
+      <rect width="36" height="36"/>
+    </clipPath>
+  </defs>
+  <g id="Recreation" clip-path="url(#clip-Recreation)">
+    <path id="Path_3013" data-name="Path 3013" d="M10.5,0l9.486,14.454a1.17,1.17,0,0,1,.327,1.066c-.187.552-.921.48-.921.48H0Z" transform="translate(12.902 11.998)" fill="#d6b6a4"/>
+    <path id="Path_3012" data-name="Path 3012" d="M12.5,0,24.154,18.647a.779.779,0,0,1,.085.823,1.142,1.142,0,0,1-.785.53H1.868a1.067,1.067,0,0,1-.843-.4c-.41-.449,0-1.24,0-1.24Z" transform="translate(1.902 7.998)" fill="#c68564"/>
+    <path id="Path_3011" data-name="Path 3011" d="M6.5,0l6.831,10.707L8.614,9.43l-4.1,3.632L-.034,10.43Z" transform="translate(7.902 7.998)" fill="#f3f3f3"/>
+    <path id="Path_3014" data-name="Path 3014" d="M2.938,0,6.025,4.684,3.7,4.115,1.932,5.7-.054,4.548Z" transform="translate(20.481 11.998)" fill="#f3f3f3"/>
+  </g>
+</svg>

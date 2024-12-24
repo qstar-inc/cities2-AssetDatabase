@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="26" height="26" version="1.1" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <clipPath id="b">
+   <rect width="26" height="26"/>
+  </clipPath>
+ </defs>
+ <g id="a" transform="translate(.43394)">
+  <g transform="translate(5.716,6.512)">
+   <path d="m6.4236-0.67254-5.183 6.6408h5.183l-7.149 7.8209 12.893-7.739c0.03853-0.026811-0.0061-0.083581-0.06384-0.081847h-4.8578l7.5618-6.5692c0.14394-0.10584 0.04382-0.071663-0.05553-0.071663z" fill="#ffb80e"/>
+  </g>
+ </g>
+</svg>

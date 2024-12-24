@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36" height="36" viewBox="0 0 36 36">
+  <defs>
+    <clipPath id="clip-Timber">
+      <rect width="36" height="36"/>
+    </clipPath>
+  </defs>
+  <g id="Timber" clip-path="url(#clip-Timber)">
+    <g id="ResourceTimber" transform="translate(4.215 8.509)">
+      <path id="Path_589" data-name="Path 589" d="M5464.126-5773.356l9.678,5.066,17.864-11.188v-3.25l-9.316-4.524-18.225,10.483Z" transform="translate(-5464.126 5787.273)" fill="#c68564"/>
+      <path id="Path_590" data-name="Path 590" d="M5509.185-5750.607v-3.331l17.849-11.069v3.2Z" transform="translate(-5499.464 5769.59)" fill="#7e5234"/>
+      <path id="Path_591" data-name="Path 591" d="M5464.126-5776.826l9.681,5.127,17.875-11.086-9.369-4.565Z" transform="translate(-5464.126 5787.351)" fill="#d6b6a4"/>
+      <path id="Path_592" data-name="Path 592" d="M5470.738-5771.591v2.582l.746-2.131,16.726-10.7Z" transform="translate(-5469.312 5782.969)" fill="#ad643b"/>
+      <path id="Path_593" data-name="Path 593" d="M5485.949-5765.516v3.37l.3.156v-3.3l18.645-10.571-.778-.387Z" transform="translate(-5481.241 5778.521)" fill="#ad643b"/>
+      <path id="Path_594" data-name="Path 594" d="M5554.5-5771.172l-7.076,4.693,8.182-4.128Z" transform="translate(-5529.453 5774.491)" fill="#ad643b"/>
+    </g>
+  </g>
+</svg>

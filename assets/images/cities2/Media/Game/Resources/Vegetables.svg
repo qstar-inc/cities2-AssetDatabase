@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36" height="36" viewBox="0 0 36 36">
+  <defs>
+    <clipPath id="clip-Vegetables">
+      <rect width="36" height="36"/>
+    </clipPath>
+  </defs>
+  <g id="Vegetables" clip-path="url(#clip-Vegetables)">
+    <g id="ResourceVegetables" transform="translate(3.365 3.363)">
+      <path id="Path_526" data-name="Path 526" d="M6044.808-4779.841s7.9-14.323,12.005-16.848a4.093,4.093,0,0,1,5.591,5.858C6059.644-4787.046,6044.808-4779.841,6044.808-4779.841Z" transform="translate(-6044.808 4809.116)" fill="#fc9e32"/>
+      <path id="Path_527" data-name="Path 527" d="M6113.79-4843.911a20.306,20.306,0,0,0,.94-4.733,51.439,51.439,0,0,0,0-6.979s2.829,4,2.545,6.979S6113.79-4843.911,6113.79-4843.911Z" transform="translate(-6096.958 4855.623)" fill="#9adf4b"/>
+      <path id="Path_528" data-name="Path 528" d="M3.495,10.123A8.54,8.54,0,0,1,1.955,5.628C1.657,2.585,4.118.114,4.118.114S-.151,2.213.148,5.257,3.495,10.123,3.495,10.123Z" transform="matrix(-0.438, 0.899, -0.899, -0.438, 28.733, 13.626)" fill="#9adf4b"/>
+      <path id="Path_529" data-name="Path 529" d="M2.776,12.386A36.161,36.161,0,0,1,1.686,6.573C1.519,4.106,2.91-.078,2.91-.078S-.322,4.028-.155,6.495,2.776,12.386,2.776,12.386Z" transform="translate(27.97 4.428) rotate(65)" fill="#9adf4b"/>
+    </g>
+  </g>
+</svg>

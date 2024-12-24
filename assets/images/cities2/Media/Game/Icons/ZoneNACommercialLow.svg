@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <clipPath id="clip-ZoneNACommercialLow">
+      <rect width="32" height="32"/>
+    </clipPath>
+  </defs>
+  <g id="ZoneNACommercialLow" clip-path="url(#clip-ZoneNACommercialLow)">
+    <g id="ZoneCommercial" transform="translate(1 7.127)">
+      <path id="Path_760" data-name="Path 760" d="M-10008-10482.843l16.188,10.105,13.515-10.105-16.512-8.157Z" transform="translate(10008 10491)" fill="#00c1ff"/>
+      <path id="Path_761" data-name="Path 761" d="M-9906.379-10481.035l8.623,4.981.145-4.981-8.771-4.782Z" transform="translate(9914.058 10489.976)" fill="#ceb1ac"/>
+      <path id="Path_762" data-name="Path 762" d="M-9888.85-10475.07l5.781-4.144v-4.669l-5.781,3.848Z" transform="translate(9905.154 10489.085)" fill="#0071a9"/>
+      <path id="Path_763" data-name="Path 763" d="M-9906.28-10489l8.7,4.788,5.612-3.837-8.653-4.337Z" transform="translate(9914.016 10493.265)" fill="#fff6d6"/>
+      <path id="Path_764" data-name="Path 764" d="M-9902.63-10487.994l6.856,3.5,3.766-2.5-6.626-3.287Z" transform="translate(9912.163 10492.191)" fill="#cec6ac"/>
+      <path id="Path_766" data-name="Path 766" d="M-9894.63-10482.57l3.823,2.063v-2.382l-3.823-2.064Z" transform="translate(9903.106 10487.089)" fill="#0089cf"/>
+      <path id="Path_877" data-name="Path 877" d="M7.675,5.42l8.655,4.846V8.927L7.675,4.2Z" fill="#ebd9c4"/>
+      <path id="Path_878" data-name="Path 878" d="M16.329,8.941l5.727-3.7V6.555l-5.727,3.774Z" fill="#0089cf"/>
+      <path id="Path_879" data-name="Path 879" d="M8.722,9.534v-3.1l6.2,3.477V13.15Z" fill="#034464"/>
+    </g>
+  </g>
+</svg>

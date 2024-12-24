@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="40" viewBox="0 0 40 40">
+  <defs>
+    <clipPath id="clip-European">
+      <rect width="40" height="40"/>
+    </clipPath>
+  </defs>
+  <g id="European" clip-path="url(#clip-European)">
+    <g id="European-2" data-name="European" transform="translate(4 4)">
+      <rect id="Rectangle_4426" data-name="Rectangle 4426" width="32" height="32" rx="4" fill="#039"/>
+      <g id="Group_2609" data-name="Group 2609">
+        <circle id="Ellipse_849" data-name="Ellipse 849" cx="2" cy="2" r="2" transform="translate(14 3)" fill="#fc0"/>
+        <circle id="Ellipse_850" data-name="Ellipse 850" cx="2" cy="2" r="2" transform="translate(20.768 3.741) rotate(30)" fill="#fc0"/>
+        <circle id="Ellipse_851" data-name="Ellipse 851" cx="2" cy="2" r="2" transform="translate(26.258 7.768) rotate(60)" fill="#fc0"/>
+        <circle id="Ellipse_852" data-name="Ellipse 852" cx="2" cy="2" r="2" transform="translate(29 14) rotate(90)" fill="#fc0"/>
+        <circle id="Ellipse_853" data-name="Ellipse 853" cx="2" cy="2" r="2" transform="translate(28.258 20.768) rotate(120)" fill="#fc0"/>
+        <circle id="Ellipse_854" data-name="Ellipse 854" cx="2" cy="2" r="2" transform="translate(24.232 26.258) rotate(150)" fill="#fc0"/>
+        <circle id="Ellipse_855" data-name="Ellipse 855" cx="2" cy="2" r="2" transform="translate(18 29) rotate(180)" fill="#fc0"/>
+        <circle id="Ellipse_856" data-name="Ellipse 856" cx="2" cy="2" r="2" transform="translate(11.232 28.258) rotate(-150)" fill="#fc0"/>
+        <circle id="Ellipse_857" data-name="Ellipse 857" cx="2" cy="2" r="2" transform="translate(5.741 24.232) rotate(-120)" fill="#fc0"/>
+        <circle id="Ellipse_858" data-name="Ellipse 858" cx="2" cy="2" r="2" transform="translate(7.768 5.741) rotate(-30)" fill="#fc0"/>
+        <circle id="Ellipse_859" data-name="Ellipse 859" cx="2" cy="2" r="2" transform="translate(3 18) rotate(-90)" fill="#fc0"/>
+        <circle id="Ellipse_860" data-name="Ellipse 860" cx="2" cy="2" r="2" transform="translate(3.741 11.232) rotate(-60)" fill="#fc0"/>
+      </g>
+    </g>
+  </g>
+</svg>

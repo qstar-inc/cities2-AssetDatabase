@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <clipPath id="clip-MediumRoundabout">
+      <rect width="64" height="64"/>
+    </clipPath>
+  </defs>
+  <g id="MediumRoundabout" clip-path="url(#clip-MediumRoundabout)">
+    <path id="Path_1137" data-name="Path 1137" d="M15.72.032C24.4.049,31.45,4.8,31.462,10.634s-7.016,10.556-15.7,10.539S.034,16.409.022,10.571,7.038.014,15.72.032Z" transform="matrix(0.998, -0.07, 0.07, 0.998, 15.414, 23.831)" fill="#595959"/>
+    <path id="Path_1136" data-name="Path 1136" d="M15.72.032C24.4.049,31.45,4.8,31.462,10.634s-7.016,10.556-15.7,10.539S.034,16.409.022,10.571,7.038.014,15.72.032Z" transform="matrix(0.998, -0.07, 0.07, 0.998, 15.414, 21.482)" fill="#c3c2c2"/>
+    <path id="Path_1140" data-name="Path 1140" d="M13.3.027C20.648.042,26.611,3.735,26.62,8.275s-5.938,8.21-13.285,8.195S.027,12.762.017,8.222,5.955.012,13.3.027Z" transform="matrix(0.998, -0.07, 0.07, 0.998, 17.959, 23.601)" fill="#327a27"/>
+  </g>
+</svg>

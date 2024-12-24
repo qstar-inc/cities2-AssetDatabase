@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <clipPath id="clip-ZoneEUResidentialLowWaterfront">
+      <rect width="32" height="32"/>
+    </clipPath>
+  </defs>
+  <g id="ZoneEUResidentialLowWaterfront" clip-path="url(#clip-ZoneEUResidentialLowWaterfront)">
+    <g id="ZoneResidential" transform="translate(1.488 8.767)">
+      <path id="Path_780" data-name="Path 780" d="M-10008-10482.843l12.35,7.71,3.838,2.4,13.515-10.105-4.124-2.037-12.388-6.12Z" transform="translate(10008 10492.43)" fill="#1cc2ff"/>
+      <path id="Path_3274" data-name="Path 3274" d="M-10008-10482.843l12.35,7.71,13.229-9.747-12.388-6.12Z" transform="translate(10008 10492.43)" fill="#23eb4f"/>
+    </g>
+    <path id="Path_781" data-name="Path 781" d="M-9991.4-10483.494l6.913,4.284.089-5.923-7-4.055Z" transform="translate(10002.033 10501.853)" fill="#f6f2e2"/>
+    <path id="Path_782" data-name="Path 782" d="M-9977.381-10480.282l5.055-3.779v-4.6l-1.935-2.275-3.12,4.753Z" transform="translate(9994.914 10502.865)" fill="#008f15"/>
+    <path id="Path_783" data-name="Path 783" d="M-9991.32-10492.714l6.879,3.84,3.172-4.769-7.109-3.18Z" transform="translate(10001.992 10505.59)" fill="#b77b36"/>
+  </g>
+</svg>

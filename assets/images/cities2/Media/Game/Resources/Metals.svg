@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36" height="36" viewBox="0 0 36 36">
+  <defs>
+    <clipPath id="clip-Metals">
+      <rect width="36" height="36"/>
+    </clipPath>
+  </defs>
+  <g id="Metals" clip-path="url(#clip-Metals)">
+    <g id="ResourceSteel" transform="translate(3.663 7.658)">
+      <path id="Path_689" data-name="Path 689" d="M6158.767-5810.784l14.248,4.732,14.426-13.561v-3.231l-14.426-3.892-14.248,12.212Z" transform="translate(-6158.767 5826.735)" fill="#5a5e62"/>
+      <path id="Path_781" data-name="Path 781" d="M6158.767-5814.523l14.248,4.8,14.426-13.121h0l-14.426-3.892-14.248,12.212Z" transform="translate(-6158.767 5826.735)" fill="#797979"/>
+      <path id="Path_780" data-name="Path 780" d="M6187.441-5822.843l-14.426-3.892-14.248,12.212Z" transform="translate(-6158.767 5826.735)" fill="#8a8d8f"/>
+    </g>
+  </g>
+</svg>

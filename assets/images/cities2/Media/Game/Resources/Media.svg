@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36" height="36" viewBox="0 0 36 36">
+  <defs>
+    <clipPath id="clip-Media">
+      <rect width="36" height="36"/>
+    </clipPath>
+  </defs>
+  <g id="Media" clip-path="url(#clip-Media)">
+    <g id="ResourceMedia" transform="translate(4 9.697)">
+      <path id="Path_1396" data-name="Path 1396" d="M3.019,0H16.858a3.019,3.019,0,0,1,3.019,3.019V13.587a3.019,3.019,0,0,1-3.019,3.019H3.019A3.019,3.019,0,0,1,0,13.587V3.019A3.019,3.019,0,0,1,3.019,0Z" fill="#87979c"/>
+      <path id="Path_617" data-name="Path 617" d="M5522.5-5747.027l6.527-4.184h1.721v13.357h-1.721l-6.527-2.75Z" transform="translate(-5502.748 5752.737)" fill="#676b6e"/>
+    </g>
+  </g>
+</svg>

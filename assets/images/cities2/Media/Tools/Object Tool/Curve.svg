@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <clipPath id="clip-Curve">
+      <rect width="32" height="32"/>
+    </clipPath>
+  </defs>
+  <g id="Curve" clip-path="url(#clip-Curve)">
+    <path id="Path_3944" data-name="Path 3944" d="M.014,20.145a34.468,34.468,0,0,1,.622-6.712A26.329,26.329,0,0,1,2.415,7.6a15.355,15.355,0,0,1,3.8-5.341A14.223,14.223,0,0,1,11.834-.69a21.252,21.252,0,0,1,5.618-.726,26.575,26.575,0,0,1,6.133.682l-.75,2.9C22.745,2.148,13.513-.14,8.192,4.516,2.785,9.247,3.01,19.957,3.013,20.064Z" transform="translate(5.457 7.5)" fill="#fff"/>
+    <circle id="Ellipse_947" data-name="Ellipse 947" cx="4" cy="4" r="4" transform="translate(20.957 4)" fill="#fff"/>
+    <circle id="Ellipse_948" data-name="Ellipse 948" cx="4" cy="4" r="4" transform="translate(8 8)" fill="#fff"/>
+    <circle id="Ellipse_949" data-name="Ellipse 949" cx="4" cy="4" r="4" transform="translate(2.957 20)" fill="#fff"/>
+  </g>
+</svg>

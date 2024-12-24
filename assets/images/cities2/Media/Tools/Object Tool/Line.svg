@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <clipPath id="clip-Line">
+      <rect width="32" height="32"/>
+    </clipPath>
+  </defs>
+  <g id="Line" clip-path="url(#clip-Line)">
+    <path id="Line_117" data-name="Line 117" d="M1.11,23.009l-2.22-2.018,20-22,2.22,2.018Z" transform="translate(6.5 5.5)" fill="#fff"/>
+    <circle id="Ellipse_945" data-name="Ellipse 945" cx="4" cy="4" r="4" transform="translate(5 21)" fill="#fff"/>
+    <circle id="Ellipse_946" data-name="Ellipse 946" cx="4" cy="4" r="4" transform="translate(20 4)" fill="#fff"/>
+  </g>
+</svg>

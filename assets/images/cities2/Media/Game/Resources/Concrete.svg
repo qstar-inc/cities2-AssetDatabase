@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36" height="36" viewBox="0 0 36 36">
+  <defs>
+    <clipPath id="clip-Concrete">
+      <rect width="36" height="36"/>
+    </clipPath>
+  </defs>
+  <g id="Concrete" clip-path="url(#clip-Concrete)">
+    <g id="ResourceConcrete" transform="translate(4.457 4.208)">
+      <path id="Path_549" data-name="Path 549" d="M5439.392-6641.492l8.438,4.087,18.647-6.853v-16.984l-8.917-3.745-18.168,5.066Z" transform="translate(-5439.392 6664.988)" fill="#b3b2b2"/>
+      <path id="Path_550" data-name="Path 550" d="M5471.09-6627.239v-18.607l18.757-5.243v17.189Z" transform="translate(-5462.776 6654.822)" fill="#909090"/>
+      <path id="Path_551" data-name="Path 551" d="M5439.712-6659.872l8.319,3.773,18.613-5.145-8.871-3.681Z" transform="translate(-5439.628 6664.941)" fill="#fff" opacity="0.28"/>
+      <path id="Path_552" data-name="Path 552" d="M5475.678-6597.225l.779-1.1.6,1.1-.6.653Z" transform="translate(-5460.127 6616.226)" fill="#727272"/>
+      <path id="Path_553" data-name="Path 553" d="M.028,1.122l.8-1.1.591,1.086-.61.654Z" transform="translate(14.091 16.563) rotate(-34)" fill="#727272"/>
+      <path id="Path_554" data-name="Path 554" d="M-.025,1.449,1.118-.019l.9,1.483-.881.869Z" transform="matrix(0.94, 0.342, -0.342, 0.94, 16.596, 13.421)" fill="#727272"/>
+      <path id="Path_555" data-name="Path 555" d="M-.014.774.434-.007.788.78l-.345.463Z" transform="matrix(0.94, 0.342, -0.342, 0.94, 18.052, 16.048)" fill="#727272"/>
+      <path id="Path_556" data-name="Path 556" d="M.016.715.459.01l.329.7-.339.419Z" transform="matrix(-0.891, 0.454, -0.454, -0.891, 21.14, 14.079)" fill="#727272"/>
+    </g>
+  </g>
+</svg>

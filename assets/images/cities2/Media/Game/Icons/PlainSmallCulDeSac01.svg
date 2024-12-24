@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <clipPath id="clip-PlainSmallCulDeSac01">
+      <rect width="64" height="64"/>
+    </clipPath>
+  </defs>
+  <g id="PlainSmallCulDeSac01" clip-path="url(#clip-PlainSmallCulDeSac01)">
+    <path id="Path_1137" data-name="Path 1137" d="M11.149,0C17.306.006,22.3,3.446,22.3,7.686s-4.989,7.676-11.146,7.674S0,11.918,0,7.678,4.992,0,11.149,0Z" transform="matrix(0.998, -0.07, 0.07, 0.998, 20.414, 25.6)" fill="#595959"/>
+    <path id="Path_1136" data-name="Path 1136" d="M11.149,0C17.306.006,22.3,3.446,22.3,7.686s-4.989,7.676-11.146,7.674S0,11.918,0,7.678,4.992,0,11.149,0Z" transform="matrix(0.998, -0.07, 0.07, 0.998, 20.414, 23.893)" fill="#888"/>
+  </g>
+</svg>
