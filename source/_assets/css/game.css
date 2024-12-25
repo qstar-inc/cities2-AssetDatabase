@@ -490,15 +490,17 @@
   display: flex;
   flex-wrap: wrap;
   gap: 1vw 1vh;
+  flex: 1;
 }
 
 .asset-details-pane-body-bottom-boxes > div {
-  display: flex; /* Parent flex container */
-  flex-direction: column; /* Flex items stack vertically */
-  align-items: center; /* Center items horizontally */
-  justify-content: flex-start; /* Align items to the top */
-  flex-grow: 1; /* Allow the container to grow */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  flex-grow: 1;
   height: auto;
+  min-width: 25vh;
 }
 
 .asset-details-pane-body-bottom-box {
@@ -582,6 +584,29 @@
   aspect-ratio: auto;
 }
 
+.resource-inline-div {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: auto;
+  flex-basis: 12vw;
+}
+
+.resource-inline-icon {
+  display: flex;
+  height: 2vw;
+  flex: 1;
+}
+
+.resource-inline-text {
+  align-self: center;
+  margin: auto;
+}
+
+.resource-inline-icon > .resource-icon {
+  margin: 0 0.5vh !important;
+}
+
 #resource-use-table > div {
   display: flex;
   justify-content: center;
@@ -599,18 +624,26 @@
   background: var(--dark-blue);
 }
 
+#resource-allow-table {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .data-box {
   display: grid;
   align-content: stretch;
   align-items: stretch;
   width: 100%;
-  height: 100%;
   gap: 1vh;
   text-align: center;
   padding: 1vh;
   background: var(--almost-black);
   border-radius: 1vh;
   border: 0.3vh solid var(--vanilla-blue-accent-dark);
+  min-height: 15vh;
+  max-height: 25vh;
+  flex-grow: 1;
+  overflow: scroll;
 }
 
 .parent-div-with-subtext {
@@ -634,12 +667,12 @@
   display: grid !important;
   text-transform: uppercase;
   flex: 1;
-  background: var(--orange);
+  /* background: var(--orange); */
+  background: rgb(255, 185, 143);
   border-radius: 1vh;
   padding: 1vh;
   color: #000;
   font-weight: bold;
-  background-color: var(--orange);
   transition: all 0.1s ease-in;
 }
 
@@ -652,5 +685,13 @@
 .div-with-subtext > .subtext {
   font-size: 80% !important;
   font-weight: initial;
+  margin: auto;
+}
+
+.color-box {
+  border: 1vh solid var(--dark-blackish-color);
+  border-radius: 1vh;
+  height: 10vh;
+  width: 10vh;
   margin: auto;
 }

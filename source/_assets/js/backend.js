@@ -151,28 +151,28 @@ function fetchAssetPanelDataAll() {
 //     });
 // }
 
-function fetchAssetData(prefab) {
-  fetch(atob(u) + "cities2_get_data", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      Authorization: auth,
-      reqType: "asset-data",
-      prefab: prefab,
-    }),
-  })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok " + response.statusText);
-      }
-      return response.json();
-    })
-    .then((data) => {
-      addAssetData(prefab, data.data);
-    });
-}
+// function fetchAssetData(prefab) {
+//   fetch(atob(u) + "cities2_get_data", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify({
+//       Authorization: auth,
+//       reqType: "asset-data",
+//       prefab: prefab,
+//     }),
+//   })
+//     .then((response) => {
+//       if (!response.ok) {
+//         throw new Error("Network response was not ok " + response.statusText);
+//       }
+//       return response.json();
+//     })
+//     .then((data) => {
+//       addAssetData(prefab, data.data);
+//     });
+// }
 
 let batchSize = 10000;
 let currentOffset = 0;
@@ -209,9 +209,9 @@ function fetchAssetDataAll() {
       currentOffset += batchSize;
       fetchAssetDataAll();
     })
-    .catch((error) => {
-      console.error("Error loading asset data batch:", error);
-    });
+    // .catch((error) => {
+    //   console.error("Error loading asset data batch:", error);
+    // });
 }
 
 window.fetchAssetGroupData = fetchAssetGroupData;
@@ -219,5 +219,5 @@ window.fetchAssetGroupData = fetchAssetGroupData;
 window.fetchAssetTabDataAll = fetchAssetTabDataAll;
 // window.fetchAssetPanelData = fetchAssetPanelData;
 window.fetchAssetPanelDataAll = fetchAssetPanelDataAll;
-window.fetchAssetData = fetchAssetData;
+// window.fetchAssetData = fetchAssetData;
 window.fetchAssetDataAll = fetchAssetDataAll;

@@ -7,7 +7,9 @@ const guidList = [
   { "f18970a35e902c14982fb42e04534ad1": { name: "Commercial Hotel", category: "Company" } },
   { "b018f3987d5d8284db0ecc1f153beae6": { name: "Commercial Liquor Store", category: "Company" } },
   { "1b916563a0c8b0f40be97d75e3c8857b": { name: "Commercial Restaurant", category: "Company" } },
-  { "5c1f656a5ea20284197a71e4997b4187": { name: "Parks and Recreation", category: "Service" } }
+  { "5c1f656a5ea20284197a71e4997b4187": { name: "Parks and Recreation", category: "Service" } },
+  { "846c60044f7ead04d9b11f0d749ea5f2": { name: "European", category: "Theme"} },
+  { "6f24f89d231e81043b538ce3fb2b54ae": { name: "North American", category: "Theme"} },
 ]; 
 
 let tags = [];
@@ -18,12 +20,14 @@ let production = {};
 
 let comp_attraction = {};
 let comp_battery = {};
+let comp_crimeAcc = {};
 let comp_companyObject = {};
 let comp_destructible = {};
 let comp_floating = {};
 let comp_garbage = {};
 let comp_hospital = {};
 let comp_leisureProvider = {};
+let comp_mailAcc = {};
 let comp_park = {};
 let comp_placableObject = {};
 let comp_police = {};
@@ -37,11 +41,15 @@ let comp_shoreline = {};
 let comp_telecom = {};
 let comp_waterPump = {};
 let comp_workplace = {};
+let comp_zonePollution = {};
+let comp_zoneProperties = {};
+let comp_zoneServiceConsumption = {};
 let prefab_building = {};
+let prefab_zone = {};
 
 let adprb;
 
-function processAssetPanelUIData(name, data, containers) {
+async function processAssetPanelUIData(name, data, containers) {
   adprb = containers[0];
   let tagContainer = containers[1];
   let notifContainer = containers[2];
@@ -57,12 +65,14 @@ function processAssetPanelUIData(name, data, containers) {
 
   comp_attraction = {};
   comp_battery = {};
+  comp_crimeAcc = {};
   comp_companyObject = {};
   comp_destructible = {};
   comp_floating = {};
   comp_garbage = {};
   comp_hospital = {};
   comp_leisureProvider = {};
+  comp_mailAcc = {};
   comp_park = {};
   comp_placableObject = {};
   comp_police = {};
@@ -76,54 +86,41 @@ function processAssetPanelUIData(name, data, containers) {
   comp_telecom = {};
   comp_waterPump = {};
   comp_workplace = {};
+  comp_zonePollution = {};
+  comp_zoneProperties = {};
+  comp_zoneServiceConsumption = {};
   prefab_building = {};
+  prefab_zone = {};
 
   const tempRight = document.getElementById("temp-right");
   tempRight.innerHTML = "";
 
   detailsArray.forEach(([key, value]) => {
     if (value != "null" && value != null) {
-      if (key == "BuildingPrefab") {
-        value = removePrefix(value, "[");
-        value = removeSuffix(value, "]");
-        [access, lot_x, lot_y] = value.split(",");
-        prefab_building.access = enumBuildingAccessType(access);
-        prefab_building.lot_x = lot_x;
-        prefab_building.lot_y = lot_y;
-      } else if (key == "AdministrationBuilding") {
+      if (key == "AdministrationBuilding") {
         tags.push({ name: "Administration Building", type: "Class"});
       } else if (key == "Attraction") {
-        value = removePrefix(value, "[");
-        value = removeSuffix(value, "]");
-        [comp_attraction.attractiveness] = value.split(",");
+        [comp_attraction.attractiveness] = JSON.parse(value);
       } else if (key == "Battery") {
-        value = removePrefix(value, "[");
-        value = removeSuffix(value, "]");
-        [comp_battery.output, comp_battery.capacity] = value.split(",");
+        [comp_battery.output, comp_battery.capacity] = JSON.parse(value);
       } else if (key == "CityServiceBuilding") {
         tags.push({ name: "City Service Building", type: "Class"});
         resources.Consumable = JSON.parse(value);
       } else if (key == "CompanyObject") {
-        value = removePrefix(value, "[");
-        value = removeSuffix(value, "]");
         select = value.split(",")[0];
         companies = removePrefix(value, select + ",");
-        comp_companyObject.companies = companies.split(",");
+        comp_companyObject.companies = JSON.parse(companies);
       } else if (key == "ContentPrerequisite") {
         tags.push(...getGUID(value));
+      } else if (key == "CrimeAccumulation") {
+        [comp_crimeAcc.crimeRate] = JSON.parse(value);
       } else if (key == "DestructibleObject") {
-        value = removePrefix(value, "[");
-        value = removeSuffix(value, "]");
-        [comp_destructible.fireHazard, comp_destructible.integrity] = value.split(",");
+        [comp_destructible.fireHazard, comp_destructible.integrity] = JSON.parse(value);
       } else if (key == "FirewatchTower") {
         tags.push({ name: "Firewatch Tower", type: "Class"});
       } else if (key == "FloatingObject") {
-        value = removePrefix(value, "[");
-        value = removeSuffix(value, "]");
-        [comp_floating.offset, comp_floating.fixed, comp_floating.dryland ] = value.split(",");
+        [comp_floating.offset, comp_floating.fixed, comp_floating.dryland ] = JSON.parse(value);
       } else if (key == "GarbageFacility") {
-        value = removePrefix(value, "[");
-        value = removeSuffix(value, "]");
         [
           comp_garbage.capacity,
           comp_garbage.van,
@@ -131,19 +128,13 @@ function processAssetPanelUIData(name, data, containers) {
           comp_garbage.speed,
           comp_garbage.industrial,
           comp_garbage.longterm
-        ] = value.split(",");
+        ] = JSON.parse(value);
       } else if (key == "GarbagePowered") {
-        value = removePrefix(value, "[");
-        value = removeSuffix(value, "]");
-        [production.garbageUnit, production.garbageCapacity] = value.split(",");
+        [production.garbageUnit, production.garbageCapacity] = JSON.parse(value);
       } else if (key == "GroundWaterPowered") {
-        value = removePrefix(value, "[");
-        value = removeSuffix(value, "]");
-        [production.groundWaterProduction, production.groundWaterCapacity] = value.split(",");
+        [production.groundWaterProduction, production.groundWaterCapacity] = JSON.parse(value);
       } else if (key == "Hospital") {
         tags.push({ name: "Hospital", type: "Class"});
-        value = removePrefix(value, "[");
-        value = removeSuffix(value, "]");
         [
           comp_hospital.ambulance,
           comp_hospital.helicopter,
@@ -153,13 +144,13 @@ function processAssetPanelUIData(name, data, containers) {
           comp_hospital.rangeHigh,
           comp_hospital.treatDisease,
           comp_hospital.treatInjuries,
-        ] = value.split(",");
+        ] = JSON.parse(value);
       } else if (key == "InitialResources") {
         resources.Initial = JSON.parse(value);
       } else if (key == "LeisureProvider") {
-        value = removePrefix(value, "[");
-        value = removeSuffix(value, "]");
-        [comp_leisureProvider.efficiency, comp_leisureProvider.resource, comp_leisureProvider.type] = value.split(",");
+        [comp_leisureProvider.efficiency, comp_leisureProvider.resource, comp_leisureProvider.type] = JSON.parse(value);
+      } else if (key == "MailAccumulation") {
+        [comp_mailAcc.requireCollect, comp_mailAcc.sendingRate, comp_mailAcc.receivingRate] = JSON.parse(value);
       } else if (key == "ObsoleteIdentifiers") {
         // const div = document.createElement("div");
         // const header = document.createElement("div");
@@ -185,43 +176,29 @@ function processAssetPanelUIData(name, data, containers) {
         // div.appendChild(body);
         // assetDetailsPaneBodyRightBoxes.appendChild(div);
       } else if (key == "Park") {
-        value = removePrefix(value, "[");
-        value = removeSuffix(value, "]");
-        [comp_park.maintenance, comp_park.homeless] = value.split(",");
+        [comp_park.maintenance, comp_park.homeless] = JSON.parse(value);
       } else if (key == "PlaceableObject") {
-        value = removePrefix(value, "[");
-        value = removeSuffix(value, "]");
-        [comp_placableObject.cost, comp_placableObject.xp] = value.split(",");
+        [comp_placableObject.cost, comp_placableObject.xp] = JSON.parse(value);
       } else if (key == "PoliceStation") {
-        value = removePrefix(value, "[");
-        value = removeSuffix(value, "]");
         [
           comp_police.patrol,
           comp_police.helicopter,
           comp_police.jail,
           comp_police.purpose
-        ] = value.split(",");
+        ] = JSON.parse(value);
       } else if (key == "Pollution") {
-        value = removePrefix(value, "[");
-        value = removeSuffix(value, "]");
         [
           comp_pollution.ground,
           comp_pollution.air,
           comp_pollution.noise,
           comp_pollution.scale,
-        ] = value.split(",");
+        ] = JSON.parse(value);
       } else if (key == "PostFacility") {
-        value = removePrefix(value, "[");
-        value = removeSuffix(value, "]");
-        [comp_post.van, comp_post.truck, comp_post.storage, comp_post.box, comp_post.sort] = value.split(",");
+        [comp_post.van, comp_post.truck, comp_post.storage, comp_post.box, comp_post.sort] = JSON.parse(value);
       } else if (key == "PowerPlant") {
-        value = removePrefix(value, "[");
-        value = removeSuffix(value, "]");
-        [production.power] = value.split(",");
+        [production.power] = JSON.parse(value);
       } else if (key == "Prison") {
-        value = removePrefix(value, "[");
-        value = removeSuffix(value, "]");
-        [comp_prison.van, comp_prison.prisoner, comp_prison.wellbeing, comp_prison.health] = value.split(",");
+        [comp_prison.van, comp_prison.prisoner, comp_prison.wellbeing, comp_prison.health] = JSON.parse(value);
       } else if (key == "ResearchFacility") {
         tags.push({ name: "Research Facility", type: "Class"});
       } else if (key == "ResourceConsumer") {
@@ -231,84 +208,70 @@ function processAssetPanelUIData(name, data, containers) {
       } else if (key == "ResourceProducer") {
         resources.Production = JSON.parse(value);
       } else if (key == "School") {
-        value = removePrefix(value, "[");
-        value = removeSuffix(value, "]");
         [
           comp_school.capacity,
           comp_school.level,
           comp_school.gradModifier,
           comp_school.wellbeing,
           comp_school.health,
-        ] = value.split(",");
+        ] = JSON.parse(value);
       } else if (key == "ServiceConsumption") {
-        value = removePrefix(value, "[");
-        value = removeSuffix(value, "]");
         [
           comp_serviceConsumption.upkeep,
           comp_serviceConsumption.electricity,
           comp_serviceConsumption.water,
           comp_serviceConsumption.garbage,
           comp_serviceConsumption.telecom,
-        ] = value.split(",");
+        ] = JSON.parse(value);
       } else if (key == "ServiceCoverage") {
-        value = removePrefix(value, "[");
-        value = removeSuffix(value, "]");
         [
           comp_serviceCoverage.range,
           comp_serviceCoverage.capacity,
           comp_serviceCoverage.magnitude,
-        ] = value.split(",");
+        ] = JSON.parse(value);
       } else if (key == "ServiceFeeCollector") {
         tags.push({ name: "Service Fee Collector", type: "Class"});
       } else if (key == "ServiceObject") {
         tags.push(...getGUID(value));
       } else if (key == "ShorelineObject") {
-        value = removePrefix(value, "[");
-        value = removeSuffix(value, "]");
-        [comp_shoreline.offset, comp_shoreline.dryland ] = value.split(",");
-      } else if (key == "SignatureBuilding") {
-        const div = document.createElement("div");
-        const header = document.createElement("div");
-        const body = document.createElement("div");
-        div.dataset.name = getSl(key);
-        div.classList.add("asset-details-pane-body-bottom-box");
-        header.classList.add("asset-details-pane-body-bottom-box-header");
-        body.classList.add("asset-details-pane-body-bottom-box-body");
-        header.innerHTML = "Signature Building";
+        [comp_shoreline.offset, comp_shoreline.dryland ] = JSON.parse(value);
+      // } else if (key == "SignatureBuilding") {
+      //   const div = document.createElement("div");
+      //   const header = document.createElement("div");
+      //   const body = document.createElement("div");
+      //   div.dataset.name = getSl(key);
+      //   div.classList.add("asset-details-pane-body-bottom-box");
+      //   header.classList.add("asset-details-pane-body-bottom-box-header");
+      //   body.classList.add("asset-details-pane-body-bottom-box-body");
+      //   header.innerHTML = "Signature Building";
 
-        value = removePrefix(value, "[");
-        value = removeSuffix(value, "]");
-        [zone, xp, unlock_image] = value.split(",");
-        let zoneText, xpText;
-        if (zone != 0) {
-          zoneText = `Zone: ${getGUID(zone)}`;
-        }
-        if (xp != 0) {
-          xpText = `Reward: ${xp} XP`;
-        }
+      //   value = removePrefix(value, "[");
+      //   value = removeSuffix(value, "]");
+      //   [zone, xp, unlock_image] = JSON.parse(value);
+      //   let zoneText, xpText;
+      //   if (zone != 0) {
+      //     zoneText = `Zone: ${getGUID(zone)}`;
+      //   }
+      //   if (xp != 0) {
+      //     xpText = `Reward: ${xp} XP`;
+      //   }
 
-        body.innerHTML = sanitizeArray([zoneText, xpText]);
+      //   body.innerHTML = sanitizeArray([zoneText, xpText]);
 
-        div.appendChild(header);
-        div.appendChild(body);
-        adprb.appendChild(div);
+      //   div.appendChild(header);
+      //   div.appendChild(body);
+      //   adprb.appendChild(div);
       } else if (key == "SolarPowered") {
-        value = removePrefix(value, "[");
-        value = removeSuffix(value, "]");
-        [production.solarProduction] = value.split(",");
+        [production.solarProduction] = JSON.parse(value);
       } else if (key == "StorageLimit") {
         resources.Storage = JSON.parse(value);
       } else if (key == "TelecomFacility") {
-        value = removePrefix(value, "[");
-        value = removeSuffix(value, "]");
         [
           comp_telecom.range,
           comp_telecom.capacity,
           comp_telecom.satellite,
         ] = value.split(",");
       } else if (key == "ThemeObject") {
-        value = removePrefix(value, "[");
-        value = removeSuffix(value, "]");
         tags.push(...getGUID(value));
       } else if (key == "Transformer") {
         tags.push({ name: "Transformer", type: "Class"});
@@ -353,24 +316,46 @@ function processAssetPanelUIData(name, data, containers) {
         div.appendChild(body);
         tempRight.appendChild(div);
       } else if (key == "WaterPumpingStation") {
-        value = removePrefix(value, "[");
-        value = removeSuffix(value, "]");
-        [comp_waterPump.capacity, comp_waterPump.purification, comp_waterPump.type] = value.split(",");
+        [comp_waterPump.capacity, comp_waterPump.purification, comp_waterPump.type] = JSON.parse(value);
       } else if (key == "WelfareOffice") {
         tags.push({ name: "Welfare Office", type: "Class"});
       } else if (key == "WindPowered") {
-        value = removePrefix(value, "[");
-        value = removeSuffix(value, "]");
-        [production.windSpeed, production.windProduction] = value.split(",");
+        [production.windSpeed, production.windProduction] = JSON.parse(value);
       } else if (key == "Workplace") {
-        value = removePrefix(value, "[");
-        value = removeSuffix(value, "]");
         [
           comp_workplace.workplaces,
           comp_workplace.complexity,
           comp_workplace.eveningProb,
           comp_workplace.nightProb,
-        ] = value.split(",");
+        ] = JSON.parse(value);
+      } else if (key == "ZonePollution") {
+        [
+          comp_zonePollution.ground,
+          comp_zonePollution.air,
+          comp_zonePollution.noise,
+        ] = JSON.parse(value);
+      } else if (key == "ZoneProperties") {
+        [
+          comp_zoneProperties.scaleResi,
+          comp_zoneProperties.resiProp,
+          comp_zoneProperties.spaceMulti,
+          comp_zoneProperties.allowedSold,
+          comp_zoneProperties.allowedManufactured,
+          comp_zoneProperties.allowedStored,
+          comp_zoneProperties.fireHazardModifier,
+        ] = JSON.parse(value);
+      } else if (key == "ZoneServiceConsumption") {
+        [
+          comp_zoneServiceConsumption.upkeep,
+          comp_zoneServiceConsumption.electricity,
+          comp_zoneServiceConsumption.water,
+          comp_zoneServiceConsumption.garbage,
+          comp_zoneServiceConsumption.telecom
+        ] = JSON.parse(value);
+      } else if (key == "BuildingPrefab") {
+        [prefab_building.access, prefab_building.lot_x, prefab_building.lot_y] = JSON.parse(value);
+      } else if (key == "ZonePrefab") {
+        [prefab_zone.areaType, prefab_zone.color, prefab_zone.edge, prefab_zone.isOffice] = JSON.parse(value);
       } else if (
         key != "Lang_Title" &&
         key != "Lang_Description" &&
@@ -378,7 +363,7 @@ function processAssetPanelUIData(name, data, containers) {
       ) {
         const div = document.createElement("div");
         div.innerHTML = `${key}: ${value}`;
-        temp.appendChild(div);
+        tempRight.appendChild(div);
       }
     }
   });
@@ -403,6 +388,10 @@ function processAssetPanelUIData(name, data, containers) {
 
   if (!isEmptyObject(prefab_building)) {
     makeDataDiv("Building Data", processBuildingPrefab());
+  }
+
+  if (!isEmptyObject(prefab_zone)) {
+    makeDataDiv("Zone Data", processZonePrefab());
   }
 
   if (!isEmptyObject(resources)) {
@@ -455,6 +444,10 @@ function processAssetPanelUIData(name, data, containers) {
     makeDataDiv("Company Object", processCompanyObjectComp());
   }
 
+  if (!isEmptyObject(comp_crimeAcc)) {
+    makeDataDiv("Crime Accumulation", processCrimeAccComp());
+  }
+
   if (!isEmptyObject(comp_destructible)) {
     makeDataDiv("Destructible Object", processDestructibleObjectComp());
   }
@@ -473,6 +466,10 @@ function processAssetPanelUIData(name, data, containers) {
 
   if (!isEmptyObject(comp_leisureProvider)) {
     makeDataDiv("Leisure Provider", processLeisureProviderComp());
+  }
+
+  if (!isEmptyObject(comp_mailAcc)) {
+    makeDataDiv("Mail Accumulation", processMailAccComp());
   }
 
   if (!isEmptyObject(comp_park)) {
@@ -526,6 +523,30 @@ function processAssetPanelUIData(name, data, containers) {
   if (!isEmptyObject(comp_workplace)) {
     makeDataDiv("Workplace", processWorkplaceComp());
   }
+
+  if (!isEmptyObject(comp_zonePollution)) {
+    makeDataDiv("Zone Pollution", processZonePollutionComp());
+  }
+
+  if (!isEmptyObject(comp_zoneProperties)) {
+    makeDataDiv("Zone Properties", processZonePropertiesComp());
+    
+    if (comp_zoneProperties.allowedSold.length > 0) {
+      makeDataDiv("Can Sell", await createResourceAllowTable(comp_zoneProperties.allowedSold));
+    }
+    
+    if (comp_zoneProperties.allowedManufactured.length > 0) {
+      makeDataDiv("Can Manufacture", await createResourceAllowTable(comp_zoneProperties.allowedManufactured));
+    }
+
+    if (comp_zoneProperties.allowedStored.length > 0) {
+      makeDataDiv("Can Store", await createResourceAllowTable(comp_zoneProperties.allowedStored));
+    }
+  }
+
+  if (!isEmptyObject(comp_zoneServiceConsumption)) {
+    makeDataDiv("Zone Service Consumption", processZoneServiceConsumptionComp());
+  }
   // const divs = Array.from(assetDetailsPaneBodyRightBoxes.children);
   // divs.sort((a, b) => a.dataset.name.localeCompare(b.dataset.name));
   // divs.forEach((div) => assetDetailsPaneBodyRightBoxes.appendChild(div));
@@ -554,11 +575,16 @@ function makeDataDiv(headerText, func) {
 }
 
 function makeSubTextDiv(titleText, valueText, div, unit = "") {
-  const value = document.createElement("span");
-  value.classList.add("value-above-subtext");
-  value.innerHTML = sanitizeValueText(valueText);
-  if (unit != "") {
-    value.innerHTML += "<br/><small>"+unit+"</small>";
+  var value;
+  if (typeof valueText == "object") {
+    value = valueText;
+  } else {
+    value = document.createElement("span");
+    value.classList.add("value-above-subtext");
+    value.innerHTML = sanitizeValueText(valueText);
+    if (unit != "") {
+      value.innerHTML += "<br/><small>" + unit + "</small>";
+    }
   }
   const finalDiv = document.createElement("div");
   finalDiv.classList.add("div-with-subtext");
@@ -573,25 +599,70 @@ function makeSubTextDiv(titleText, valueText, div, unit = "") {
 }
 
 function processBuildingPrefab() {
+  const lot_x = prefab_building.lot_x;
+  const lot_y = prefab_building.lot_y;
+  const access = prefab_building.access;
+
   const mainDiv = document.createElement("div");
   mainDiv.classList.add("data-box");
-  if (prefab_building.lot_x && prefab_building.lot_y) {
+  if (lot_x && lot_y) {
     const lotDiv = document.createElement("div");
     lotDiv.classList.add("parent-div-with-subtext");
 
-    makeSubTextDiv("Width", prefab_building.lot_x, lotDiv);
-    makeSubTextDiv("Depth", prefab_building.lot_y, lotDiv);
+    makeSubTextDiv("Width", lot_x, lotDiv);
+    makeSubTextDiv("Depth", lot_y, lotDiv);
 
     lotDiv.style.gridTemplateColumns = `repeat(2, 1fr)`;
     mainDiv.appendChild(lotDiv);
   }
-  if (prefab_building.access) {
+  if (access) {
     const div = document.createElement("div");
     div.classList.add("parent-div-with-subtext");
-    makeSubTextDiv("Access Direction", prefab_building.access, div);
+    makeSubTextDiv("Access Direction", enumBuildingAccessType(access), div);
     div.style.gridTemplateColumns = `repeat(1, 1fr)`;
     mainDiv.appendChild(div);
   }
+  return mainDiv;
+}
+
+function processZonePrefab() {
+  const areaType = prefab_zone.areaType;
+  const color = prefab_zone.color;
+  const edge = prefab_zone.edge;
+  const isOffice = prefab_zone.isOffice;
+
+  const mainDiv = document.createElement("div");
+  mainDiv.classList.add("data-box");
+  {
+    const div = document.createElement("div");
+    div.classList.add("parent-div-with-subtext");
+    let count = 0;
+
+    let areaVal = enumZoneType(areaType, isOffice);
+    if (areaType != 0) {
+      makeSubTextDiv("Area Type", areaVal, div);
+      count++;
+    }
+    
+    div.style.gridTemplateColumns = `repeat(${count}, 1fr)`;
+    mainDiv.appendChild(div);
+  }
+  {
+    const div = document.createElement("div");
+    div.classList.add("parent-div-with-subtext");
+    let count = 0;
+    if (color.length > 0) {
+      makeSubTextDiv("Zone Color", makeColor(color), div);
+      count++;
+    }
+    if (edge.length > 0) {
+      makeSubTextDiv("Edge Color", makeColor(edge), div);
+      count++;
+    }
+    div.style.gridTemplateColumns = `repeat(${count}, 1fr)`;
+    mainDiv.appendChild(div);
+  }
+
   return mainDiv;
 }
 
@@ -659,6 +730,26 @@ function processCompanyObjectComp() {
   return mainDiv;
 }
 
+function processCrimeAccComp() {
+  const crimeRate = comp_crimeAcc.crimeRate;
+
+  const mainDiv = document.createElement("div");
+  mainDiv.classList.add("data-box");
+
+  const div = document.createElement("div");
+  div.classList.add("parent-div-with-subtext");
+  let count = 0;
+  if (crimeRate != 0) {
+    makeSubTextDiv("Crime Rate", crimeRate, div);
+    count++;
+  }
+
+  div.style.gridTemplateColumns = `repeat(${count}, 1fr)`;
+  mainDiv.appendChild(div);
+
+  return mainDiv;
+}
+
 function processDestructibleObjectComp() {
   const fireHazard = comp_destructible.fireHazard;
   const integrity = comp_destructible.integrity;
@@ -701,12 +792,12 @@ function processFloatingObjectComp() {
     count++;
   }
   
-  if (fixed == "true") {
+  if (fixed) {
     makeSubTextDiv("", "Fixed to Bottom", div);
     count++;
   }
   
-  if (dryland == "true") {
+  if (dryland) {
     makeSubTextDiv("", "Dry Land Allowed", div);
     count++;
   }
@@ -751,12 +842,12 @@ function processGarbageComp() {
     count++;
   }
   
-  if (industrial == "true") {
+  if (industrial) {
     makeSubTextDiv("", "Industrial Waste Only", div);
     count++;
   }
   
-  if (longterm == "true") {
+  if (longterm) {
     makeSubTextDiv("", "Long Term Storage", div);
     count++;
   }
@@ -797,9 +888,10 @@ function processHospitalComp() {
       makeSubTextDiv(pluralize("Patients", parseInt(patient)), patient, div);
       count++;
     }
-
-    div.style.gridTemplateColumns = `repeat(${count}, 1fr)`;
-    mainDiv.appendChild(div);
+    if (count > 0) {
+      div.style.gridTemplateColumns = `repeat(${count}, 1fr)`;
+      mainDiv.appendChild(div);
+    }
   }
 
   if (treatmentBonus != 0 || (rangeLow && rangeHigh)) {
@@ -817,41 +909,34 @@ function processHospitalComp() {
       count++;
     }
 
-    div.style.gridTemplateColumns = `repeat(${count}, 1fr)`;
-    mainDiv.appendChild(div);
+    if (count > 0) {
+      div.style.gridTemplateColumns = `repeat(${count}, 1fr)`;
+      mainDiv.appendChild(div);
+    }
   }
+  {
+    const div = document.createElement("div");
+    div.classList.add("parent-div-with-subtext");
+    let count = 0;
 
-  const treatsDiv = document.createElement("div");
-  treatsDiv.classList.add("parent-div-with-subtext");
-  if (treatDisease == "true" && treatInjuries == "true") {
-    const value = document.createElement("span");
-    value.classList.add("value-above-subtext");
-    value.innerHTML = "Treats diseases and injuries";
-    const finalDiv = document.createElement("div");
-    finalDiv.classList.add("div-with-subtext");
-    finalDiv.appendChild(value);
-    treatsDiv.appendChild(finalDiv);
-  } else if (treatDisease == "false" && treatInjuries == "true") {
-    const value = document.createElement("span");
-    value.classList.add("value-above-subtext");
-    value.innerHTML = "Treats injuries only";
-    const finalDiv = document.createElement("div");
-    finalDiv.classList.add("div-with-subtext");
-    finalDiv.appendChild(value);
-    treatsDiv.appendChild(finalDiv);
-  } else if (treatDisease == "true" && treatInjuries == "false") {
-    const value = document.createElement("span");
-    value.classList.add("value-above-subtext");
-    value.innerHTML = "Treats diseases only";
-    const finalDiv = document.createElement("div");
-    finalDiv.classList.add("div-with-subtext");
-    finalDiv.appendChild(value);
-    treatsDiv.appendChild(finalDiv);
-  }
+    if (treatDisease && treatInjuries) {
+      makeSubTextDiv("", "Treats diseases and injuries", div);
+      count++;
+    } else if (!treatDisease && treatInjuries) {
+      makeSubTextDiv("", "Treats injuries only", div);
+      count++;
+    } else if (treatDisease && !treatInjuries) {
+      makeSubTextDiv("", "Treats diseases only", div);
+      count++;
+    } else {
+      makeSubTextDiv("", "Does not treat anything", div);
+      count++;
+    }
 
-  if (treatsDiv.children.length > 0) {
-    treatsDiv.style.gridTemplateColumns = `repeat(1, 1fr)`;
-    mainDiv.appendChild(treatsDiv);
+    if (count > 0) {
+      div.style.gridTemplateColumns = `repeat(${count}, 1fr)`;
+      mainDiv.appendChild(div);
+    }
   }
 
   return mainDiv;
@@ -889,6 +974,49 @@ function processLeisureProviderComp() {
   return mainDiv;
 }
 
+function processMailAccComp() {
+  const requireCollect = comp_mailAcc.requireCollect;
+  const sendingRate = comp_mailAcc.sendingRate;
+  const receivingRate = comp_mailAcc.receivingRate;
+  const mainDiv = document.createElement("div");
+  mainDiv.classList.add("data-box");
+  {
+    const div = document.createElement("div");
+    div.classList.add("parent-div-with-subtext");
+    let count = 0;
+
+    if (requireCollect) {
+      makeSubTextDiv("", "Requires Collection", div);
+      count++;
+    }
+    if (count > 0) {
+      div.style.gridTemplateColumns = `repeat(${count}, 1fr)`;
+      mainDiv.appendChild(div);
+    }
+  }
+  {
+    const div = document.createElement("div");
+    div.classList.add("parent-div-with-subtext");
+    let count = 0;
+
+    if (sendingRate != 0) {
+      makeSubTextDiv("Sending Rate", sendingRate, div);
+      count++;
+    }
+
+    if (receivingRate != 0) {
+      makeSubTextDiv("Receiving Rate", receivingRate, div);
+      count++;
+    }
+
+    if (count > 0) {
+      div.style.gridTemplateColumns = `repeat(${count}, 1fr)`;
+      mainDiv.appendChild(div);
+    }
+  }
+  return mainDiv;
+}
+
 function processParkComp() {
   const maintenance = comp_park.maintenance;
   const homeless = comp_park.homeless;
@@ -904,7 +1032,7 @@ function processParkComp() {
     count++;
   }
 
-  if (homeless == "true") {
+  if (homeless) {
     makeSubTextDiv("", "Homeless Shelter", div);
     count++;
   }
@@ -916,7 +1044,7 @@ function processParkComp() {
 }
 
 function processPlacableObjectComp() {
-  const cost = comp_placableObject.cost;
+  var cost = comp_placableObject.cost;
   const xp = comp_placableObject.xp;
 
   const mainDiv = document.createElement("div");
@@ -925,10 +1053,11 @@ function processPlacableObjectComp() {
   const div = document.createElement("div");
   div.classList.add("parent-div-with-subtext");
   let count = 0;
-  if (cost != 0) {
-    makeSubTextDiv("Cost", cost, div);
-    count++;
+  if (cost == 0) {
+    cost = "Free"
   }
+  makeSubTextDiv("Cost", cost, div);
+  count++;
 
   if (xp != 0) {
     makeSubTextDiv("XP", xp, div);
@@ -1011,18 +1140,12 @@ function processPollutionComp() {
     mainDiv.appendChild(div);
   }
 
-  if (scale == "true") {
-    const scalesDiv = document.createElement("div");
-    scalesDiv.classList.add("parent-div-with-subtext");
-    const value = document.createElement("span");
-    value.classList.add("value-above-subtext");
-    value.innerHTML = "Scales with Usage";
-    const finalDiv = document.createElement("div");
-    finalDiv.classList.add("div-with-subtext");
-    finalDiv.appendChild(value);
-    scalesDiv.appendChild(finalDiv);
-    scalesDiv.style.gridTemplateColumns = `repeat(1, 1fr)`;
-    mainDiv.appendChild(scalesDiv);
+  if (scale) {
+    const div = document.createElement("div");
+    div.classList.add("parent-div-with-subtext");
+    makeSubTextDiv("", "Scales with Usage", div);
+    div.style.gridTemplateColumns = `repeat(1, 1fr)`;
+    mainDiv.appendChild(div);
   }
 
   return mainDiv;
@@ -1307,7 +1430,7 @@ function processShorelineObjectComp() {
     count++;
   }
   
-  if (dryland == "true") {
+  if (dryland) {
     makeSubTextDiv("", "Dry Land Allowed", div);
     count++;
   }
@@ -1339,7 +1462,7 @@ function processTelecomComp() {
     count++;
   }
 
-  if (satellite == "true") {
+  if (satellite) {
     makeSubTextDiv("", "Unobstructed by Terrain", div);
     count++;
   }
@@ -1402,7 +1525,7 @@ function processWorkplaceComp() {
     }
 
     if (complexity != 0) {
-      makeSubTextDiv("Complexity", complexity, div);
+      makeSubTextDiv("Complexity", enumWorkplaceComplexity(complexity), div);
       count++;
     }
 
@@ -1417,6 +1540,120 @@ function processWorkplaceComp() {
   makeSubTextDiv("Night Shift Probability", floatToPercent(nightProb), div);
 
   div.style.gridTemplateColumns = `repeat(2, 1fr)`;
+  mainDiv.appendChild(div);
+
+  return mainDiv;
+}
+
+function processZonePollutionComp() {
+  const ground = comp_zonePollution.ground;
+  const air = comp_zonePollution.air;
+  const noise = comp_zonePollution.noise;
+
+  const mainDiv = document.createElement("div");
+  mainDiv.classList.add("data-box");
+
+  const div = document.createElement("div");
+  div.classList.add("parent-div-with-subtext");
+  let count = 0;
+  if (ground != 0) {
+    makeSubTextDiv("Ground", ground, div);
+    count++;
+  }
+
+  if (air != 0) {
+    makeSubTextDiv("Air", air, div);
+    count++;
+  }
+
+  if (noise != 0) {
+    makeSubTextDiv("Noise", noise, div);
+    count++;
+  }
+
+  div.style.gridTemplateColumns = `repeat(${count}, 1fr)`;
+  mainDiv.appendChild(div);
+
+  return mainDiv;
+}
+
+function processZonePropertiesComp() {
+  const scaleResi = comp_zoneProperties.scaleResi;
+  const resiProp = comp_zoneProperties.resiProp;
+  const spaceMulti = comp_zoneProperties.spaceMulti;
+  const fireHazardModifier = comp_zoneProperties.fireHazardModifier;
+
+  const mainDiv = document.createElement("div");
+  mainDiv.classList.add("data-box");
+
+  const div = document.createElement("div");
+  div.classList.add("parent-div-with-subtext");
+  let count = 0;
+  if (scaleResi) {
+    makeSubTextDiv("", "Scale Residentials", div);
+    count++;
+  }
+
+  if (resiProp != 0) {
+    makeSubTextDiv("Residential Properties", resiProp, div);
+    count++;
+  }
+
+  if (spaceMulti != 0) {
+    makeSubTextDiv("Space Multiplier", spaceMulti, div);
+    count++;
+  }
+
+  if (fireHazardModifier != 0) {
+    makeSubTextDiv("Fire Hazard Modifier", fireHazardModifier, div);
+    count++;
+  }
+
+  div.style.gridTemplateColumns = `repeat(${count}, 1fr)`;
+  mainDiv.appendChild(div);
+
+  return mainDiv;
+}
+
+function processZoneServiceConsumptionComp() {
+  const upkeep = comp_zoneServiceConsumption.upkeep;
+  const electricity = comp_zoneServiceConsumption.electricity;
+  const water = comp_zoneServiceConsumption.water;
+  const garbage = comp_zoneServiceConsumption.garbage;
+  const telecom = comp_zoneServiceConsumption.telecom;
+
+  const mainDiv = document.createElement("div");
+  mainDiv.classList.add("data-box");
+
+  const div = document.createElement("div");
+  div.classList.add("parent-div-with-subtext");
+  let count = 0;
+  if (upkeep != 0) {
+    makeSubTextDiv("Upkeep", upkeep, div);
+    count++;
+  }
+
+  if (electricity != 0) {
+    makeSubTextDiv("Electricity", electricity, div);
+    count++;
+  }
+
+  if (water != 0) {
+    makeSubTextDiv("Water", water, div);
+    count++;
+  }
+
+  if (garbage != 0) {
+    makeSubTextDiv("Garbage", garbage, div);
+    count++;
+  }
+
+  if (telecom != 0) {
+    makeSubTextDiv("Telecom", telecom, div);
+    count++;
+  }
+
+  div.style.gridTemplateColumns = `repeat(${count}, 1fr)`;
   mainDiv.appendChild(div);
 
   return mainDiv;
@@ -1469,6 +1706,24 @@ function createResourceUseTable(resourceData, version = 1) {
     mainDiv.appendChild(divType);
     // mainDiv.appendChild(div);
   });
+  return mainDiv;
+}
+
+async function createResourceAllowTable(resourceData) {
+  const mainDiv = document.createElement("div");
+  mainDiv.classList.add("data-box");
+  mainDiv.id = "resource-allow-table";
+  for (const resource of resourceData) {
+    const prefab = enumResourceInEditor(resource);
+    const name = await getLocaleName(`ResourcePrefab:Resource${prefab}`);
+    var icon = `<img class="resource-icon" src="${imageBasePath}/cities2/Media/Game/Resources/${prefab}.svg"></img>`;
+
+    const resourceDiv = document.createElement("div");
+    resourceDiv.classList.add("resource-inline-div");
+    resourceDiv.innerHTML = `<div class="resource-inline-icon">${icon}<div class="resource-inline-text">${name}</div></div>`;
+
+    mainDiv.appendChild(resourceDiv);
+  };
   return mainDiv;
 }
 
@@ -1612,6 +1867,19 @@ function enumSchoolType(id) {
   return data[id];
 }
 
+function enumZoneType(id, isOffice = false) {
+  data = [
+    "None",
+    "Residential",
+    "Commercial",
+    "Industrial",
+  ];
+  if (id == 3 && isOffice) {
+    return "Office";
+  }
+  return data[id];
+}
+
 function getPolicePurposes(value) {
   const PolicePurpose = {
     Patrol: 1,
@@ -1665,7 +1933,7 @@ function getGUID(text) {
     if (result) {
       returnText.push({
         name: result[key]['name'],
-        type: result[key]['type']
+        type: result[key]['category']
       });
     } else {
       returnText.push({
@@ -1690,6 +1958,25 @@ function isEmptyArray(array) {
     return true;
   }
   return array.length === 0;
+}
+
+async function getLocaleName(prefab) {
+  try {
+    const result = await getAssetDataLocally(prefab);
+    return result.details.Lang_Title;
+  } catch (error) {
+    console.error("Failed to get data:", error.message);
+    return "⁈";
+  }
+}
+
+function makeColor(rgbaText) {
+  // const [r, g, b, a] = rgbaText
+  const cssRgba = `rgba(${Math.round(rgbaText[0] * 255)}, ${Math.round(rgbaText[1] * 255)}, ${Math.round(rgbaText[2] * 255)}, ${rgbaText[3]})`;
+  const colorBox = document.createElement("div");
+  colorBox.classList.add("color-box");
+  colorBox.style.backgroundColor = cssRgba;
+  return colorBox;
 }
 
 window.processAssetPanelUIData = processAssetPanelUIData;

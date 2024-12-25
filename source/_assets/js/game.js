@@ -232,6 +232,7 @@ function createAssetPanelItem(element) {
 
   item.addEventListener("click", function () {
     getAssetData(this.dataset.prefab);
+      console.log(this.dataset.prefab)
   });
 
   return item;
@@ -251,7 +252,7 @@ function processAssetPanel(data) {
   });
 }
 
-function processAssetData(data) {
+async function processAssetData(data) {
   const assetDetailsPane = document.getElementById("asset-details-pane");
   const assetDetailsPaneHeaderTitle = document.getElementById(
     "asset-details-pane-header-title"
@@ -290,7 +291,7 @@ function processAssetData(data) {
   tagContainer.innerHTML = "";
   notifContainer.innerHTML = "";
 
-  processAssetPanelUIData(data.name, data.details, [
+  await processAssetPanelUIData(data.name, data.details, [
     adpbrb,
     tagContainer,
     notifContainer,

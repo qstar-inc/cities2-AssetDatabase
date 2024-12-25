@@ -274,7 +274,7 @@ function addAssetTabData(groupedData) {
   });
 }
 
-function getAssetTabData(name) {
+async function getAssetTabData(name) {
   console.log("GettingAssetTabData: " + name);
   let transaction = db.transaction(["assetTabData"], "readonly");
   let objectStore = transaction.objectStore("assetTabData");
@@ -474,7 +474,7 @@ function getAssetData(prefab) {
       let result = event.target.result;
 
       if (!result) {
-        fetchAssetData(prefab);
+        // fetchAssetDataAll();
       } else {
         let timeSince = await getTimeSince(`assetData-${prefab}`);
         let currentTime = new Date().getTime();
@@ -482,7 +482,7 @@ function getAssetData(prefab) {
           processAssetData(event.target.result);
         } else {
           // alert(`Expired: ${currentTime - timeSince}`);
-          fetchAssetData(prefab);
+          // fetchAssetDataAll();
         }
       }
     };
@@ -491,6 +491,32 @@ function getAssetData(prefab) {
       console.log("Error retrieving data:", event);
     };
   }
+}
+
+function getAssetDataLocally(prefab) {
+  return new Promise((resolve, reject) => {
+    if (prefab === undefined) {
+      resolve("⁇⁈");
+    } else {
+      let transaction = db.transaction(["assetData"], "readonly");
+      let objectStore = transaction.objectStore("assetData");
+      let request = objectStore.get(prefab);
+
+      request.onsuccess = function (event) {
+        let result = event.target.result;
+        if (!result) {
+          resolve("⁈");
+        } else {
+          resolve(result);
+        }
+      };
+
+      request.onerror = function (event) {
+        console.log("Error retrieving data:", event);
+        reject(new Error("Error retrieving data from IndexedDB"));
+      };
+    }
+  });
 }
 
 function getTimeSince(name) {
@@ -550,6 +576,7 @@ window.addAssetTabData = addAssetTabData;
 window.getAssetPanelData = getAssetPanelData;
 window.addAssetPanelData = addAssetPanelData;
 window.getAssetData = getAssetData;
+window.getAssetDataLocally = getAssetDataLocally;
 window.addAssetData = addAssetData;
 window.addAssetDataAll = addAssetDataAll;
 window.loadFile = loadFile;
