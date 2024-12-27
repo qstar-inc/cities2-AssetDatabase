@@ -35,3 +35,19 @@
 .smalltext {
   font-size: 80%;
 }
+
+.blurred {
+  filter: blur(2vh) !important;
+}
+
+.display-grid {
+  display: grid !important;
+}
+
+.display-none {
+  display: none !important;
+}
+
+.display-unset {
+  display: unset !important;
+}

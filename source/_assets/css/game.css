@@ -11,6 +11,11 @@
   opacity: 1;
 }
 
+.game-onscreen {
+  transition: opacity 0.2s display 0.2s;
+  opacity: 100%;
+}
+
 .pause-overlay {
   z-index: 999999;
   position: fixed;
@@ -28,7 +33,10 @@
 .toolbar {
   color: var(--mainmenu-white-color);
   font-size: 2vh !important;
+  position: relative;
+  z-index: 1001;
 }
+
 .bottom-bar {
   position: fixed;
   top: 95vh;
@@ -310,6 +318,11 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+.details-pane {
+  position: relative;
+  z-index: 999;
 }
 
 .asset-quick-info {
@@ -694,4 +707,50 @@
   height: 10vh;
   width: 10vh;
   margin: auto;
+}
+
+.top-game-icon {
+  display: flex;
+  background: #4bc3f1;
+  border-radius: 1vh;
+  width: 5vh;
+  height: 5vh;
+}
+
+.top-game-icon:hover {
+  background: #0579a7;
+}
+
+.top-game-icon > img {
+  width: 80%;
+  margin: auto;
+}
+
+.pause-menu {
+  backdrop-filter: blur(2vh);
+}
+
+.right-icons,
+.left-icons {
+  display: flex;
+  gap: 1vh;
+  position: absolute;
+}
+
+.right-icons {
+  right: 1vh;
+  top: 1vh;
+  flex-direction: row-reverse;
+}
+
+.left-icons {
+  left: 1vh;
+  top: 1vh;
+}
+
+.top-icons {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1000;
 }

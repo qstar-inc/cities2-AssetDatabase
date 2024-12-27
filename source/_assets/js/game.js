@@ -11,6 +11,7 @@ const bottomBar = document.querySelector(".bottom-bar");
 const assetDetailsPaneContainer = document.querySelector(
   ".asset-details-pane-container"
 );
+const topIcons = document.querySelector(".top-icons");
 
 const assetDetailsPaneX = document.getElementById("details-pane-x");
 const api = document.getElementById("asset-panel-items");
@@ -232,7 +233,6 @@ function createAssetPanelItem(element) {
 
   item.addEventListener("click", function () {
     getAssetData(this.dataset.prefab);
-      console.log(this.dataset.prefab)
   });
 
   return item;
@@ -252,7 +252,8 @@ function processAssetPanel(data) {
   });
 }
 
-async function processAssetData(data) {
+function processAssetData(data) {
+  topIcons.classList.add("behind");
   const assetDetailsPane = document.getElementById("asset-details-pane");
   const assetDetailsPaneHeaderTitle = document.getElementById(
     "asset-details-pane-header-title"
@@ -291,7 +292,7 @@ async function processAssetData(data) {
   tagContainer.innerHTML = "";
   notifContainer.innerHTML = "";
 
-  await processAssetPanelUIData(data.name, data.details, [
+  processAssetPanelUIData(data.name, data.details, [
     adpbrb,
     tagContainer,
     notifContainer,
@@ -417,6 +418,7 @@ function processCloseDetailsPane(event) {
     event.key === "Escape"
   ) {
     document.getElementById("asset-details-pane").classList.remove("open");
+    topIcons.classList.remove("behind");
     toggleBlur(false);
     isAssetPanelOpen = false;
     toggleDetailsPane();
@@ -436,13 +438,11 @@ function toggleDetailsPane() {
 
   if (!isAssetPanelOpen) {
     assetDetailsPaneContainer.removeEventListener(
-      "click",
-      processCloseDetailsPane
+      "click", processCloseDetailsPane
     );
   } else {
     assetDetailsPaneContainer.addEventListener(
-      "click",
-      processCloseDetailsPane
+      "click", processCloseDetailsPane
     );
     assetDetailsPaneX.removeEventListener("click", processCloseDetailsPane);
   }

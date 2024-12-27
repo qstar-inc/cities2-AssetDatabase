@@ -19,7 +19,7 @@
                         </a>
                         <button id="mainmenu-button-continue" class="mainmenu-start-button round-border">
                             <div class="mainmenu-start-icon"></div>
-                            <span class="mainmenu-start-text">Show Loading Screen</span>
+                            <span class="mainmenu-start-text">Loading Screen</span>
                         </button>
                         <button class="mainmenu-start-button disabled-link round-border" disabled>
                             <div class="mainmenu-start-icon"></div>
@@ -45,13 +45,13 @@
                     </div>
                     <div class="mainmenu-notification round-border"></div>
                 </div>
-                <div class="mainmenu-version">0.0.0 (Nothing Works Edition)</div>
-                <button class="mainmenu-top-right">
+                <div class="mainmenu-version">1.2.0q1 [Vanilla] (Something Works)</div>
+                <a class="mainmenu-top-right" href="https://github.com/qstar-inc" target="_blank">
                     <img class="mainmenu-top-right-img" src="{{ $page->images }}/starq.svg" />
                     <div class="mainmenu-top-right-text">
                         StarQ
                     </div>
-                </button>
+                </a>
             </div>
         </div>
     </div>

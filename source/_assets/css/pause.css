@@ -1,0 +1,40 @@
+.mainmenu-start {
+  display: grid !important;
+}
+
+.pause-menu {
+  transition: filter 1s, opacity 1s;
+  opacity: 0%;
+  filter: blur(0vh);
+  z-index: 1000;
+  position: relative;
+}
+
+.pause-icon {
+  width: 5vh;
+  height: 5vh;
+}
+
+.top-icons.behind {
+  z-index: 990;
+}
+
+.tooltip-35 {
+  display: none;
+  position: absolute;
+  background-color: rgb(51, 51, 51);
+  color: rgb(255, 255, 255);
+  padding: 0.5vh;
+  margin-top: 1vh;
+  border-radius: 0.5vh;
+  white-space: nowrap;
+  top: 4.5vh;
+}
+
+.tooltip-35.right {
+  right: 0;
+}
+
+.tooltip-35.left {
+  left: 0;
+}

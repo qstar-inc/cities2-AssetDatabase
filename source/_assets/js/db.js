@@ -474,16 +474,16 @@ function getAssetData(prefab) {
       let result = event.target.result;
 
       if (!result) {
-        // fetchAssetDataAll();
+        fetchAssetDataAll();
       } else {
-        let timeSince = await getTimeSince(`assetData-${prefab}`);
-        let currentTime = new Date().getTime();
-        if (currentTime - timeSince < expiryTime) {
+        // let timeSince = await getTimeSince(`assetData-${prefab}`);
+        // let currentTime = new Date().getTime();
+        // if (currentTime - timeSince < expiryTime) {
           processAssetData(event.target.result);
-        } else {
+        // } else {
           // alert(`Expired: ${currentTime - timeSince}`);
           // fetchAssetDataAll();
-        }
+        // }
       }
     };
 

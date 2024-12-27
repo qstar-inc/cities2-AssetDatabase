@@ -13,6 +13,7 @@ mix
   .js("source/_assets/js/hall-of-fame.js", "js")
   .js("source/_assets/js/main.js", "js")
   .js("source/_assets/js/main-menu.js", "js")
+  .js("source/_assets/js/pause.js", "js")
   .js("source/_assets/js/splash.js", "js")
   .css("source/_assets/css/main.css", "css", [
     require("postcss-import"),
@@ -21,6 +22,7 @@ mix
   .css("source/_assets/css/game.css", "css")
   .css("source/_assets/css/lds-ripple.css", "css")
   .css("source/_assets/css/main-menu.css", "css")
+  .css("source/_assets/css/pause.css", "css")
   .css("source/_assets/css/splash.css", "css")
   .css("source/_assets/css/starqstrap.css", "css")
   .options({

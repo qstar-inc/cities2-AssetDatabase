@@ -2,10 +2,14 @@
 
 @section('style')
     <link rel="stylesheet" href="{{ $page->repo . mix('css/game.css', 'assets/build') }}">
+    <link rel="stylesheet" href="{{ $page->repo . mix('css/pause.css', 'assets/build') }}">
     <link rel="stylesheet" href="{{ $page->repo . mix('css/lds-ripple.css', 'assets/build') }}">
 @endsection
 
 @section('body')
+    <div class="pause-menu-container">
+        @include('_layouts.partials.pauseMenu')
+    </div>
     <div class="game-bg-container">
         <img id="game-bg" class="game-bg" src="" />
     </div>
@@ -15,8 +19,12 @@
             @include('_layouts.partials.toolbar')
         </div>
         <div class="top-icons">
-            <div class="left-icons"></div>
-            <div class="right-icons"></div>
+            <div class="left-icons">
+                @include('_layouts.partials.leftIcons')
+            </div>
+            <div class="right-icons">
+                @include('_layouts.partials.rightIcons')
+            </div>
         </div>
         <div class="chirper-icons"></div>
         <div class="info-panel"></div>
@@ -30,6 +38,7 @@
 @section('js')
     <script defer src="{{ $page->repo . mix('js/backend.js', 'assets/build') }}"></script>
     <script defer src="{{ $page->repo . mix('js/db.js', 'assets/build') }}"></script>
+    <script defer src="{{ $page->repo . mix('js/pause.js', 'assets/build') }}"></script>
     <script defer src="{{ $page->repo . mix('js/game_data_process.js', 'assets/build') }}"></script>
     <script defer src="{{ $page->repo . mix('js/game.js', 'assets/build') }}"></script>
     <script>
