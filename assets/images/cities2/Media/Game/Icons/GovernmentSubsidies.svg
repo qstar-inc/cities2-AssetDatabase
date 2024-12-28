@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <clipPath id="clip-GovernmentSubsidies">
+      <rect width="32" height="32"/>
+    </clipPath>
+  </defs>
+  <g id="GovernmentSubsidies" clip-path="url(#clip-GovernmentSubsidies)">
+    <rect id="Rectangle_4355" data-name="Rectangle 4355" width="2" height="5" transform="translate(15 3)" fill="#d7e3f0"/>
+    <path id="Path_3207" data-name="Path 3207" d="M0,0H20.12V2.589H0Z" transform="translate(5.78 13.411)" fill="#d7e3f0"/>
+    <rect id="Rectangle_4349" data-name="Rectangle 4349" width="22" height="5" transform="translate(5 21)" fill="#d7e3f0"/>
+    <rect id="Rectangle_4350" data-name="Rectangle 4350" width="18" height="5" transform="translate(7 16)" fill="#61819c"/>
+    <path id="Path_3208" data-name="Path 3208" d="M5.2,0H7.8A5.083,5.083,0,0,1,13,4.957V6.2H0V4.957A5.083,5.083,0,0,1,5.2,0Z" transform="translate(9.498 7.215)" fill="#819bad"/>
+    <rect id="Rectangle_4351" data-name="Rectangle 4351" width="3" height="5" transform="translate(7 16)" fill="#9fb8c8"/>
+    <rect id="Rectangle_4352" data-name="Rectangle 4352" width="3" height="5" transform="translate(22 16)" fill="#9fb8c8"/>
+    <rect id="Rectangle_4353" data-name="Rectangle 4353" width="2" height="5" transform="translate(12 16)" fill="#9fb8c8"/>
+    <rect id="Rectangle_4354" data-name="Rectangle 4354" width="2" height="5" transform="translate(17 16)" fill="#9fb8c8"/>
+    <g id="Group_2352" data-name="Group 2352" transform="translate(10.42 16.15)">
+      <path id="Path_264" data-name="Path 264" d="M4,14.2,7.639,16.61l7.555-3.84-3.488-2.234Z" transform="translate(-4 -10.536)" fill="#c1ff67"/>
+      <path id="Path_267" data-name="Path 267" d="M19.354,15.229v2.559l-7.557,4,0-2.717Z" transform="translate(-8.16 -12.994)" fill="#72ab5e"/>
+      <path id="Path_265" data-name="Path 265" d="M7.639,23.363,4,20.645V18.239l3.639,2.406Z" transform="translate(-4 -14.571)" fill="#9adf4b"/>
+    </g>
+    <ellipse id="Ellipse_535" data-name="Ellipse 535" cx="1.963" cy="0.902" rx="1.963" ry="0.902" transform="translate(14.054 18.318)" fill="#6ab119"/>
+  </g>
+</svg>

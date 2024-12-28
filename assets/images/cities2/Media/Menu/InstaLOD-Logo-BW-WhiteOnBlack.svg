@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="502" height="92" viewBox="0 0 502 92">
+  <defs>
+    <clipPath id="clip-InstaLOD-Logo-BW-WhiteOnBlack">
+      <rect width="502" height="92"/>
+    </clipPath>
+  </defs>
+  <g id="InstaLOD-Logo-BW-WhiteOnBlack" clip-path="url(#clip-InstaLOD-Logo-BW-WhiteOnBlack)">
+    <g id="InstaLOD-Logo-BW-WhiteOnBlack-2" data-name="InstaLOD-Logo-BW-WhiteOnBlack" transform="translate(-163.745 -63.119)">
+      <path id="Path_100" data-name="Path 100" d="M239.461,152.491H192.87l10.136-29.283,59.467-11.46Zm-32.19-62.728L186.86,148.732l-23.115-40.927L187.09,66.472Zm55.635,14.865-28.8,5.551L193.326,63.119h46.136Z" transform="translate(0 0)" fill="#fff" fill-rule="evenodd"/>
+      <rect id="Rectangle_4" data-name="Rectangle 4" width="7.025" height="67.472" transform="translate(292.613 74.033)" fill="#fff"/>
+      <path id="Path_101" data-name="Path 101" d="M685.954,163.534q15.066,0,15.066,15.436v32.812h-6.747v-31.7q0-9.8-9.612-9.8H661.738v41.5h-6.747V163.534Z" transform="translate(-343.8 -70.276)" fill="#fff"/>
+      <path id="Path_102" data-name="Path 102" d="M880.177,163.534v5.823H852.819q-6.193,0-6.193,5.73v3.79q0,5.268,5.731,5.268h19.41q10.536,0,10.537,9.89v7.025q0,10.722-11.369,10.721H840.526v-5.823h28.653q6.563,0,6.563-5.731v-5.453q0-5.268-5.638-5.268h-19.41q-10.629,0-10.629-9.89v-5.453q0-10.629,11.091-10.629Z" transform="translate(-473.324 -70.276)" fill="#fff"/>
+      <path id="Path_103" data-name="Path 103" d="M1017.536,111.184V126.9h10.445V132.9h-10.445v42.24h-6.747V132.9h-9.058V126.9h9.058V111.184Z" transform="translate(-586.466 -33.638)" fill="#fff"/>
+      <path id="Path_104" data-name="Path 104" d="M1143.986,163.534q15.064,0,15.064,15.436v17.376q0,15.435-15.064,15.435h-17.006q-12.849,0-12.849-12.755v-3.79q0-10.722,12.2-10.722H1148.6v5.453h-20.518q-7.487,0-7.486,6.378v2.218q0,7.394,7.579,7.394h14.7q9.428,0,9.428-9.8V179.616q0-9.52-9.149-9.52H1115.61v-6.562Z" transform="translate(-665.13 -70.276)" fill="#fff"/>
+      <path id="Path_105" data-name="Path 105" d="M1307.153,99.482v60.54h34.475v6.932h-41.5V99.482Z" transform="translate(-795.303 -25.449)" fill="#fff"/>
+      <path id="Path_106" data-name="Path 106" d="M1495.537,99.482q15.069,0,15.067,15.343v36.786q0,15.343-15.067,15.343h-21.443q-15.064,0-15.064-15.343V114.825q0-15.343,15.064-15.343Zm-29.484,51.02q0,9.52,9.335,9.52h18.762q9.338,0,9.338-9.52V115.934q0-9.52-9.338-9.52h-18.762q-9.333,0-9.335,9.52Z" transform="translate(-906.509 -25.449)" fill="#fff"/>
+      <path id="Path_107" data-name="Path 107" d="M1700.2,99.482q17.748,0,17.748,18.116v31.24q0,18.116-17.748,18.116h-22.274v-6.932h21.535q11.458,0,11.46-11.646V118.06q0-11.646-11.46-11.646h-25.233v60.54H1667.2V99.482Z" transform="translate(-1052.198 -25.449)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

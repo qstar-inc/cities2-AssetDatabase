@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36" height="36" viewBox="0 0 36 36">
+  <defs>
+    <clipPath id="clip-Meals">
+      <rect width="36" height="36"/>
+    </clipPath>
+  </defs>
+  <g id="Meals" clip-path="url(#clip-Meals)">
+    <g id="ResourceMeals" transform="translate(3.858 7.833)">
+      <ellipse id="Ellipse_294" data-name="Ellipse 294" cx="9.711" cy="9.846" rx="9.711" ry="9.846" transform="translate(5.575 0.303)" fill="#fffcf3"/>
+      <ellipse id="Ellipse_536" data-name="Ellipse 536" cx="6.879" cy="6.974" rx="6.879" ry="6.974" transform="translate(8.542 3.27)" fill="#dcd5c2"/>
+      <path id="Path_618" data-name="Path 618" d="M5888.389-5932.892a8.886,8.886,0,0,1-.2-2.79l.2-9.134s-1.471.019-1.8-.652-.249-5-.249-5,.215-.507.473-.507.409.507.409.507a21.077,21.077,0,0,0,.15,3.814c.248.484,1.122.277,1.122.277v-4.091s.189-.507.481-.507.424.507.424.507v4.091s1.168.223,1.354-.277a28.586,28.586,0,0,0,.13-3.814s.207-.507.48-.507.439.507.439.507.1,4.237-.214,4.9-2.036.758-2.036.758l.123,9.134a8.279,8.279,0,0,1-.123,2.79A.621.621,0,0,1,5888.389-5932.892Z" transform="translate(-5886.335 5952.82)" fill="#b0bdc6"/>
+      <path id="Path_619" data-name="Path 619" d="M6090.168-5945.376c.358-.8,0-19.25,0-19.25s.041-.989-.455,0a13.418,13.418,0,0,0-1.525,3.956,12.96,12.96,0,0,0-.526,4.969,2.876,2.876,0,0,0,1.289,1.57s-.548,8.49-.236,8.95A.808.808,0,0,0,6090.168-5945.376Z" transform="translate(-6062.042 5965.065)" fill="#adc3ce"/>
+    </g>
+  </g>
+</svg>

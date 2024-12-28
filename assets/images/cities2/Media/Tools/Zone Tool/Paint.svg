@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <clipPath id="clip-Paint">
+      <rect width="32" height="32"/>
+    </clipPath>
+  </defs>
+  <g id="Paint" clip-path="url(#clip-Paint)">
+    <path id="Icon_awesome-paint-brush" data-name="Icon awesome-paint-brush" d="M20.033-.382A2.493,2.493,0,0,0,18.386.3C10.012,7.826,8.552,8.58,8.552,10.8a3.839,3.839,0,0,0,.358,1.6l1.859,1.525a3.746,3.746,0,0,0,.917.125c2.544,0,4.805-2.408,9.436-11.109a4.264,4.264,0,0,0,.569-1.9C21.692-.155,21.184-.382,20.033-.382Z" transform="translate(4.626 5.096)" fill="#fff"/>
+    <path id="Path_1175" data-name="Path 1175" d="M3.644.109c1.991.06,3.624,2.03,3.693,4.367a6.21,6.21,0,0,1-1.571,3.7,21.537,21.537,0,0,1-4.448,3.643,21.348,21.348,0,0,0-.143-4.834C1.012,5.993.151,5.12.126,4.26.057,1.923,1.652.05,3.644.109Z" transform="matrix(0.799, 0.602, -0.602, 0.799, 12.182, 15.475)" fill="#fff"/>
+  </g>
+</svg>

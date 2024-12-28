@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <clipPath id="clip-MediumRoundabout07">
+      <rect width="64" height="64"/>
+    </clipPath>
+  </defs>
+  <g id="MediumRoundabout07" clip-path="url(#clip-MediumRoundabout07)">
+    <path id="Path_1137" data-name="Path 1137" d="M15.72.032C24.4.049,31.45,4.8,31.462,10.634s-7.016,10.556-15.7,10.539S.034,16.409.022,10.571,7.038.014,15.72.032Z" transform="matrix(0.998, -0.07, 0.07, 0.998, 15.414, 23.831)" fill="#595959"/>
+    <path id="Path_1136" data-name="Path 1136" d="M15.72.032C24.4.049,31.45,4.8,31.462,10.634s-7.016,10.556-15.7,10.539S.034,16.409.022,10.571,7.038.014,15.72.032Z" transform="matrix(0.998, -0.07, 0.07, 0.998, 15.414, 21.482)" fill="#c3c2c2"/>
+    <g id="Group_2745" data-name="Group 2745" transform="translate(-2.943 -1.724)">
+      <ellipse id="Ellipse_457" data-name="Ellipse 457" cx="12.215" cy="7.735" rx="12.215" ry="7.735" transform="matrix(0.998, -0.07, 0.07, 0.998, 22.219, 25.82)" fill="#978772"/>
+      <path id="Path_3900" data-name="Path 3900" d="M1007.751-1755.457l13.84-3.107-5.2-2.72-12.275,2.72a2.159,2.159,0,0,0,.988,1.695A13.692,13.692,0,0,0,1007.751-1755.457Z" transform="translate(-980.735 1793.943)" fill="#726454"/>
+      <path id="Path_3903" data-name="Path 3903" d="M1010.413-1756.137l9.013-2.393-5.08-2.757-1.679,1.073a4.171,4.171,0,0,0-1.717,2.146A10.093,10.093,0,0,0,1010.413-1756.137Z" transform="translate(-987.689 1788.764)" fill="#726454"/>
+      <path id="Path_3901" data-name="Path 3901" d="M1008.652-1754.5l5.988-6.663a19.23,19.23,0,0,0-2.79-.844h0a7.317,7.317,0,0,0-2.281,0l-5.027,5.114Z" transform="translate(-972.843 1787.126)" fill="#726454"/>
+      <path id="Path_3902" data-name="Path 3902" d="M1007.743-1754.758a6.366,6.366,0,0,0,2.682-2.966c.858-2.039.865-2.336.606-3.578a3.314,3.314,0,0,0-1.357-1.932l-5.15,6.438Z" transform="translate(-963.882 1792.181)" fill="#726454"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <clipPath id="clip-Subway_Stop_2">
+      <rect width="64" height="64"/>
+    </clipPath>
+  </defs>
+  <g id="Subway_Stop_2" data-name="Subway Stop – 2" clip-path="url(#clip-Subway_Stop_2)">
+    <g id="Group_2502" data-name="Group 2502" transform="translate(2.218 2)">
+      <path id="Path_3054" data-name="Path 3054" d="M2905.533,2162.162l13.14,9.576,11.571-9.576Z" transform="translate(-2887.955 -2111.738)" fill="#da6f48"/>
+      <circle id="Ellipse_807" data-name="Ellipse 807" cx="27.341" cy="27.341" r="27.341" transform="translate(2.441)" fill="#da6f48"/>
+    </g>
+    <path id="Path_1233" data-name="Path 1233" d="M1040,244l3.909,6.417H1038L1036,244Z" transform="translate(-999.771 -203.971)" fill="#77838d"/>
+    <path id="Path_1231" data-name="Path 1231" d="M2.085,0A2.128,2.128,0,0,1,4.152,2.207,2.176,2.176,0,0,1,2.065,4.436,2.128,2.128,0,0,1,0,2.227,2.176,2.176,0,0,1,2.085,0Z" transform="matrix(0.998, -0.07, 0.07, 0.998, 23.036, 32.641)" fill="#d1f9ff"/>
+    <path id="Path_1232" data-name="Path 1232" d="M2.085,0A2.128,2.128,0,0,1,4.152,2.207,2.176,2.176,0,0,1,2.065,4.436,2.128,2.128,0,0,1,0,2.227,2.176,2.176,0,0,1,2.085,0Z" transform="matrix(0.998, -0.07, 0.07, 0.998, 36.087, 32.641)" fill="#d1f9ff"/>
+    <rect id="Rectangle_1811" data-name="Rectangle 1811" width="20.721" height="8.289" rx="2" transform="translate(21.226 18.821)" fill="#83cbfb"/>
+    <path id="Path_1234" data-name="Path 1234" d="M1040,244l3.909,6.417H1038L1036,244Z" transform="translate(-999.771 -203.971)" fill="#fff"/>
+    <path id="Path_1235" data-name="Path 1235" d="M1039.907,244,1036,250.417h5.911l2-6.417Z" transform="translate(-1016.138 -203.971)" fill="#fff"/>
+    <path id="Path_1229" data-name="Path 1229" d="M4.092,0h15a3.91,3.91,0,0,1,4.092,3.7V20.962c0,2.043-4.092,3.7-4.092,3.7A29.657,29.657,0,0,1,11.786,25.7a35.008,35.008,0,0,1-7.695-1.039S0,23.005,0,20.962V3.7A3.91,3.91,0,0,1,4.092,0Z" transform="translate(19.862 16.059)" fill="#fff"/>
+    <path id="Path_1230" data-name="Path 1230" d="M2.5,0A2.481,2.481,0,0,1,4.978,2.514a2.538,2.538,0,0,1-2.5,2.539A2.481,2.481,0,0,1,0,2.537,2.538,2.538,0,0,1,2.5,0Z" transform="matrix(0.998, -0.07, 0.07, 0.998, 28.492, 31.26)" fill="#da6f48"/>
+    <rect id="Rectangle_1812" data-name="Rectangle 1812" width="20.721" height="8.289" rx="2" transform="translate(21.226 18.821)" fill="#da6f48"/>
+    <rect id="Rectangle_1813" data-name="Rectangle 1813" width="12.433" height="6.907" rx="2" transform="translate(25.318 11.914)" fill="#fff"/>
+    <circle id="Ellipse_484" data-name="Ellipse 484" cx="2.046" cy="2.046" r="2.046" transform="translate(32.137 13.296)" fill="#da6f48"/>
+    <circle id="Ellipse_483" data-name="Ellipse 483" cx="2.046" cy="2.046" r="2.046" transform="translate(26.682 13.296)" fill="#da6f48"/>
+  </g>
+</svg>

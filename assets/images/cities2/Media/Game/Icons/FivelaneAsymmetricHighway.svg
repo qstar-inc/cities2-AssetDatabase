@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <clipPath id="clip-FivelaneAsymmetricHighway">
+      <rect width="64" height="64"/>
+    </clipPath>
+  </defs>
+  <g id="FivelaneAsymmetricHighway" clip-path="url(#clip-FivelaneAsymmetricHighway)">
+    <path id="Path_2186" data-name="Path 2186" d="M722.072-295.333l29.712,25.316,34.037-20.612.35-2.6-64.1-4.686Z" transform="translate(-722.04 327.13)" fill="#c4c4c4"/>
+    <path id="Path_2190" data-name="Path 2190" d="M737.026-304.839l24.051,28.178,25.135-14.784-30.233-24.5Z" transform="translate(-728.951 329.31)" fill="#d4d4d4"/>
+    <path id="Path_2192" data-name="Path 2192" d="M1224.123-1129.9l29.871,25.1,33.872-20.155-29.7-24.869Z" transform="translate(-1224.047 1159.002)" fill="#929191"/>
+    <path id="Path_2281" data-name="Path 2281" d="M15820,3491.44l30.408,24.87,1.232-.691-30.76-24.619Z" transform="translate(-15812.93 -3466.122)" fill="#ffc916"/>
+    <path id="Path_2287" data-name="Path 2287" d="M15820.364,3491.4l30.287,24.649,1.232-.691-30.639-24.4Z" transform="translate(-15807.667 -3470.495)" fill="#ffc916"/>
+    <path id="Path_2288" data-name="Path 2288" d="M15820.324,3491.3l30.229,24.7,1.232-.691-30.58-24.444Z" transform="translate(-15801.152 -3473.414)" fill="#d4d4d4"/>
+    <path id="Path_2289" data-name="Path 2289" d="M15820,3491.44l30.2,24.651,1.232-.691-30.555-24.4Z" transform="translate(-15793.771 -3477.638)" fill="#ffc916"/>
+    <path id="Path_3899" data-name="Path 3899" d="M15821.385,3491.548l29.939,25.1,2.262-1.539-30.252-24.62Z" transform="translate(-15802.693 -3473.486)" fill="#ffc916"/>
+  </g>
+</svg>

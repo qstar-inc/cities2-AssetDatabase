@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 128 128" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g id="While-Building" serif:id="While Building" transform="matrix(0.976563,0,0,0.976563,1.5,1.5)">
+        <circle cx="64" cy="64" r="64" style="fill:rgb(255,231,185);"/>
+        <clipPath id="_clip1">
+            <circle cx="64" cy="64" r="64"/>
+        </clipPath>
+        <g clip-path="url(#_clip1)">
+            <g transform="matrix(1.024,0,0,1.024,-1.536,-1.536)">
+                <g id="InvalidShape">
+                    <path d="M22.434,49.254C24.331,47.938 28.12,48.169 28.12,48.169L98.169,47.411C98.169,47.411 99.677,47.485 100.448,48.824C101.178,50.091 101.004,51.872 101.004,51.872L101.078,89.64C101.078,89.64 101.113,90.947 99.128,91.931C97.356,92.809 94.002,92.689 94.142,92.735L50.627,95.039L96.443,24.339C96.443,24.339 97.212,22.385 96.111,21.624C94.923,20.803 93.671,21.231 93.671,21.231L19.951,77.979L20.573,53.151C20.573,53.151 20.263,50.759 22.434,49.254Z" style="fill:rgb(129,155,173);stroke:white;stroke-width:3px;"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

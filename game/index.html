@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="StarQ">
+    <meta name="description" content="A complete asset database for Cities: Skylines II">
+    <meta name="keywords" content="citiesskylines2, cities-skylines-2, cs2, skylines2, cities2">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    <meta name="robots" content="index, follow">
+    <meta name="title" content="Cities: Skylines II Asset Database">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:description" content="A complete asset database for Cities: Skylines II" />
+    
+    <meta property="og:title" content="Cities: Skylines II Asset Database" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://qstar-inc.github.io/cities2-AssetDatabase" />
+    
+    <meta property="twitter:description" content="A complete asset database for Cities: Skylines II" />
+    
+    <meta property="twitter:title" content="Cities: Skylines II Asset Database" />
+    <meta property="twitter:url" content="https://qstar-inc.github.io/cities2-AssetDatabase" />
+    <title>Cities: Skylines II Asset Database</title>
+
+    <style>
+        @font-face {
+            font-family: "Overpass";
+            src: url("/cities2-AssetDatabase/assets/fonts/Overpass-VariableFont_wght.ttf") format("truetype");
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: "Overpass";
+            src: url("/cities2-AssetDatabase/assets/fonts/Overpass-Italic-VariableFont_wght.ttf") format("truetype");
+            font-weight: normal;
+            font-style: italic;
+        }
+    </style>
+    <link rel="stylesheet" href="/cities2-AssetDatabase/assets/build/css/main.css?id=59561415a1b8865b17b79d7dc2b85c8f">
+    <link rel="stylesheet" href="/cities2-AssetDatabase/assets/build/css/splash.css?id=80c7fc58179a3825cff0c906b3f5af13">
+    <link rel="stylesheet" href="/cities2-AssetDatabase/assets/build/css/main-menu.css?id=f45c749821d66c83a48780d809057a7e">
+    <link rel="stylesheet" href="/cities2-AssetDatabase/assets/build/css/starqstrap.css?id=38b6ebf6bf73b6d1cbb25754bd7a3c64">
+        <link rel="stylesheet" href="/cities2-AssetDatabase/assets/build/css/game.css?id=dd2cd4d5dc472b4fdc5f0451424275db">
+    <link rel="stylesheet" href="/cities2-AssetDatabase/assets/build/css/credit.css?id=62ce7f94448d2c7393d042d10ff0e1d8">
+    <link rel="stylesheet" href="/cities2-AssetDatabase/assets/build/css/pause.css?id=926a724a514551e95dedf5612c743706">
+    <link rel="stylesheet" href="/cities2-AssetDatabase/assets/build/css/lds-ripple.css?id=9cd8049bfd8f904bcc7094a3eb2b718d">
+</head>
+
+<body class="text-gray-900 font-sans antialiased">
+    <div id="splash-container">
+    <div id="splash-screen-1" class="splash-screen">
+        <div class="logo-container">
+            <img src="/cities2-AssetDatabase/assets/images/starq.svg" alt="StarQ" class="splash-logo">
+        </div>
+    </div>
+    <div id="splash-screen-2" class="splash-screen" style="display: none;">
+        <div class="logo-container">
+            <img src="/cities2-AssetDatabase/assets/images/cities2/GameLogo.svg" alt="Cities: Skylines II" class="splash-logo">
+        </div>
+    </div>
+    <div id="preloader-screen" class="splash-screen" style="display: none;">
+        <div class="preloader-container">
+            <img src="/cities2-AssetDatabase/assets/images/cities2/preloader.png" alt="Preloader" class="preloader-bg">
+        </div>
+        <div class="preloader-overlays">
+            <div class="preloader-logo-container">
+                <img class="preloader-logo drop-shadow" src="/cities2-AssetDatabase/assets/images/cities2/GameLogo.svg" alt="Cities: Skylines II">
+            </div>
+            <div class="drop-shadow preloader-loading-text-container"><span id="preloader-loading-text">LOADING...</span></div>
+            <div class="drop-shadow circle-container">
+                <svg class="loading-circle" viewBox="0 0 44 44">
+                    <path class="circle-bg outer-circle" d="M22 3a19 19 0 1 1 0 38a19 19 0 1 1 0-38" />
+                    <path class="circle circle-1" d="M22 3a19 19 0 1 1 0 38a19 19 0 1 1 0-38" />
+
+                    <path class="circle-bg middle-circle" d="M22 6a16 16 0 1 1 0 32a16 16 0 1 1 0-32" />
+                    <path class="circle circle-2" d="M22 6a16 16 0 1 1 0 32a16 16 0 1 1 0-32" />
+
+                    <path class="circle-bg inner-circle" d="M22 9a13 13 0 1 1 0 26a13 13 0 1 1 0-26" />
+                    <path class="circle circle-3" d="M22 9a13 13 0 1 1 0 26a13 13 0 1 1 0-26" />
+                </svg>
+            </div>
+            <div class="preloader-tips-container"><span id="preloader-tips-text">Tooltips</span></div>
+            <div class="preloader-skip-button-container drop-shadow" id="preloader-skip-button"><button class="preloader-skip-button">SKIP&nbsp;⏭</button></div>
+        </div>
+    </div>
+</div>
+    <div id="window-size-error" class="display-none">
+        <div class="window-size-message">
+            <p>Unsupported Window Size</p>
+            <p id="inv1">Aspect Ratio should be between 2:1 and 1:2.</p>
+            <p id="inv2">Width should be at least 1000px.</p>
+            <p id="inv3">Height should be at least 500px.</p>
+        </div>
+    </div>
+    <div id="main-content" style="display:none">
+            <div id="credit-overlay" class="options-overlay credit-scroll-overlay display-none">
+    <div>
+    <div class="option-header">
+        <a href="#" class="option-back-icon">
+            <img src="/cities2-AssetDatabase/assets/images/cities2/Media/Game/Misc/ChirperBubbleArrow.svg" />
+        </a>
+        <div class="option-title">    CREDITS
+</div>
+    </div>
+    <div class="options-layout">
+            <div class="credit-text">
+        <h1>Cities: Skylines II Asset Database</h1>
+        <br />
+        <p>A community made "database" of all* assets in Cities: Skylines II.</p>
+        <p class="sm">* almost</p>
+        <br class="lg" /><br class="lg" />
+        <h2>Database by</h2>
+        <h1><img src="/cities2-AssetDatabase/assets/images/starq.svg" alt="StarQ Logo"></h1>
+        <br class="lg" /><br class="lg" />
+        <h1><img src="/cities2-AssetDatabase/assets/images/cities2/Media/Menu/GameLogo.svg" alt="Cities: Skylines II Logo"></h1>
+        <br class="lg" />
+        <h2>Game Developed by</h2>
+        <h1><img src="/cities2-AssetDatabase/assets/images/cities2/Media/Menu/ColossalLogo.svg" alt="Colossal Order Logo" /></h1>
+        <br class="lg" />
+        <h2>Game Published by</h2>
+        <h1><img src="/cities2-AssetDatabase/assets/images/cities2/Media/Menu/ParadoxLogo.svg" alt="Paradox Logo" /></h1>
+        <br class="lg" />
+        <p class="sm">Cities: Skylines 2 is published by Paradox Interactive AB and developed by Colossal Order Ltd.</p><br /><br />
+        <p class="sm">CITIES: SKYLINES and PARADOX INTERACTIVE are trademarks and/or registered trademarks</p><br /><br />
+        <p class="sm">of Paradox Interactive AB in Europe, the U.S. and other countries.</p><br /><br />
+        <p class="sm">Any other trademark, logo and copyright is the property of its owner.</p><br /><br />
+        <br class="lg" /><br class="lg" />
+
+        <h2>Other contents used</h2>
+        <br class="lg" />
+        <h1><img src="https://camo.githubusercontent.com/8c4efbbf4a6ec0873135e07676d7736c6eca26a82ebf664ec727cfdb43344e2b/68747470733a2f2f696d6775722e636f6d2f7a383553586b7a2e706e67" /></h1>
+        <p><strong><a href="https://mods.paradoxplaza.com/mods/79634/Windows">Asset Icon Library</a></strong> by TDW</p>
+        <br class="lg" /><br class="lg" />
+
+        <h2>Special Acknowledgments</h2>
+        <br class="lg" />
+        <div class="display-flex gap2"><a href="https://discord.gg/citiesskylines"><svg id="discord-mark-logos" height="32" style="fill:whitesmoke" aria-hidden="true" viewBox="0 0 127.14 96.36" version="1.1" data-view-component="true">
+    <path
+        d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z">
+    </path>
+</svg>
+</a> <span>Cities: Skylines Official Discord</span></div>
+        <br class="lg" />
+        <div class="display-flex gap2"><a href="https://discord.gg/q3dzd4p5Hx"><svg id="discord-mark-logos" height="32" style="fill:whitesmoke" aria-hidden="true" viewBox="0 0 127.14 96.36" version="1.1" data-view-component="true">
+    <path
+        d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z">
+    </path>
+</svg>
+</a> <span>Cities: Skylines Modding Discord</span></div>
+        <br class="lg" />
+
+        <h1><img class="sm" src="https://pages.github.com/images/logo.svg" /></h1>
+        <h1><img class="md" src="https://raw.githubusercontent.com/tighten/jigsaw/main/jigsaw-banner.png" /></h1>
+        <h1><img class="md" src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" /></h1>
+        <h1><img class="md"
+                src="https://camo.githubusercontent.com/69545b92555ae5b2ca37c7ad5dfa5f60d72d24c70341b05f819a40d5523a3181/68747470733a2f2f676574636f6d706f7365722e6f72672f696d672f6c6f676f2d636f6d706f7365722d7472616e73706172656e742e706e67" />
+        </h1>
+        <br class="lg" />
+        <h1><img class="sm" src="https://raw.githubusercontent.com/npm/logos/refs/heads/master/npm%20logo/npm-logo-red.svg" /></h1>
+        <br class="lg" />
+        <h1><img class="sm" src="https://code.visualstudio.com/assets/images/code-stable.png" /></h1>
+        <br class="lg" />
+        <h1><img class="sm" src="https://upload.wikimedia.org/wikipedia/commons/c/ca/MariaDB_colour_logo.svg" /></h1>
+        <br class="lg" /><br class="lg" />
+
+
+        <h2>Disclaimer</h2>
+        <p>
+            This database is a community-made project, unaffiliated with<br />
+            <strong>Paradox Interactive</strong> or <strong>Colossal Order</strong>.<br />
+            All trademarks, copyrights, and game assets remain the property<br />
+            of their respective owners.
+        </p>
+    </div>
+    </div>
+</div>
+</div>
+<div id="options-overlay" class="options-overlay display-none">
+    <div>
+    <div class="option-header">
+        <a href="#" class="option-back-icon">
+            <img src="/cities2-AssetDatabase/assets/images/cities2/Media/Game/Misc/ChirperBubbleArrow.svg" />
+        </a>
+        <div class="option-title">    CREDITS
+</div>
+    </div>
+    <div class="options-layout">
+            <div class="credit-text">
+        <h1>Cities: Skylines II Asset Database</h1>
+        <br />
+        <p>A community made "database" of all* assets in Cities: Skylines II.</p>
+        <p class="sm">* almost</p>
+        <br class="lg" /><br class="lg" />
+        <h2>Database by</h2>
+        <h1><img src="/cities2-AssetDatabase/assets/images/starq.svg" alt="StarQ Logo"></h1>
+        <br class="lg" /><br class="lg" />
+        <h1><img src="/cities2-AssetDatabase/assets/images/cities2/Media/Menu/GameLogo.svg" alt="Cities: Skylines II Logo"></h1>
+        <br class="lg" />
+        <h2>Game Developed by</h2>
+        <h1><img src="/cities2-AssetDatabase/assets/images/cities2/Media/Menu/ColossalLogo.svg" alt="Colossal Order Logo" /></h1>
+        <br class="lg" />
+        <h2>Game Published by</h2>
+        <h1><img src="/cities2-AssetDatabase/assets/images/cities2/Media/Menu/ParadoxLogo.svg" alt="Paradox Logo" /></h1>
+        <br class="lg" />
+        <p class="sm">Cities: Skylines 2 is published by Paradox Interactive AB and developed by Colossal Order Ltd.</p><br /><br />
+        <p class="sm">CITIES: SKYLINES and PARADOX INTERACTIVE are trademarks and/or registered trademarks</p><br /><br />
+        <p class="sm">of Paradox Interactive AB in Europe, the U.S. and other countries.</p><br /><br />
+        <p class="sm">Any other trademark, logo and copyright is the property of its owner.</p><br /><br />
+        <br class="lg" /><br class="lg" />
+
+        <h2>Other contents used</h2>
+        <br class="lg" />
+        <h1><img src="https://camo.githubusercontent.com/8c4efbbf4a6ec0873135e07676d7736c6eca26a82ebf664ec727cfdb43344e2b/68747470733a2f2f696d6775722e636f6d2f7a383553586b7a2e706e67" /></h1>
+        <p><strong><a href="https://mods.paradoxplaza.com/mods/79634/Windows">Asset Icon Library</a></strong> by TDW</p>
+        <br class="lg" /><br class="lg" />
+
+        <h2>Special Acknowledgments</h2>
+        <br class="lg" />
+        <div class="display-flex gap2"><a href="https://discord.gg/citiesskylines"><svg id="discord-mark-logos" height="32" style="fill:whitesmoke" aria-hidden="true" viewBox="0 0 127.14 96.36" version="1.1" data-view-component="true">
+    <path
+        d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z">
+    </path>
+</svg>
+</a> <span>Cities: Skylines Official Discord</span></div>
+        <br class="lg" />
+        <div class="display-flex gap2"><a href="https://discord.gg/q3dzd4p5Hx"><svg id="discord-mark-logos" height="32" style="fill:whitesmoke" aria-hidden="true" viewBox="0 0 127.14 96.36" version="1.1" data-view-component="true">
+    <path
+        d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z">
+    </path>
+</svg>
+</a> <span>Cities: Skylines Modding Discord</span></div>
+        <br class="lg" />
+
+        <h1><img class="sm" src="https://pages.github.com/images/logo.svg" /></h1>
+        <h1><img class="md" src="https://raw.githubusercontent.com/tighten/jigsaw/main/jigsaw-banner.png" /></h1>
+        <h1><img class="md" src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" /></h1>
+        <h1><img class="md"
+                src="https://camo.githubusercontent.com/69545b92555ae5b2ca37c7ad5dfa5f60d72d24c70341b05f819a40d5523a3181/68747470733a2f2f676574636f6d706f7365722e6f72672f696d672f6c6f676f2d636f6d706f7365722d7472616e73706172656e742e706e67" />
+        </h1>
+        <br class="lg" />
+        <h1><img class="sm" src="https://raw.githubusercontent.com/npm/logos/refs/heads/master/npm%20logo/npm-logo-red.svg" /></h1>
+        <br class="lg" />
+        <h1><img class="sm" src="https://code.visualstudio.com/assets/images/code-stable.png" /></h1>
+        <br class="lg" />
+        <h1><img class="sm" src="https://upload.wikimedia.org/wikipedia/commons/c/ca/MariaDB_colour_logo.svg" /></h1>
+        <br class="lg" /><br class="lg" />
+
+
+        <h2>Disclaimer</h2>
+        <p>
+            This database is a community-made project, unaffiliated with<br />
+            <strong>Paradox Interactive</strong> or <strong>Colossal Order</strong>.<br />
+            All trademarks, copyrights, and game assets remain the property<br />
+            of their respective owners.
+        </p>
+    </div>
+    </div>
+</div>
+</div>
+    <div class="pause-menu-container">
+        <div class="main-menu pause-menu">
+    <div class="mainmenu-layout">
+        <div class="drop-shadow mainmenu-logo-container">
+            <img src="/cities2-AssetDatabase/assets/images/cities2/GameLogo.svg" alt="Cities: Skylines II" class="mainmenu-logo" />
+        </div>
+        <div class="mainmenu-center">
+            <div class="mainmenu-start display-grid">
+                <a id="pause-button-1" class="mainmenu-start-button round-border" href="#">
+                    <div class="mainmenu-start-icon"></div>
+                    <span class="mainmenu-start-text">Resume</span>
+                </a>
+                <button class="mainmenu-start-button round-border" onclick="clearCacheAndRedirect()">
+                    <div class="mainmenu-start-icon"></div>
+                    <span class="mainmenu-start-text">Reload Database</span>
+                </button>
+                <button id="options-button" class="mainmenu-start-button round-border disabled-link" disabled>
+                    <div class="mainmenu-start-icon"></div>
+                    <span class="mainmenu-start-text">No Options Yet</span>
+                </button>
+                <a class="mainmenu-start-button round-border" href="https://mods.paradoxplaza.com/games/cities_skylines_2/" target="_blank">
+                    <div class="mainmenu-start-icon"></div>
+                    <span class="mainmenu-start-text">Paradox Mods</span>
+                </a>
+                <button id="credit-button" class="mainmenu-start-button round-border">
+                    <div class="mainmenu-start-icon"></div>
+                    <span class="mainmenu-start-text">Credits</span>
+                </button>
+                <a class="mainmenu-start-button round-border" href="/">
+                    <div class="mainmenu-start-icon"></div>
+                    <span class="mainmenu-start-text">Back to Main Menu</span>
+                </a>
+            </div>
+            <div class="mainmenu-info">
+                <div class="mainmenu-info-header round-border-top">
+                    <div class="mainmenu-info-header-text">WORK-IN-PROGRESS</div>
+                </div>
+            </div>
+            <div class="mainmenu-notification round-border"></div>
+        </div>
+        <div class="mainmenu-version">1.2.0q1 [Vanilla] (Something Works)</div>
+    </div>
+</div>
+    </div>
+    <div class="game-bg-container">
+        <img id="game-bg" class="game-bg" src="" />
+    </div>
+    <div class="game-onscreen">
+        <div id="hof" class="hof">
+    <div id="hof-title"></div>
+    <div id="hof-creator"></div>
+    <div id="hof-likes"></div>
+    <div id="hof-views"></div>
+    <div id="hof-time"></div>
+</div>
+        <div class="toolbar">
+            <div class="bottom-bar">
+    <div>Time Control</div>
+    <div>Speed Control</div>
+    <div>Temparature</div>
+    <div>City Name</div>
+    <div>Population</div>
+    <div>Money</div>
+    <div>Happiness</div>
+</div>
+<div class="asset-bar">
+    <div>Map Tiles</div>
+    <div>Milestone</div>
+    <div>Demand</div>
+    <div id="asset-group-1" class="asset-menu-group"></div>
+    <div id="asset-group-2" class="asset-menu-group"></div>
+    <div>Bulldozer</div>
+    <div>Budget</div>
+    <div>Transit</div>
+    <div>Economy</div>
+    <div>Underground</div>
+    <div>Camera</div>
+</div>
+<div id="asset-panel" class="asset-panel round-border">
+    <div class="asset-panel-header">
+        <div id="asset-panel-header-tabs" class="asset-panel-header-tabs"></div>
+        <div class="asset-panel-header-close"><button onclick=closeAssetPanel()>×</button></div>
+    </div>
+    <div id="asset-panel-items" class="asset-panel-items"></div>
+</div>
+<div id="asset-quick-info" class="asset-quick-info">
+    <div id="asset-quick-info-header" class="asset-quick-info-header round-border-top">
+        <div id="asset-quick-info-header-title" class="asset-quick-info-header-title"></div>
+        <div id="asset-quick-info-header-money" class="asset-quick-info-header-money"></div>
+    </div>
+    <div id="asset-quick-info-body" class="asset-quick-info-body round-border-bottom">
+        <div id="asset-quick-info-body-image" class="asset-quick-info-body-image round-border"></div>
+        <div id="asset-quick-info-body-desc" class="asset-quick-info-body-desc"></div>
+    </div>
+    
+</div>
+<div id="tools-panel" class="tools-panel round-border"></div>
+        </div>
+        <div class="top-icons">
+            <div class="left-icons">
+                <div class="top-game-icon-div unused">
+    <a href="#">
+        <img class="top-game-icon unused" src="/cities2-AssetDatabase/assets/images/cities2/Media/Game/Icons/AdvisorInfoViewWhite.svg" />
+    </a>
+</div>
+<div class="not-implemented">
+    <div class="tooltip-35 left">Not yet implemented</div>
+</div>
+            </div>
+            <div class="right-icons">
+                <div>
+    <a href="#" id="pause-icon">
+        <img class="top-game-icon" src="/cities2-AssetDatabase/assets/images/cities2/Media/Game/Icons/PauseMenu.svg" />
+    </a>
+</div>
+<div class="top-game-icon-div unused">
+    <a href="#">
+        <img class="top-game-icon" src="/cities2-AssetDatabase/assets/images/cities2/Media/Game/Icons/Information.svg" />
+    </a>
+</div>
+<div class="not-implemented">
+    <div class="tooltip-35 right">Not yet implemented</div>
+</div>
+            </div>
+        </div>
+        <div class="chirper-icons"></div>
+        <div class="info-panel"></div>
+        <div class="details-pane">
+            <div id="asset-details-pane-container" class="asset-details-pane-container">
+    <div id="asset-details-pane" class="asset-details-pane">
+        <div id="asset-details-pane-header" class="asset-details-pane-header round-border-top">
+            <div id="asset-details-pane-header-title" class="asset-details-pane-header-title"></div>
+            <div class="asset-details-pane-header-close"><button id="details-pane-x">×</button></div>
+        </div>
+        <div id="asset-details-pane-body" class="asset-details-pane-body">
+            <div id="asset-details-pane-body-top" class="asset-details-pane-body-top">
+                <div id="asset-details-pane-image" class="asset-details-pane-image round-border"></div>
+                <div id="asset-details-pane-desc" class="asset-details-pane-desc round-border">
+                    <div id="asset-details-pane-desc-text" class="asset-details-pane-desc-text round-border"></div>
+                    <div id="tag-container" class="tag-container"></div>
+                    <div id="notif-container" class="notif-container"></div>
+                </div>
+            </div>
+            <div id="asset-details-pane-body-bottom" class="asset-details-pane-body-bottom">
+                <div id="temp"></div>
+                <div id="asset-details-pane-body-bottom-boxes" class="asset-details-pane-body-bottom-boxes"></div>
+                <div id="temp-right" class="temp-right"></div>
+            </div>
+        </div>
+        <div id="asset-details-pane-footer" class="asset-details-pane-footer round-border-bottom"></div>
+    </div>
+</div>
+        </div>
+        <div class="pause-overlay"></div>
+    </div>
+    </div>
+
+    <!-- Jquery JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        const imageBasePath = "/cities2-AssetDatabase/assets/images";
+        const dataBasePath = "/cities2-AssetDatabase/assets/data";
+    </script>
+    <script defer src="/cities2-AssetDatabase/assets/build/js/main.js?id=f0e727077a0647ee9e96f8905f69857e"></script>
+    <script defer src="/cities2-AssetDatabase/assets/build/js/splash.js?id=f80c6148139214edfeaeb890cacb9143"></script>
+    <script defer src="/cities2-AssetDatabase/assets/build/js/hall-of-fame.js?id=d41d8cd98f00b204e9800998ecf8427e"></script>
+        <script defer src="/cities2-AssetDatabase/assets/build/js/backend.js?id=6bb5dd357f8e6a04d01d458743eefcd5"></script>
+    <script defer src="/cities2-AssetDatabase/assets/build/js/db.js?id=3f58a14ec7c2800851cc1935a7b40cb0"></script>
+    <script defer src="/cities2-AssetDatabase/assets/build/js/credit.js?id=0bc8c948a78575b6602fada198a4c33c"></script>
+    <script defer src="/cities2-AssetDatabase/assets/build/js/pause.js?id=bdc3bc9f88e0cb76f7ec7d23ec3fe4a2"></script>
+    <script defer src="/cities2-AssetDatabase/assets/build/js/game_data_process.js?id=dbaf4d99a2d898ac66effb6aaff0c961"></script>
+    <script defer src="/cities2-AssetDatabase/assets/build/js/game.js?id=df050e636b98d718207288b0b870149d"></script>
+    <script>
+        document.getElementById('game-bg').src = '/cities2-AssetDatabase/assets/images/cities2/mainmenu.jpg';
+    </script>
+</body>
+
+</html>

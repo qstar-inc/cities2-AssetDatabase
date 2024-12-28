@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="40" viewBox="0 0 40 40">
+  <defs>
+    <clipPath id="clip-Heating">
+      <rect width="40" height="40"/>
+    </clipPath>
+  </defs>
+  <g id="Heating" clip-path="url(#clip-Heating)">
+    <path id="Path_2938" data-name="Path 2938" d="M.231.316C.649-.121,1.66-.008,1.66-.008H22.225s.9-.172,1.247.324a2.934,2.934,0,0,1,.134,1.66V8.565h-1.69V3.094H1.722v5.47H-.013V1.737S-.187.752.231.316Z" transform="translate(8.189 24.334)" fill="#96acb7"/>
+    <rect id="Rectangle_4254" data-name="Rectangle 4254" width="4.256" height="16.172" rx="2.128" transform="translate(10.298 13.531)" fill="#adc3ce"/>
+    <rect id="Rectangle_4254-2" data-name="Rectangle 4254" width="4.256" height="16.172" rx="2.128" transform="translate(15.405 13.531)" fill="#adc3ce"/>
+    <rect id="Rectangle_4254-3" data-name="Rectangle 4254" width="4.256" height="16.172" rx="2.128" transform="translate(20.512 13.531)" fill="#adc3ce"/>
+    <rect id="Rectangle_4254-4" data-name="Rectangle 4254" width="4.256" height="16.172" rx="2.128" transform="translate(25.619 13.531)" fill="#adc3ce"/>
+    <path id="Path_2939" data-name="Path 2939" d="M-698.309-158.758s-2.792-1.248-2.513-2.412,1.57-1.1,1.724-2.635a6.859,6.859,0,0,0-1.109-3.494s2.322,1.961,2.6,3.494-.807,1.471-1.49,2.635S-698.309-158.758-698.309-158.758Z" transform="translate(715.727 171.751)" fill="#fff8ba"/>
+    <path id="Path_2940" data-name="Path 2940" d="M-698.309-158.758s-2.792-1.248-2.513-2.412,1.57-1.1,1.724-2.635a6.859,6.859,0,0,0-1.109-3.494s2.322,1.961,2.6,3.494-.807,1.471-1.49,2.635S-698.309-158.758-698.309-158.758Z" transform="translate(719.983 171.751)" fill="#fff8ba"/>
+    <path id="Path_2941" data-name="Path 2941" d="M-698.309-158.758s-2.792-1.248-2.513-2.412,1.57-1.1,1.724-2.635a6.859,6.859,0,0,0-1.109-3.494s2.322,1.961,2.6,3.494-.807,1.471-1.49,2.635S-698.309-158.758-698.309-158.758Z" transform="translate(724.239 171.751)" fill="#fff8ba"/>
+  </g>
+</svg>

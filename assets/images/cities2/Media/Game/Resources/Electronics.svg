@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36" height="36" viewBox="0 0 36 36">
+  <defs>
+    <clipPath id="clip-Electronics">
+      <rect width="36" height="36"/>
+    </clipPath>
+  </defs>
+  <g id="Electronics" clip-path="url(#clip-Electronics)">
+    <rect id="Rectangle_4282" data-name="Rectangle 4282" width="1" height="26" transform="translate(13 6)" fill="#adc3ce"/>
+    <rect id="Rectangle_4285" data-name="Rectangle 4285" width="1" height="26" transform="translate(31 13) rotate(90)" fill="#adc3ce"/>
+    <rect id="Rectangle_4283" data-name="Rectangle 4283" width="1" height="26" transform="translate(18 6)" fill="#adc3ce"/>
+    <rect id="Rectangle_4286" data-name="Rectangle 4286" width="1" height="26" transform="translate(31 18) rotate(90)" fill="#adc3ce"/>
+    <rect id="Rectangle_4284" data-name="Rectangle 4284" width="1" height="26" transform="translate(23 6)" fill="#adc3ce"/>
+    <rect id="Rectangle_4287" data-name="Rectangle 4287" width="1" height="26" transform="translate(31 23) rotate(90)" fill="#adc3ce"/>
+    <circle id="Ellipse_771" data-name="Ellipse 771" cx="1.5" cy="1.5" r="1.5" transform="translate(12 4)" fill="#adc3ce"/>
+    <circle id="Ellipse_785" data-name="Ellipse 785" cx="1.5" cy="1.5" r="1.5" transform="translate(33 12) rotate(90)" fill="#adc3ce"/>
+    <circle id="Ellipse_782" data-name="Ellipse 782" cx="1.5" cy="1.5" r="1.5" transform="translate(12 30)" fill="#adc3ce"/>
+    <circle id="Ellipse_788" data-name="Ellipse 788" cx="1.5" cy="1.5" r="1.5" transform="translate(7 12) rotate(90)" fill="#adc3ce"/>
+    <circle id="Ellipse_780" data-name="Ellipse 780" cx="1.5" cy="1.5" r="1.5" transform="translate(17 4)" fill="#adc3ce"/>
+    <circle id="Ellipse_786" data-name="Ellipse 786" cx="1.5" cy="1.5" r="1.5" transform="translate(33 17) rotate(90)" fill="#adc3ce"/>
+    <circle id="Ellipse_783" data-name="Ellipse 783" cx="1.5" cy="1.5" r="1.5" transform="translate(17 30)" fill="#adc3ce"/>
+    <circle id="Ellipse_789" data-name="Ellipse 789" cx="1.5" cy="1.5" r="1.5" transform="translate(7 17) rotate(90)" fill="#adc3ce"/>
+    <circle id="Ellipse_781" data-name="Ellipse 781" cx="1.5" cy="1.5" r="1.5" transform="translate(22 4)" fill="#adc3ce"/>
+    <circle id="Ellipse_787" data-name="Ellipse 787" cx="1.5" cy="1.5" r="1.5" transform="translate(33 22) rotate(90)" fill="#adc3ce"/>
+    <circle id="Ellipse_784" data-name="Ellipse 784" cx="1.5" cy="1.5" r="1.5" transform="translate(22 30)" fill="#adc3ce"/>
+    <circle id="Ellipse_790" data-name="Ellipse 790" cx="1.5" cy="1.5" r="1.5" transform="translate(7 22) rotate(90)" fill="#adc3ce"/>
+    <rect id="Rectangle_4280" data-name="Rectangle 4280" width="15" height="15" rx="3" transform="translate(11 11)" fill="#adc3ce"/>
+    <rect id="Rectangle_4281" data-name="Rectangle 4281" width="7" height="7" rx="1" transform="translate(15 15)" fill="#758187"/>
+  </g>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <clipPath id="clip-ZoneOfficeLow">
+      <rect width="32" height="32"/>
+    </clipPath>
+  </defs>
+  <g id="ZoneOfficeLow" clip-path="url(#clip-ZoneOfficeLow)">
+    <g id="ZoneOffice" transform="translate(0.795 7.408)">
+      <path id="Path_774" data-name="Path 774" d="M-10008-10482.914l16.191,10,13.512-10-16.52-8.08Z" transform="translate(10008.002 10493.75)" fill="#b400ff"/>
+      <path id="Path_775" data-name="Path 775" d="M-9906.381-10484.037l8.623,4.932v-8.021l-8.623-4.668Z" transform="translate(9914.063 10495.162)" fill="#e4d8b3"/>
+      <path id="Path_776" data-name="Path 776" d="M-9888.85-10478.244l5.781-4.1v-7.693l-5.781,3.726Z" transform="translate(9905.157 10494.277)" fill="#7902ab"/>
+      <path id="Path_777" data-name="Path 777" d="M-9906.369-10489.053l8.668,4.658,5.682-3.767-8.652-4.292Z" transform="translate(9914.057 10492.453)" fill="#faf7ec"/>
+      <path id="Path_778" data-name="Path 778" d="M-9750.371-10484.5l8.645,4.572v4.243l-8.645-4.645Z" transform="translate(9758.059 10489.511)" fill="#769ba0"/>
+      <path id="Path_779" data-name="Path 779" d="M-9732.8-10478.926l5.771-3.8v3.8l-5.771,4.074Z" transform="translate(9749.131 10488.658)" fill="#310146"/>
+    </g>
+  </g>
+</svg>

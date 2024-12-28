@@ -1,0 +1,20 @@
+{
+    "/js/backend.js": "/js/backend.js?id=6bb5dd357f8e6a04d01d458743eefcd5",
+    "/js/credit.js": "/js/credit.js?id=0bc8c948a78575b6602fada198a4c33c",
+    "/js/db.js": "/js/db.js?id=3f58a14ec7c2800851cc1935a7b40cb0",
+    "/js/game.js": "/js/game.js?id=df050e636b98d718207288b0b870149d",
+    "/js/game_data_process.js": "/js/game_data_process.js?id=dbaf4d99a2d898ac66effb6aaff0c961",
+    "/js/hall-of-fame.js": "/js/hall-of-fame.js?id=d41d8cd98f00b204e9800998ecf8427e",
+    "/js/main.js": "/js/main.js?id=f0e727077a0647ee9e96f8905f69857e",
+    "/js/main-menu.js": "/js/main-menu.js?id=fcefd25b815e073803990ad2495097f7",
+    "/js/pause.js": "/js/pause.js?id=bdc3bc9f88e0cb76f7ec7d23ec3fe4a2",
+    "/js/splash.js": "/js/splash.js?id=f80c6148139214edfeaeb890cacb9143",
+    "/css/main.css": "/css/main.css?id=59561415a1b8865b17b79d7dc2b85c8f",
+    "/css/main-menu.css": "/css/main-menu.css?id=f45c749821d66c83a48780d809057a7e",
+    "/css/lds-ripple.css": "/css/lds-ripple.css?id=9cd8049bfd8f904bcc7094a3eb2b718d",
+    "/css/game.css": "/css/game.css?id=dd2cd4d5dc472b4fdc5f0451424275db",
+    "/css/credit.css": "/css/credit.css?id=62ce7f94448d2c7393d042d10ff0e1d8",
+    "/css/starqstrap.css": "/css/starqstrap.css?id=38b6ebf6bf73b6d1cbb25754bd7a3c64",
+    "/css/splash.css": "/css/splash.css?id=80c7fc58179a3825cff0c906b3f5af13",
+    "/css/pause.css": "/css/pause.css?id=926a724a514551e95dedf5612c743706"
+}

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <clipPath id="clip-Terraforming">
+      <rect width="32" height="32"/>
+    </clipPath>
+  </defs>
+  <g id="Terraforming" clip-path="url(#clip-Terraforming)">
+    <g id="ZoneResidential" transform="translate(-71.702 46.014)">
+      <path id="Path_780" data-name="Path 780" d="M-10008-10482.843l16.188,10.105,13.515-10.105-16.512-8.157Z" transform="translate(10082 10455.43)" fill="#54b60b"/>
+    </g>
+    <path id="Path_4172" data-name="Path 4172" d="M9-3.235c4.971,0,4.6,7.694,9,11.235s-4.029,8-9,8S-3.737,12.922,0,8,4.029-3.235,9-3.235Z" transform="translate(7.81 8.247)" fill="#54b60b"/>
+    <path id="Path_1147" data-name="Path 1147" d="M897.152,30.8a4.04,4.04,0,0,1-1.669,4.129c-2.284,1.546-8.209.839-9.1-1.076s2.879-10.747,6.43-7.985S897.152,30.8,897.152,30.8Z" transform="translate(-872.19 -14.555)" fill="#408f05"/>
+  </g>
+</svg>

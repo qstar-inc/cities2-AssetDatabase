@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <clipPath id="clip-ZoneResidentialLow">
+      <rect width="32" height="32"/>
+    </clipPath>
+  </defs>
+  <g id="ZoneResidentialLow" clip-path="url(#clip-ZoneResidentialLow)">
+    <g id="ZoneResidential" transform="translate(1.488 8.767)">
+      <path id="Path_780" data-name="Path 780" d="M-10008-10482.843l16.188,10.105,13.515-10.105-16.512-8.157Z" transform="translate(10008 10492.43)" fill="#23eb4f"/>
+      <path id="Path_781" data-name="Path 781" d="M-9991.4-10483.494l6.913,4.284.089-5.923-7-4.055Z" transform="translate(10000.546 10493.085)" fill="#f9f3dd"/>
+      <path id="Path_782" data-name="Path 782" d="M-9977.381-10480.282l5.055-3.779v-4.6l-1.935-2.275-3.12,4.753Z" transform="translate(9993.427 10494.098)" fill="#008f15"/>
+      <path id="Path_783" data-name="Path 783" d="M-9991.32-10492.714l6.879,3.84,3.172-4.769-7.109-3.18Z" transform="translate(10000.505 10496.822)" fill="#bc8459"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="40" viewBox="0 0 40 40">
+  <defs>
+    <clipPath id="clip-Grain">
+      <rect width="40" height="40"/>
+    </clipPath>
+  </defs>
+  <g id="Grain" clip-path="url(#clip-Grain)">
+    <g id="Group_296" data-name="Group 296" transform="translate(14 8.068)">
+      <path id="Path_772" data-name="Path 772" d="M6056.55-4794.59s-3.623-1.7-4.657-3.6a7,7,0,0,1-.52-4.283s3.882,1.876,5.176,3.846a3.938,3.938,0,0,1,0,4.037Z" transform="translate(-6051.246 4818.275)" fill="#d4ab64"/>
+      <path id="Path_773" data-name="Path 773" d="M6051.87-4794.59s3.943-1.7,5.07-3.6a6.481,6.481,0,0,0,.563-4.283s-4.226,1.875-5.633,3.846A3.67,3.67,0,0,0,6051.87-4794.59Z" transform="translate(-6044.753 4818.275)" fill="#d4ab64"/>
+      <path id="Path_774" data-name="Path 774" d="M6056.55-4794.59s-3.623-1.7-4.657-3.6a7,7,0,0,1-.52-4.283s3.882,1.876,5.176,3.846a3.938,3.938,0,0,1,0,4.037Z" transform="translate(-6051.246 4813.094)" fill="#e1b66b"/>
+      <path id="Path_775" data-name="Path 775" d="M6051.87-4794.59s3.943-1.7,5.07-3.6a6.481,6.481,0,0,0,.563-4.283s-4.226,1.875-5.633,3.846A3.67,3.67,0,0,0,6051.87-4794.59Z" transform="translate(-6044.753 4812.749)" fill="#e1b66b"/>
+      <path id="Path_776" data-name="Path 776" d="M6056.55-4794.59s-3.623-1.7-4.657-3.6a7,7,0,0,1-.52-4.283s3.882,1.876,5.176,3.846a3.938,3.938,0,0,1,0,4.037Z" transform="translate(-6051.246 4807.741)" fill="#f4c36d"/>
+      <path id="Path_777" data-name="Path 777" d="M6051.87-4794.59s3.943-1.7,5.07-3.6a6.481,6.481,0,0,0,.563-4.283s-4.226,1.875-5.633,3.846A3.67,3.67,0,0,0,6051.87-4794.59Z" transform="translate(-6044.753 4807.396)" fill="#f4c36d"/>
+      <path id="Path_778" data-name="Path 778" d="M6066.12-4876.77s-2.428-.617-2.428-2.672,2.428-5.545,2.428-5.545,2.318,3.49,2.318,5.545S6066.12-4876.77,6066.12-4876.77Z" transform="translate(-6059.915 4884.986)" fill="#f4c36d"/>
+    </g>
+  </g>
+</svg>

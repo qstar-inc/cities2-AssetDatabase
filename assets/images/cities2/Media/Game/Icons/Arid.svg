@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <clipPath id="clip-Arid">
+      <rect width="32" height="32"/>
+    </clipPath>
+  </defs>
+  <g id="Arid" clip-path="url(#clip-Arid)">
+    <circle id="Ellipse_837" data-name="Ellipse 837" cx="4.5" cy="4.5" r="4.5" transform="translate(12 12)" fill="#ffcb00"/>
+    <rect id="Rectangle_4389" data-name="Rectangle 4389" width="2" height="5" rx="1" transform="translate(15 6)" fill="#ffcb00"/>
+    <rect id="Rectangle_4392" data-name="Rectangle 4392" width="1.966" height="4.588" rx="0.983" transform="matrix(0.719, 0.695, -0.695, 0.719, 23.234, 8.688)" fill="#ffcb00"/>
+    <rect id="Rectangle_4388" data-name="Rectangle 4388" width="2" height="5" rx="1" transform="translate(11 16) rotate(90)" fill="#ffcb00"/>
+    <rect id="Rectangle_4387" data-name="Rectangle 4387" width="1.966" height="4.588" rx="0.983" transform="matrix(-0.695, 0.719, -0.719, -0.695, 12.533, 12.093)" fill="#ffcb00"/>
+    <rect id="Rectangle_4393" data-name="Rectangle 4393" width="2" height="5" rx="1" transform="translate(15 22)" fill="#ffcb00"/>
+    <rect id="Rectangle_4390" data-name="Rectangle 4390" width="1.966" height="4.588" rx="0.983" transform="matrix(0.719, 0.695, -0.695, 0.719, 11.733, 19.503)" fill="#ffcb00"/>
+    <rect id="Rectangle_4394" data-name="Rectangle 4394" width="2" height="5" rx="1" transform="translate(27 16) rotate(90)" fill="#ffcb00"/>
+    <rect id="Rectangle_4391" data-name="Rectangle 4391" width="1.966" height="4.588" rx="0.983" transform="matrix(-0.695, 0.719, -0.719, -0.695, 24.407, 22.536)" fill="#ffcb00"/>
+  </g>
+</svg>

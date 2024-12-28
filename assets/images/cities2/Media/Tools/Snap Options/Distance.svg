@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <clipPath id="clip-Distance">
+      <rect width="32" height="32"/>
+    </clipPath>
+  </defs>
+  <g id="Distance" clip-path="url(#clip-Distance)">
+    <path id="Icon_awesome-arrows-alt-h" data-name="Icon awesome-arrows-alt-h" d="M10.263,10.911v1.251H3.64V10.911a.652.652,0,0,0-1.113-.461L.191,12.787a.652.652,0,0,0,0,.922l2.337,2.337a.652.652,0,0,0,1.113-.461V14.334h6.623v1.251a.652.652,0,0,0,1.113.461l2.337-2.337a.652.652,0,0,0,0-.922L11.375,10.45a.652.652,0,0,0-1.113.461Z" transform="translate(9.048 1.252)" fill="#fff"/>
+    <rect id="Rectangle_4584" data-name="Rectangle 4584" width="7" height="7" rx="1" transform="translate(1 11)" fill="#fff"/>
+    <rect id="Rectangle_4585" data-name="Rectangle 4585" width="7" height="7" rx="1" transform="translate(24 11)" fill="#fff"/>
+  </g>
+</svg>

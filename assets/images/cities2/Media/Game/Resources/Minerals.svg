@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36" height="36" viewBox="0 0 36 36">
+  <defs>
+    <clipPath id="clip-Minerals">
+      <rect width="36" height="36"/>
+    </clipPath>
+  </defs>
+  <g id="Minerals" clip-path="url(#clip-Minerals)">
+    <g id="ResourceMinerals" transform="translate(2.813 7.03)">
+      <g id="Group_207" data-name="Group 207" transform="translate(0 0)">
+        <path id="Path_543" data-name="Path 543" d="M6173.854-5578.73l-4.787-10.393,6.2-9.577,10.086-1.363,5.438,10.94-5.438,10.393Z" transform="translate(-6164.43 5600.063)" fill="#09b099"/>
+        <path id="Path_544" data-name="Path 544" d="M6175.7-5588.5l-2.925-5.634,2.925-5.931h6.419l3.5,5.931-3.5,5.634Z" transform="translate(-6155.243 5610.439)" fill="#31d7c0"/>
+        <path id="Path_545" data-name="Path 545" d="M6172.452-5587.15l-3.386-6.291,4.468-6.622,7.047.917,3.846,5.7-3.846,6.291Z" transform="translate(-6169.066 5609.091)" fill="#3dcfb9"/>
+      </g>
+      <path id="Path_546" data-name="Path 546" d="M6169.066-5578.215l5.656.68,6.065-6.31-7.22-1Z" transform="translate(-6169.066 5593.866)" fill="#b3fff4"/>
+      <path id="Path_547" data-name="Path 547" d="M6225.92-5574.3l2.577.308,6.793-6.2h-6.555Z" transform="translate(-6208.347 5590.63)" fill="#affff3"/>
+      <path id="Path_548" data-name="Path 548" d="M6189.006-5606.024l5.722.866,1.738,1.645,7.273-11.052-10.067,1.364Z" transform="translate(-6182.843 5614.566)" fill="#63fce5"/>
+    </g>
+  </g>
+</svg>

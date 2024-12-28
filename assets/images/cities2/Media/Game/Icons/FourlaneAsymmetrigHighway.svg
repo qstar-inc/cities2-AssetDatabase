@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <clipPath id="clip-FourlaneAsymmetrigHighway">
+      <rect width="64" height="64"/>
+    </clipPath>
+  </defs>
+  <g id="FourlaneAsymmetrigHighway" clip-path="url(#clip-FourlaneAsymmetrigHighway)">
+    <path id="Path_2186" data-name="Path 2186" d="M722.072-295.333l29.712,25.316,34.037-20.612.35-2.6-64.1-4.686Z" transform="translate(-722.072 327.13)" fill="#c4c4c4"/>
+    <path id="Path_2190" data-name="Path 2190" d="M737.026-304.839l24.051,28.178,25.135-14.784-30.233-24.5Z" transform="translate(-728.982 329.31)" fill="#ffc916"/>
+    <path id="Path_2192" data-name="Path 2192" d="M1224.123-1129.9l29.871,25.1,9-5.463-29.7-24.869Z" transform="translate(-1224.078 1159.002)" fill="#949494"/>
+    <path id="Path_2193" data-name="Path 2193" d="M1223.129-1128.57,1253-1103.719l14.472-8.426-29.84-24.934Z" transform="translate(-1213.027 1151.886)" fill="#949494"/>
+    <path id="Path_2211" data-name="Path 2211" d="M1226.582-1130.891l29.871,25.1,8.717-5.218-30.016-25.114Z" transform="translate(-1201.027 1144.886)" fill="#949494"/>
+    <path id="Path_2281" data-name="Path 2281" d="M15820,3491.44l30.408,24.87,1.232-.691-30.76-24.619Z" transform="translate(-15803.473 -3472.092)" fill="#ffc916"/>
+    <path id="Path_2294" data-name="Path 2294" d="M15821.385,3491.548l29.939,25.1,2.262-1.539-30.252-24.62Z" transform="translate(-15797.693 -3476.517)" fill="#ffc916"/>
+  </g>
+</svg>

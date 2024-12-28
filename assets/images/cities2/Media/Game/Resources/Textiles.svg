@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36" height="36" viewBox="0 0 36 36">
+  <defs>
+    <clipPath id="clip-Textiles">
+      <rect width="36" height="36"/>
+    </clipPath>
+  </defs>
+  <g id="Textiles" clip-path="url(#clip-Textiles)">
+    <g id="ResourceTextiles" transform="translate(5.672 8.777)">
+      <path id="Path_559" data-name="Path 559" d="M5497.456-6382.717a7.1,7.1,0,0,0,3.509,1.106,10.171,10.171,0,0,0,3.968-1.106l-.351,3.328h-7.126Z" transform="translate(-5487.097 6382.717)" fill="#696969"/>
+      <path id="Path_558" data-name="Path 558" d="M5442.126-6382.393l6.251-4.672,4.028-.512a3.63,3.63,0,0,0,3.791,3.324,3.411,3.411,0,0,0,3.642-3.324l3.994.512,6.951,4.081-3.115,6.6-3.836-2.008v13.261h-15.455v-13.8l-3.935,2.548Z" transform="translate(-5442.126 6387.576)" fill="#f0ecec"/>
+    </g>
+  </g>
+</svg>

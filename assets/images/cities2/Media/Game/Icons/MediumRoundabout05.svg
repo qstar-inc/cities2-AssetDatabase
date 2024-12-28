@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <clipPath id="clip-MediumRoundabout05">
+      <rect width="64" height="64"/>
+    </clipPath>
+  </defs>
+  <g id="MediumRoundabout05" clip-path="url(#clip-MediumRoundabout05)">
+    <path id="Path_1137" data-name="Path 1137" d="M15.72.032C24.4.049,31.45,4.8,31.462,10.634s-7.016,10.556-15.7,10.539S.034,16.409.022,10.571,7.038.014,15.72.032Z" transform="matrix(0.998, -0.07, 0.07, 0.998, 15.414, 23.831)" fill="#595959"/>
+    <path id="Path_1136" data-name="Path 1136" d="M15.72.032C24.4.049,31.45,4.8,31.462,10.634s-7.016,10.556-15.7,10.539S.034,16.409.022,10.571,7.038.014,15.72.032Z" transform="matrix(0.998, -0.07, 0.07, 0.998, 15.414, 21.482)" fill="#c3c2c2"/>
+    <g id="Group_2745" data-name="Group 2745" transform="translate(-2.943 -1.724)">
+      <ellipse id="Ellipse_457" data-name="Ellipse 457" cx="12.215" cy="7.735" rx="12.215" ry="7.735" transform="matrix(0.998, -0.07, 0.07, 0.998, 22.219, 25.82)" fill="#eeecec"/>
+    </g>
+    <g id="Group_2708" data-name="Group 2708" transform="translate(-8.237 46.624)">
+      <ellipse id="Ellipse_885" data-name="Ellipse 885" cx="6" cy="5" rx="6" ry="5" transform="translate(34.237 -24.624)" fill="#54b60b"/>
+      <ellipse id="Ellipse_886" data-name="Ellipse 886" cx="4.5" cy="5" rx="4.5" ry="5" transform="translate(33.237 -26.624)" fill="#54b60b"/>
+      <path id="Path_3565" data-name="Path 3565" d="M5,0a4.751,4.751,0,0,1,5,4.449c0,2.457-2.241,4.224-5,4.224S0,6.906,0,4.449A4.751,4.751,0,0,1,5,0Z" transform="translate(35.214 -25.665)" fill="#79dd2c"/>
+      <ellipse id="Ellipse_887" data-name="Ellipse 887" cx="4.5" cy="4" rx="4.5" ry="4" transform="translate(33.237 -26.624)" fill="#79dd2c"/>
+      <circle id="Ellipse_883" data-name="Ellipse 883" cx="2.5" cy="2.5" r="2.5" transform="translate(42.237 -23.624)" fill="#54b60b"/>
+      <ellipse id="Ellipse_888" data-name="Ellipse 888" cx="6" cy="5" rx="6" ry="5" transform="translate(34.237 -29.624)" fill="#79dd2c"/>
+      <ellipse id="Ellipse_889" data-name="Ellipse 889" cx="2.5" cy="2" rx="2.5" ry="2" transform="translate(41.237 -24.624)" fill="#79dd2c"/>
+    </g>
+  </g>
+</svg>
