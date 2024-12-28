@@ -2,9 +2,15 @@ const gameOnscreen = document.querySelector('.game-onscreen');
 const gameBgContainer = document.querySelector('.game-bg');
 const pauseMenu = document.querySelector('.pause-menu');
 disablePauseMenu();
-document.getElementById('pause-icon').addEventListener('click', enablePauseMenu);
+const pauseIcon = document.getElementById('pause-icon')
+if (pauseIcon) {
+    pauseIcon.addEventListener('click', enablePauseMenu);
+}
 
-document.getElementById('pause-button-1').addEventListener('click', disablePauseMenu);
+const pauseButton1 = document.getElementById('pause-button-1');
+if (pauseButton1) {
+    pauseButton1.addEventListener('click', disablePauseMenu);
+}
 
 function enablePauseMenu() {
     if (gameOnscreen) {
@@ -58,3 +64,17 @@ document.querySelectorAll('.top-game-icon-div.unused').forEach((container) => {
         tooltipRight.style.display = "none";
     });
 });
+
+document.querySelectorAll(".option-back-icon").forEach((button) => {
+    button.addEventListener('click', () => {
+        document.querySelectorAll(".options-overlay").forEach((overlay) => {
+            closeCredit();
+            overlay.style.opacity = 0;
+            setTimeout(() => {
+                overlay.classList.add("display-none");
+            }, 500); 
+        });
+        const mainMenuLogo = document.querySelector(".mainmenu-logo");
+        mainMenuLogo.classList.remove("display-none");
+    })
+})

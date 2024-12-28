@@ -2,11 +2,13 @@
 
 @section('style')
     <link rel="stylesheet" href="{{ $page->repo . mix('css/game.css', 'assets/build') }}">
+    <link rel="stylesheet" href="{{ $page->repo . mix('css/credit.css', 'assets/build') }}">
     <link rel="stylesheet" href="{{ $page->repo . mix('css/pause.css', 'assets/build') }}">
     <link rel="stylesheet" href="{{ $page->repo . mix('css/lds-ripple.css', 'assets/build') }}">
 @endsection
 
 @section('body')
+    @include('_layouts.partials.options')
     <div class="pause-menu-container">
         @include('_layouts.partials.pauseMenu')
     </div>
@@ -38,6 +40,7 @@
 @section('js')
     <script defer src="{{ $page->repo . mix('js/backend.js', 'assets/build') }}"></script>
     <script defer src="{{ $page->repo . mix('js/db.js', 'assets/build') }}"></script>
+    <script defer src="{{ $page->repo . mix('js/credit.js', 'assets/build') }}"></script>
     <script defer src="{{ $page->repo . mix('js/pause.js', 'assets/build') }}"></script>
     <script defer src="{{ $page->repo . mix('js/game_data_process.js', 'assets/build') }}"></script>
     <script defer src="{{ $page->repo . mix('js/game.js', 'assets/build') }}"></script>

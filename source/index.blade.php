@@ -1,6 +1,12 @@
 @extends('_layouts.main')
 
+@section('style')
+    <link rel="stylesheet" href="{{ $page->repo . mix('css/credit.css', 'assets/build') }}">
+    <link rel="stylesheet" href="{{ $page->repo . mix('css/pause.css', 'assets/build') }}">
+@endsection
+
 @section('body')
+    @include('_layouts.partials.options')
     <div id="main-menu" class="splash-screen" style="display: flex;">
         <div>
             <div class="mainmenu-container">
@@ -21,26 +27,26 @@
                             <div class="mainmenu-start-icon"></div>
                             <span class="mainmenu-start-text">Loading Screen</span>
                         </button>
-                        <button class="mainmenu-start-button disabled-link round-border" disabled>
+                        <button id="options-button" class="mainmenu-start-button round-border disabled-link" disabled>
                             <div class="mainmenu-start-icon"></div>
-                            <span class="mainmenu-start-text">Options (WIP)</span>
+                            <span class="mainmenu-start-text">No Options Yet</span>
                         </button>
-                        <button class="mainmenu-start-button disabled-link round-border" disabled>
+                        <a class="mainmenu-start-button round-border" href="https://mods.paradoxplaza.com/games/cities_skylines_2/" target="_blank">
                             <div class="mainmenu-start-icon"></div>
-                            <span class="mainmenu-start-text">Legal (WIP)</span>
-                        </button>
-                        <button class="mainmenu-start-button disabled-link round-border" disabled>
+                            <span class="mainmenu-start-text">Paradox Mods</span>
+                        </a>
+                        <button id="credit-button" class="mainmenu-start-button round-border">
                             <div class="mainmenu-start-icon"></div>
-                            <span class="mainmenu-start-text">Credits (WIP)</span>
+                            <span class="mainmenu-start-text">Credits</span>
                         </button>
-                        <button class="mainmenu-start-button round-border" onclick="window.close();">
+                        <a class="mainmenu-start-button round-border" href="https://buymeacoffee.com/starq" target="_blank">
                             <div class="mainmenu-start-icon"></div>
-                            <span class="mainmenu-start-text">Exit</span>
-                        </button>
+                            <span class="mainmenu-start-text">Support</span>
+                        </a>
                     </div>
                     <div class="mainmenu-info">
                         <div class="mainmenu-info-header round-border-top">
-                            <div class="mainmenu-info-header-text">WORK-IN-PROGRESS</div>
+                            <div class="mainmenu-info-header-text">NOTHING HERE</div>
                         </div>
                     </div>
                     <div class="mainmenu-notification round-border"></div>
@@ -60,6 +66,8 @@
 @section('js')
     <script defer src="{{ $page->repo . mix('js/backend.js', 'assets/build') }}"></script>
     <script defer src="{{ $page->repo . mix('js/db.js', 'assets/build') }}"></script>
+    <script defer src="{{ $page->repo . mix('js/credit.js', 'assets/build') }}"></script>
+    <script defer src="{{ $page->repo . mix('js/pause.js', 'assets/build') }}"></script>
     <script defer src="{{ $page->repo . mix('js/main-menu.js', 'assets/build') }}"></script>
     <script>
         document.getElementById('mainmenu-button-continue').addEventListener('click', function() {

@@ -9,21 +9,21 @@
                     <div class="mainmenu-start-icon"></div>
                     <span class="mainmenu-start-text">Resume</span>
                 </a>
-                <button class="mainmenu-start-button disabled-link round-border" disabled>
+                <button class="mainmenu-start-button round-border" onclick="clearCacheAndRedirect()">
                     <div class="mainmenu-start-icon"></div>
-                    <span class="mainmenu-start-text">...</span>
+                    <span class="mainmenu-start-text">Reload Database</span>
                 </button>
-                <button class="mainmenu-start-button disabled-link round-border" disabled>
+                <button id="options-button" class="mainmenu-start-button round-border disabled-link" disabled>
                     <div class="mainmenu-start-icon"></div>
-                    <span class="mainmenu-start-text">Options (WIP)</span>
+                    <span class="mainmenu-start-text">No Options Yet</span>
                 </button>
-                <button class="mainmenu-start-button disabled-link round-border" disabled>
+                <a class="mainmenu-start-button round-border" href="https://mods.paradoxplaza.com/games/cities_skylines_2/" target="_blank">
                     <div class="mainmenu-start-icon"></div>
-                    <span class="mainmenu-start-text">Legal (WIP)</span>
-                </button>
-                <button class="mainmenu-start-button disabled-link round-border" disabled>
+                    <span class="mainmenu-start-text">Paradox Mods</span>
+                </a>
+                <button id="credit-button" class="mainmenu-start-button round-border">
                     <div class="mainmenu-start-icon"></div>
-                    <span class="mainmenu-start-text">Credits (WIP)</span>
+                    <span class="mainmenu-start-text">Credits</span>
                 </button>
                 <a class="mainmenu-start-button round-border" href="/">
                     <div class="mainmenu-start-icon"></div>

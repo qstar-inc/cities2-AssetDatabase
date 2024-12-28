@@ -1,0 +1,76 @@
+.credit-scroll-overlay {
+  overflow: hidden;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.credit-scroll-overlay > * .options-layout {
+  overflow: hidden !important;
+}
+
+.credit-text {
+  position: relative;
+  margin: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  animation: scrollCredits 100s linear infinite paused;
+  width: 100%;
+  height: 100%;
+  justify-content: start;
+  font-size: larger;
+  font-family: "Cities 0.4", "Rubik", Lato, Roboto, serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@keyframes scrollCredits {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(-530%);
+  }
+}
+
+.credit-text > h1 {
+  margin-top: 1vh;
+  font-size: xxx-large;
+  font-weight: bold;
+}
+
+.credit-text > h2 {
+  margin-top: 0.5vh;
+  font-size: xx-large;
+}
+
+.credit-text > h3 {
+  margin-top: 0.25vh;
+  font-size: x-large;
+}
+
+.credit-text > * > img {
+  height: 30vh;
+}
+
+.credit-text > * > img.md {
+  height: 20vh;
+}
+
+.credit-text > * > img.sm {
+  height: 10vh;
+}
+
+p.sm {
+  font-size: medium !important;
+}
+
+br.lg {
+  margin: 2vh !important;
+}

@@ -38,3 +38,49 @@
 .tooltip-35.left {
   left: 0;
 }
+
+.options-overlay {
+  position: relative;
+  z-index: 999999;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.option-back-icon > img {
+  rotate: 180deg;
+  border: 0.3vh solid aliceblue;
+  padding: 3px;
+  border-radius: 1vh;
+  margin-right: 1vh;
+  color: aliceblue;
+  font-weight: bolder;
+  align-content: center;
+  font-size: 3vh;
+  width: 2vw;
+  height: 2vw;
+}
+
+.options-layout {
+  position: fixed;
+  width: 90%;
+  height: 85%;
+  top: 10%;
+  left: 5%;
+  background-color: rgba(0, 0, 0, 0.6);
+  overflow: scroll;
+}
+
+.option-title {
+  color: aliceblue;
+  font-weight: bolder;
+  align-content: center;
+  font-size: 3vh;
+}
+
+.option-header {
+  position: fixed;
+  top: 5%;
+  left: 5%;
+  height: 2vw;
+  display: flex;
+}
