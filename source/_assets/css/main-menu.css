@@ -35,7 +35,8 @@
 }
 
 .mainmenu-center {
-  min-width: 50vw;
+  width: 50vw;
+  min-width: 700px;
   height: 50vh;
   margin-left: auto;
   margin-right: auto;

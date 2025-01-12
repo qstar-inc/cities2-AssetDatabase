@@ -12,18 +12,17 @@ $(document).ready(async function () {
       fetch(atob(u) + "cities2_ad_ping", {
         method: "POST",
         headers: {
+          "Accept-Encoding": "gzip",
           "Content-Type": "application/json",
+          "Authorization": auth,
         },
-        body: JSON.stringify({
-          Authorization: auth,
-        }),
       })
         .then(async (response) => {
           if (response.ok && response.status === 200) {
-            await getAssetGroupData();
-            getAssetTabData();
-            getAssetPanelData();
-            getAssetData();
+            // // await getAssetGroupData();
+            // getAssetTabData();
+            // getAssetPanelData();
+            await getAssetData();
             enableButtons();
           } else {
             sendNotification(1);

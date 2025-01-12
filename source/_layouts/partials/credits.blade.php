@@ -44,9 +44,6 @@
         <h1><img class="sm" src="https://pages.github.com/images/logo.svg" /></h1>
         <h1><img class="md" src="https://raw.githubusercontent.com/tighten/jigsaw/main/jigsaw-banner.png" /></h1>
         <h1><img class="md" src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" /></h1>
-        <h1><img class="md"
-                src="https://camo.githubusercontent.com/69545b92555ae5b2ca37c7ad5dfa5f60d72d24c70341b05f819a40d5523a3181/68747470733a2f2f676574636f6d706f7365722e6f72672f696d672f6c6f676f2d636f6d706f7365722d7472616e73706172656e742e706e67" />
-        </h1>
         <br class="lg" />
         <h1><img class="sm" src="https://raw.githubusercontent.com/npm/logos/refs/heads/master/npm%20logo/npm-logo-red.svg" /></h1>
         <br class="lg" />

@@ -28,7 +28,9 @@
                 @include('_layouts.partials.rightIcons')
             </div>
         </div>
-        <div class="chirper-icons"></div>
+        <div class="chirper-icons">
+            @include('_layouts.partials.chirper')
+        </div>
         <div class="info-panel"></div>
         <div class="details-pane">
             @include('_layouts.partials.detailsPane')

@@ -1,7 +1,7 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
-@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap");
 
 :root {
   --fontFamily: Overpass, "Noto Sans", "Noto Sans KR", "Noto Sans JP",
@@ -108,7 +108,29 @@ img {
   width: 100vw;
   height: 100vh;
   font-family: "Cities 0.4", "Rubik", Lato, Roboto, serif;
-  font-size: 6vh;
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+}
+
+.window-size-header {
+  color: #00ffdb;
+  font-size: 3rem;
+}
+
+#db-loading {
+  background-color: rgba(146, 74, 204, 0.8);
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  z-index: 9997;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  font-family: "Cities 0.4", "Rubik", Lato, Roboto, serif;
+  font-size: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;

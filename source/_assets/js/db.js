@@ -8,7 +8,7 @@ const indexedDB =
   window.msIndexedDB ||
   window.shimIndexedDB;
 
-async function initDB(bool = fals) {
+async function initDB(bool = false) {
   const request = indexedDB.open("cities2-AssetDatabase");
   console.log("Starting InitDB");
   request.onerror = function (event) {
@@ -20,13 +20,13 @@ async function initDB(bool = fals) {
 
   request.onsuccess = async function (event) {
     db = event.target.result;
-    console.log("IndexedDB opened successfully");
     currentVersion = db.version;
     if (
-      !db.objectStoreNames.contains("assetGroupData") ||
-      !db.objectStoreNames.contains("assetTabData") ||
-      !db.objectStoreNames.contains("assetPanelData") ||
+      // !db.objectStoreNames.contains("assetGroupData") ||
+      // !db.objectStoreNames.contains("assetTabData") ||
+      // !db.objectStoreNames.contains("assetPanelData") ||
       !db.objectStoreNames.contains("assetData") ||
+      !db.objectStoreNames.contains("langData") ||
       !db.objectStoreNames.contains("timeSince")
     ) {
       db.close();
@@ -50,17 +50,21 @@ async function initDB(bool = fals) {
       //   console.error("Error upgrading IndexedDB:", event.target.errorCode);
       // };
     }
-    let hasEntry = await checkAssetGroupData();
+    let hasEntry = await checkAssetData();
     if (!hasEntry) {
-      await getAssetGroupData();
-      hasEntry = await checkAssetGroupData();
+      fetchLangDataAll();
+      fetchAssetDataAll();
+      // await getAssetData();
+      hasEntry = await checkAssetData();
     }
+
     if (hasEntry && bool) {
       const customEvent = new Event("dbInitialized");
       document.dispatchEvent(customEvent);
-    } else {
-      await getAssetGroupData();
     }
+
+    await getAssetData();
+    console.log("IndexedDB opened successfully");
   };
 
   request.onupgradeneeded = function (event) {
@@ -115,38 +119,18 @@ function findValueInLines(value) {
 }
 
 function createDBs(db) {
-  if (!db.objectStoreNames.contains("assetGroupData")) {
-    let assetGroupData = db.createObjectStore("assetGroupData", {
-      keyPath: "name",
-    });
-    assetGroupData.createIndex("name", "name");
-    assetGroupData.createIndex("ui_group", ["ui_group"], {
-      unique: false,
-    });
-  }
-
-  if (!db.objectStoreNames.contains("assetTabData")) {
-    let assetTabData = db.createObjectStore("assetTabData", {
-      keyPath: "id",
-    });
-    assetTabData.createIndex("name", "name", { unique: false });
-    assetTabData.createIndex("id", "id", { unique: true });
-  }
-
-  if (!db.objectStoreNames.contains("assetPanelData")) {
-    let assetPanelData = db.createObjectStore("assetPanelData", {
-      keyPath: "id",
-    });
-    assetPanelData.createIndex("tab", "tab", { unique: false });
-    assetPanelData.createIndex("name", "name", { unique: false });
-    assetPanelData.createIndex("id", "id", { unique: true });
-  }
-
   if (!db.objectStoreNames.contains("assetData")) {
     let assetPanelData = db.createObjectStore("assetData", {
-      keyPath: "id",
+      keyPath: "PrefabID",
     });
-    assetPanelData.createIndex("id", "id", { unique: true });
+    assetPanelData.createIndex("PrefabID", "PrefabID", { unique: true });
+  }
+
+  if (!db.objectStoreNames.contains("langData")) {
+    let assetPanelData = db.createObjectStore("langData", {
+      keyPath: "key",
+    });
+    assetPanelData.createIndex("key", "key", { unique: true });
   }
 
   if (!db.objectStoreNames.contains("timeSince")) {
@@ -157,39 +141,39 @@ function createDBs(db) {
   }
 }
 
-async function addAssetGroupData(data) {
-  let transaction = db.transaction(["assetGroupData"], "readwrite");
-  let transaction_t = db.transaction(["timeSince"], "readwrite");
+// async function addAssetGroupData(data) {
+//   let transaction = db.transaction(["assetGroupData"], "readwrite");
+//   let transaction_t = db.transaction(["timeSince"], "readwrite");
 
-  transaction.oncomplete = function () {
-    console.log("Asset Group Data saved");
-  };
+//   transaction.oncomplete = function () {
+//     console.log("Asset Group Data saved");
+//   };
 
-  transaction.onerror = function (event) {
-    console.log("Transaction error:", event);
-  };
-  data.forEach((asset) => {
-    let objectStore = transaction.objectStore("assetGroupData");
-    objectStore.put({
-      name: asset.name,
-      icon: asset.icon,
-      group: asset.group,
-      priority: asset.priority,
-      langTitle: asset.LangTitle,
-      langDescription: asset.LangDescription,
-    });
-  });
+//   transaction.onerror = function (event) {
+//     console.log("Transaction error:", event);
+//   };
+//   data.forEach((asset) => {
+//     let objectStore = transaction.objectStore("assetGroupData");
+//     objectStore.put({
+//       name: asset.name,
+//       icon: asset.icon,
+//       group: asset.group,
+//       priority: asset.priority,
+//       langTitle: asset.LangTitle,
+//       langDescription: asset.LangDescription,
+//     });
+//   });
 
-  let objectStore_t = transaction_t.objectStore("timeSince");
-  objectStore_t.put({ name: "assetGroupData", time: new Date().getTime() });
+//   let objectStore_t = transaction_t.objectStore("timeSince");
+//   objectStore_t.put({ name: "assetGroupData", time: new Date().getTime() });
 
-  await getAssetGroupData();
-}
+//   await getAssetGroupData();
+// }
 
-function checkAssetGroupData() {
+function checkAssetData() {
   return new Promise((resolve, reject) => {
-    let transaction = db.transaction(["assetGroupData"], "readonly");
-    let objectStore = transaction.objectStore("assetGroupData");
+    let transaction = db.transaction(["assetData"], "readonly");
+    let objectStore = transaction.objectStore("assetData");
 
     let request = objectStore.getAll();
 
@@ -208,33 +192,51 @@ function checkAssetGroupData() {
   });
 }
 
-async function getAssetGroupData() {
+async function checkLangData() {
   return new Promise((resolve, reject) => {
-    let transaction = db.transaction(["assetGroupData"], "readonly");
-    let objectStore = transaction.objectStore("assetGroupData");
+    let transaction = db.transaction(["langData"], "readonly");
+    let objectStore = transaction.objectStore("langData");
+
+    let request = objectStore.get(`Assets.NAME[Small Road]`);
+    
+    request.onsuccess = async function (event) {
+      let result = event.target.result;
+      if (result === undefined || result.length === 0 || result.length === undefined || result[0][language] === undefined) {
+        resolve(false);
+      }
+      resolve(true);
+    };
+
+    request.onerror = function (event) {
+      console.log("Error retrieving data:", event);
+      resolve(false);
+    };
+  });
+}
+
+async function getAssetData() {
+  return new Promise((resolve, reject) => {
+    let transaction = db.transaction(["assetData"], "readonly");
+    let objectStore = transaction.objectStore("assetData");
 
     let request = objectStore.getAll();
 
     request.onsuccess = async function (event) {
-      let timeSince = await getTimeSince("assetGroupData");
-      let currentTime = new Date().getTime();
       let result = event.target.result;
 
       if (result.length === 0 || result.length === undefined) {
-        await fetchAssetGroupData();
+        // fetchAssetDataAll();
         resolve();
         return;
       } else {
+        const dbLoading = document.getElementById('db-loading');
+        dbLoading.classList.add("display-none");
         if (typeof processAssetGroup !== "function") {
           resolve();
           return;
         }
-        if (currentTime - timeSince < expiryTime) {
-          processAssetGroup(event.target.result);
-        } else {
-          // alert(`Expired: ${currentTime - timeSince}`);
-          await fetchAssetGroupData();
-        }
+        
+        await processAssetGroup(event.target.result);
         resolve();
       }
     };
@@ -246,185 +248,394 @@ async function getAssetGroupData() {
   });
 }
 
-function addAssetTabData(groupedData) {
-  let transaction = db.transaction(["assetTabData", "timeSince"], "readwrite");
-
-  transaction.oncomplete = function () {
-    console.log("Asset Tab Data saved");
-  };
-
-  transaction.onerror = function (event) {
-    console.log("Transaction error:", event);
-  };
-
-  let assetObjectStore = transaction.objectStore("assetTabData");
-  let timeObjectStore = transaction.objectStore("timeSince");
-
-  const currentTime = new Date().getTime();
-
-  groupedData.forEach(({ groupName, tabData }) => {
-    tabData.forEach((asset) => {
-      assetObjectStore.put(asset);
-    });
-
-    timeObjectStore.put({
-      name: `assetTabData-${groupName}`,
-      time: currentTime,
-    });
-  });
-}
-
-async function getAssetTabData(name) {
-  console.log("GettingAssetTabData: " + name);
-  let transaction = db.transaction(["assetTabData"], "readonly");
-  let objectStore = transaction.objectStore("assetTabData");
-
-  if (name === undefined) {
-    let request = objectStore.getAll();
-
-    request.onsuccess = async function (event) {
-      let result = event.target.result;
-      if (result.length === 0 || result === undefined) {
-        fetchAssetTabDataAll();
-      }
-    };
-
-    request.onerror = function (event) {
-      console.log("Error retrieving data:", event);
-    };
-  } else {
-    let index = objectStore.index("name");
-
-    let request = index.getAll(name);
-
-    request.onsuccess = async function (event) {
-      let timeSince = await getTimeSince(`assetTabData-${name}`);
-      let currentTime = new Date().getTime();
-      let result = event.target.result;
-
-      if (result.length === 0 || result.length === undefined) {
-        fetchAssetTabDataAll();
-      } else {
-        if (currentTime - timeSince < expiryTime) {
-          processAssetTab(result);
-        } else {
-          // alert(`Expired: ${currentTime - timeSince}`);
-          fetchAssetTabDataAll();
-        }
-      }
-    };
-
-    request.onerror = function (event) {
-      console.log("Error retrieving data:", event);
-    };
-  }
-}
-
-function addAssetPanelData(groupedData) {
-  let transaction = db.transaction(
-    ["assetPanelData", "timeSince"],
-    "readwrite"
-  );
-
-  transaction.oncomplete = function () {
-    console.log("Asset Panel Data saved");
-  };
-
-  transaction.onerror = function (event) {
-    console.log("Transaction error:", event);
-  };
-  let assetObjectStore = transaction.objectStore("assetPanelData");
-  let timeObjectStore = transaction.objectStore("timeSince");
-
-  const currentTime = new Date().getTime();
-
-  groupedData.forEach(({ tabName, panelData }) => {
-    panelData.forEach((asset) => {
-      assetObjectStore.put(asset);
-    });
-
-    timeObjectStore.put({
-      name: `assetPanelData-${tabName}`,
-      time: currentTime,
-    });
-  });
-}
-
-function getAssetPanelData(name) {
-  let transaction = db.transaction(["assetPanelData"], "readonly");
-  let objectStore = transaction.objectStore("assetPanelData");
-  if (name === undefined) {
-    let request = objectStore.getAll();
-
-    request.onsuccess = async function (event) {
-      let result = event.target.result;
-
-      if (result.length === 0 || result === undefined) {
-        fetchAssetPanelDataAll();
-      }
-    };
-
-    request.onerror = function (event) {
-      console.log("Error retrieving data:", event);
-    };
-  } else {
-    let index = objectStore.index("tab");
-
-    let request = index.getAll(name);
-
-    request.onsuccess = async function (event) {
-      let timeSince = await getTimeSince(`assetPanelData-${name}`);
-      let currentTime = new Date().getTime();
-      let result = event.target.result;
-
-      if (result.length === 0 || result.length === undefined) {
-        fetchAssetPanelDataAll();
-      } else {
-        if (currentTime - timeSince < expiryTime) {
-          processAssetPanel(event.target.result);
-        } else {
-          // alert(`Expired: ${currentTime - timeSince}`);
-          fetchAssetPanelDataAll();
-        }
-      }
-    };
-
-    request.onerror = function (event) {
-      console.log("Error retrieving data:", event);
-    };
-  }
-}
-
-function addAssetData(prefab, data) {
-  let transaction = db.transaction(["assetData"], "readwrite");
-  let transaction_t = db.transaction(["timeSince"], "readwrite");
-
-  transaction.oncomplete = function () {
-    console.log(`${prefab} data saved`);
-  };
-
-  transaction.onerror = function (event) {
-    console.log("Transaction error:", event);
-  };
-  data.forEach((asset) => {
+async function getAssetGroupData() {
+  return new Promise((resolve, reject) => {
+    let transaction = db.transaction(["assetData"], "readonly");
     let objectStore = transaction.objectStore("assetData");
-    objectStore.put({
-      name: asset.Name,
-      id: prefab,
-      details: asset.Details,
-    });
-  });
 
-  let objectStore_t = transaction_t.objectStore("timeSince");
-  objectStore_t.put({
-    name: `assetData-${prefab}`,
-    time: new Date().getTime(),
-  });
+    let assets = [];
+    let request = objectStore.openCursor();
 
-  getAssetData(prefab);
+    request.onsuccess = function (event) {
+      let cursor = event.target.result;
+      if (cursor) {
+        let record = cursor.value;
+
+        if (record.UI_Group && record.UI_Group.startsWith("UIToolbarGroupPrefab")) {
+          assets.push(record);
+        }
+
+        cursor.continue();
+      } else {
+        resolve(assets);
+      }
+    };
+
+    request.onerror = function (event) {
+      console.log("Error retrieving group data:", event);
+      reject(event);
+    };
+  });
 }
 
-function addAssetDataAll(data) {
+async function getAssetTabData(PrefabID) {
+  return new Promise((resolve, reject) => {
+    let transaction = db.transaction(["assetData"], "readonly");
+    let objectStore = transaction.objectStore("assetData");
+
+    let assets = [];
+    let request = objectStore.openCursor();
+
+    request.onsuccess = function (event) {
+      let cursor = event.target.result;
+      if (cursor) {
+        let record = cursor.value;
+
+        if (record.UI_Menu && record.UI_Menu.startsWith(PrefabID)) {
+          assets.push(record);
+        }
+
+        cursor.continue();
+      } else {
+        resolve(assets);
+      }
+    };
+
+    request.onerror = function (event) {
+      console.log("Error retrieving tab data:", event);
+      reject(event);
+    };
+  });
+}
+
+async function getZoneBuildings(PrefabID) {
+  return new Promise((resolve, reject) => {
+    let transaction = db.transaction(["assetData"], "readonly");
+    let objectStore = transaction.objectStore("assetData");
+
+    let assets = [];
+    let request = objectStore.openCursor();
+
+    request.onsuccess = function (event) {
+      let cursor = event.target.result;
+      if (cursor) {
+        let record = cursor.value;
+
+        if (record.SpawnableBuilding_Zone && record.SpawnableBuilding_Zone == PrefabID) {
+          assets.push(record);
+        }
+
+        cursor.continue();
+      } else {
+        resolve(assets);
+      }
+    };
+
+    request.onerror = function (event) {
+      console.log("Error retrieving tab data:", event);
+      reject(event);
+    };
+  });
+}
+
+async function getBuildingUpgrades(PrefabID) {
+  return new Promise((resolve, reject) => {
+    let transaction = db.transaction(["assetData"], "readonly");
+    let objectStore = transaction.objectStore("assetData");
+
+    let assets = [];
+    let request = objectStore.openCursor();
+
+    request.onsuccess = function (event) {
+      let cursor = event.target.result;
+      if (cursor) {
+        let record = cursor.value;
+
+        if (record.ServiceUpgrade_Buildings && record.ServiceUpgrade_Buildings == PrefabID) {
+          assets.push(record);
+        }
+
+        cursor.continue();
+      } else {
+        resolve(assets);
+      }
+    };
+
+    request.onerror = function (event) {
+      console.log("Error retrieving tab data:", event);
+      reject(event);
+    };
+  });
+}
+
+async function getLangData(format, lang = language) {
+  return new Promise((resolve, reject) => {
+    let transaction = db.transaction(["langData"], "readonly");
+    let objectStore = transaction.objectStore("langData");
+
+    let request = objectStore.get(format);
+
+    request.onsuccess = function (event) {
+      let data = event.target.result;
+
+      if (data && lang in data) {
+        resolve(data[lang]);
+      } else {
+        resolve(format);
+      }
+    };
+
+    request.onerror = function (event) {
+      console.log("Error retrieving lang data:", event);
+      reject(event);
+    };
+  });
+}
+
+async function getLangDataRandomly(format, lang = language) {
+  return new Promise((resolve, reject) => {
+    let transaction = db.transaction(["langData"], "readonly");
+    let objectStore = transaction.objectStore("langData");
+
+    let range = IDBKeyRange.bound(format, `${format}\uffff`);
+    let request = objectStore.openCursor(range);
+    
+    let count = 0;
+    let randomItem = null;
+
+    request.onsuccess = function (event) {
+      let cursor = event.target.result;
+      if (cursor) {
+        let data = cursor.value;
+        if (cursor.key.startsWith(format) && data && lang in data) {
+          count++;
+
+          if (Math.random() < 1 / count) {
+            randomItem = data[lang];
+          }
+        }
+        cursor.continue();
+      } else {
+        resolve(randomItem);
+      }
+    };
+
+    request.onerror = function (event) {
+      console.log("Error retrieving random lang data:", event);
+      reject(event);
+    };
+  });
+}
+
+async function getAssetPanelData(PrefabID) {
+  return new Promise((resolve, reject) => {
+    let transaction = db.transaction(["assetData"], "readonly");
+    let objectStore = transaction.objectStore("assetData");
+
+    let assets = [];
+    let request = objectStore.openCursor();
+
+    request.onsuccess = function (event) {
+      let cursor = event.target.result;
+      if (cursor) {
+        let record = cursor.value;
+
+        if (record.UI_Group && record.UI_Group.startsWith(PrefabID)) {
+          assets.push(record);
+        }
+
+        cursor.continue();
+      } else {
+        resolve(assets);
+      }
+    };
+
+    request.onerror = function (event) {
+      console.log("Error retrieving tab data:", event);
+      reject(event);
+    };
+  });
+}
+
+// function addAssetTabData(groupedData) {
+//   let transaction = db.transaction(["assetTabData", "timeSince"], "readwrite");
+
+//   transaction.oncomplete = function () {
+//     console.log("Asset Tab Data saved");
+//   };
+
+//   transaction.onerror = function (event) {
+//     console.log("Transaction error:", event);
+//   };
+
+//   let assetObjectStore = transaction.objectStore("assetTabData");
+//   let timeObjectStore = transaction.objectStore("timeSince");
+
+//   const currentTime = new Date().getTime();
+
+//   groupedData.forEach(({ groupName, tabData }) => {
+//     tabData.forEach((asset) => {
+//       assetObjectStore.put(asset);
+//     });
+
+//     timeObjectStore.put({
+//       name: `assetTabData-${groupName}`,
+//       time: currentTime,
+//     });
+//   });
+// }
+
+// async function getAssetTabData(name) {
+//   console.log("GettingAssetTabData: " + name);
+//   let transaction = db.transaction(["assetTabData"], "readonly");
+//   let objectStore = transaction.objectStore("assetTabData");
+
+//   if (name === undefined) {
+//     let request = objectStore.getAll();
+
+//     request.onsuccess = async function (event) {
+//       let result = event.target.result;
+//       if (result.length === 0 || result === undefined) {
+//         fetchAssetTabDataAll();
+//       }
+//     };
+
+//     request.onerror = function (event) {
+//       console.log("Error retrieving data:", event);
+//     };
+//   } else {
+//     let index = objectStore.index("name");
+
+//     let request = index.getAll(name);
+
+//     request.onsuccess = async function (event) {
+//       let timeSince = await getTimeSince(`assetTabData-${name}`);
+//       let currentTime = new Date().getTime();
+//       let result = event.target.result;
+
+//       if (result.length === 0 || result.length === undefined) {
+//         fetchAssetTabDataAll();
+//       } else {
+//         if (currentTime - timeSince < expiryTime) {
+//           processAssetTab(result);
+//         } else {
+//           // alert(`Expired: ${currentTime - timeSince}`);
+//           fetchAssetTabDataAll();
+//         }
+//       }
+//     };
+
+//     request.onerror = function (event) {
+//       console.log("Error retrieving data:", event);
+//     };
+//   }
+// }
+
+// function addAssetPanelData(groupedData) {
+//   let transaction = db.transaction(
+//     ["assetPanelData", "timeSince"],
+//     "readwrite"
+//   );
+
+//   transaction.oncomplete = function () {
+//     console.log("Asset Panel Data saved");
+//   };
+
+//   transaction.onerror = function (event) {
+//     console.log("Transaction error:", event);
+//   };
+//   let assetObjectStore = transaction.objectStore("assetPanelData");
+//   let timeObjectStore = transaction.objectStore("timeSince");
+
+//   const currentTime = new Date().getTime();
+
+//   groupedData.forEach(({ tabName, panelData }) => {
+//     panelData.forEach((asset) => {
+//       assetObjectStore.put(asset);
+//     });
+
+//     timeObjectStore.put({
+//       name: `assetPanelData-${tabName}`,
+//       time: currentTime,
+//     });
+//   });
+// }
+
+// function getAssetPanelData(name) {
+//   let transaction = db.transaction(["assetPanelData"], "readonly");
+//   let objectStore = transaction.objectStore("assetPanelData");
+//   if (name === undefined) {
+//     let request = objectStore.getAll();
+
+//     request.onsuccess = async function (event) {
+//       let result = event.target.result;
+
+//       if (result.length === 0 || result === undefined) {
+//         fetchAssetPanelDataAll();
+//       }
+//     };
+
+//     request.onerror = function (event) {
+//       console.log("Error retrieving data:", event);
+//     };
+//   } else {
+//     let index = objectStore.index("tab");
+
+//     let request = index.getAll(name);
+
+//     request.onsuccess = async function (event) {
+//       let timeSince = await getTimeSince(`assetPanelData-${name}`);
+//       let currentTime = new Date().getTime();
+//       let result = event.target.result;
+
+//       if (result.length === 0 || result.length === undefined) {
+//         fetchAssetPanelDataAll();
+//       } else {
+//         if (currentTime - timeSince < expiryTime) {
+//           processAssetPanel(event.target.result);
+//         } else {
+//           // alert(`Expired: ${currentTime - timeSince}`);
+//           fetchAssetPanelDataAll();
+//         }
+//       }
+//     };
+
+//     request.onerror = function (event) {
+//       console.log("Error retrieving data:", event);
+//     };
+//   }
+// }
+
+// function addAssetData(prefab, data) {
+//   let transaction = db.transaction(["assetData"], "readwrite");
+//   let transaction_t = db.transaction(["timeSince"], "readwrite");
+
+//   transaction.oncomplete = function () {
+//     console.log(`${prefab} data saved`);
+//   };
+
+//   transaction.onerror = function (event) {
+//     console.log("Transaction error:", event);
+//   };
+//   data.forEach((asset) => {
+//     let objectStore = transaction.objectStore("assetData");
+//     objectStore.put({
+//       name: asset.Name,
+//       id: prefab,
+//       details: asset.Details,
+//     });
+//   });
+
+//   let objectStore_t = transaction_t.objectStore("timeSince");
+//   objectStore_t.put({
+//     name: `assetData-${prefab}`,
+//     time: new Date().getTime(),
+//   });
+
+//   getAssetData(prefab);
+// }
+
+async function addAssetDataAll(data) {
   let transaction = db.transaction(["assetData"], "readwrite");
   let transaction_t = db.transaction(["timeSince"], "readwrite");
 
@@ -439,83 +650,103 @@ function addAssetDataAll(data) {
   let objectStore_t = transaction_t.objectStore("timeSince");
   data.forEach((asset) => {
     objectStore.put({
-      name: asset.Name,
-      id: asset.PrefabID,
-      details: asset.Details,
+      ...asset,
     });
-    objectStore_t.put({
-      name: `assetData-${asset.PrefabID}`,
-      time: new Date().getTime(),
-    });
+  });
+  objectStore_t.put({
+    name: `assetData`,
+    time: new Date().getTime(),
   });
 }
 
-function getAssetData(prefab) {
-  let transaction = db.transaction(["assetData"], "readonly");
-  let objectStore = transaction.objectStore("assetData");
-  if (prefab === undefined) {
-    let request = objectStore.getAll();
+function addLangDataAll(data) {
+  let transaction = db.transaction(["langData"], "readwrite");
+  let transaction_t = db.transaction(["timeSince"], "readwrite");
 
-    request.onsuccess = async function (event) {
-      let result = event.target.result;
+  transaction.oncomplete = function () {
+    // console.log(`Lang data saved`);
+  };
 
-      if (result.length === 0 || result === undefined) {
-        fetchAssetDataAll();
-      }
-    };
-
-    request.onerror = function (event) {
-      console.log("Error retrieving data:", event);
-    };
-  } else {
-    let request = objectStore.get(prefab);
-
-    request.onsuccess = async function (event) {
-      let result = event.target.result;
-
-      if (!result) {
-        fetchAssetDataAll();
-      } else {
-        // let timeSince = await getTimeSince(`assetData-${prefab}`);
-        // let currentTime = new Date().getTime();
-        // if (currentTime - timeSince < expiryTime) {
-          processAssetData(event.target.result);
-        // } else {
-          // alert(`Expired: ${currentTime - timeSince}`);
-          // fetchAssetDataAll();
-        // }
-      }
-    };
-
-    request.onerror = function (event) {
-      console.log("Error retrieving data:", event);
-    };
-  }
+  transaction.onerror = function (event) {
+    console.log("Transaction error:", event);
+  };
+  let objectStore = transaction.objectStore("langData");
+  let objectStore_t = transaction_t.objectStore("timeSince");
+  data.forEach((lang) => {
+    objectStore.put({
+      ...lang,
+    });
+  });
+  objectStore_t.put({
+    name: `langData`,
+    time: new Date().getTime(),
+  });
 }
 
-function getAssetDataLocally(prefab) {
+// function getAssetData(prefab) {
+//   let transaction = db.transaction(["assetData"], "readonly");
+//   let objectStore = transaction.objectStore("assetData");
+//   if (prefab === undefined) {
+//     let request = objectStore.getAll();
+
+//     request.onsuccess = async function (event) {
+//       let result = event.target.result;
+
+//       if (result.length === 0 || result === undefined) {
+//         fetchAssetDataAll();
+//       }
+//     };
+
+//     request.onerror = function (event) {
+//       console.log("Error retrieving data:", event);
+//     };
+//   } else {
+//     let request = objectStore.get(prefab);
+
+//     request.onsuccess = async function (event) {
+//       let result = event.target.result;
+
+//       if (!result) {
+//         fetchAssetDataAll();
+//       } else {
+//         // let timeSince = await getTimeSince(`assetData-${prefab}`);
+//         // let currentTime = new Date().getTime();
+//         // if (currentTime - timeSince < expiryTime) {
+//           processAssetData(event.target.result);
+//         // } else {
+//           // alert(`Expired: ${currentTime - timeSince}`);
+//           // fetchAssetDataAll();
+//         // }
+//       }
+//     };
+
+//     request.onerror = function (event) {
+//       console.log("Error retrieving data:", event);
+//     };
+//   }
+// }
+
+async function getAssetDataSingle(prefab) {
   return new Promise((resolve, reject) => {
-    if (prefab === undefined) {
-      resolve("⁇⁈");
-    } else {
-      let transaction = db.transaction(["assetData"], "readonly");
-      let objectStore = transaction.objectStore("assetData");
-      let request = objectStore.get(prefab);
+    let transaction = db.transaction(["assetData"], "readonly");
+    let objectStore = transaction.objectStore("assetData");
 
-      request.onsuccess = function (event) {
-        let result = event.target.result;
-        if (!result) {
-          resolve("⁈");
-        } else {
-          resolve(result);
-        }
-      };
+    let request = objectStore.get(prefab);
 
-      request.onerror = function (event) {
-        console.log("Error retrieving data:", event);
-        reject(new Error("Error retrieving data from IndexedDB"));
-      };
-    }
+    request.onsuccess = function (event) {
+      let data = event.target.result;
+
+      if (data) {
+        resolve(data);
+      } else {
+        resolve(null);
+      }
+    };
+
+    request.onerror = function (event) {
+      console.log("Error retrieving lang data:", event);
+      reject(event);
+    };
   });
 }
 
@@ -536,6 +767,45 @@ function getTimeSince(name) {
       reject(
         new Error("Error fetching data from IndexedDB: " + event.target.error)
       );
+    };
+  });
+}
+
+function searchInIndexedDB(searchText) {
+  return new Promise((resolve, reject) => {
+    let transaction = db.transaction(["assetData"], "readonly");
+    let objectStore = transaction.objectStore("assetData");
+    const matchingIds = [];
+
+    const request = objectStore.openCursor();
+
+    request.onsuccess = function(event) {
+      const cursor = event.target.result;
+      if (cursor) {
+        const object = cursor.value;
+        const id = cursor.key;
+
+        let found = false;
+        for (let prop in object) {
+          if (object.hasOwnProperty(prop)) {
+            if (typeof object[prop] === 'string' && object[prop].includes(searchText)) {
+              found = true;
+              break;
+            }
+          }
+        }
+        if (found) {
+          matchingIds.push(id);
+        }
+
+        cursor.continue();
+      } else {
+        resolve(matchingIds);
+      }
+    };
+
+    request.onerror = function(event) {
+      reject(event.target.error);
     };
   });
 }
@@ -567,17 +837,24 @@ function deleteIndexedDB() {
 
 window.db = db;
 window.initDB = initDB;
-window.addAssetGroupData = addAssetGroupData;
-window.checkAssetGroupData = checkAssetGroupData;
+// window.addAssetGroupData = addAssetGroupData;
+window.checkAssetData = checkAssetData;
 window.getAssetGroupData = getAssetGroupData;
 window.deleteIndexedDB = deleteIndexedDB;
 window.getAssetTabData = getAssetTabData;
-window.addAssetTabData = addAssetTabData;
+// window.addAssetTabData = addAssetTabData;
 window.getAssetPanelData = getAssetPanelData;
-window.addAssetPanelData = addAssetPanelData;
+// window.addAssetPanelData = addAssetPanelData;
 window.getAssetData = getAssetData;
-window.getAssetDataLocally = getAssetDataLocally;
-window.addAssetData = addAssetData;
+window.getZoneBuildings = getZoneBuildings;
+window.getBuildingUpgrades = getBuildingUpgrades;
+window.getLangData = getLangData;
+window.getLangDataRandomly = getLangDataRandomly;
+window.getAssetDataSingle = getAssetDataSingle;
+// window.addAssetData = addAssetData;
 window.addAssetDataAll = addAssetDataAll;
+window.addLangDataAll = addLangDataAll;
 window.loadFile = loadFile;
 window.findValueInLines = findValueInLines;
+window.searchInIndexedDB = searchInIndexedDB;
+window.getTimeSince = getTimeSince;

@@ -274,6 +274,7 @@
 .asset-panel-items.flexed {
   padding: 0.3vh 2.5vh;
   overflow-x: scroll;
+  overflow-y: hidden;
   flex-wrap: nowrap;
   white-space: nowrap;
 }
@@ -323,6 +324,7 @@
 .details-pane {
   position: relative;
   z-index: 999;
+  display: none;
 }
 
 .asset-quick-info {
@@ -501,9 +503,24 @@
 
 .asset-details-pane-body-bottom-boxes {
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   gap: 1vw 1vh;
   flex: 1;
+  /* flex-direction: column; */
+  font-family: "Titillium Web", serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.column {
+  display: none;
+  flex-shrink: 1;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.column > .asset-details-pane-body-bottom-box-new > div {
+  width: unset !important;
 }
 
 .asset-details-pane-body-bottom-boxes > div {
@@ -514,6 +531,7 @@
   flex-grow: 1;
   height: auto;
   min-width: 25vh;
+  width: 50%;
 }
 
 .asset-details-pane-body-bottom-box {
@@ -537,13 +555,75 @@
 }
 
 .asset-details-pane-body-bottom-box-new {
-  max-width: 50%;
+  width: 100%;
+  margin-top: 2vh;
+  opacity: 0;
 }
 
 .asset-details-pane-footer {
   display: flex;
   height: 2vh;
   background-color: rgba(39, 39, 39, 0.76);
+}
+
+.asset-icon-box {
+  position: relative;
+  display: inline-block;
+  width: 10vh;
+  height: 10vh;
+  margin: 10px;
+  text-align: center;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.asset-icon-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.asset-icon-box .text-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 5px 10px;
+  border-radius: 5px;
+  z-index: 1;
+  font-size: 1rem;
+  font-weight: bold;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  width: 100%;
+  font-size: xx-small;
+  word-wrap: anywhere;
+}
+
+.asset-icon-box:hover .text-overlay {
+  opacity: 1;
+}
+
+.level-selector {
+  margin-bottom: 2vh;
+  display: flex;
+  width: 100%;
+}
+
+.level-btn {
+  flex-grow: 1;
+  background: green;
+  margin-right: 2vh;
+  margin-left: 2vh;
+  border-radius: 2vh;
+}
+
+.level-btn.active {
+  background: #113442d1;
 }
 
 #hof {
@@ -595,6 +675,7 @@
 .resource-icon {
   height: 100%;
   aspect-ratio: auto;
+  min-width: 35px !important;
 }
 
 .resource-inline-div {
@@ -646,24 +727,37 @@
   display: grid;
   align-content: stretch;
   align-items: stretch;
-  width: 100%;
+  width: 47vw;
   gap: 1vh;
   text-align: center;
   padding: 1vh;
   background: var(--almost-black);
   border-radius: 1vh;
   border: 0.3vh solid var(--vanilla-blue-accent-dark);
-  min-height: 15vh;
-  max-height: 25vh;
-  flex-grow: 1;
+  /* min-height: 15vh; */
+  /* max-height: 25vh; */
+  /* flex-grow: 1; */
   overflow: scroll;
 }
 
 .parent-div-with-subtext {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  /* flex-wrap: wrap; */
   border-radius: 1vh;
   gap: 1vh;
+  overflow: hidden;
+  grid-template-columns: repeat(2, 1fr);
+  word-break: break-word;
+}
+
+.parent-div-with-subtext > :last-child {
+  background-color: rgba(122, 69, 142, 0.4);
+}
+
+.parent-div-with-subtext.link > :last-child {
+  background-color: #10acb8;
+  color: #000;
+  cursor: pointer;
 }
 
 .subtext {
@@ -673,24 +767,26 @@
 .value-above-subtext {
   margin: auto;
   line-height: 2vh;
-  text-transform: uppercase;
+}
+
+.bldg-div {
+  margin: auto;
 }
 
 .div-with-subtext {
   display: grid !important;
-  text-transform: uppercase;
   flex: 1;
   /* background: var(--orange); */
-  background: rgb(255, 185, 143);
+  background: rgba(159, 126, 172, 0.4);
   border-radius: 1vh;
   padding: 1vh;
-  color: #000;
-  font-weight: bold;
+  color: #fff;
   transition: all 0.1s ease-in;
 }
 
-.div-with-subtext:hover {
-  background-color: #136f00;
+.div-with-subtext:hover,
+.data-link-button:hover {
+  background-color: #136f00 !important;
   scale: 105%;
   color: wheat;
 }
@@ -701,11 +797,43 @@
   margin: auto;
 }
 
+.div-with-subtext-flex {
+  display: flex !important;
+  flex-direction: column;
+  gap: 1vh;
+  border-radius: 1vh;
+  padding: 1vh;
+}
+
+.data-link-button {
+  border-radius: 1vh;
+}
+
+.data-link-button.link {
+  background: coral;
+  color: #000;
+}
+
+/* .color-box-parent {
+  background: #000;
+  border: 1vh solid var(--dark-blackish-color);
+  border-radius: 1vh;
+} */
+
+.div-with-subtext:has(.color-box) {
+  padding: 0 !important;
+  background-color: unset !important;
+}
+
+.div-with-subtext:has(.color-box):hover {
+  background-color: unset !important;
+}
+
 .color-box {
   border: 1vh solid var(--dark-blackish-color);
   border-radius: 1vh;
-  height: 10vh;
-  width: 10vh;
+  height: 100%;
+  width: 100%;
   margin: auto;
 }
 
@@ -753,4 +881,108 @@
   justify-content: space-between;
   position: relative;
   z-index: 1000;
+}
+
+.guid-text > :last-child > * {
+  user-select: all;
+  -webkit-user-select: all;
+  -moz-user-select: all;
+  -ms-user-select: all;
+}
+
+.chirper {
+  position: fixed;
+  right: 0;
+  bottom: 20vh;
+  width: 4vw;
+  height: 4vw;
+  margin: 2vh;
+  background-size: 82%;
+  background-color: var(--dark-blackish-color);
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  display: flex;
+  opacity: 0.2;
+  transition: opacity 0.3ms ease, background-size 0.3ms linear;
+}
+
+.chirp {
+  background: white;
+  border-radius: 0.6vh;
+  width: 0vw;
+  position: fixed;
+  bottom: 15vh;
+  right: 6.6vw;
+  align-items: start;
+  padding: 0vh;
+  gap: 2vh;
+  min-width: 20vw;
+  min-height: 15vh;
+  transition: all 1s linear;
+  display: none;
+  opacity: 0;
+}
+
+.chirp-avatar {
+  border-radius: 50%;
+  width: 2vw;
+  height: 2vw;
+  background-color: cornflowerblue;
+  background-size: 150%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-position-y: 20%;
+  display: none;
+}
+
+.chirp-user {
+  font-size: 3vh;
+  font-weight: bold;
+  color: cornflowerblue;
+}
+
+.chirp-header {
+  display: flex;
+  gap: 1vw;
+}
+
+.chirp-time {
+  align-self: first baseline;
+  text-align: end;
+  flex-grow: 1;
+  color: lightslategray;
+  font-size: 1.6vh;
+}
+
+.chirp-text {
+  font-size: 1.6vh;
+  overflow: hidden;
+  max-height: 9vh;
+}
+
+.chirp-like {
+  color: lightslategray;
+  text-align: end;
+  display: none;
+  margin-bottom: -1vh;
+  font-size: 1.6vh;
+}
+
+.chirp-like::after {
+  content: " ♡";
+  font-size: 1.7vh;
+}
+
+.chirp-arrow {
+  position: fixed;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 1.1vw 2vh 0 2vh;
+  border-color: #fff transparent transparent transparent;
+  left: 93vw;
+  bottom: 25vh;
+  rotate: 270deg;
+  display: none;
 }

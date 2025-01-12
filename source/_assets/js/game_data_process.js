@@ -1,370 +1,61 @@
 const pluralize = require("pluralize");
 
 const guidList = [
-  { "c3724de73723f5b4ab589dd1fa756861": { name: "Landmark DLC", category: "DLC" } },
-  { "fd4f0cd1f9d0ecb4eb6617a5dfa0cdf6": { name: "Commercial Bar", category: "Company" } },
-  { "5c720b3dca56ad24a8575622fc1f3288": { name: "Commercial Food Store", category: "Company" } },
-  { "f18970a35e902c14982fb42e04534ad1": { name: "Commercial Hotel", category: "Company" } },
-  { "b018f3987d5d8284db0ecc1f153beae6": { name: "Commercial Liquor Store", category: "Company" } },
-  { "1b916563a0c8b0f40be97d75e3c8857b": { name: "Commercial Restaurant", category: "Company" } },
-  { "5c1f656a5ea20284197a71e4997b4187": { name: "Parks and Recreation", category: "Service" } },
-  { "846c60044f7ead04d9b11f0d749ea5f2": { name: "European", category: "Theme"} },
-  { "6f24f89d231e81043b538ce3fb2b54ae": { name: "North American", category: "Theme"} },
+  // { "c3724de73723f5b4ab589dd1fa756861": { name: "Landmark DLC", category: "DLC" } },
+  // { "fd4f0cd1f9d0ecb4eb6617a5dfa0cdf6": { name: "Commercial Bar", category: "Company" } },
+  // { "5c720b3dca56ad24a8575622fc1f3288": { name: "Commercial Food Store", category: "Company" } },
+  // { "f18970a35e902c14982fb42e04534ad1": { name: "Commercial Hotel", category: "Company" } },
+  // { "b018f3987d5d8284db0ecc1f153beae6": { name: "Commercial Liquor Store", category: "Company" } },
+  // { "1b916563a0c8b0f40be97d75e3c8857b": { name: "Commercial Restaurant", category: "Company" } },
+  // { "5c1f656a5ea20284197a71e4997b4187": { name: "Parks and Recreation", category: "Service" } },
+  // { "846c60044f7ead04d9b11f0d749ea5f2": { name: "European", category: "Theme"} },
+  // { "6f24f89d231e81043b538ce3fb2b54ae": { name: "North American", category: "Theme"} },
 ]; 
 
 let tags = [];
 let notifications = [];
-let resources = {};
-resources.Production = [];
-let production = {};
-
-let comp_attraction = {};
-let comp_battery = {};
-let comp_crimeAcc = {};
-let comp_companyObject = {};
-let comp_destructible = {};
-let comp_floating = {};
-let comp_garbage = {};
-let comp_hospital = {};
-let comp_leisureProvider = {};
-let comp_mailAcc = {};
-let comp_park = {};
-let comp_placableObject = {};
-let comp_police = {};
-let comp_pollution = {};
-let comp_post = {};
-let comp_prison = {};
-let comp_school = {};
-let comp_serviceConsumption = {};
-let comp_serviceCoverage = {};
-let comp_shoreline = {};
-let comp_telecom = {};
-let comp_waterPump = {};
-let comp_workplace = {};
-let comp_zonePollution = {};
-let comp_zoneProperties = {};
-let comp_zoneServiceConsumption = {};
-let prefab_building = {};
-let prefab_zone = {};
 
 let adprb;
+let doneArray = [];
 
-async function processAssetPanelUIData(name, data, containers) {
+async function processAssetPanelUIData(d, containers) {
   adprb = containers[0];
   let tagContainer = containers[1];
   let notifContainer = containers[2];
-  let temp = containers[3];
 
-  const detailsArray = Object.entries(data);
+  const detailsArray = Object.entries(d);
 
   tags = [];
   notifications = [];
-  resources = {};
-  resources.Production = [];
-  production = {};
-
-  comp_attraction = {};
-  comp_battery = {};
-  comp_crimeAcc = {};
-  comp_companyObject = {};
-  comp_destructible = {};
-  comp_floating = {};
-  comp_garbage = {};
-  comp_hospital = {};
-  comp_leisureProvider = {};
-  comp_mailAcc = {};
-  comp_park = {};
-  comp_placableObject = {};
-  comp_police = {};
-  comp_pollution = {};
-  comp_post = {};
-  comp_prison = {};
-  comp_school = {};
-  comp_serviceConsumption = {};
-  comp_serviceCoverage = {};
-  comp_shoreline = {};
-  comp_telecom = {};
-  comp_waterPump = {};
-  comp_workplace = {};
-  comp_zonePollution = {};
-  comp_zoneProperties = {};
-  comp_zoneServiceConsumption = {};
-  prefab_building = {};
-  prefab_zone = {};
+  doneArray = [];
 
   const tempRight = document.getElementById("temp-right");
   tempRight.innerHTML = "";
 
+
   detailsArray.forEach(([key, value]) => {
-    if (value != "null" && value != null) {
-      if (key == "AdministrationBuilding") {
-        tags.push({ name: "Administration Building", type: "Class"});
-      } else if (key == "Attraction") {
-        [comp_attraction.attractiveness] = JSON.parse(value);
-      } else if (key == "Battery") {
-        [comp_battery.output, comp_battery.capacity] = JSON.parse(value);
-      } else if (key == "CityServiceBuilding") {
-        tags.push({ name: "City Service Building", type: "Class"});
-        resources.Consumable = JSON.parse(value);
-      } else if (key == "CompanyObject") {
-        select = value.split(",")[0];
-        companies = removePrefix(value, select + ",");
-        comp_companyObject.companies = JSON.parse(companies);
-      } else if (key == "ContentPrerequisite") {
-        tags.push(...getGUID(value));
-      } else if (key == "CrimeAccumulation") {
-        [comp_crimeAcc.crimeRate] = JSON.parse(value);
-      } else if (key == "DestructibleObject") {
-        [comp_destructible.fireHazard, comp_destructible.integrity] = JSON.parse(value);
-      } else if (key == "FirewatchTower") {
-        tags.push({ name: "Firewatch Tower", type: "Class"});
-      } else if (key == "FloatingObject") {
-        [comp_floating.offset, comp_floating.fixed, comp_floating.dryland ] = JSON.parse(value);
-      } else if (key == "GarbageFacility") {
-        [
-          comp_garbage.capacity,
-          comp_garbage.van,
-          comp_garbage.transport,
-          comp_garbage.speed,
-          comp_garbage.industrial,
-          comp_garbage.longterm
-        ] = JSON.parse(value);
-      } else if (key == "GarbagePowered") {
-        [production.garbageUnit, production.garbageCapacity] = JSON.parse(value);
-      } else if (key == "GroundWaterPowered") {
-        [production.groundWaterProduction, production.groundWaterCapacity] = JSON.parse(value);
-      } else if (key == "Hospital") {
-        tags.push({ name: "Hospital", type: "Class"});
-        [
-          comp_hospital.ambulance,
-          comp_hospital.helicopter,
-          comp_hospital.patient,
-          comp_hospital.treatmentBonus,
-          comp_hospital.rangeLow,
-          comp_hospital.rangeHigh,
-          comp_hospital.treatDisease,
-          comp_hospital.treatInjuries,
-        ] = JSON.parse(value);
-      } else if (key == "InitialResources") {
-        resources.Initial = JSON.parse(value);
-      } else if (key == "LeisureProvider") {
-        [comp_leisureProvider.efficiency, comp_leisureProvider.resource, comp_leisureProvider.type] = JSON.parse(value);
-      } else if (key == "MailAccumulation") {
-        [comp_mailAcc.requireCollect, comp_mailAcc.sendingRate, comp_mailAcc.receivingRate] = JSON.parse(value);
-      } else if (key == "ObsoleteIdentifiers") {
-        // const div = document.createElement("div");
-        // const header = document.createElement("div");
-        // const body = document.createElement("div");
-        // div.dataset.name = getSl(key);
-        // div.classList.add("asset-details-pane-body-bottom-box");
-        // header.classList.add("asset-details-pane-body-bottom-box-header");
-        // body.classList.add("asset-details-pane-body-bottom-box-body");
-        // header.innerHTML = "Obsolete Identifiers:";
-        // value = removePrefix(value, "[");
-        // value = removeSuffix(value, "]");
-        // const regexX = /\[(.+?),(.+?)\]/g; // [ ... , ... ]
-        // const matches = value.matchAll(regexX);
-        // function processObsolete(name, prefab) {
-        //   return prefab + ":" + name;
-        // }
-        // obsoArray = [];
-        // for (const match of matches) {
-        //   obsoArray.push(processObsolete(match[1], match[2]));
-        // }
-        // body.innerHTML += sanitizeArray(obsoArray);
-        // div.appendChild(header);
-        // div.appendChild(body);
-        // assetDetailsPaneBodyRightBoxes.appendChild(div);
-      } else if (key == "Park") {
-        [comp_park.maintenance, comp_park.homeless] = JSON.parse(value);
-      } else if (key == "PlaceableObject") {
-        [comp_placableObject.cost, comp_placableObject.xp] = JSON.parse(value);
-      } else if (key == "PoliceStation") {
-        [
-          comp_police.patrol,
-          comp_police.helicopter,
-          comp_police.jail,
-          comp_police.purpose
-        ] = JSON.parse(value);
-      } else if (key == "Pollution") {
-        [
-          comp_pollution.ground,
-          comp_pollution.air,
-          comp_pollution.noise,
-          comp_pollution.scale,
-        ] = JSON.parse(value);
-      } else if (key == "PostFacility") {
-        [comp_post.van, comp_post.truck, comp_post.storage, comp_post.box, comp_post.sort] = JSON.parse(value);
-      } else if (key == "PowerPlant") {
-        [production.power] = JSON.parse(value);
-      } else if (key == "Prison") {
-        [comp_prison.van, comp_prison.prisoner, comp_prison.wellbeing, comp_prison.health] = JSON.parse(value);
-      } else if (key == "ResearchFacility") {
-        tags.push({ name: "Research Facility", type: "Class"});
-      } else if (key == "ResourceConsumer") {
-        value = removePrefix(value, "[");
-        value = removeSuffix(value, "]");
-        notifications.push(...getGUID(value));
-      } else if (key == "ResourceProducer") {
-        resources.Production = JSON.parse(value);
-      } else if (key == "School") {
-        [
-          comp_school.capacity,
-          comp_school.level,
-          comp_school.gradModifier,
-          comp_school.wellbeing,
-          comp_school.health,
-        ] = JSON.parse(value);
-      } else if (key == "ServiceConsumption") {
-        [
-          comp_serviceConsumption.upkeep,
-          comp_serviceConsumption.electricity,
-          comp_serviceConsumption.water,
-          comp_serviceConsumption.garbage,
-          comp_serviceConsumption.telecom,
-        ] = JSON.parse(value);
-      } else if (key == "ServiceCoverage") {
-        [
-          comp_serviceCoverage.range,
-          comp_serviceCoverage.capacity,
-          comp_serviceCoverage.magnitude,
-        ] = JSON.parse(value);
-      } else if (key == "ServiceFeeCollector") {
-        tags.push({ name: "Service Fee Collector", type: "Class"});
-      } else if (key == "ServiceObject") {
-        tags.push(...getGUID(value));
-      } else if (key == "ShorelineObject") {
-        [comp_shoreline.offset, comp_shoreline.dryland ] = JSON.parse(value);
-      // } else if (key == "SignatureBuilding") {
-      //   const div = document.createElement("div");
-      //   const header = document.createElement("div");
-      //   const body = document.createElement("div");
-      //   div.dataset.name = getSl(key);
-      //   div.classList.add("asset-details-pane-body-bottom-box");
-      //   header.classList.add("asset-details-pane-body-bottom-box-header");
-      //   body.classList.add("asset-details-pane-body-bottom-box-body");
-      //   header.innerHTML = "Signature Building";
-
-      //   value = removePrefix(value, "[");
-      //   value = removeSuffix(value, "]");
-      //   [zone, xp, unlock_image] = JSON.parse(value);
-      //   let zoneText, xpText;
-      //   if (zone != 0) {
-      //     zoneText = `Zone: ${getGUID(zone)}`;
-      //   }
-      //   if (xp != 0) {
-      //     xpText = `Reward: ${xp} XP`;
-      //   }
-
-      //   body.innerHTML = sanitizeArray([zoneText, xpText]);
-
-      //   div.appendChild(header);
-      //   div.appendChild(body);
-      //   adprb.appendChild(div);
-      } else if (key == "SolarPowered") {
-        [production.solarProduction] = JSON.parse(value);
-      } else if (key == "StorageLimit") {
-        resources.Storage = JSON.parse(value);
-      } else if (key == "TelecomFacility") {
-        [
-          comp_telecom.range,
-          comp_telecom.capacity,
-          comp_telecom.satellite,
-        ] = value.split(",");
-      } else if (key == "ThemeObject") {
-        tags.push(...getGUID(value));
-      } else if (key == "Transformer") {
-        tags.push({ name: "Transformer", type: "Class"});
-      } else if (key == "UniqueObject") {
-        tags.push({ name: "Unique Object", type: "Class"});
-      } else if (key == "Unlockable") {
-        const div = document.createElement("div");
-        const header = document.createElement("div");
-        const body = document.createElement("div");
-        div.dataset.name = getSl(key);
-        div.classList.add("asset-details-pane-body-bottom-box");
-        header.classList.add("asset-details-pane-body-bottom-box-header");
-        body.classList.add("asset-details-pane-body-bottom-box-body");
-        header.innerHTML = "Unlock Requirements";
-
-        value = removePrefix(value, "[");
-        value = removeSuffix(value, "]");
-
-        const regex = /\[\[(.*?)\]\],\[\[(.*?)\]\],(true|false)/;
-        const match = value.match(regex);
-
-        const all = match[1].split(",");
-        const any = match[2].split(",");
-        const dep = match[3] === "true";
-
-        let allText, anyText, depText;
-        if (all.length > 0 && all.toString() != "") {
-          const sanitized = all.map((item) => getGUID(item));
-          allText = `All of ${sanitized.join(", ")}`;
-        }
-        if (any.length > 0 && any.toString() != "") {
-          const sanitized = any.map((item) => getGUID(item));
-          anyText = `Any of ${sanitized.join(", ")}`;
-        }
-        if (dep === true) {
-          depText = `Dependencies Ignorable`;
-        }
-
-        body.innerHTML = sanitizeArray([allText, anyText, depText]);
-
-        div.appendChild(header);
-        div.appendChild(body);
-        tempRight.appendChild(div);
-      } else if (key == "WaterPumpingStation") {
-        [comp_waterPump.capacity, comp_waterPump.purification, comp_waterPump.type] = JSON.parse(value);
-      } else if (key == "WelfareOffice") {
-        tags.push({ name: "Welfare Office", type: "Class"});
-      } else if (key == "WindPowered") {
-        [production.windSpeed, production.windProduction] = JSON.parse(value);
-      } else if (key == "Workplace") {
-        [
-          comp_workplace.workplaces,
-          comp_workplace.complexity,
-          comp_workplace.eveningProb,
-          comp_workplace.nightProb,
-        ] = JSON.parse(value);
-      } else if (key == "ZonePollution") {
-        [
-          comp_zonePollution.ground,
-          comp_zonePollution.air,
-          comp_zonePollution.noise,
-        ] = JSON.parse(value);
-      } else if (key == "ZoneProperties") {
-        [
-          comp_zoneProperties.scaleResi,
-          comp_zoneProperties.resiProp,
-          comp_zoneProperties.spaceMulti,
-          comp_zoneProperties.allowedSold,
-          comp_zoneProperties.allowedManufactured,
-          comp_zoneProperties.allowedStored,
-          comp_zoneProperties.fireHazardModifier,
-        ] = JSON.parse(value);
-      } else if (key == "ZoneServiceConsumption") {
-        [
-          comp_zoneServiceConsumption.upkeep,
-          comp_zoneServiceConsumption.electricity,
-          comp_zoneServiceConsumption.water,
-          comp_zoneServiceConsumption.garbage,
-          comp_zoneServiceConsumption.telecom
-        ] = JSON.parse(value);
-      } else if (key == "BuildingPrefab") {
-        [prefab_building.access, prefab_building.lot_x, prefab_building.lot_y] = JSON.parse(value);
-      } else if (key == "ZonePrefab") {
-        [prefab_zone.areaType, prefab_zone.color, prefab_zone.edge, prefab_zone.isOffice] = JSON.parse(value);
-      } else if (
-        key != "Lang_Title" &&
-        key != "Lang_Description" &&
-        key != "UIObject"
-      ) {
-        const div = document.createElement("div");
-        div.innerHTML = `${key}: ${value}`;
-        tempRight.appendChild(div);
-      }
+    if (1 != 1) {
+    } else if (key == "AdministrationBuilding") {
+      tags.push({ name: "Administration Building", type: "Class" });
+      doneArray.push(key);
+    } else if (key == "FirewatchTower") {
+      tags.push({ name: "Firewatch Tower", type: "Class" });
+      doneArray.push(key);
+    } else if (key == "ResearchFacility") {
+      tags.push({ name: "Research Facility", type: "Class" });
+      doneArray.push(key);
+    } else if (key == "ServiceFeeCollector") {
+      tags.push({ name: "Service Fee Collector", type: "Class" });
+      doneArray.push(key);
+    } else if (key == "Transformer") {
+      tags.push({ name: "Transformer", type: "Class" });
+      doneArray.push(key);
+    } else if (key == "Unique") {
+      tags.push({ name: "Unique Object", type: "Class" });
+      doneArray.push(key);
+    } else if (key == "WelfareOffice") {
+      tags.push({ name: "Welfare Office", type: "Class" });
+      doneArray.push(key);
     }
   });
 
@@ -386,181 +77,420 @@ async function processAssetPanelUIData(name, data, containers) {
     });
   }
 
-  if (!isEmptyObject(prefab_building)) {
-    makeDataDiv("Building Data", processBuildingPrefab());
-  }
-
-  if (!isEmptyObject(prefab_zone)) {
-    makeDataDiv("Zone Data", processZonePrefab());
-  }
-
-  if (!isEmptyObject(resources)) {
-    let serviceUsageArray = [];
-    if (!isEmptyArray(resources.Initial)) {
-      resources.Initial.forEach((subData) => {
-        serviceUsageArray.push([subData[0], subData[1], "Initial"]);
-      });
-    }
-    if (resources.Consumable != undefined) {
-      if (!isEmptyArray(resources.Consumable[0])) {
-        resources.Consumable.forEach((subData) => {
-          let resType = "Non-scalable Consumable";
-          if (subData[2] == true) {
-            resType = "Scalable Consumable";
-          }
-          serviceUsageArray.push([subData[0], subData[1], resType]);
-        });
-      }
-    }
-
-    if (!isEmptyArray(resources.Storage)) {
-      resources.Storage.forEach((subData) => {
-        serviceUsageArray.push(["Any", subData, "Storage Limit"]);
-      });
-    }
-
-    if (!isEmptyArray(serviceUsageArray)) {
-      makeDataDiv("Resource Usage", createResourceUseTable(serviceUsageArray));
-    }
-
-    if (!isEmptyObject(resources.Production)) {
-      makeDataDiv("Resource Production", createResourceUseTable(resources.Production,2));
+  if (d.PrefabID.startsWith("ZonePrefab:")) {
+    const bldgs = await getZoneBuildings(d.PrefabID);
+    if (bldgs.length > 0) {
+      await processBldg(bldgs);
     }
   }
 
-  if (!isEmptyObject(production)) {
-    makeDataDiv("Production", processProduction());
-  }
-
-  if (!isEmptyObject(comp_attraction)) {
-    makeDataDiv("Attraction", processAttractionComp());
-  }
-
-  if (!isEmptyObject(comp_battery)) {
-    makeDataDiv("Battery", processBatteryComp());
-  }
-
-  if (!isEmptyObject(comp_companyObject)) {
-    makeDataDiv("Company Object", processCompanyObjectComp());
-  }
-
-  if (!isEmptyObject(comp_crimeAcc)) {
-    makeDataDiv("Crime Accumulation", processCrimeAccComp());
-  }
-
-  if (!isEmptyObject(comp_destructible)) {
-    makeDataDiv("Destructible Object", processDestructibleObjectComp());
-  }
-
-  if (!isEmptyObject(comp_floating)) {
-    makeDataDiv("Floating Object", processFloatingObjectComp());
-  }
-
-  if (!isEmptyObject(comp_garbage)) {
-    makeDataDiv("Garbage Facility", processGarbageComp());
-  }
-
-  if (!isEmptyObject(comp_hospital)) {
-    makeDataDiv("Hospital", processHospitalComp());
-  }
-
-  if (!isEmptyObject(comp_leisureProvider)) {
-    makeDataDiv("Leisure Provider", processLeisureProviderComp());
-  }
-
-  if (!isEmptyObject(comp_mailAcc)) {
-    makeDataDiv("Mail Accumulation", processMailAccComp());
-  }
-
-  if (!isEmptyObject(comp_park)) {
-    makeDataDiv("Park", processParkComp());
-  }
-
-  if (!isEmptyObject(comp_placableObject)) {
-    makeDataDiv("Placable Object", processPlacableObjectComp());
-  }
-
-  if (!isEmptyObject(comp_police)) {
-    makeDataDiv("Police Station", processPoliceStationComp());
-  }
-
-  if (!isEmptyObject(comp_pollution)) {
-    makeDataDiv("Pollution", processPollutionComp());
-  }
-
-  if (!isEmptyObject(comp_post)) {
-    makeDataDiv("Post Facility", processPostComp());
-  }
-
-  if (!isEmptyObject(comp_prison)) {
-    makeDataDiv("Prison", processPrisonComp());
-  }
-
-  if (!isEmptyObject(comp_school)) {
-    makeDataDiv("School", processSchoolComp());
-  }
-
-  if (!isEmptyObject(comp_serviceCoverage)) {
-    makeDataDiv("Service Coverage", processServiceCoverageComp());
-  }
-
-  if (!isEmptyObject(comp_serviceConsumption)) {
-    makeDataDiv("Service Consumption", processServiceConsumptionComp());
-  }
-
-  if (!isEmptyObject(comp_shoreline)) {
-    makeDataDiv("Shoreline Object", processShorelineObjectComp());
-  }
-
-  if (!isEmptyObject(comp_telecom)) {
-    makeDataDiv("Telecom Facility", processTelecomComp());
-  }
-
-  if (!isEmptyObject(comp_waterPump)) {
-    makeDataDiv("Water Pumping Station", processWaterPumpComp());
-  }
-
-  if (!isEmptyObject(comp_workplace)) {
-    makeDataDiv("Workplace", processWorkplaceComp());
-  }
-
-  if (!isEmptyObject(comp_zonePollution)) {
-    makeDataDiv("Zone Pollution", processZonePollutionComp());
-  }
-
-  if (!isEmptyObject(comp_zoneProperties)) {
-    makeDataDiv("Zone Properties", processZonePropertiesComp());
-    
-    if (comp_zoneProperties.allowedSold.length > 0) {
-      makeDataDiv("Can Sell", await createResourceAllowTable(comp_zoneProperties.allowedSold));
-    }
-    
-    if (comp_zoneProperties.allowedManufactured.length > 0) {
-      makeDataDiv("Can Manufacture", await createResourceAllowTable(comp_zoneProperties.allowedManufactured));
-    }
-
-    if (comp_zoneProperties.allowedStored.length > 0) {
-      makeDataDiv("Can Store", await createResourceAllowTable(comp_zoneProperties.allowedStored));
+  if (d.PrefabID.startsWith("BuildingPrefab:")) {
+    const bldgs = await getBuildingUpgrades(d.PrefabID);
+    if (bldgs.length > 0) {
+      await processUpgrades(bldgs);
     }
   }
 
-  if (!isEmptyObject(comp_zoneServiceConsumption)) {
-    makeDataDiv("Zone Service Consumption", processZoneServiceConsumptionComp());
+  data_Buildings = {
+    Building_Width: d.Building_Width,
+    Building_Depth: d.Building_Depth,
+    Building_Access: d.Building_Access,
+    PlaceableObject_Construction: d.PlaceableObject_Construction,
+    PlaceableObject_XP: d.PlaceableObject_XP,
+    BuildingProp_ResiProp: d.BuildingProp_ResiProp,
+    BuildingProp_SpaceMultiplier: d.BuildingProp_SpaceMultiplier,
+    PlaceholderBuilding_Type: d.PlaceholderBuilding_Type,
+    PlaceholderBuilding_Zone: d.PlaceholderBuilding_Zone,
+    SpawnableBuilding_Zone: d.SpawnableBuilding_Zone,
+    SpawnableBuilding_Level: d.SpawnableBuilding_Level,
+    SignatureBuilding_Zone: d.SignatureBuilding_Zone,
+    SignatureBuilding_XP: d.SignatureBuilding_XP,
+    SignatureBuilding_UnlockImage: d.SignatureBuilding_UnlockImage,
+    BuildingExtension_External: d.BuildingExtension_External,
+    BuildingExtension_Pos: d.BuildingExtension_Pos,
+    BuildingExtension_Lot: d.BuildingExtension_Lot,
+    BuildingExtension_Height: d.BuildingExtension_Height,
+    ServiceUpgrade_Buildings: d.ServiceUpgrade_Buildings,
+    ServiceUpgrade_Cost: d.ServiceUpgrade_Cost,
+    ServiceUpgrade_XP: d.ServiceUpgrade_XP,
+    ServiceUpgrade_MaxOffset: d.ServiceUpgrade_MaxOffset,
+    ServiceUpgrade_MaxDistance: d.ServiceUpgrade_MaxDistance,
   }
-  // const divs = Array.from(assetDetailsPaneBodyRightBoxes.children);
-  // divs.sort((a, b) => a.dataset.name.localeCompare(b.dataset.name));
-  // divs.forEach((div) => assetDetailsPaneBodyRightBoxes.appendChild(div));
-}
+  await processData(data_Buildings, "Building Data");
+  
+  data_Network = {
+    PlaceableNet_Elevation: d.PlaceableNet_Elevation,
+    PlaceableNet_AllowParallel: d.PlaceableNet_AllowParallel,
+    PlaceableNet_Underground: d.PlaceableNet_Underground,
+    PlaceableNet_XP: d.PlaceableNet_XP,
+    Road_MaxSlopeSteepness: d.Road_MaxSlopeSteepness,
+    Road_AggregateType: d.Road_AggregateType,
+    Road_InvertMode: d.Road_InvertMode,
+    Road_RoadType: d.Road_RoadType,
+    Road_SpeedLimit: d.Road_SpeedLimit,
+    Road_ZoneBlock: d.Road_ZoneBlock,
+    Road_TrafficLights: d.Road_TrafficLights,
+    Road_HighwayRules: d.Road_HighwayRules,
+    Bridge_SegmentLength: d.Bridge_SegmentLength,
+    Bridge_Hanging: d.Bridge_Hanging,
+    Bridge_WaterFlow: d.Bridge_WaterFlow,
+    Bridge_FixedSegments: d.Bridge_FixedSegments,
+    Track_MaxSlopeSteepness: d.Track_MaxSlopeSteepness,
+    Track_AggregateType: d.Track_AggregateType,
+    Track_InvertMode: d.Track_InvertMode,
+    Track_TrackType: d.Track_TrackType,
+    Track_SpeedLimit: d.Track_SpeedLimit,
+    Waterway_MaxSlopeSteepness: d.Waterway_MaxSlopeSteepness,
+    Waterway_AggregateType: d.Waterway_AggregateType,
+    Waterway_InvertMode: d.Waterway_InvertMode,
+    Waterway_SpeedLimit: d.Waterway_SpeedLimit,
+    NetUpgrade_SetState: d.NetUpgrade_SetState,
+    NetUpgrade_UnsetState: d.NetUpgrade_UnsetState,
+    NetUpgrade_Standalone: d.NetUpgrade_Standalone,
+    NetUpgrade_Underground: d.NetUpgrade_Underground,
+  }
+  await processData(data_Network, "Network Data");
 
-function processResource(subData) {
-  scale = "";
-  if (subData[2] == true) {
-    scale = "<br/>(Scales with Usage)";
+  if (d.Zone_Office) {
+    d.Zone_AreaType = "Office";
   }
-  return `${subData[1]} ${pluralize(
-    enumResourceInEditor(subData[0]),
-    parseInt(subData[1])
-  )} ${scale}`;
+  doneArray.push("Zone_Office");
+  data_Zones = {
+    Zone_AreaType: d.Zone_AreaType,
+    Zone_Color: d.Zone_Color,
+    Zone_Edge: d.Zone_Edge,
+    Zone_ScaleResi: d.Zone_ScaleResi,
+    Zone_ResiProperties: d.Zone_ResiProperties,
+    Zone_SpaceMultiplier: d.Zone_SpaceMultiplier,
+  }
+  await processData(data_Zones, "Zone Data");
+
+  data_Areas = {
+    District_Color: d.District_Color,
+    District_EdgeColor: d.District_EdgeColor,
+    District_SelectionColor: d.District_SelectionColor,
+    District_SelectionEdgeColor: d.District_SelectionEdgeColor,
+    District_NameColor: d.District_NameColor,
+    District_SelectedNameColor: d.District_SelectedNameColor,
+    Lot_Color: d.Lot_Color,
+    Lot_EdgeColor: d.Lot_EdgeColor,
+    Lot_SelectionColor: d.Lot_SelectionColor,
+    Lot_SelectionEdgeColor: d.Lot_SelectionEdgeColor,
+    Lot_MaxRadius: d.Lot_MaxRadius,
+    Lot_RangeColor: d.Lot_RangeColor,
+    Surface_Color: d.Surface_Color,
+    Surface_EdgeColor: d.Surface_EdgeColor,
+    Surface_SelectionColor: d.Surface_SelectionColor,
+    Surface_SelectionEdgeColor: d.Surface_SelectionEdgeColor,
+    EnclosedArea_BorderLaneType: d.EnclosedArea_BorderLaneType,
+    EnclosedArea_CounterClockWise: d.EnclosedArea_CounterClockWise,
+    NavigationArea_Connection: d.NavigationArea_Connection,
+    NavigationArea_Secondary: d.NavigationArea_Secondary,
+    NavigationArea_Track: d.NavigationArea_Track,
+    NavigationArea_Road: d.NavigationArea_Road,
+    StorageArea_Resources: d.StorageArea_Resources,
+    StorageArea_Cap: d.StorageArea_Cap,
+    TerrainArea_Height: d.TerrainArea_Height,
+    TerrainArea_Width: d.TerrainArea_Width,
+    TerrainArea_NoiseScale: d.TerrainArea_NoiseScale,
+    TerrainArea_NoiseFactor: d.TerrainArea_NoiseFactor,
+    SpawnableArea_Placeholders: d.SpawnableArea_Placeholders,
+    SpawnableArea_Probability: d.SpawnableArea_Probability,
+  }
+  await processData(data_Areas, "Area Data");
+
+  data_Stamps = {
+    AssetStamp_Width: d.AssetStamp_Width,
+    AssetStamp_Depth: d.AssetStamp_Depth,
+    AssetStamp_Cost: d.AssetStamp_Cost,
+    AssetStamp_Upkeep: d.AssetStamp_Upkeep,
+  }
+  await processData(data_Stamps, "Stamp Data");
+
+  data_Objects = {
+    SpawnableObject_Placeholders: d.SpawnableObject_Placeholders,
+    SpawnableObject_Probability: d.SpawnableObject_Probability,
+    SpawnableObject_RandomizationGroup: d.SpawnableObject_RandomizationGroup,
+    PlaceholderObject_RandGroupIndex: d.PlaceholderObject_RandGroupIndex,
+    SubObject_DefaultProbability: d.SubObject_DefaultProbability,
+    SubObject_RotationSymmetry: d.SubObject_RotationSymmetry,
+    AttachedObject_Type: d.AttachedObject_Type,
+    AttachedObject_Offset: d.AttachedObject_Offset,
+    QuantityObject_Resources: d.QuantityObject_Resources,
+    QuantityObject_Map: d.QuantityObject_Map,
+    TreeObject_Wood: d.TreeObject_Wood,
+    PlantObject_PotCoverage: d.PlantObject_PotCoverage,
+    PlantObject_TreeReplace: d.PlantObject_TreeReplace,
+    StandingObject_LegSize: d.StandingObject_LegSize,
+    StandingObject_Circular: d.StandingObject_Circular,
+    Floating_Offset: d.Floating_Offset,
+    Floating_FixedBottom: d.Floating_FixedBottom,
+    Floating_AllowDryLand: d.Floating_AllowDryLand,
+    ShorelineObject_Offset: d.ShorelineObject_Offset,
+    ShorelineObject_AllowDry: d.ShorelineObject_AllowDry,
+    Underwater_AllowDryland: d.Underwater_AllowDryland,
+    Weather_RequireSnow: d.Weather_RequireSnow,
+    Weather_ForbidSnow: d.Weather_ForbidSnow,
+    NetObject_SetComp: d.NetObject_SetComp,
+    NetObject_RequireRoad: d.NetObject_RequireRoad,
+    NetObject_RoadPassThrough: d.NetObject_RoadPassThrough,
+    NetObject_TrackPassThrough: d.NetObject_TrackPassThrough,
+    CompanyObj_Select: d.CompanyObj_Select,
+    CompanyObj_Companies: d.CompanyObj_Companies,
+    RenterObject_ReqEmpty: d.RenterObject_ReqEmpty,
+    RenterObject_ReqRenter: d.RenterObject_ReqRenter,
+    RenterObject_ReqWealth: d.RenterObject_ReqWealth,
+    RenterObject_ReqDogs: d.RenterObject_ReqDogs,
+    RenterObject_ReqHomeless: d.RenterObject_ReqHomeless,
+    RenterObject_ReqChildren: d.RenterObject_ReqChildren,
+    RenterObject_ReqTeens: d.RenterObject_ReqTeens,
+  }
+  await processData(data_Objects, "Object Data");
+
+  data_Milestone = {
+    ManualUnlockable: d.ManualUnlockable,
+    Milestone_Index: d.Milestone_Index,
+    Milestone_Reward: d.Milestone_Reward,
+    Milestone_DevTree: d.Milestone_DevTree,
+    Milestone_MapTiles: d.Milestone_MapTiles,
+    Milestone_LoanLimit: d.Milestone_LoanLimit,
+    Milestone_XP: d.Milestone_XP,
+    Milestone_Major: d.Milestone_Major,
+    Milestone_Image: d.Milestone_Image,
+    Milestone_BgColor: d.Milestone_BgColor,
+    Milestone_AccentColor: d.Milestone_AccentColor,
+    Milestone_TextColor: d.Milestone_TextColor,
+  }
+  await processData(data_Milestone, "Milestone Data");
+
+  data_Resource = {
+    InitResources: d.InitResources,
+    CityServiceUpkeep: d.CityServiceUpkeep,
+    BuildingProp_Sold: d.BuildingProp_Sold,
+    BuildingProp_Manufactured: d.BuildingProp_Manufactured,
+    BuildingProp_Stored: d.BuildingProp_Stored,
+    Zone_Sold: d.Zone_Sold,
+    Zone_Manufactured: d.Zone_Manufactured,
+    Zone_Stored: d.Zone_Stored,
+    ResourceProducer: d.ResourceProducer,
+    StorageLimit: d.StorageLimit,
+    Resource_NoNotif: d.Resource_NoNotif
+  }
+  await processData(data_Resource, "Resource Data");
+
+  data_ServiceConsumption = {
+    ServiceConsumption_Upkeep: d.ServiceConsumption_Upkeep,
+    ServiceConsumption_Power: d.ServiceConsumption_Power,
+    ServiceConsumption_Water: d.ServiceConsumption_Water,
+    ServiceConsumption_Garbage: d.ServiceConsumption_Garbage,
+    ServiceConsumption_Telecom: d.ServiceConsumption_Telecom,
+    Destructible_FireHazard: d.Destructible_FireHazard,
+    Destructible_Integrity: d.Destructible_Integrity,
+    Zone_Upkeep: d.Zone_Upkeep,
+    Zone_Power: d.Zone_Power,
+    Zone_Water: d.Zone_Water,
+    Zone_Garbage: d.Zone_Garbage,
+    Zone_Telecom: d.Zone_Telecom,
+    Zone_FireHazard: d.Zone_FireHazard,
+    CrimeRate: d.CrimeRate,
+    Mail_ReqCollect: d.Mail_ReqCollect,
+    Mail_SendingRate: d.Mail_SendingRate,
+    Mail_ReceivingRate: d.Mail_ReceivingRate,
+  }
+  await processData(data_ServiceConsumption, "Service Consumption Data");
+
+  data_ServiceProvider = {
+    ServiceObject: d.ServiceObject,
+    ServiceCoverage_Range: d.ServiceCoverage_Range,
+    ServiceCoverage_Cap: d.ServiceCoverage_Cap,
+    ServiceCoverage_Magnitude: d.ServiceCoverage_Magnitude,
+    ParkingFacility_Comfort: d.ParkingFacility_Comfort,
+    ParkingFacility_GarageCap: d.ParkingFacility_GarageCap,
+    MaintenanceDepot_Type: d.MaintenanceDepot_Type,
+    MaintenanceDepot_VehicleCap: d.MaintenanceDepot_VehicleCap,
+    MaintenanceDepot_VehicleEfficiency: d.MaintenanceDepot_VehicleEfficiency,
+    PowerPlant_Prod: d.PowerPlant_Prod,
+    WindPowered_MaxWind: d.WindPowered_MaxWind,
+    WindPowered_Prod: d.WindPowered_Prod,
+    GroundWaterPowered_Prod: d.GroundWaterPowered_Prod,
+    GroundWaterPowered_MaxGround: d.GroundWaterPowered_MaxGround,
+    GarbagePowered_Prod: d.GarbagePowered_Prod,
+    GarbagePowered_Cap: d.GarbagePowered_Cap,
+    SolarPowered_Prod: d.SolarPowered_Prod,
+    Battery_Output: d.Battery_Output,
+    Battery_Cap: d.Battery_Cap,
+    Electricity_Voltage: d.Electricity_Voltage,
+    Electricity_Direction: d.Electricity_Direction,
+    Electricity_Cap: d.Electricity_Cap,
+    WaterPump_Cap: d.WaterPump_Cap,
+    WaterPump_Purify: d.WaterPump_Purify,
+    WaterPump_Allowed: d.WaterPump_Allowed,
+    SewageOutlet_Cap: d.SewageOutlet_Cap,
+    SewageOutlet_Purification: d.SewageOutlet_Purification,
+    SewageOutlet_AllowSubmerged: d.SewageOutlet_AllowSubmerged,
+    WaterPipe_Fresh: d.WaterPipe_Fresh,
+    WaterPipe_Sewage: d.WaterPipe_Sewage,
+    WaterPipe_Storm: d.WaterPipe_Storm,
+    Hospital_AmbuCap: d.Hospital_AmbuCap,
+    Hospital_HeliCap: d.Hospital_HeliCap,
+    Hospital_PatientCap: d.Hospital_PatientCap,
+    Hospital_TreatmentBonus: d.Hospital_TreatmentBonus,
+    Hospital_HealthRange: d.Hospital_HealthRange,
+    Hospital_TreatDiseases: d.Hospital_TreatDiseases,
+    Hospital_TreatInjuries: d.Hospital_TreatInjuries,
+    Deathcare_Hearse: d.Deathcare_Hearse,
+    Deathcare_Storage: d.Deathcare_Storage,
+    Deathcare_ProcessingRate: d.Deathcare_ProcessingRate,
+    Deathcare_LongTerm: d.Deathcare_LongTerm,
+    GarbageFacility_GarbageCap: d.GarbageFacility_GarbageCap,
+    GarbageFacility_VehicleCap: d.GarbageFacility_VehicleCap,
+    GarbageFacility_TransportCap: d.GarbageFacility_TransportCap,
+    GarbageFacility_Speed: d.GarbageFacility_Speed,
+    GarbageFacility_Industrial: d.GarbageFacility_Industrial,
+    GarbageFacility_LongTerm: d.GarbageFacility_LongTerm,
+    School_Cap: d.School_Cap,
+    School_Level: d.School_Level,
+    School_GradModifier: d.School_GradModifier,
+    School_Wellbeing: d.School_Wellbeing,
+    School_Health: d.School_Health,
+    FireStation_EngineCap: d.FireStation_EngineCap,
+    FireStation_HeliCap: d.FireStation_HeliCap,
+    FireStation_ResponseCap: d.FireStation_ResponseCap,
+    FireStation_VehicleEff: d.FireStation_VehicleEff,
+    Shelter_Cap: d.Shelter_Cap,
+    Shelter_Vehicle: d.Shelter_Vehicle,
+    DisasterFacility: d.DisasterFacility,
+    EarlyDisasterWarningSystem: d.EarlyDisasterWarningSystem,
+    PoliceStation_CarCap: d.PoliceStation_CarCap,
+    PoliceStation_HeliCap: d.PoliceStation_HeliCap,
+    PoliceStation_JailCap: d.PoliceStation_JailCap,
+    PoliceStation_Purpose: d.PoliceStation_Purpose,
+    Prison_VanCap: d.Prison_VanCap,
+    Prison_JailCap: d.Prison_JailCap,
+    Prison_Wellbeing: d.Prison_Wellbeing,
+    Prison_Health: d.Prison_Health,
+    TransportDepot_Type: d.TransportDepot_Type,
+    TransportDepot_Energy: d.TransportDepot_Energy,
+    TransportDepot_Cap: d.TransportDepot_Cap,
+    TransportDepot_ProdTime: d.TransportDepot_ProdTime,
+    TransportDepot_MaintenanceTime: d.TransportDepot_MaintenanceTime,
+    TransportDepot_DispatchCenter: d.TransportDepot_DispatchCenter,
+    TransportStation_CarFuel: d.TransportStation_CarFuel,
+    TransportStation_TrainFuel: d.TransportStation_TrainFuel,
+    TransportStation_WaterFuel: d.TransportStation_WaterFuel,
+    TransportStation_AirFuel: d.TransportStation_AirFuel,
+    TransportStation_Comfort: d.TransportStation_Comfort,
+    TransportStop_Type: d.TransportStop_Type,
+    TransportStop_AccessConnection: d.TransportStop_AccessConnection,
+    TransportStop_RouteConnection: d.TransportStop_RouteConnection,
+    TransportStop_AccessTrack: d.TransportStop_AccessTrack,
+    TransportStop_RouteTrack: d.TransportStop_RouteTrack,
+    TransportStop_AccessRoad: d.TransportStop_AccessRoad,
+    TransportStop_RouteRoad: d.TransportStop_RouteRoad,
+    TransportStop_EnterDistance: d.TransportStop_EnterDistance,
+    TransportStop_ExitDistance: d.TransportStop_ExitDistance,
+    TransportStop_AccessDistance: d.TransportStop_AccessDistance,
+    TransportStop_BoardingTime: d.TransportStop_BoardingTime,
+    TransportStop_Comfort: d.TransportStop_Comfort,
+    TransportStop_Loading: d.TransportStop_Loading,
+    TransportStop_Passenger: d.TransportStop_Passenger,
+    TransportStop_Cargo: d.TransportStop_Cargo,
+    CargoStation_Resources: d.CargoStation_Resources,
+    CargoStation_CarFuel: d.CargoStation_CarFuel,
+    CargoStation_TrainFuel: d.CargoStation_TrainFuel,
+    CargoStation_WaterFuel: d.CargoStation_WaterFuel,
+    CargoStation_AirFuel: d.CargoStation_AirFuel,
+    CargoStation_LoadingFactor: d.CargoStation_LoadingFactor,
+    CargoStation_TransportInterval: d.CargoStation_TransportInterval,
+    Attractiveness: d.Attractiveness,
+    Leisure_Efficiency: d.Leisure_Efficiency,
+    Leisure_Resources: d.Leisure_Resources,
+    Leisure_Type: d.Leisure_Type,
+    Park_MaintenancePool: d.Park_MaintenancePool,
+    Park_AllowHomeless: d.Park_AllowHomeless,
+    MailBox_Cap: d.MailBox_Cap,
+    MailBox_Comfort: d.MailBox_Comfort,
+    PostFacility_VanCap: d.PostFacility_VanCap,
+    PostFacility_TruckCap: d.PostFacility_TruckCap,
+    PostFacility_StorageCap: d.PostFacility_StorageCap,
+    PostFacility_BoxCap: d.PostFacility_BoxCap,
+    PostFacility_SortingRate: d.PostFacility_SortingRate,
+    TelecomFacility_Range: d.TelecomFacility_Range,
+    TelecomFacility_NetworkCap: d.TelecomFacility_NetworkCap,
+    TelecomFacility_PenetrateTerrain: d.TelecomFacility_PenetrateTerrain,
+    LocalEffects: d.LocalEffects,
+    CityEffects: d.CityEffects,
+  }
+  await processData(data_ServiceProvider, "Service Provider Data");
+
+  data_Workplace = {
+    Work_Places: d.Work_Places,
+    Work_Min: d.Work_Min,
+    Work_Complexity: d.Work_Complexity,
+    Work_EveningProb: d.Work_EveningProb,
+    Work_NightProb: d.Work_NightProb,
+  }
+  await processData(data_Workplace, "Workplace Data");
+
+  data_Activity = {
+    // ActivityLocation_Locations: d.ActivityLocation_Locations,
+    ActivityLocation_AnimatedProp: d.ActivityLocation_AnimatedProp,
+    ActivityLocation_InvertWhen: d.ActivityLocation_InvertWhen,
+    ActivityLocation_RequireAuthorization: d.ActivityLocation_RequireAuthorization,
+  }
+  doneArray.push("ActivityLocation_Locations");
+  await processData(data_Activity, "Activity Data");
+
+  data_Pollution = {
+    Pollution_Ground: d.Pollution_Ground,
+    Pollution_Air: d.Pollution_Air,
+    Pollution_Noise: d.Pollution_Noise,
+    Pollution_Scale: d.Pollution_Scale,
+    Zone_GroundPollution: d.Zone_GroundPollution,
+    Zone_AirPollution: d.Zone_AirPollution,
+    Zone_NoisePollution: d.Zone_NoisePollution,
+    NetPollution_Noise: d.NetPollution_Noise,
+    NetPollution_Air: d.NetPollution_Air
+  }
+  await processData(data_Pollution, "Pollution Data");
+
+  data_Requirement = {
+    ContentPrereq: d.ContentPrereq,
+    ThemeObject: d.ThemeObject,
+    Unlock_All: d.Unlock_All,
+    Unlock_Any: d.Unlock_Any,
+    UnlockOnBuild: d.UnlockOnBuild,
+    Unlock_IgnoreDep: d.Unlock_IgnoreDep,
+    Electricity_RequireAll: d.Electricity_RequireAll,
+    Electricity_RequireAny: d.Electricity_RequireAny,
+    Electricity_RequireNone: d.Electricity_RequireNone,
+  }
+  await processData(data_Requirement, "Requirement Data");
+
+  data_Other = {
+    PrefabID: d.PrefabID,
+    GUID: d.GUID,
+    Source: d.Source,
+    AssetPackItem: d.AssetPackItem,
+    UI_Priority: d.UI_Priority,
+    UI_Group: d.UI_Group,
+    UI_Icon: d.UI_Icon,
+    UI_Menu: d.UI_Menu,
+  }
+  await processData(data_Other, "Other Data");
+
+  data_AudioVisual = {
+    GroupAmbience: d.GroupAmbience
+  }
+  await processData(data_AudioVisual, "AudioVisual Data");
+  await processReferences(d.PrefabID, "References");
+  detailsArray.forEach(([key, value]) => {
+    if (!doneArray.includes(key)) {
+      const div = document.createElement("div");
+      div.innerHTML = `${key}: ${value}`;
+      tempRight.appendChild(div);
+    }
+  });
 }
 
 function makeDataDiv(headerText, func) {
@@ -598,1072 +528,220 @@ function makeSubTextDiv(titleText, valueText, div, unit = "") {
   div.appendChild(finalDiv);
 }
 
-function processBuildingPrefab() {
-  const lot_x = prefab_building.lot_x;
-  const lot_y = prefab_building.lot_y;
-  const access = prefab_building.access;
+async function processData(data, header) {
+  const linkableType = [
+    "AssetPackItem",
+    "ContentPrereq",
+    "Road_AggregateType",
+    "Road_ZoneBlock",
+    "ServiceObject",
+    "ServiceUpgrade_Buildings",
+    "SignatureBuilding_Zone",
+    "SpawnableBuilding_Zone",
+    "SpawnableObject_Placeholders",
+    "ThemeObject",
+    "UI_Group",
+    "UI_Menu",
+    "Unlock_All",
+    "UnlockOnBuild",
+  ];
 
+  const noLinkPrefab = [
+  ]
+  
   const mainDiv = document.createElement("div");
   mainDiv.classList.add("data-box");
-  if (lot_x && lot_y) {
-    const lotDiv = document.createElement("div");
-    lotDiv.classList.add("parent-div-with-subtext");
-
-    makeSubTextDiv("Width", lot_x, lotDiv);
-    makeSubTextDiv("Depth", lot_y, lotDiv);
-
-    lotDiv.style.gridTemplateColumns = `repeat(2, 1fr)`;
-    mainDiv.appendChild(lotDiv);
+  for (const [key, value] of Object.entries(data)) {
+    doneArray.push(key);
+    if (value != undefined && value != "") {
+      const div = document.createElement("div");
+      const divX = document.createElement("div");
+      let useDivX = false;
+      if (linkableType.includes(key)) {
+        if (value.includes(",")) {
+          const regex = /(\w+):([\w ]+)[,]*/g;
+          let match;
+          while ((match = regex.exec(value)) !== null) {
+            const [_, prefabType, data] = match;
+            const button = document.createElement("button");
+            const prefab = `${prefabType}:${data}`
+            button.innerText = prefab;
+              button.classList.add("data-link-button");
+            if (!noLinkPrefab.includes(prefabType)) {
+              button.addEventListener("click", () => processAssetData(prefab));
+              button.classList.add("link");
+            }
+            divX.appendChild(button);
+            divX.classList.add("div-with-subtext-flex");
+          }
+          useDivX = true;
+        } else {
+          if (!noLinkPrefab.some(type => value.startsWith(type))) {
+            div.addEventListener("click", function () {
+              processAssetData(value);
+            });
+            div.classList.add('link')
+          }
+        };
+      }
+      div.classList.add("parent-div-with-subtext");
+      makeSubTextDiv("", reprocessKeyName(key), div);
+      if (useDivX) {
+        div.appendChild(divX);
+      } else {
+        if (typeof value === 'string' && value.startsWith("RGBA")) {
+          makeSubTextDiv("", makeColor(value), div);;
+        } else {
+          let valueText = (String)(value);
+          valueText = valueText.replace(/,(\S)/g, ', $1');
+          makeSubTextDiv("", valueText, div);
+          if (key == "GUID") {
+            div.classList.add("guid-text");
+          }
+        }
+      }
+      mainDiv.appendChild(div);
+    }
+  };
+  if (mainDiv.childElementCount > 0) {
+    makeDataDiv(header, mainDiv);
   }
-  if (access) {
-    const div = document.createElement("div");
-    div.classList.add("parent-div-with-subtext");
-    makeSubTextDiv("Access Direction", enumBuildingAccessType(access), div);
-    div.style.gridTemplateColumns = `repeat(1, 1fr)`;
-    mainDiv.appendChild(div);
-  }
-  return mainDiv;
 }
 
-function processZonePrefab() {
-  const areaType = prefab_zone.areaType;
-  const color = prefab_zone.color;
-  const edge = prefab_zone.edge;
-  const isOffice = prefab_zone.isOffice;
+async function processReferences(d, header) {
+  try {
+    let matchingIds = await searchInIndexedDB(d);
+    matchingIds = matchingIds.filter(id => id !== d);
+    if (matchingIds.length > 0) {
+      const mainDiv = document.createElement("div");
+      mainDiv.classList.add("data-box");
+      await Promise.all(
+        matchingIds.map(async id => {
+          const div = document.createElement("div");
+          div.classList.add("parent-div-with-subtext");
+          div.style.display = "flex";
+          [bldgName, _] = await getTitleAndDescriptionFromPrefab(id);
+          div.addEventListener("click", function () {
+            processAssetData(id);
+          });
+          div.classList.add('link');
+          makeSubTextDiv("", bldgName, div);
+          mainDiv.appendChild(div);
+        })
+      );
+      if (mainDiv.childElementCount > 0) {
+        makeDataDiv(header, mainDiv);
+      }
+    }
+  }
+  catch (err) {
+    console.error('Error:', err);
+  };
+}
 
+async function processBldg(bldgs) {
+  const header = `Spawnable Buildings (${bldgs.length})`;
   const mainDiv = document.createElement("div");
   mainDiv.classList.add("data-box");
-  {
-    const div = document.createElement("div");
-    div.classList.add("parent-div-with-subtext");
-    let count = 0;
+  mainDiv.style.display = "flex";
+  mainDiv.style.flexWrap = "wrap";
+  mainDiv.style.flexDirection = "row";
+  mainDiv.style.backgroundColor = "#113442d1";
+  const levelSelector = document.createElement("div");
+  levelSelector.classList.add("level-selector"); 
+  const levels = [1, 2, 3, 4, 5];
 
-    let areaVal = enumZoneType(areaType, isOffice);
-    if (areaType != 0) {
-      makeSubTextDiv("Area Type", areaVal, div);
-      count++;
-    }
+  levels.forEach(level => {
+    const button = document.createElement("button");
+    const buildingCount = bldgs.filter(bldg => bldg.SpawnableBuilding_Level === level).length;
+    button.innerText = `Level ${level} (${buildingCount})`;
+    button.classList.add("level-btn");
+    button.disabled = buildingCount === 0;
+    button.addEventListener("click", () => filterBuildingsByLevel(level));
+    levelSelector.appendChild(button);
+  });
+  mainDiv.appendChild(levelSelector);
+
+  function filterBuildingsByLevel(level) {
+    const buttons = levelSelector.querySelectorAll("button");
+    buttons.forEach(button => button.classList.remove("active"));
+
+    Array.from(buttons).forEach(button => {
+      if (button.innerText === String(`Level ${level}`)) {
+        button.classList.add("active");
+      }
+    });
     
-    div.style.gridTemplateColumns = `repeat(${count}, 1fr)`;
-    mainDiv.appendChild(div);
-  }
-  {
-    const div = document.createElement("div");
-    div.classList.add("parent-div-with-subtext");
-    let count = 0;
-    if (color.length > 0) {
-      makeSubTextDiv("Zone Color", makeColor(color), div);
-      count++;
-    }
-    if (edge.length > 0) {
-      makeSubTextDiv("Edge Color", makeColor(edge), div);
-      count++;
-    }
-    div.style.gridTemplateColumns = `repeat(${count}, 1fr)`;
-    mainDiv.appendChild(div);
+    const buildings = bldgs.filter(bldg => bldg.SpawnableBuilding_Level === level);
+    updateBuildingDisplay(buildings);
   }
 
-  return mainDiv;
+  const bldgDiv = document.createElement("div");
+  bldgDiv.classList.add("bldg-div");
+
+  function updateBuildingDisplay(filteredBldgs) {
+    const existingDivs = mainDiv.querySelectorAll(".asset-icon-box:not(.level-btn-container)");
+    existingDivs.forEach(div => div.remove());
+
+    filteredBldgs.forEach(bldg => {
+      const div = document.createElement("div");
+      div.classList.add("asset-icon-box");
+      const textDiv = document.createElement("div");
+      textDiv.classList.add("text-overlay");
+      const prefabName = bldg.PrefabID.replaceAll("BuildingPrefab:", "")
+      textDiv.innerText = prefabName.replaceAll("_", " ");
+      const imgDiv = document.createElement("img");
+      imgDiv.src = iconDecider(bldg.PrefabID.split(":")[1], bldg.UI_Icon);
+      imgDiv.alt = prefabName;
+      imgDiv.width = "10vh";
+      div.appendChild(textDiv);
+      div.appendChild(imgDiv);
+      div.addEventListener("click", function () {
+        processAssetData(bldg.PrefabID);
+      });
+      bldgDiv.appendChild(div);
+    });
+  }
+  mainDiv.appendChild(bldgDiv);
+  filterBuildingsByLevel(1);
+  if (mainDiv.childElementCount > 0) {
+    makeDataDiv(header, mainDiv);
+  }
 }
 
-function processAttractionComp() {
-  const attractiveness = comp_attraction.attractiveness;
-
+async function processUpgrades(bldgs) {
+  const header = `Upgrades (${bldgs.length})`;
   const mainDiv = document.createElement("div");
   mainDiv.classList.add("data-box");
-
-  const div = document.createElement("div");
-  div.classList.add("parent-div-with-subtext");
-  let count = 0;
-  if (attractiveness != 0) {
-    makeSubTextDiv("Attractiveness", attractiveness, div);
-    count++;
-  }
-  div.style.gridTemplateColumns = `repeat(${count}, 1fr)`;
-  mainDiv.appendChild(div);
-
-  return mainDiv;
-}
-
-function processBatteryComp() {
-  const output = comp_battery.output;
-  const capacity = comp_battery.capacity;
-
-  const mainDiv = document.createElement("div");
-  mainDiv.classList.add("data-box");
-
-  const div = document.createElement("div");
-  div.classList.add("parent-div-with-subtext");
-  let count = 0;
-  if (output != 0) {
-    makeSubTextDiv("Output", output, div);
-    count++;
-  }
-  if (capacity != 0) {
-    makeSubTextDiv("Capacity", capacity, div);
-    count++;
-  }
-  div.style.gridTemplateColumns = `repeat(${count}, 1fr)`;
-  mainDiv.appendChild(div);
-
-  return mainDiv;
-}
-
-function processCompanyObjectComp() {
-  const companies = comp_companyObject.companies;
-
-  const mainDiv = document.createElement("div");
-  mainDiv.classList.add("data-box");
-
-  const div = document.createElement("div");
-  div.classList.add("parent-div-with-subtext");
-  let count = 0;
-  if (companies != 0) {
-    text = getGUID(companies.join(",")).join("<br/>");
-    text = text.replaceAll("Commercial ", "");
-    makeSubTextDiv("", text, div);
-    count++;
-  }
-  div.style.gridTemplateColumns = `repeat(${count}, 1fr)`;
-  mainDiv.appendChild(div);
-
-  return mainDiv;
-}
-
-function processCrimeAccComp() {
-  const crimeRate = comp_crimeAcc.crimeRate;
-
-  const mainDiv = document.createElement("div");
-  mainDiv.classList.add("data-box");
-
-  const div = document.createElement("div");
-  div.classList.add("parent-div-with-subtext");
-  let count = 0;
-  if (crimeRate != 0) {
-    makeSubTextDiv("Crime Rate", crimeRate, div);
-    count++;
-  }
-
-  div.style.gridTemplateColumns = `repeat(${count}, 1fr)`;
-  mainDiv.appendChild(div);
-
-  return mainDiv;
-}
-
-function processDestructibleObjectComp() {
-  const fireHazard = comp_destructible.fireHazard;
-  const integrity = comp_destructible.integrity;
-
-  const mainDiv = document.createElement("div");
-  mainDiv.classList.add("data-box");
-
-  const div = document.createElement("div");
-  div.classList.add("parent-div-with-subtext");
-  let count = 0;
-  if (fireHazard != 0) {
-    makeSubTextDiv("Fire Hazard", fireHazard, div);
-    count++;
-  }
-  
-  if (integrity != 0) {
-    makeSubTextDiv("Structural Integrity", integrity, div);
-    count++;
-  }
-
-  div.style.gridTemplateColumns = `repeat(${count}, 1fr)`;
-  mainDiv.appendChild(div);
-
-  return mainDiv;
-}
-
-function processFloatingObjectComp() {
-  const offset = comp_floating.offset;
-  const fixed = comp_floating.fixed;
-  const dryland = comp_floating.dryland;
-
-  const mainDiv = document.createElement("div");
-  mainDiv.classList.add("data-box");
-
-  const div = document.createElement("div");
-  div.classList.add("parent-div-with-subtext");
-  let count = 0;
-  if (offset != 0) {
-    makeSubTextDiv("Floating Offset", offset, div);
-    count++;
-  }
-  
-  if (fixed) {
-    makeSubTextDiv("", "Fixed to Bottom", div);
-    count++;
-  }
-  
-  if (dryland) {
-    makeSubTextDiv("", "Dry Land Allowed", div);
-    count++;
-  }
-
-  div.style.gridTemplateColumns = `repeat(${count}, 1fr)`;
-  mainDiv.appendChild(div);
-
-  return mainDiv;
-}
-
-function processGarbageComp() {
-  const capacity = comp_garbage.capacity;
-  const van = comp_garbage.van;
-  const transport = comp_garbage.transport;
-  const speed = comp_garbage.speed;
-  const industrial = comp_garbage.industrial;
-  const longterm = comp_garbage.longterm;
-
-  const mainDiv = document.createElement("div");
-  mainDiv.classList.add("data-box");
-
-  const div = document.createElement("div");
-  div.classList.add("parent-div-with-subtext");
-  let count = 0;
-  if (capacity != 0) {
-    makeSubTextDiv("Capacity", capacity/1000, div, "tonnes");
-    count++;
-  }
-  
-  if (van != 0) {
-    makeSubTextDiv("Garbage "+ pluralize("Trucks", parseInt(van)), van, div);
-    count++;
-  }
-  
-  if (transport != 0) {
-    makeSubTextDiv("Transport "+ pluralize("Trucks", parseInt(transport)), transport, div);
-    count++;
-  }
-  
-  if (speed != 0) {
-    makeSubTextDiv("Processing Speed", speed/1000, div, "tonnes per month");
-    count++;
-  }
-  
-  if (industrial) {
-    makeSubTextDiv("", "Industrial Waste Only", div);
-    count++;
-  }
-  
-  if (longterm) {
-    makeSubTextDiv("", "Long Term Storage", div);
-    count++;
-  }
-  div.style.gridTemplateColumns = `repeat(${count}, 1fr)`;
-  mainDiv.appendChild(div);
-
-  return mainDiv;
-}
-
-function processHospitalComp() {
-  const ambulance = comp_hospital.ambulance;
-  const helicopter = comp_hospital.helicopter;
-  const patient = comp_hospital.patient;
-  const treatmentBonus = comp_hospital.treatmentBonus;
-  const rangeLow = comp_hospital.rangeLow;
-  const rangeHigh = comp_hospital.rangeHigh;
-  const treatDisease = comp_hospital.treatDisease;
-  const treatInjuries = comp_hospital.treatInjuries;
-
-  const mainDiv = document.createElement("div");
-  mainDiv.classList.add("data-box");
-
-  if (ambulance != 0 || helicopter != 0 || patient != 0) {
-    const div = document.createElement("div");
-    div.classList.add("parent-div-with-subtext");
-    let count = 0;
-    if (ambulance != 0) {
-      makeSubTextDiv(pluralize("Ambulance", parseInt(ambulance)), ambulance, div);
-      count++;
-    }
-
-    if (helicopter != 0) {
-      makeSubTextDiv(pluralize("Helicopter", parseInt(helicopter)), helicopter, div);
-      count++;
-    }
-
-    if (patient != 0) {
-      makeSubTextDiv(pluralize("Patients", parseInt(patient)), patient, div);
-      count++;
-    }
-    if (count > 0) {
-      div.style.gridTemplateColumns = `repeat(${count}, 1fr)`;
+  bldgs.sort((a, b) => a.GUID - b.GUID);
+  await Promise.all(
+    bldgs.map(async bldg => {
+      const div = document.createElement("div");
+      div.classList.add("parent-div-with-subtext");
+      div.style.display = "flex";
+      [bldgName, _] = await getTitleAndDescriptionFromPrefab(bldg.PrefabID);
+      div.addEventListener("click", function () {
+        processAssetData(bldg.PrefabID);
+      });
+      div.classList.add('link');
+      makeSubTextDiv("", bldgName, div);
       mainDiv.appendChild(div);
-    }
+    })
+  );
+  if (mainDiv.childElementCount > 0) {
+    makeDataDiv(header, mainDiv);
   }
-
-  if (treatmentBonus != 0 || (rangeLow && rangeHigh)) {
-    const div = document.createElement("div");
-    div.classList.add("parent-div-with-subtext");
-    let count = 0;
-
-    if (treatmentBonus != 0) {
-      makeSubTextDiv("Treatment Bonus", treatmentBonus, div);
-      count++;
-    }
-
-    if (rangeLow && rangeHigh) {
-      makeSubTextDiv("Treatment Range", rangeXY(rangeLow, rangeHigh), div);
-      count++;
-    }
-
-    if (count > 0) {
-      div.style.gridTemplateColumns = `repeat(${count}, 1fr)`;
-      mainDiv.appendChild(div);
-    }
-  }
-  {
-    const div = document.createElement("div");
-    div.classList.add("parent-div-with-subtext");
-    let count = 0;
-
-    if (treatDisease && treatInjuries) {
-      makeSubTextDiv("", "Treats diseases and injuries", div);
-      count++;
-    } else if (!treatDisease && treatInjuries) {
-      makeSubTextDiv("", "Treats injuries only", div);
-      count++;
-    } else if (treatDisease && !treatInjuries) {
-      makeSubTextDiv("", "Treats diseases only", div);
-      count++;
-    } else {
-      makeSubTextDiv("", "Does not treat anything", div);
-      count++;
-    }
-
-    if (count > 0) {
-      div.style.gridTemplateColumns = `repeat(${count}, 1fr)`;
-      mainDiv.appendChild(div);
-    }
-  }
-
-  return mainDiv;
 }
 
-function processLeisureProviderComp() {
-  const efficiency = comp_leisureProvider.efficiency;
-  const resource = comp_leisureProvider.resource;
-  const type = comp_leisureProvider.type;
-
-  const mainDiv = document.createElement("div");
-  mainDiv.classList.add("data-box");
-
-  const div = document.createElement("div");
-  div.classList.add("parent-div-with-subtext");
-  let count = 0;
-  if (efficiency != 0) {
-    makeSubTextDiv("Efficiency", efficiency, div);
-    count++;
-  }
-
-  if (resource != 0) {
-    makeSubTextDiv("Resource", resource, div);
-    count++;
-  }
-
-  if (type != 0) {
-    makeSubTextDiv("Leisure Type", enumLeisureType(type), div);
-    count++;
-  }
-
-  div.style.gridTemplateColumns = `repeat(${count}, 1fr)`;
-  mainDiv.appendChild(div);
-
-  return mainDiv;
-}
-
-function processMailAccComp() {
-  const requireCollect = comp_mailAcc.requireCollect;
-  const sendingRate = comp_mailAcc.sendingRate;
-  const receivingRate = comp_mailAcc.receivingRate;
-  const mainDiv = document.createElement("div");
-  mainDiv.classList.add("data-box");
-  {
-    const div = document.createElement("div");
-    div.classList.add("parent-div-with-subtext");
-    let count = 0;
-
-    if (requireCollect) {
-      makeSubTextDiv("", "Requires Collection", div);
-      count++;
-    }
-    if (count > 0) {
-      div.style.gridTemplateColumns = `repeat(${count}, 1fr)`;
-      mainDiv.appendChild(div);
-    }
-  }
-  {
-    const div = document.createElement("div");
-    div.classList.add("parent-div-with-subtext");
-    let count = 0;
-
-    if (sendingRate != 0) {
-      makeSubTextDiv("Sending Rate", sendingRate, div);
-      count++;
-    }
-
-    if (receivingRate != 0) {
-      makeSubTextDiv("Receiving Rate", receivingRate, div);
-      count++;
-    }
-
-    if (count > 0) {
-      div.style.gridTemplateColumns = `repeat(${count}, 1fr)`;
-      mainDiv.appendChild(div);
-    }
-  }
-  return mainDiv;
-}
-
-function processParkComp() {
-  const maintenance = comp_park.maintenance;
-  const homeless = comp_park.homeless;
-
-  const mainDiv = document.createElement("div");
-  mainDiv.classList.add("data-box");
-
-  const div = document.createElement("div");
-  div.classList.add("parent-div-with-subtext");
-  let count = 0;
-  if (maintenance != 0) {
-    makeSubTextDiv("Maintenance Pool", maintenance, div);
-    count++;
-  }
-
-  if (homeless) {
-    makeSubTextDiv("", "Homeless Shelter", div);
-    count++;
-  }
-
-  div.style.gridTemplateColumns = `repeat(${count}, 1fr)`;
-  mainDiv.appendChild(div);
-
-  return mainDiv;
-}
-
-function processPlacableObjectComp() {
-  var cost = comp_placableObject.cost;
-  const xp = comp_placableObject.xp;
-
-  const mainDiv = document.createElement("div");
-  mainDiv.classList.add("data-box");
-
-  const div = document.createElement("div");
-  div.classList.add("parent-div-with-subtext");
-  let count = 0;
-  if (cost == 0) {
-    cost = "Free"
-  }
-  makeSubTextDiv("Cost", cost, div);
-  count++;
-
-  if (xp != 0) {
-    makeSubTextDiv("XP", xp, div);
-    count++;
-  }
-
-  div.style.gridTemplateColumns = `repeat(${count}, 1fr)`;
-  mainDiv.appendChild(div);
-
-  return mainDiv;
-}
-
-function processPoliceStationComp() {
-  const patrol = comp_police.patrol;
-  const helicopter = comp_police.helicopter;
-  const jail = comp_police.jail;
-  const purpose = comp_police.purpose;
-
-  const mainDiv = document.createElement("div");
-  mainDiv.classList.add("data-box");
-
-  const div = document.createElement("div");
-  div.classList.add("parent-div-with-subtext");
-  let count = 0;
-  if (patrol != 0) {
-    makeSubTextDiv(pluralize("Police Car",parseInt(patrol)), patrol, div);
-    count++;
-  }
-  
-  if (helicopter != 0) {
-    makeSubTextDiv(pluralize("Helicopter",parseInt(helicopter)), helicopter, div);
-    count++;
-  }
-  
-  if (jail != 0) {
-    makeSubTextDiv("Jail Capacity", jail, div);
-    count++;
-  }
-  
-  if (purpose!= 0) {
-    makeSubTextDiv("Purpose", getPolicePurposes(purpose).join('\n \n'), div);
-    count++;
-  }
-
-  div.style.gridTemplateColumns = `repeat(${count}, 1fr)`;
-  mainDiv.appendChild(div);
-
-  return mainDiv;
-}
-
-function processPollutionComp() {
-  const ground = comp_pollution.ground;
-  const air = comp_pollution.air;
-  const noise = comp_pollution.noise;
-  const scale = comp_pollution.scale;
-
-  const mainDiv = document.createElement("div");
-  mainDiv.classList.add("data-box");
-
-  if (ground != 0 || air != 0 || noise != 0) {
-    const div = document.createElement("div");
-    div.classList.add("parent-div-with-subtext");
-    let count = 0;
-    if (ground != 0) {
-      makeSubTextDiv("Ground", ground, div);
-      count++;
-    }
-
-    if (air != 0) {
-      makeSubTextDiv("Air", air, div);
-      count++;
-    }
-
-    if (noise != 0) {
-      makeSubTextDiv("Noise", noise, div);
-      count++;
-    }
-
-    div.style.gridTemplateColumns = `repeat(${count}, 1fr)`;
-    mainDiv.appendChild(div);
-  }
-
-  if (scale) {
-    const div = document.createElement("div");
-    div.classList.add("parent-div-with-subtext");
-    makeSubTextDiv("", "Scales with Usage", div);
-    div.style.gridTemplateColumns = `repeat(1, 1fr)`;
-    mainDiv.appendChild(div);
-  }
-
-  return mainDiv;
-}
-
-function processPrisonComp() {
-  const van = comp_prison.van;
-  const prisoner = comp_prison.prisoner;
-  const wellbeing = comp_prison.wellbeing;
-  const health = comp_prison.health;
-
-  const mainDiv = document.createElement("div");
-  mainDiv.classList.add("data-box");
-
-  const div = document.createElement("div");
-  div.classList.add("parent-div-with-subtext");
-  let count = 0;
-  if (van != 0) {
-    makeSubTextDiv(pluralize("Van",parseInt(van)), van, div);
-    count++;
-  }
-  
-  if (prisoner != 0) {
-    makeSubTextDiv("Prisoner Capacity", prisoner, div);
-    count++;
-  }
-  
-  if (wellbeing != 0) {
-    makeSubTextDiv("Wellbeing Bonus", wellbeing, div);
-    count++;
-  }
-  
-  if (health != 0) {
-    makeSubTextDiv("Health Bonus", health, div);
-    count++;
-  }
-
-  div.style.gridTemplateColumns = `repeat(${count}, 1fr)`;
-  mainDiv.appendChild(div);
-
-  return mainDiv;
-}
-
-function processProduction() {
-  const power = production.power;
-  const garbageUnit = production.garbageUnit;
-  const garbageCapacity = production.garbageCapacity;
-  const groundWaterProduction = production.groundWaterProduction;
-  const groundWaterCapacity = production.groundWaterCapacity;
-  const solarProduction = production.solarProduction;
-  const windSpeed = production.windSpeed;
-  const windProduction = production.windProduction;
-
-  const mainDiv = document.createElement("div");
-  mainDiv.classList.add("data-box");
-
-  const div = document.createElement("div");
-  div.classList.add("parent-div-with-subtext");
-  let count = 0;
-  if (power != 0) {
-    makeSubTextDiv("Electricity", power, div);
-    count++;
-  }
-  
-  if (garbageUnit != 0 && garbageUnit != undefined) {
-    makeSubTextDiv("Electricity per Garbage Unit", garbageUnit, div);
-    count++;
-  }
-  
-  if (garbageCapacity != 0 && garbageCapacity != undefined) {
-    makeSubTextDiv("Garbage Capacity", garbageCapacity, div);
-    count++;
-  }
-  
-  if (groundWaterProduction != 0 && groundWaterProduction != undefined) {
-    makeSubTextDiv("Electricity", groundWaterProduction, div);
-    count++;
-  }
-  
-  if (groundWaterCapacity != 0 && groundWaterCapacity != undefined) {
-    makeSubTextDiv("Maximum Ground Water", groundWaterCapacity, div);
-    count++;
-  }
-  
-  if (windSpeed != 0 && windSpeed != undefined) {
-    makeSubTextDiv("Wind Speed", windSpeed, div);
-    count++;
-  }
-  
-  if (windProduction != 0 && windProduction != undefined) {
-    makeSubTextDiv("Electricity", windProduction, div);
-    count++;
-  }
-  
-  if (solarProduction != 0 && solarProduction != undefined) {
-    makeSubTextDiv("Electricity", solarProduction, div);
-    count++;
-  }
-
-  div.style.gridTemplateColumns = `repeat(${count}, 1fr)`;
-  mainDiv.appendChild(div);
-
-  return mainDiv;
-}
-
-function processPostComp() {
-  const van = comp_post.van;
-  const truck = comp_post.truck;
-  const storage = comp_post.storage;
-  const box = comp_post.box;
-  const sort = comp_post.sort;
-
-  const mainDiv = document.createElement("div");
-  mainDiv.classList.add("data-box");
-
-  const div = document.createElement("div");
-  div.classList.add("parent-div-with-subtext");
-  let count = 0;
-  if (van != 0) {
-    makeSubTextDiv("Post Van", van, div);
-    count++;
-  }
-
-  if (truck != 0) {
-    makeSubTextDiv("Post Truck", truck, div);
-    count++;
-  }
-
-  if (storage != 0) {
-    makeSubTextDiv("Mail Storage Capacity", storage, div);
-    count++;
-  }
-
-  if (box != 0) {
-    makeSubTextDiv("Mail Box Capacity", box, div);
-    count++;
-  }
-
-  if (sort != 0) {
-    makeSubTextDiv("Sorting Rate", sort, div);
-    count++;
-  }
-
-  div.style.gridTemplateColumns = `repeat(${count}, 1fr)`;
-  mainDiv.appendChild(div);
-
-  return mainDiv;
-}
-
-function processSchoolComp() {
-  const capacity = comp_school.capacity;
-  const level = comp_school.level;
-  const gradModifier = comp_school.gradModifier;
-  const wellbeing = comp_school.wellbeing;
-  const health = comp_school.health;
-
-  const mainDiv = document.createElement("div");
-  mainDiv.classList.add("data-box");
-
-  const div = document.createElement("div");
-  div.classList.add("parent-div-with-subtext");
-  let count = 0;
-  if (capacity != 0) {
-    makeSubTextDiv("Capacity", capacity, div);
-    count++;
-  }
-
-  if (level != 0) {
-    makeSubTextDiv("School Type", enumSchoolType(level), div);
-    count++;
-  }
-
-  if (gradModifier != 0) {
-    makeSubTextDiv("Graduation Modifier", gradModifier, div);
-    count++;
-  }
-
-  if (wellbeing != 0) {
-    makeSubTextDiv("Student Wellbeing", wellbeing, div);
-    count++;
-  }
-
-  if (health != 0) {
-    makeSubTextDiv("Student Health", health, div);
-    count++;
-  }
-
-  div.style.gridTemplateColumns = `repeat(${count}, 1fr)`;
-  mainDiv.appendChild(div);
-
-  return mainDiv;
-}
-
-function processServiceCoverageComp() {
-  const range = comp_serviceCoverage.range;
-  const capacity = comp_serviceCoverage.capacity;
-  const magnitude = comp_serviceCoverage.magnitude;
-
-  const mainDiv = document.createElement("div");
-  mainDiv.classList.add("data-box");
-
-  const div = document.createElement("div");
-  div.classList.add("parent-div-with-subtext");
-  let count = 0;
-  if (range != 0) {
-    makeSubTextDiv("Range", range, div);
-    count++;
-  }
-
-  if (capacity != 0) {
-    makeSubTextDiv("Capacity", capacity, div);
-    count++;
-  }
-
-  if (magnitude != 0) {
-    makeSubTextDiv("Magnitude", magnitude, div);
-    count++;
-  }
-
-  div.style.gridTemplateColumns = `repeat(${count}, 1fr)`;
-  mainDiv.appendChild(div);
-
-  return mainDiv;
-}
-
-function processServiceConsumptionComp() {
-  const upkeep = comp_serviceConsumption.upkeep;
-  const electricity = comp_serviceConsumption.electricity;
-  const water = comp_serviceConsumption.water;
-  const garbage = comp_serviceConsumption.garbage;
-  const telecom = comp_serviceConsumption.telecom;
-
-  const mainDiv = document.createElement("div");
-  mainDiv.classList.add("data-box");
-
-  const div = document.createElement("div");
-  div.classList.add("parent-div-with-subtext");
-  let count = 0;
-  if (upkeep != 0) {
-    makeSubTextDiv("Upkeep", upkeep, div);
-    count++;
-  }
-
-  if (electricity != 0) {
-    makeSubTextDiv("Electricity", electricity, div);
-    count++;
-  }
-
-  if (water != 0) {
-    makeSubTextDiv("Water", water, div);
-    count++;
-  }
-
-  if (garbage != 0) {
-    makeSubTextDiv("Garbage", garbage, div);
-    count++;
-  }
-
-  if (telecom != 0) {
-    makeSubTextDiv("Telecom", telecom, div);
-    count++;
-  }
-
-  div.style.gridTemplateColumns = `repeat(${count}, 1fr)`;
-  mainDiv.appendChild(div);
-
-  return mainDiv;
-}
-
-function processShorelineObjectComp() {
-  const offset = comp_shoreline.offset;
-  const dryland = comp_shoreline.dryland;
-
-  const mainDiv = document.createElement("div");
-  mainDiv.classList.add("data-box");
-
-  const div = document.createElement("div");
-  div.classList.add("parent-div-with-subtext");
-  let count = 0;
-  if (offset != 0) {
-    makeSubTextDiv("Shoreline Offset", offset, div);
-    count++;
-  }
-  
-  if (dryland) {
-    makeSubTextDiv("", "Dry Land Allowed", div);
-    count++;
-  }
-
-  div.style.gridTemplateColumns = `repeat(${count}, 1fr)`;
-  mainDiv.appendChild(div);
-
-  return mainDiv;
-}
-
-function processTelecomComp() {
-  const range = comp_telecom.range;
-  const capacity = comp_telecom.capacity;
-  const satellite = comp_telecom.satellite;
-  const mainDiv = document.createElement("div");
-  mainDiv.classList.add("data-box");
-
-  const div = document.createElement("div");
-  div.classList.add("parent-div-with-subtext");
-  let count = 0;
-
-  if (range != 0) {
-    makeSubTextDiv("Range", range, div);
-    count++;
-  }
-
-  if (capacity != 0) {
-    makeSubTextDiv("Network Capacity", capacity, div);
-    count++;
-  }
-
-  if (satellite) {
-    makeSubTextDiv("", "Unobstructed by Terrain", div);
-    count++;
-  }
-
-  div.style.gridTemplateColumns = `repeat(${count}, 1fr)`;
-  mainDiv.appendChild(div);
-
-  return mainDiv;
-}
-
-function processWaterPumpComp() {
-  const capacity = comp_waterPump.capacity;
-  const purification = comp_waterPump.purification;
-  const type = comp_waterPump.type;
-  const mainDiv = document.createElement("div");
-  mainDiv.classList.add("data-box");
-
-  const div = document.createElement("div");
-  div.classList.add("parent-div-with-subtext");
-  let count = 0;
-
-  if (capacity != 0) {
-    makeSubTextDiv("Capacity", capacity, div);
-    count++;
-  }
-
-  if (purification != 0) {
-    makeSubTextDiv("Purification", purification, div);
-    count++;
-  }
-
-  if (type != 0) {
-    makeSubTextDiv("Type", enumAllowedWaterTypes(type), div);
-    count++;
-  }
-
-  div.style.gridTemplateColumns = `repeat(${count}, 1fr)`;
-  mainDiv.appendChild(div);
-
-  return mainDiv;
-}
-
-function processWorkplaceComp() {
-  const workplaces = comp_workplace.workplaces;
-  const complexity = comp_workplace.complexity;
-  const eveningProb = comp_workplace.eveningProb;
-  const nightProb = comp_workplace.nightProb;
-
-  const mainDiv = document.createElement("div");
-  mainDiv.classList.add("data-box");
-
-  if (workplaces != 0 || complexity != 0) {
-    const div = document.createElement("div");
-    div.classList.add("parent-div-with-subtext");
-    let count = 0;
-
-    if (workplaces != 0) {
-      makeSubTextDiv("Workplaces", workplaces, div);
-      count++;
-    }
-
-    if (complexity != 0) {
-      makeSubTextDiv("Complexity", enumWorkplaceComplexity(complexity), div);
-      count++;
-    }
-
-    div.style.gridTemplateColumns = `repeat(${count}, 1fr)`;
-    mainDiv.appendChild(div);
-  }
-
-  const div = document.createElement("div");
-  div.classList.add("parent-div-with-subtext");
-
-  makeSubTextDiv("Evening Shift Probability", floatToPercent(eveningProb), div);
-  makeSubTextDiv("Night Shift Probability", floatToPercent(nightProb), div);
-
-  div.style.gridTemplateColumns = `repeat(2, 1fr)`;
-  mainDiv.appendChild(div);
-
-  return mainDiv;
-}
-
-function processZonePollutionComp() {
-  const ground = comp_zonePollution.ground;
-  const air = comp_zonePollution.air;
-  const noise = comp_zonePollution.noise;
-
-  const mainDiv = document.createElement("div");
-  mainDiv.classList.add("data-box");
-
-  const div = document.createElement("div");
-  div.classList.add("parent-div-with-subtext");
-  let count = 0;
-  if (ground != 0) {
-    makeSubTextDiv("Ground", ground, div);
-    count++;
-  }
-
-  if (air != 0) {
-    makeSubTextDiv("Air", air, div);
-    count++;
-  }
-
-  if (noise != 0) {
-    makeSubTextDiv("Noise", noise, div);
-    count++;
-  }
-
-  div.style.gridTemplateColumns = `repeat(${count}, 1fr)`;
-  mainDiv.appendChild(div);
-
-  return mainDiv;
-}
-
-function processZonePropertiesComp() {
-  const scaleResi = comp_zoneProperties.scaleResi;
-  const resiProp = comp_zoneProperties.resiProp;
-  const spaceMulti = comp_zoneProperties.spaceMulti;
-  const fireHazardModifier = comp_zoneProperties.fireHazardModifier;
-
-  const mainDiv = document.createElement("div");
-  mainDiv.classList.add("data-box");
-
-  const div = document.createElement("div");
-  div.classList.add("parent-div-with-subtext");
-  let count = 0;
-  if (scaleResi) {
-    makeSubTextDiv("", "Scale Residentials", div);
-    count++;
-  }
-
-  if (resiProp != 0) {
-    makeSubTextDiv("Residential Properties", resiProp, div);
-    count++;
-  }
-
-  if (spaceMulti != 0) {
-    makeSubTextDiv("Space Multiplier", spaceMulti, div);
-    count++;
-  }
-
-  if (fireHazardModifier != 0) {
-    makeSubTextDiv("Fire Hazard Modifier", fireHazardModifier, div);
-    count++;
-  }
-
-  div.style.gridTemplateColumns = `repeat(${count}, 1fr)`;
-  mainDiv.appendChild(div);
-
-  return mainDiv;
-}
-
-function processZoneServiceConsumptionComp() {
-  const upkeep = comp_zoneServiceConsumption.upkeep;
-  const electricity = comp_zoneServiceConsumption.electricity;
-  const water = comp_zoneServiceConsumption.water;
-  const garbage = comp_zoneServiceConsumption.garbage;
-  const telecom = comp_zoneServiceConsumption.telecom;
-
-  const mainDiv = document.createElement("div");
-  mainDiv.classList.add("data-box");
-
-  const div = document.createElement("div");
-  div.classList.add("parent-div-with-subtext");
-  let count = 0;
-  if (upkeep != 0) {
-    makeSubTextDiv("Upkeep", upkeep, div);
-    count++;
-  }
-
-  if (electricity != 0) {
-    makeSubTextDiv("Electricity", electricity, div);
-    count++;
-  }
-
-  if (water != 0) {
-    makeSubTextDiv("Water", water, div);
-    count++;
-  }
-
-  if (garbage != 0) {
-    makeSubTextDiv("Garbage", garbage, div);
-    count++;
-  }
-
-  if (telecom != 0) {
-    makeSubTextDiv("Telecom", telecom, div);
-    count++;
-  }
-
-  div.style.gridTemplateColumns = `repeat(${count}, 1fr)`;
-  mainDiv.appendChild(div);
-
-  return mainDiv;
+function reprocessKeyName(key) {
+  return key.replaceAll("_", " ");
 }
 
 function createResourceUseTable(resourceData, version = 1) {
   const mainDiv = document.createElement("div");
   mainDiv.classList.add("data-box");
   mainDiv.id = "resource-use-table";
-  resourceData.forEach((resource) => {
+  resourceData.forEach(async (resource) => {
     // const div = document.createElement("div");
     const divIcon = document.createElement("div");
     const divRes = document.createElement("div");
@@ -1674,8 +752,8 @@ function createResourceUseTable(resourceData, version = 1) {
       divRes.innerHTML = "Anything";
       divIcon.innerHTML = `<img class="resource-icon" src="${imageBasePath}/cities2/Media/Game/Icons/ZoneIndustrialWarehouses.svg"></img>`;
     } else {
-      divRes.innerHTML = enumResourceInEditor(resource[0]);
-      divIcon.innerHTML = `<img class="resource-icon" src="${imageBasePath}/cities2/Media/Game/Resources/${divRes.innerHTML}.svg"></img>`;
+      divRes.innerHTML = await getLangData(`Resources.TITLE[${resource[0]}]`);
+      divIcon.innerHTML = `<img class="resource-icon" src="${imageBasePath}/cities2/Media/Game/Resources/${resource[0]}.svg"></img>`;
     }
 
     if (resource[0] === "Any") {
@@ -1715,7 +793,7 @@ async function createResourceAllowTable(resourceData) {
   mainDiv.id = "resource-allow-table";
   for (const resource of resourceData) {
     const prefab = enumResourceInEditor(resource);
-    const name = await getLocaleName(`ResourcePrefab:Resource${prefab}`);
+    const name = await getTitleResource(prefab);
     var icon = `<img class="resource-icon" src="${imageBasePath}/cities2/Media/Game/Resources/${prefab}.svg"></img>`;
 
     const resourceDiv = document.createElement("div");
@@ -1769,70 +847,8 @@ function rangeXY(x, y, units = null, preUnit = false) {
   return `${x}${units} to ${y}${units}`;
 }
 
-function enumResourceInEditor(id) {
-  data = [
-    "NoResource",
-    "Money",
-    "Grain",
-    "ConvenienceFood",
-    "Food",
-    "Vegetables",
-    "Meals",
-    "Wood",
-    "Timber",
-    "Paper",
-    "Furniture",
-    "Vehicles",
-    "Lodging",
-    "UnsortedMail",
-    "LocalMail",
-    "OutgoingMail",
-    "Oil",
-    "Petrochemicals",
-    "Ore",
-    "Plastics",
-    "Metals",
-    "Electronics",
-    "Software",
-    "Coal",
-    "Stone",
-    "Livestock",
-    "Cotton",
-    "Steel",
-    "Minerals",
-    "Concrete",
-    "Machinery",
-    "Chemicals",
-    "Pharmaceuticals",
-    "Beverages",
-    "Textiles",
-    "Telecom",
-    "Financial",
-    "Media",
-    "Entertainment",
-    "Recreation",
-    "Garbage",
-    "Count",
-  ];
-  return data[id];
-}
-
-function enumBuildingAccessType(id) {
-  data = [
-    "Front only",
-    "Left Corner only",
-    "Right Corner only",
-    "Left And Right Corners only",
-    "Left And Back Corners only",
-    "Right And Back Corners only",
-    "Front And Back only",
-    "Everywhere",
-  ];
-  return data[id];
-}
-
 function enumLeisureType(id) {
-  data = [
+  d = [
     "Meals",
     "Entertainment",
     "Commercials",
@@ -1844,40 +860,27 @@ function enumLeisureType(id) {
     "Relaxations",
     "Sightseeing",
   ];
-  return data[id];
+  return d[id];
 }
 
 function enumAllowedWaterTypes(id) {
-  data = ["None", "Groundwater", "Surface Water"];
-  return data[id];
+  d = ["None", "Groundwater", "Surface Water"];
+  return d[id];
 }
 
 function enumWorkplaceComplexity(id) {
-  data = ["Manual", "Simple", "Complex", "Hitech"];
-  return data[id];
+  d = ["Manual", "Simple", "Complex", "Hitech"];
+  return d[id];
 }
 
 function enumSchoolType(id) {
-  data = [
+  d = [
     "Elementary",
     "High School",
     "College",
     "University",
   ];
-  return data[id];
-}
-
-function enumZoneType(id, isOffice = false) {
-  data = [
-    "None",
-    "Residential",
-    "Commercial",
-    "Industrial",
-  ];
-  if (id == 3 && isOffice) {
-    return "Office";
-  }
-  return data[id];
+  return d[id];
 }
 
 function getPolicePurposes(value) {
@@ -1907,6 +910,10 @@ function removeSuffix(str, suffix) {
 function sanitizeValueText(valueText) {
   if ((typeof valueText === "number") || (typeof valueText === "string" && /^\d+$/.test(valueText))) {
     return Number(valueText).toLocaleString();
+  }
+  if (valueText.startsWith("[") && valueText.endsWith("]")) {
+    valueText = removePrefix(valueText, "[");
+    valueText = removeSuffix(valueText, "]");
   }
   return valueText;
 }
@@ -1960,19 +967,69 @@ function isEmptyArray(array) {
   return array.length === 0;
 }
 
-async function getLocaleName(prefab) {
-  try {
-    const result = await getAssetDataLocally(prefab);
-    return result.details.Lang_Title;
-  } catch (error) {
-    console.error("Failed to get data:", error.message);
-    return "⁈";
-  }
+async function distributeDivsToColumnsByHeight() {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const container = document.querySelector('.asset-details-pane-body-bottom-boxes');
+      if (!container) throw new Error("Container not found");
+
+      const columns = [document.createElement('div'), document.createElement('div')];
+
+      columns.forEach(col => {
+        col.classList.add('column');
+        container.appendChild(col);
+      });
+
+      void container.offsetHeight;
+
+      const divs = Array.from(container.children).filter(div => !div.classList.contains('column'));
+
+      let totalHeights = 0;
+      function calcTotalHeight(divs) {
+        divs.forEach(div => {
+          totalHeights += div.clientHeight;
+        });
+      }
+
+      async function waitForHeight(divs) {
+        while (totalHeights === 0) {
+          calcTotalHeight(divs);
+          await new Promise(resolve => setTimeout(resolve, 100));
+        }
+      }
+
+      await waitForHeight(divs);
+
+      let halfHeight = totalHeights / 2;
+      let newHeight = 0;
+      divs.forEach(div => {
+        let shorterColumn;
+        if (newHeight < halfHeight) {
+          shorterColumn = columns[0];
+        } else {
+          shorterColumn = columns[1];
+        }
+        newHeight += div.clientHeight;
+        shorterColumn.appendChild(div);
+        div.style.opacity = 1;
+      });
+      columns[0].style.opacity = 1;
+      columns[1].style.opacity = 1;
+
+      resolve();
+    } catch (error) {
+      reject(error);
+    }
+  });
 }
 
-function makeColor(rgbaText) {
-  // const [r, g, b, a] = rgbaText
-  const cssRgba = `rgba(${Math.round(rgbaText[0] * 255)}, ${Math.round(rgbaText[1] * 255)}, ${Math.round(rgbaText[2] * 255)}, ${rgbaText[3]})`;
+function makeColor(rgba) {
+  const match = rgba.match(/RGBA\(([\d.]+), ([\d.]+), ([\d.]+), ([\d.]+)\)/i);
+  const [_, r, g, b, a] = match.map(Number);
+  const red = Math.round(r * 255);
+  const green = Math.round(g * 255);
+  const blue = Math.round(b * 255);
+  const cssRgba = `rgba(${red}, ${green}, ${blue}, ${a})`;
   const colorBox = document.createElement("div");
   colorBox.classList.add("color-box");
   colorBox.style.backgroundColor = cssRgba;
@@ -1980,3 +1037,4 @@ function makeColor(rgbaText) {
 }
 
 window.processAssetPanelUIData = processAssetPanelUIData;
+window.distributeDivsToColumnsByHeight = distributeDivsToColumnsByHeight;

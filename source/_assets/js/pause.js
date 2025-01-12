@@ -6,6 +6,7 @@ const pauseIcon = document.getElementById('pause-icon')
 if (pauseIcon) {
     pauseIcon.addEventListener('click', enablePauseMenu);
 }
+let isLangPickerOpen = false;
 
 const pauseButton1 = document.getElementById('pause-button-1');
 if (pauseButton1) {
@@ -64,6 +65,41 @@ document.querySelectorAll('.top-game-icon-div.unused').forEach((container) => {
         tooltipRight.style.display = "none";
     });
 });
+
+const langIcon = document.getElementById("language-top-icon");
+langIcon.addEventListener('click', () => {
+    toggleLangPicker();
+})
+
+function toggleLangPicker() {
+    const langList = document.querySelector(".lang-picker");
+    if (isLangPickerOpen && langList) {
+        langList.classList.remove("active");
+        isLangPickerOpen = false;
+    } else {
+        if (langList) {
+            langList.classList.add("active");
+            isLangPickerOpen = true;
+        }
+    }
+}
+
+buttons = document.querySelectorAll(".lang-picker-button");
+buttons.forEach((button) => {
+    if (language == button.dataset.val) {
+        button.classList.add("active");
+    }
+    button.addEventListener('click', () => {
+        buttons.forEach(buttonX => {
+            buttonX.classList.remove("active");
+        });
+        language = button.dataset.val;
+        button.classList.add("active");
+        processAssetGroup();
+        toggleLangPicker();
+        localStorage.setItem("language", JSON.stringify(language));
+  })
+})
 
 document.querySelectorAll(".option-back-icon").forEach((button) => {
     button.addEventListener('click', () => {

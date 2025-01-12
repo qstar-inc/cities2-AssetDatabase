@@ -11,6 +11,10 @@
   z-index: 9998;
 }
 
+#main-menu {
+  z-index: 9995 !important;
+}
+
 .logo-container {
   animation: logoPopUp 2.9s ease-in-out 0.1s forwards;
   opacity: 0;

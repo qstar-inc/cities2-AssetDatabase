@@ -9,7 +9,7 @@
                     <div class="mainmenu-start-icon"></div>
                     <span class="mainmenu-start-text">Resume</span>
                 </a>
-                <button class="mainmenu-start-button round-border" onclick="clearCacheAndRedirect()">
+                <button class="mainmenu-start-button round-border" onclick="deleteIndexedDB()">
                     <div class="mainmenu-start-icon"></div>
                     <span class="mainmenu-start-text">Reload Database</span>
                 </button>

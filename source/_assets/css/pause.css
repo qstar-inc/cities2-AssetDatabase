@@ -84,3 +84,31 @@
   height: 2vw;
   display: flex;
 }
+
+.lang-picker-button {
+  text-align: center;
+  background-color: #4bc3f1;
+  border-radius: 0.6vh;
+}
+
+.lang-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+  color: black;
+  margin-bottom: 1vh;
+  width: 22vh;
+  height: 0;
+  overflow: hidden;
+  padding: 0;
+  transition: all 0.3s linear;
+}
+
+.lang-picker.active {
+  height: unset;
+  padding: 0.5vh;
+}
+
+.lang-picker-button.active {
+  background-color: coral;
+}

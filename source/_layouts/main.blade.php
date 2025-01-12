@@ -47,14 +47,8 @@
 
 <body class="text-gray-900 font-sans antialiased">
     @include('_layouts.partials.splash')
-    <div id="window-size-error" class="display-none">
-        <div class="window-size-message">
-            <p>Unsupported Window Size</p>
-            <p id="inv1">Aspect Ratio should be between 2:1 and 1:2.</p>
-            <p id="inv2">Width should be at least 1000px.</p>
-            <p id="inv3">Height should be at least 500px.</p>
-        </div>
-    </div>
+    @include('_layouts.partials.windowSizeError')
+    @include('_layouts.partials.dbLoading')
     <div id="main-content" style="display:none">
         @yield('body')
     </div>

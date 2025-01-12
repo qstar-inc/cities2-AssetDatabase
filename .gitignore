@@ -11,3 +11,4 @@ npm-debug.log
 /build_production/
 /source/assets/build/
 # /source/assets/images/cities2/Media
+source/_assets/js/game_data_process.js.old

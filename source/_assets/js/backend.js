@@ -1,13 +1,88 @@
-async function fetchAssetGroupData() {
+let batchSize = 5000;
+let currentOffset = 0;
+let allDataLoaded = false;
+let dataLoaded = 0;
+
+let lastRequestTime = 0;
+const RATE_LIMIT_DELAY = 1000;
+
+function delayRequest() {
+  return new Promise(resolve => {
+    const now = Date.now();
+    const timeSinceLastRequest = now - lastRequestTime;
+
+    const delay = timeSinceLastRequest < RATE_LIMIT_DELAY
+      ? RATE_LIMIT_DELAY - timeSinceLastRequest
+      : 0;
+
+    setTimeout(() => {
+      lastRequestTime = Date.now();
+      resolve();
+    }, delay);
+  });
+}
+
+function fetchAssetDataAll() {
+  return new Promise(async (resolve, reject) => {
+    if (allDataLoaded) { return resolve(); }
+
+    delayRequest()
+      .then(() => {
+        fetch(atob(u) + "cities2_prefab_data", {
+          method: "POST",
+          headers: {
+            "Accept-Encoding": "gzip",
+            "Content-Type": "application/json",
+            "Authorization": auth,
+          },
+          body: JSON.stringify({
+            reqType: "asset-data-all",
+            offset: currentOffset,
+            limit: batchSize,
+          }),
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Network response was not ok " + response.statusText);
+            }
+            return response.json();
+          })
+          .then(async (data) => {
+            dataLoaded += data.data.length;
+            if (data.data.length === 0) {
+              allDataLoaded = true;
+              console.log(`All ${dataLoaded} asset data loaded.`);
+              await getAssetData();
+              return resolve();
+            }
+            await addAssetDataAll(data.data)
+            currentOffset += batchSize;
+            console.log(`Processed ${currentOffset}`)
+            return fetchAssetDataAll();
+          })
+          .catch((error) => {
+            console.error("Error loading asset data batch:", error);
+            const dbLoading = document.getElementById('db-loading');
+            const dbLoadingText = document.getElementById('db-loading-text');
+            dbLoadingText.innerText = "Server not accessible. Try again later."
+            dbLoading.classList.remove("display-none");
+            reject(error);
+          });
+      });
+  });
+}
+
+function fetchLangDataAll(lang = language) {
   return new Promise((resolve, reject) => {
-    fetch(atob(u) + "cities2_get_data", {
+    fetch(atob(u) + "cities2_lang_data", {
       method: "POST",
       headers: {
+        "Accept-Encoding": "gzip",
         "Content-Type": "application/json",
+        "Authorization": auth,
       },
       body: JSON.stringify({
-        Authorization: auth,
-        reqType: "asset-group-all",
+        langID: lang,
       }),
     })
       .then((response) => {
@@ -17,207 +92,45 @@ async function fetchAssetGroupData() {
         return response.json();
       })
       .then((data) => {
-        addAssetGroupData(data.data);
+        addLangDataAll(data.data);
         resolve();
       })
       .catch((error) => {
-        console.error(error);
-        reject();
+        console.error("Error loading lang data batch:", error);
+        const dbLoading = document.getElementById('db-loading');
+        const dbLoadingText = document.getElementById('db-loading-text');
+        dbLoadingText.innerText = "Server not accessible. Try again later."
+        dbLoading.classList.remove("display-none");
+        reject(error);
       });
   });
 }
 
-// function fetchAssetTabData(name) {
-//   fetch(atob(u) + "cities2_get_data", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify({
-//       Authorization: auth,
-//       reqType: "asset-tab-data",
-//       name: name,
-//     }),
-//   })
-//     .then((response) => {
-//       if (!response.ok) {
-//         throw new Error("Network response was not ok " + response.statusText);
-//       }
-//       return response.json();
-//     })
-//     .then((data) => {
-//       addAssetTabData(name, data.data);
-//     });
-// }
-
-function fetchAssetTabDataAll() {
-  fetch(atob(u) + "cities2_get_data", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      Authorization: auth,
-      reqType: "asset-tab-data-all",
-    }),
-  })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok " + response.statusText);
-      }
-      return response.json();
+function fetchTimeTrack() {
+  return new Promise(async (resolve, reject) => {
+    fetch(atob(u) + "cities2_tracker", {
+      method: "POST",
+      headers: {
+        "Accept-Encoding": "gzip",
+        "Authorization": auth,
+      },
     })
-    .then((data) => {
-      const processedData = data.data.map((element) => ({
-        groupName: element.groupName,
-        tabData: element.tabData.map((asset) => ({
-          id: `${element.groupName}___${asset.name}`,
-          name: element.groupName,
-          tab: asset.name,
-          icon: asset.icon,
-          priority: asset.priority,
-          langTitle: asset.LangTitle,
-          langDescription: asset.LangDescription,
-        })),
-      }));
-
-      addAssetTabData(processedData);
-    });
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok " + response.statusText);
+        }
+        return response.json();
+      })
+      .then(async (data) => {
+        resolve(data[0].updated_at);
+      })
+      .catch((error) => {
+        console.error("Error fetching time track:", error);
+        reject(error);
+      });
+  });
 }
 
-function fetchAssetPanelDataAll() {
-  fetch(atob(u) + "cities2_get_data", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      Authorization: auth,
-      reqType: "asset-panel-data-all",
-    }),
-  })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok " + response.statusText);
-      }
-      return response.json();
-    })
-    .then((data) => {
-      const processedData = data.data.map((element) => ({
-        tabName: element.tabName,
-        panelData: element.panelData.map((asset) => {
-          const uiObject = asset.UIObject;
-          const matches = uiObject.match(/\[(.*?)\]/);
-          const uiVal =
-            matches && matches[1]
-              ? matches[1].split(",").map((value) => value.trim())
-              : [];
-          return {
-            id: `${element.tabName}___${asset.Name}`,
-            tab: element.tabName,
-            name: asset.Name,
-            icon: uiVal[2],
-            lang_name: asset.lang_name,
-            lang_desc: asset.lang_desc,
-            priority: uiVal[1],
-            prefab: asset.PrefabID,
-          };
-        }),
-      }));
-      addAssetPanelData(processedData);
-    });
-}
-
-// function fetchAssetPanelData(name) {
-//   fetch(atob(u) + "cities2_get_data", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify({
-//       Authorization: auth,
-//       reqType: "asset-panel-data",
-//       name: name.split("___")[1],
-//     }),
-//   })
-//     .then((response) => {
-//       if (!response.ok) {
-//         throw new Error("Network response was not ok " + response.statusText);
-//       }
-//       return response.json();
-//     })
-//     .then((data) => {
-//       addAssetPanelData(name, data.data);
-//     });
-// }
-
-// function fetchAssetData(prefab) {
-//   fetch(atob(u) + "cities2_get_data", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify({
-//       Authorization: auth,
-//       reqType: "asset-data",
-//       prefab: prefab,
-//     }),
-//   })
-//     .then((response) => {
-//       if (!response.ok) {
-//         throw new Error("Network response was not ok " + response.statusText);
-//       }
-//       return response.json();
-//     })
-//     .then((data) => {
-//       addAssetData(prefab, data.data);
-//     });
-// }
-
-let batchSize = 10000;
-let currentOffset = 0;
-let allDataLoaded = false;
-let dataLoaded = 0;
-function fetchAssetDataAll() {
-  if (allDataLoaded) return;
-  fetch(atob(u) + "cities2_get_data", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      Authorization: auth,
-      reqType: "asset-data-all",
-      offset: currentOffset,
-      limit: batchSize,
-    }),
-  })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok " + response.statusText);
-      }
-      return response.json();
-    })
-    .then((data) => {
-      dataLoaded += data.data.length;
-      if (data.data.length === 0) {
-        allDataLoaded = true;
-        console.log(`All ${dataLoaded} asset data loaded.`);
-        return;
-      }
-      addAssetDataAll(data.data);
-      currentOffset += batchSize;
-      fetchAssetDataAll();
-    })
-    // .catch((error) => {
-    //   console.error("Error loading asset data batch:", error);
-    // });
-}
-
-window.fetchAssetGroupData = fetchAssetGroupData;
-// window.fetchAssetTabData = fetchAssetTabData;
-window.fetchAssetTabDataAll = fetchAssetTabDataAll;
-// window.fetchAssetPanelData = fetchAssetPanelData;
-window.fetchAssetPanelDataAll = fetchAssetPanelDataAll;
-// window.fetchAssetData = fetchAssetData;
 window.fetchAssetDataAll = fetchAssetDataAll;
+window.fetchLangDataAll = fetchLangDataAll;
+window.fetchTimeTrack = fetchTimeTrack;
