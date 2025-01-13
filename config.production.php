@@ -1,6 +1,6 @@
 <?php
 
-$baseUrl = 'https://qstar-inc.github.io/cities2-AssetDatabase';
+$baseUrl = 'https://qstar-inc.github.io/cities2-AssetDatabase/';
 $repo = "/cities2-AssetDatabase";
 
 return [

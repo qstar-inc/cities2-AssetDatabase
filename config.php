@@ -1,6 +1,6 @@
 <?php
 
-$baseUrl = '';
+$baseUrl = '/';
 $repo = "";
 
 return [
