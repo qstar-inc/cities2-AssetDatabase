@@ -111,5 +111,20 @@ if (referrer && referrer.startsWith(currentDomain)) {
     });
 }
 
+document.querySelectorAll(".option-back-icon").forEach((button) => {
+    button.addEventListener('click', () => {
+        document.querySelectorAll(".options-overlay").forEach((overlay) => {
+            closeCredit();
+            overlay.style.opacity = 0;
+            setTimeout(() => {
+                overlay.classList.add("display-none");
+            }, 500); 
+        });
+        const mainMenuLogo = document.querySelector(".mainmenu-logo");
+        mainMenuLogo.classList.remove("display-none");
+    })
+})
+
+
 window.showNextSplash = showNextSplash;
 window.hideSplashScreens = hideSplashScreens;
