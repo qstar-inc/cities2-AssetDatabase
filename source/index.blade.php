@@ -51,7 +51,7 @@
                     </div>
                     <div class="mainmenu-notification round-border"></div>
                 </div>
-                <div class="mainmenu-version">1.2.0q1 [Vanilla] (Something Works)</div>
+                <div class="mainmenu-version">{{ $page->version }}</div>
                 <a class="mainmenu-top-right" href="https://github.com/qstar-inc" target="_blank">
                     <img class="mainmenu-top-right-img" src="{{ $page->images }}/starq.svg" />
                     <div class="mainmenu-top-right-text">

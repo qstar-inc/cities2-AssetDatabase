@@ -32,11 +32,11 @@
             </div>
             <div class="mainmenu-info">
                 <div class="mainmenu-info-header round-border-top">
-                    <div class="mainmenu-info-header-text">WORK-IN-PROGRESS</div>
+                    <div class="mainmenu-info-header-text">STILL NOTHING</div>
                 </div>
             </div>
             <div class="mainmenu-notification round-border"></div>
         </div>
-        <div class="mainmenu-version">1.2.0q1 [Vanilla] (Something Works)</div>
+        <div class="mainmenu-version">{{ $page->version }}</div>
     </div>
 </div>
