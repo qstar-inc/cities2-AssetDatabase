@@ -280,7 +280,7 @@
 
 .asset-panel-item {
   width: calc((100% - 2.4vh) / 9);
-  height: calc((100% - 2.4vh) / 9);
+  min-width: calc((100% - 2.4vh) / 9);
   padding: 0.1vh;
   text-align: center;
   background-color: rgba(80, 80, 80, 0.274);
@@ -297,7 +297,8 @@
 }
 
 .asset-panel-item.flexed {
-  width: 9.2vh;
+  width: 8.6vh;
+  min-width: 0;
   flex-shrink: 0;
 }
 

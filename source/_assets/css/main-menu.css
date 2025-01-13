@@ -56,7 +56,7 @@
   flex-direction: column;
   align-items: center;
   gap: 1vh;
-  overflow: overlay;
+  overflow: hidden;
   min-width: calc((100% - 3vh) / 2);
 }
 
@@ -161,6 +161,6 @@
 }
 
 .disabled-link.mainmenu-start-button {
-  background-color: #fff0;
+  background-color: #43434363;
   backdrop-filter: brightness(100%) contrast(10%) blur(-1px);
 }

@@ -125,6 +125,5 @@ document.querySelectorAll(".option-back-icon").forEach((button) => {
     })
 })
 
-
 window.showNextSplash = showNextSplash;
 window.hideSplashScreens = hideSplashScreens;

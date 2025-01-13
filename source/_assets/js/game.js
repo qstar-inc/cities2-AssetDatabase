@@ -36,15 +36,8 @@ let isAssetPanelFlexed = false;
 $(document).ready(async function () {
   await initDB(false);
   loadFile();
+  assetPanel.addEventListener('wheel', handleWheel);
 });
-
-const scrollableDiv = document.querySelector('#asset-panel-items');
-
-scrollableDiv.addEventListener('wheel', (event) => {
-  event.preventDefault();
-  scrollableDiv.scrollLeft += event.deltaY;
-});
-
 
 // const toolsPanel = document.getElementById("tools-panel");
 // toolsPanel.addEventListener("click", function () {
@@ -57,7 +50,9 @@ function createButton(element) {
   const button = document.createElement("button");
   button.className = "asset-menu-icon";
   button.setAttribute("data-name", element.PrefabID);
-  button.innerHTML = `<img src="${imageBasePath}/cities2/${element.UI_Icon}"/>`;
+  var elementName = element.PrefabID.split(":")[1];
+  var icon = iconDecider(elementName, element.UI_Icon);
+  button.innerHTML = `<img src="${icon}"/>`;
   return button;
 }
 
@@ -226,7 +221,9 @@ function processAssetTab(data) {
     if (isAssetPanelFlexed) {
       tab.classList.add("flexed");
     }
-    const imgSrc = `<img src="${imageBasePath}/cities2/${element.UI_Icon}"/>`;
+    var elementName = element.PrefabID.split(":")[1];
+    var icon = iconDecider(elementName, element.UI_Icon);
+    const imgSrc = `<img src="${icon}"/>`;
     tab.setAttribute("data-id", element.PrefabID);
     tab.innerHTML = imgSrc;
 
@@ -283,10 +280,7 @@ function createAssetPanelItem(element) {
   itemDiv.className = "asset-panel-item-inner";
   var elementName = element.PrefabID.split(":")[1];
   var icon = iconDecider(elementName, element.UI_Icon);
-  // const icon = element.icon
-  //   ? imageBasePath + "/cities2/" + decodeURIComponent(element.icon)
-  //   : ailFinder(element.name);
-  itemDiv.innerHTML = `<img src="${icon}"/>`;
+  itemDiv.innerHTML = `<img src="${icon}" loading="lazy"/>`;
   item.appendChild(itemDiv);
 
   item.addEventListener("mouseover", async function () {
@@ -319,14 +313,41 @@ function processAssetPanel(data) {
   data.sort((a, b) => a.UI_Priority - b.UI_Priority);
   api.innerHTML = "";
 
-  data.forEach((element) => {
-    const item = createAssetPanelItem(element);
-    api.appendChild(item);
-  });
-  api.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
+  let index = 0;
+  const batchSize = 25; // Number of elements to render per batch
+  const delay = 500; // Delay in milliseconds between batches
+
+  function renderBatch() {
+    if (index >= data.length) {
+      // All items processed
+      api.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+      return;
+    }
+
+    // Process a batch of items
+    for (let i = 0; i < batchSize && index < data.length; i++, index++) {
+      const item = createAssetPanelItem(data[index]);
+      api.appendChild(item);
+    }
+
+    // Schedule the next batch
+    setTimeout(renderBatch, delay);
+  }
+
+  // Start rendering in batches
+  renderBatch();
+
+  // data.forEach((element) => {
+  //   const item = createAssetPanelItem(element);
+  //   api.appendChild(item);
+  // });
+  // api.scrollTo({
+  //   top: 0,
+  //   behavior: "smooth",
+  // });
 }
 
 async function processAssetData(PrefabID) {
@@ -540,7 +561,25 @@ function iconDecider(name, ogicon) {
   if (icon != null) {
     icon = `https://raw.githubusercontent.com/JadHajjar/AssetIconLibrary-CSII/master/AssetIconLibrary/Thumbnails/${icon}`;
   } else if (icon == null && ogicon != undefined && ogicon != "") {
-    icon = imageBasePath + "/cities2/" + decodeURIComponent(ogicon);
+    if (ogicon.startsWith("coui://")) {
+      if (ogicon.startsWith("coui://uil/")) {
+        icon = `https://raw.githubusercontent.com/algernon-A/UnifiedIconLibrary/refs/heads/master/Icons/${ogicon.replace("coui://uil/", "")}`
+      } else if (ogicon.startsWith("coui://ail/")) {
+        icon = `https://raw.githubusercontent.com/JadHajjar/AssetIconLibrary-CSII/master/AssetIconLibrary/Thumbnails/${ogicon.replace("coui://ail/","")}`
+      // } else if (ogicon.startsWith("coui://customassets/")) {
+      //   icon = ``
+      // } else if (ogicon.startsWith("coui://ail/")) {
+      //   icon = `https://raw.githubusercontent.com/JadHajjar/AssetIconLibrary-CSII/master/AssetIconLibrary/Thumbnails/${ogicon.replace("coui://ail/","")}`
+      } else {
+        console.log(`Unsupported UI protocol: ${ogicon}`);
+        icon = imageBasePath + "/cities2/Media/Placeholder.svg";
+      }
+    } else if (ogicon.startsWith("assetdb://")) { 
+        console.log(`Unsupported UI protocol: ${ogicon}`);
+        icon = imageBasePath + "/cities2/Media/Placeholder.svg";
+    } else {
+      icon = imageBasePath + "/cities2/" + decodeURIComponent(ogicon);
+    }
   } else {
     icon = imageBasePath + "/cities2/Media/Placeholder.svg";
   }
@@ -592,6 +631,14 @@ async function getTitleResource(prefab) {
 function getQueryParam(param) {
   const urlParams = new URLSearchParams(window.location.search);
   return urlParams.get(param);
+}
+
+function handleWheel(event) {
+  if (api.classList.contains('flexed')) {
+    console.log("wheel");
+    event.preventDefault();
+    api.scrollLeft += event.deltaY;
+  }
 }
 
 window.closeAssetPanel = closeAssetPanel;
