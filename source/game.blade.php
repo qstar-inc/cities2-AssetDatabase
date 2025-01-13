@@ -47,6 +47,6 @@
     <script defer src="{{ $page->repo . mix('js/game_data_process.js', 'assets/build') }}"></script>
     <script defer src="{{ $page->repo . mix('js/game.js', 'assets/build') }}"></script>
     <script>
-        document.getElementById('game-bg').src = '{{ $page->images }}/cities2/mainmenu.jpg';
+        document.getElementById('game-bg').src = '{{ $page->imgRepo }}/cities2/mainmenu.jpg';
     </script>
 @endsection

@@ -14,13 +14,13 @@
         <h2>Database by</h2>
         <h1><img src="{{ $page->images }}/starq.svg" alt="StarQ Logo"></h1>
         <br class="lg" /><br class="lg" />
-        <h1><img src="{{ $page->images }}/cities2/Media/Menu/GameLogo.svg" alt="Cities: Skylines II Logo"></h1>
+        <h1><img src="{{ $page->imgRepo }}/cities2/Media/Menu/GameLogo.svg" alt="Cities: Skylines II Logo"></h1>
         <br class="lg" />
         <h2>Game Developed by</h2>
-        <h1><img src="{{ $page->images }}/cities2/Media/Menu/ColossalLogo.svg" alt="Colossal Order Logo" /></h1>
+        <h1><img src="{{ $page->imgRepo }}/cities2/Media/Menu/ColossalLogo.svg" alt="Colossal Order Logo" /></h1>
         <br class="lg" />
         <h2>Game Published by</h2>
-        <h1><img src="{{ $page->images }}/cities2/Media/Menu/ParadoxLogo.svg" alt="Paradox Logo" /></h1>
+        <h1><img src="{{ $page->imgRepo }}/cities2/Media/Menu/ParadoxLogo.svg" alt="Paradox Logo" /></h1>
         <br class="lg" />
         <p class="sm">Cities: Skylines 2 is published by Paradox Interactive AB and developed by Colossal Order Ltd.</p><br /><br />
         <p class="sm">CITIES: SKYLINES and PARADOX INTERACTIVE are trademarks and/or registered trademarks</p><br /><br />

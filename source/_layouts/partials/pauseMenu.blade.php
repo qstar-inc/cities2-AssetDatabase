@@ -1,7 +1,7 @@
 <div class="main-menu pause-menu">
     <div class="mainmenu-layout">
         <div class="drop-shadow mainmenu-logo-container">
-            <img src="{{ $page->images }}/cities2/GameLogo.svg" alt="Cities: Skylines II" class="mainmenu-logo" />
+            <img src="{{ $page->imgRepo }}/cities2/GameLogo.svg" alt="Cities: Skylines II" class="mainmenu-logo" />
         </div>
         <div class="mainmenu-center">
             <div class="mainmenu-start display-grid">

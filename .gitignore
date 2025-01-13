@@ -12,3 +12,4 @@ npm-debug.log
 /source/assets/build/
 # /source/assets/images/cities2/Media
 source/_assets/js/game_data_process.js.old
+source/_assets/js/game.js.old-withLocalStorage

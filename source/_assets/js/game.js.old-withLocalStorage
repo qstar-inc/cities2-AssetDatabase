@@ -60,7 +60,7 @@ function proceesAssetGroup(data) {
         button.className = "asset-menu-icon";
         button.setAttribute("data-name", element.name);
         // button.setAttribute("data-guid", element.guid);
-        button.innerHTML = `<img src="${imageBasePath}/cities2/${element.icon}"/>`;
+        button.innerHTML = `<img src="${imageRepoPath}/cities2/${element.icon}"/>`;
         ag.appendChild(button);
       }
     });
@@ -140,7 +140,7 @@ function processAssetTab(data) {
     element = data[0];
     const tab = document.createElement("div");
     tab.className = "asset-panel-header-tab-single round-border-top active";
-    tab.innerHTML = `<img src="${imageBasePath}/cities2/${element.icon}"/>`;
+    tab.innerHTML = `<img src="${imageRepoPath}/cities2/${element.icon}"/>`;
     apht.appendChild(tab);
     loadAssets(element.name);
   } else {
@@ -155,7 +155,7 @@ function processAssetTab(data) {
       tab.className =
         "asset-panel-header-tab-multiple round-border-top" + active;
       tab.setAttribute("data-name", element.name);
-      tab.innerHTML = `<img src="${imageBasePath}/cities2/${element.icon}"/>`;
+      tab.innerHTML = `<img src="${imageRepoPath}/cities2/${element.icon}"/>`;
       apht.appendChild(tab);
     });
     const tabs = document.querySelectorAll(".asset-panel-header-tab-multiple");
@@ -214,10 +214,10 @@ function loadAssets(name) {
         const itemDiv = document.createElement("div");
         itemDiv.className = "asset-panel-item-inner";
         if (element.icon == null) {
-          var icon = imageBasePath + "/cities2/Media/Placeholder.svg";
+          var icon = imageRepoPath + "/cities2/Media/Placeholder.svg";
         } else {
           var icon =
-            imageBasePath + "/cities2/" + decodeURIComponent(element.icon);
+            imageRepoPath + "/cities2/" + decodeURIComponent(element.icon);
         }
         itemDiv.innerHTML = `<img src="${icon}"/>`;
         item.addEventListener("mouseover", function () {

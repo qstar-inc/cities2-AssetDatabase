@@ -6,16 +6,16 @@
     </div>
     <div id="splash-screen-2" class="splash-screen" style="display: none;">
         <div class="logo-container">
-            <img src="{{ $page->images }}/cities2/GameLogo.svg" alt="Cities: Skylines II" class="splash-logo">
+            <img src="{{ $page->imgRepo }}/cities2/GameLogo.svg" alt="Cities: Skylines II" class="splash-logo">
         </div>
     </div>
     <div id="preloader-screen" class="splash-screen" style="display: none;">
         <div class="preloader-container">
-            <img src="{{ $page->images }}/cities2/preloader.png" alt="Preloader" class="preloader-bg">
+            <img src="{{ $page->imgRepo }}/cities2/preloader.png" alt="Preloader" class="preloader-bg">
         </div>
         <div class="preloader-overlays">
             <div class="preloader-logo-container">
-                <img class="preloader-logo drop-shadow" src="{{ $page->images }}/cities2/GameLogo.svg" alt="Cities: Skylines II">
+                <img class="preloader-logo drop-shadow" src="{{ $page->imgRepo }}/cities2/GameLogo.svg" alt="Cities: Skylines II">
             </div>
             <div class="drop-shadow preloader-loading-text-container"><span id="preloader-loading-text">LOADING...</span></div>
             <div class="drop-shadow circle-container">

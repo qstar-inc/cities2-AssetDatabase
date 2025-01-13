@@ -199,7 +199,7 @@ function processAssetTab(data) {
   //   if (isAssetPanelFlexed) {
   //     tab.classList.add("flexed");
   //   }
-  //   tab.innerHTML = `<img src="${imageBasePath}/cities2/${element.icon}"/>`;
+  //   tab.innerHTML = `<img src="${imageRepoPath}/cities2/${element.icon}"/>`;
   //   apht.appendChild(tab);
   //   getAssetPanelData(element.id);
   // } else {
@@ -566,23 +566,22 @@ function iconDecider(name, ogicon) {
         icon = `https://raw.githubusercontent.com/algernon-A/UnifiedIconLibrary/refs/heads/master/Icons/${ogicon.replace("coui://uil/", "")}`
       } else if (ogicon.startsWith("coui://ail/")) {
         icon = `https://raw.githubusercontent.com/JadHajjar/AssetIconLibrary-CSII/master/AssetIconLibrary/Thumbnails/${ogicon.replace("coui://ail/","")}`
-      // } else if (ogicon.startsWith("coui://customassets/")) {
-      //   icon = ``
+      } else if (ogicon.startsWith("coui://customassets/")) {
+        icon = imageRepoPath + `/thumbs/${ogicon.replace("coui://", "")}`;
       // } else if (ogicon.startsWith("coui://ail/")) {
       //   icon = `https://raw.githubusercontent.com/JadHajjar/AssetIconLibrary-CSII/master/AssetIconLibrary/Thumbnails/${ogicon.replace("coui://ail/","")}`
       } else {
         console.log(`Unsupported UI protocol: ${ogicon}`);
-        icon = imageBasePath + "/cities2/Media/Placeholder.svg";
+        icon = imageRepoPath + "/cities2/Media/Placeholder.svg";
       }
-    } else if (ogicon.startsWith("assetdb://")) { 
-      console.log(`Unsupported UI protocol: ${ogicon}`);
-      icon = imageBasePath + "/cities2/Media/Placeholder.svg";
+    } else if (ogicon.startsWith("assetdb://")) {
+      icon = imageRepoPath + `/thumbs/assetdb/${ogicon.replace("assetdb://Global", "")}.png`;
     } else {
       ogicon = ogicon.replace("Media/Game/Icons/Highways.svg", "Media/Game/Icons/HIghways.svg")
-      icon = imageBasePath + "/cities2/" + decodeURIComponent(ogicon);
+      icon = imageRepoPath + "/cities2/" + decodeURIComponent(ogicon);
     }
   } else {
-    icon = imageBasePath + "/cities2/Media/Placeholder.svg";
+    icon = imageRepoPath + "/cities2/Media/Placeholder.svg";
   }
   return icon;
 }

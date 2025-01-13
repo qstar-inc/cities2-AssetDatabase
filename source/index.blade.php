@@ -10,12 +10,12 @@
     <div id="main-menu" class="splash-screen" style="display: flex;">
         <div>
             <div class="mainmenu-container">
-                <img src="{{ $page->images }}/cities2/mainmenu.jpg" alt="Main Menu" class="mainmenu-bg">
+                <img src="{{ $page->imgRepo }}/cities2/mainmenu.jpg" alt="Main Menu" class="mainmenu-bg">
             </div>
             <div class="mainmenu-layout">
                 @include('_layouts.partials.hof')
                 <div class="drop-shadow mainmenu-logo-container">
-                    <img src="{{ $page->images }}/cities2/GameLogo.svg" alt="Cities: Skylines II" class="mainmenu-logo" />
+                    <img src="{{ $page->imgRepo }}/cities2/GameLogo.svg" alt="Cities: Skylines II" class="mainmenu-logo" />
                 </div>
                 <div class="mainmenu-center">
                     <div class="mainmenu-start">

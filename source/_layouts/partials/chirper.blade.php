@@ -1,7 +1,7 @@
-<div class="chirper" style="background-image: url({{ $page->images }}/cities2/Media/Game/Icons/Chirper.svg);"></div>
+<div class="chirper" style="background-image: url({{ $page->imgRepo }}/cities2/Media/Game/Icons/Chirper.svg);"></div>
 <div class="chirp">
     <div class="chirp-avatar-frame">
-        <div class="chirp-avatar" style="background-image: url({{ $page->images }}/cities2/Media/Game/Icons/Citizen.svg);">
+        <div class="chirp-avatar" style="background-image: url({{ $page->imgRepo }}/cities2/Media/Game/Icons/Citizen.svg);">
         </div>
     </div>
     <div style="display: flex; flex-direction: column; flex-grow: 1;">

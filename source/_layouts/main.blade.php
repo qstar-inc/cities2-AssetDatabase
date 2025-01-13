@@ -59,6 +59,7 @@
     <script>
         const baseUrl = "{{ $page->baseUrl }}";
         const imageBasePath = "{{ $page->images }}";
+        const imageRepoPath = "{{ $page->imgRepo }}";
         const dataBasePath = "{{ $page->data }}";
     </script>
     <script defer src="{{ $page->repo . mix('js/main.js', 'assets/build') }}"></script>

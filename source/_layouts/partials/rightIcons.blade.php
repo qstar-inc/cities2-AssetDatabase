@@ -1,6 +1,6 @@
 <div>
     <a href="#" id="pause-icon">
-        <img class="top-game-icon" src="{{ $page->images }}/cities2/Media/Game/Icons/PauseMenu.svg" />
+        <img class="top-game-icon" src="{{ $page->imgRepo }}/cities2/Media/Game/Icons/PauseMenu.svg" />
     </a>
 </div>
 <div class="top-game-icon-div">

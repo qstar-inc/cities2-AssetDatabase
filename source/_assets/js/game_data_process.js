@@ -750,10 +750,10 @@ function createResourceUseTable(resourceData, version = 1) {
 
     if (resource[0] === "Any") {
       divRes.innerHTML = "Anything";
-      divIcon.innerHTML = `<img class="resource-icon" src="${imageBasePath}/cities2/Media/Game/Icons/ZoneIndustrialWarehouses.svg"></img>`;
+      divIcon.innerHTML = `<img class="resource-icon" src="${imageRepoPath}/cities2/Media/Game/Icons/ZoneIndustrialWarehouses.svg"></img>`;
     } else {
       divRes.innerHTML = await getLangData(`Resources.TITLE[${resource[0]}]`);
-      divIcon.innerHTML = `<img class="resource-icon" src="${imageBasePath}/cities2/Media/Game/Resources/${resource[0]}.svg"></img>`;
+      divIcon.innerHTML = `<img class="resource-icon" src="${imageRepoPath}/cities2/Media/Game/Resources/${resource[0]}.svg"></img>`;
     }
 
     if (resource[0] === "Any") {
@@ -794,7 +794,7 @@ async function createResourceAllowTable(resourceData) {
   for (const resource of resourceData) {
     const prefab = enumResourceInEditor(resource);
     const name = await getTitleResource(prefab);
-    var icon = `<img class="resource-icon" src="${imageBasePath}/cities2/Media/Game/Resources/${prefab}.svg"></img>`;
+    var icon = `<img class="resource-icon" src="${imageRepoPath}/cities2/Media/Game/Resources/${prefab}.svg"></img>`;
 
     const resourceDiv = document.createElement("div");
     resourceDiv.classList.add("resource-inline-div");
