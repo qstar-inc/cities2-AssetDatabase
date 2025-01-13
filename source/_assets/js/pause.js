@@ -67,9 +67,11 @@ document.querySelectorAll('.top-game-icon-div.unused').forEach((container) => {
 });
 
 const langIcon = document.getElementById("language-top-icon");
-langIcon.addEventListener('click', () => {
-    toggleLangPicker();
-})
+if (langIcon) {
+    langIcon.addEventListener('click', () => {
+        toggleLangPicker();
+    })
+}
 
 function toggleLangPicker() {
     const langList = document.querySelector(".lang-picker");
@@ -84,19 +86,36 @@ function toggleLangPicker() {
     }
 }
 
-buttons = document.querySelectorAll(".lang-picker-button");
-buttons.forEach((button) => {
-    if (language == button.dataset.val) {
-        button.classList.add("active");
-    }
+const buttons = document.querySelectorAll(".lang-picker-button");
+if (buttons) {
+    buttons.forEach((button) => {
+        if (language == button.dataset.val) {
+            button.classList.add("active");
+        }
+        button.addEventListener('click', () => {
+            buttons.forEach(buttonX => {
+                buttonX.classList.remove("active");
+            });
+            language = button.dataset.val;
+            button.classList.add("active");
+            processAssetGroup();
+            toggleLangPicker();
+            localStorage.setItem("language", JSON.stringify(language));
+        })
+    })
+}
+
+const back = document.querySelectorAll(".option-back-icon")
+back.forEach((button) => {
     button.addEventListener('click', () => {
-        buttons.forEach(buttonX => {
-            buttonX.classList.remove("active");
-        });
-        language = button.dataset.val;
-        button.classList.add("active");
-        processAssetGroup();
-        toggleLangPicker();
-        localStorage.setItem("language", JSON.stringify(language));
-  })
+    document.querySelectorAll(".options-overlay").forEach((overlay) => {
+        closeCredit();
+        overlay.style.opacity = 0;
+        setTimeout(() => {
+            overlay.classList.add("display-none");
+        }, 500); 
+    });
+    const mainMenuLogo = document.querySelector(".mainmenu-logo");
+    mainMenuLogo.classList.remove("display-none");
+    })
 })
