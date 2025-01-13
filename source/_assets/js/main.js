@@ -56,7 +56,7 @@ function checkAspectRatioAndHeight() {
 
 function timeAgo(date) {
     const now = new Date();
-    const diffInSeconds = Math.floor((now - date) / 1000);  // Difference in seconds
+    const diffInSeconds = Math.floor((now - date) / 1000);
 
     const intervals = [
         { label: 'second', seconds: 1 },

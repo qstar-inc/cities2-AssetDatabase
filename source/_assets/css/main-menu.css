@@ -56,7 +56,7 @@
   flex-direction: column;
   align-items: center;
   gap: 1vh;
-  overflow: clip scroll;
+  overflow: overlay;
   min-width: calc((100% - 3vh) / 2);
 }
 

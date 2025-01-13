@@ -67,7 +67,7 @@
   top: 10%;
   left: 5%;
   background-color: rgba(0, 0, 0, 0.6);
-  overflow: scroll;
+  overflow: overlay;
 }
 
 .option-title {

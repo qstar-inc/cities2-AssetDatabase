@@ -38,6 +38,14 @@ $(document).ready(async function () {
   loadFile();
 });
 
+const scrollableDiv = document.querySelector('#asset-panel-items');
+
+scrollableDiv.addEventListener('wheel', (event) => {
+  event.preventDefault();
+  scrollableDiv.scrollLeft += event.deltaY;
+});
+
+
 // const toolsPanel = document.getElementById("tools-panel");
 // toolsPanel.addEventListener("click", function () {
 //   deleteIndexedDB()

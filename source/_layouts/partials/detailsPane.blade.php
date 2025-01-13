@@ -16,7 +16,7 @@
             <div id="asset-details-pane-body-bottom" class="asset-details-pane-body-bottom">
                 <div id="temp"></div>
                 <div id="asset-details-pane-body-bottom-boxes" class="asset-details-pane-body-bottom-boxes"></div>
-                <div id="temp-right" class="temp-right" style="overflow: scroll; word-wrap: anywhere; max-width: 50%;"></div>
+                <div id="temp-right" class="temp-right" style="overflow: overlay; word-wrap: anywhere; max-width: 50%;"></div>
             </div>
         </div>
         <div id="asset-details-pane-footer" class="asset-details-pane-footer round-border-bottom"></div>
