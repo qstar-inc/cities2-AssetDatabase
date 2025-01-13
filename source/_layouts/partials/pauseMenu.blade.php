@@ -25,7 +25,7 @@
                     <div class="mainmenu-start-icon"></div>
                     <span class="mainmenu-start-text">Credits</span>
                 </button>
-                <a class="mainmenu-start-button round-border" href="/">
+                <a class="mainmenu-start-button round-border" href="{{ $page->baseUrl }}">
                     <div class="mainmenu-start-icon"></div>
                     <span class="mainmenu-start-text">Back to Main Menu</span>
                 </a>

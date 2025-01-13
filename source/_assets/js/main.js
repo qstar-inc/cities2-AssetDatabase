@@ -11,7 +11,7 @@ function random(min, max) {
 
 function clearCacheAndRedirect() {
   localStorage.clear();
-  window.location.href = "/";
+  window.location.href = baseUrl;
 }
 
 function checkAspectRatioAndHeight() {
