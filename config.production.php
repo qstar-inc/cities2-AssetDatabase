@@ -17,4 +17,5 @@ return [
     'images' => $repo . "/assets/images",
     'fonts' => $repo . "/assets/fonts",
     'repo' => $repo,
+    'version' => "1.2.0q3 [PROD] (Vanilla + DLC + Region Packs + StarQ assets)",
 ];
