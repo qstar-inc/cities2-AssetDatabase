@@ -575,9 +575,10 @@ function iconDecider(name, ogicon) {
         icon = imageBasePath + "/cities2/Media/Placeholder.svg";
       }
     } else if (ogicon.startsWith("assetdb://")) { 
-        console.log(`Unsupported UI protocol: ${ogicon}`);
-        icon = imageBasePath + "/cities2/Media/Placeholder.svg";
+      console.log(`Unsupported UI protocol: ${ogicon}`);
+      icon = imageBasePath + "/cities2/Media/Placeholder.svg";
     } else {
+      ogicon = ogicon.replace("Media/Game/Icons/Highways.svg", "Media/Game/Icons/HIghways.svg")
       icon = imageBasePath + "/cities2/" + decodeURIComponent(ogicon);
     }
   } else {
