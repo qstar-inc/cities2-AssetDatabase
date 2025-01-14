@@ -2,6 +2,10 @@ var u = "aHR0cHM6Ly9hcGkuc2sta20uY29tLmJkL2FwaS8="; //web
 // var u = "aHR0cDovL2xvY2FsaG9zdDoxNTAvYXBpLw=="; //local
 var auth = "ZUJImMyi0d7ycNC9Nnrixku9WM4nbWY9";
 var language = JSON.parse(localStorage.getItem("language")) ?? "enUS";
+var hof_enabled = JSON.parse(localStorage.getItem("hof_enabled")) ?? true;
+
+var isHofBG = false;
+var isOptionMenuOpen = false;
 
 function random(min, max) {
   min = Math.ceil(min);
@@ -86,10 +90,63 @@ function getRandomHexColor() {
 window.addEventListener('load', checkAspectRatioAndHeight);
 window.addEventListener('resize', checkAspectRatioAndHeight);
 
+const defaultLang = 'enUS';
+let defaultTranslations = {};
+let translations = {};
+
+async function reloadLang(lang = language) {
+  if (lang != defaultLang) {
+    const response = await fetch(`${dataBasePath}/lang/${lang}.json`);
+    if (response.ok) {
+      translations = await response.json();
+      
+    } else {
+      console.error(`${lang} not found.`);
+      translations = {};
+    }
+  }
+  updateTexts();
+  const translationsLoaded = new Event("translationsLoaded");
+  document.dispatchEvent(translationsLoaded);
+  console.log("Translations loaded")
+}
+
+async function loadDefaultTranslations() {
+  const response = await fetch(`${dataBasePath}/lang/${defaultLang}.json`);
+  if (response.ok) {
+    defaultTranslations = await response.json();
+  } else {
+    console.error(`Default language file (${defaultLang}) not found.`);
+    defaultTranslations = {};
+  }
+}
+
+function updateTexts() {
+  document.querySelectorAll('[data-lang]').forEach((el) => {
+    const key = el.dataset.lang;
+    el.textContent = translations[key] || defaultTranslations[key] || key;
+  });
+}
+
+function getTranslation(key) {
+  return translations[key] || defaultTranslations[key] || key;
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+  await loadDefaultTranslations();
+  reloadLang(language);
+});
+
 window.u = u;
 window.auth = auth;
 window.language = language;
+window.hof_enabled = hof_enabled;
+window.isHofBG = isHofBG;
+window.isOptionMenuOpen = isOptionMenuOpen;
 window.random = random;
 window.clearCacheAndRedirect = clearCacheAndRedirect;
 window.timeAgo = timeAgo;
 window.getRandomHexColor = getRandomHexColor;
+window.reloadLang = reloadLang;
+window.loadDefaultTranslations = loadDefaultTranslations;
+window.getTranslation = getTranslation;

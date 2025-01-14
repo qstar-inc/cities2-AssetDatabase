@@ -59,8 +59,8 @@ async function initDB(bool = false) {
     }
 
     if (hasEntry && bool) {
-      const customEvent = new Event("dbInitialized");
-      document.dispatchEvent(customEvent);
+      const dbInitialized = new Event("dbInitialized");
+      document.dispatchEvent(dbInitialized);
     }
 
     await getAssetData();

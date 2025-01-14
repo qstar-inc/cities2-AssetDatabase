@@ -64,6 +64,7 @@ img {
   display: none;
   transition: filter 1s, opacity 1s;
   opacity: 1;
+  z-index: 798;
 }
 
 #hof-title {

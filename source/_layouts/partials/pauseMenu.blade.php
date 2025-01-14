@@ -7,27 +7,27 @@
             <div class="mainmenu-start display-grid">
                 <a id="pause-button-1" class="mainmenu-start-button round-border" href="#">
                     <div class="mainmenu-start-icon"></div>
-                    <span class="mainmenu-start-text">Resume</span>
+                    <span class="mainmenu-start-text" data-lang="resume"></span>
                 </a>
                 <button class="mainmenu-start-button round-border" onclick="deleteIndexedDB()">
                     <div class="mainmenu-start-icon"></div>
-                    <span class="mainmenu-start-text">Reload Database</span>
+                    <span class="mainmenu-start-text" data-lang="reload_db"></span>
                 </button>
-                <button id="options-button" class="mainmenu-start-button round-border disabled-link" disabled>
+                <button id="options-button" class="mainmenu-start-button round-border">
                     <div class="mainmenu-start-icon"></div>
-                    <span class="mainmenu-start-text">No Options Yet</span>
+                    <span class="mainmenu-start-text" data-lang="options"></span>
                 </button>
                 <a class="mainmenu-start-button round-border" href="https://mods.paradoxplaza.com/games/cities_skylines_2/" target="_blank">
                     <div class="mainmenu-start-icon"></div>
-                    <span class="mainmenu-start-text">Paradox Mods</span>
+                    <span class="mainmenu-start-text" data-lang="pdx_mods"></span>
                 </a>
                 <button id="credit-button" class="mainmenu-start-button round-border">
                     <div class="mainmenu-start-icon"></div>
-                    <span class="mainmenu-start-text">Credits</span>
+                    <span class="mainmenu-start-text" data-lang="credits"></span>
                 </button>
                 <a class="mainmenu-start-button round-border" href="{{ $page->baseUrl }}">
                     <div class="mainmenu-start-icon"></div>
-                    <span class="mainmenu-start-text">Back to Main Menu</span>
+                    <span class="mainmenu-start-text" data-lang="back_to_main_menu"></span>
                 </a>
             </div>
             <div class="mainmenu-info">

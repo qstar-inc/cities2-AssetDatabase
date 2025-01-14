@@ -2,60 +2,54 @@ const button1 = document.getElementById("mainmenu-button-1");
 const button1text = button1.querySelector(".mainmenu-start-text");
 
 let db_found = false;
+let is_button_enabled = false;
 
 $(document).ready(async function () {
   document.addEventListener("dbInitialized", () => {
-    const db_found = true;
-    if (db_found) {
-      enableButtons();
-    } else {
-      fetch(atob(u) + "cities2_ad_ping", {
-        method: "POST",
-        headers: {
-          "Accept-Encoding": "gzip",
-          "Content-Type": "application/json",
-          "Authorization": auth,
-        },
-      })
-        .then(async (response) => {
-          if (response.ok && response.status === 200) {
-            // // await getAssetGroupData();
-            // getAssetTabData();
-            // getAssetPanelData();
-            await getAssetData();
-            enableButtons();
-          } else {
-            sendNotification(1);
-          }
-        })
-        .catch((error) => {
-          sendNotification(2, error);
-        });
-    }
+    document.addEventListener("translationsLoaded", () => {
+      db_found = true;
+      triggerStartUp();
+    });
   });
   await initDB(true);
+  const checkInterval = setInterval(checkAndTrigger, 3000);
+  function checkAndTrigger() {
+    if (button1text.dataset.lang !== "open_db") {
+      triggerStartUp();
+    } else {
+      clearInterval(checkInterval);
+    }
+  }
 });
+
+function triggerStartUp() {
+  if (db_found) {
+    enableButtons();
+  } else {
+    fetch(atob(u) + "cities2_ad_ping", {
+      method: "POST",
+      headers: {
+        "Accept-Encoding": "gzip",
+        "Content-Type": "application/json",
+        "Authorization": auth,
+      },
+    })
+      .then(async (response) => {
+        if (response.ok && response.status === 200) {
+          await getAssetData();
+          enableButtons();
+        } else {
+          console.error("Error:", response);
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }
+}
 
 function enableButtons() {
   button1.classList.remove("disabled-link");
-  button1text.innerHTML = "Open Database";
-}
-
-function sendNotification(val, error = null) {
-  let text = "";
-  switch (val) {
-    case 1:
-      text = "Server Disconnected...";
-      console.log("Server Disconnected");
-      break;
-    case 2:
-      text = "Database Offline...";
-      break;
-    default:
-      break;
-  }
-  if (error) {
-    console.error("Error:", error);
-  }
-  button1text.innerHTML = text;
+  button1text.dataset.lang = "open_db";
+  button1text.innerHTML = getTranslation("open_db");
 }

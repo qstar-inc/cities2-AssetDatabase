@@ -21,27 +21,27 @@
                     <div class="mainmenu-start">
                         <a id="mainmenu-button-1" class="mainmenu-start-button disabled-link round-border" href="game">
                             <div class="mainmenu-start-icon"></div>
-                            <span class="mainmenu-start-text">Loading....</span>
+                            <span class="mainmenu-start-text" data-lang="loading"></span>
                         </a>
                         <button id="mainmenu-button-continue" class="mainmenu-start-button round-border">
                             <div class="mainmenu-start-icon"></div>
-                            <span class="mainmenu-start-text">Loading Screen</span>
+                            <span class="mainmenu-start-text" data-lang="loading_screen"></span>
                         </button>
-                        <button id="options-button" class="mainmenu-start-button round-border disabled-link" disabled>
+                        <button id="options-button" class="mainmenu-start-button round-border">
                             <div class="mainmenu-start-icon"></div>
-                            <span class="mainmenu-start-text">No Options Yet</span>
+                            <span class="mainmenu-start-text" data-lang="options"></span>
                         </button>
                         <a class="mainmenu-start-button round-border" href="https://mods.paradoxplaza.com/games/cities_skylines_2/" target="_blank">
                             <div class="mainmenu-start-icon"></div>
-                            <span class="mainmenu-start-text">Paradox Mods</span>
+                            <span class="mainmenu-start-text" data-lang="pdx_mods"></span>
                         </a>
                         <button id="credit-button" class="mainmenu-start-button round-border">
                             <div class="mainmenu-start-icon"></div>
-                            <span class="mainmenu-start-text">Credits</span>
+                            <span class="mainmenu-start-text" data-lang="credits"></span>
                         </button>
                         <a class="mainmenu-start-button round-border" href="https://buymeacoffee.com/starq" target="_blank">
                             <div class="mainmenu-start-icon"></div>
-                            <span class="mainmenu-start-text">Support</span>
+                            <span class="mainmenu-start-text" data-lang="bmac"></span>
                         </a>
                     </div>
                     <div class="mainmenu-info">
@@ -54,9 +54,7 @@
                 <div class="mainmenu-version">{{ $page->version }}</div>
                 <a class="mainmenu-top-right" href="https://github.com/qstar-inc" target="_blank">
                     <img class="mainmenu-top-right-img" src="{{ $page->images }}/starq.svg" />
-                    <div class="mainmenu-top-right-text">
-                        StarQ
-                    </div>
+                    <div class="mainmenu-top-right-text">StarQ</div>
                 </a>
             </div>
         </div>

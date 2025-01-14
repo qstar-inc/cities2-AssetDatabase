@@ -64,7 +64,7 @@ async function processTime() {
     if (last_updated_obj.getTime() > time) {
       const chirper = document.querySelector(".chirper");
       chirper.style.opacity = 0.9;
-      
+      chirper.style.animation = "shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both";
       const chirp = document.querySelector(".chirp");
       const chirpAvatar = document.querySelector(".chirp-avatar");
       const chirpUser = document.querySelector(".chirp-user");
@@ -82,7 +82,8 @@ async function processTime() {
       }
       chirpUser.innerHTML = `${firstName} ${lastName}`;
       chirpTime.innerHTML = timeAgo(last_updated_obj);
-      chirpText.innerHTML = "New Content available.<br/>Go to Options > Reload Database."
+      const t = getTranslation;
+      chirpText.innerHTML = `${t("new_content")}<br/>${t("go_to")} ${t("options")} > ${t("reload_db")}.`
       chirpLike.innerHTML = Math.floor(Math.random() * 1000);
       chirpLike.style.display = "block";
       chirpAvatar.style.display = "flex";

@@ -7,7 +7,7 @@
   margin: auto;
 }
 
-.credit-scroll-overlay > * .options-layout {
+.credit-scroll-overlay > * .credit-layout {
   overflow: hidden !important;
 }
 

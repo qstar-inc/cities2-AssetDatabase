@@ -3,16 +3,16 @@
         <img class="top-game-icon" src="{{ $page->imgRepo }}/cities2/Media/Game/Icons/PauseMenu.svg" />
     </a>
 </div>
-<div class="top-game-icon-div">
+{{-- <div class="top-game-icon-div">
     <a href="#" id="language-top-icon">
         <img class="top-game-icon" src="{{ $page->images }}/language-icon.svg" />
     </a>
-</div>
+</div> --}}
 {{-- <div class="not-implemented">
     <div class="tooltip-35 right">Not yet implemented</div>
 </div> --}}
 
-<div class="lang-picker tooltip-35 right inactive">
+{{-- <div class="lang-picker tooltip-35 right inactive">
     <div class="lang-picker-button" data-val="enUS">en-US</div>
     <div class="lang-picker-button" data-val="deDE">de-DE</div>
     <div class="lang-picker-button" data-val="esES">es-ES</div>
@@ -25,4 +25,4 @@
     <div class="lang-picker-button" data-val="ruRU">ru-RU</div>
     <div class="lang-picker-button" data-val="zhHANS">zh-HANS</div>
     <div class="lang-picker-button" data-val="zhHANT">zh-HANT</div>
-</div>
+</div> --}}
