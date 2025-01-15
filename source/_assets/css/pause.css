@@ -309,16 +309,18 @@
 .options-dropdown-select {
   display: none;
   position: absolute;
-  background: #4d4d4d;
+  background: #545454;
+  color: aliceblue;
   border: 1px solid aliceblue;
 }
 
 .option-dropdown-item {
   padding: 0.3rem;
+  padding-left: 0.6rem;
 }
 
 .option-dropdown-item:hover {
-  background: #a5a5a5;
+  background: #656565;
 }
 
 .options-checkbox {

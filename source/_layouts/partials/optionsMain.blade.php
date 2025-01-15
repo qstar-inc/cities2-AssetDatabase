@@ -32,22 +32,6 @@
                                 <div class="options-dropdown-trigger-arrow" style="mask-image:url({{ $page->imgRepo }}/cities2/Media/Glyphs/StrokeArrowDown.svg);"></div>
                             </div>
                         </div>
-                        <div class="block-everything" id="option-dropdown-select-lang-block-everything">
-                            <div class="options-dropdown-select" id="option-dropdown-select-lang">
-                                <div class="option-dropdown-item" data-val="enUS">en-US</div>
-                                <div class="option-dropdown-item" data-val="deDE">de-DE</div>
-                                <div class="option-dropdown-item" data-val="esES">es-ES</div>
-                                <div class="option-dropdown-item" data-val="frFR">fr-FR</div>
-                                <div class="option-dropdown-item" data-val="itIT">it-IT</div>
-                                <div class="option-dropdown-item" data-val="jaJP">ja-JP</div>
-                                <div class="option-dropdown-item" data-val="koKR">ko-KR</div>
-                                <div class="option-dropdown-item" data-val="plPL">pl-PL</div>
-                                <div class="option-dropdown-item" data-val="ptBR">pt-BR</div>
-                                <div class="option-dropdown-item" data-val="ruRU">ru-RU</div>
-                                <div class="option-dropdown-item" data-val="zhHANS">zh-HANS</div>
-                                <div class="option-dropdown-item" data-val="zhHANT">zh-HANT</div>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="option-right-main-data" id="option-hof">
@@ -64,5 +48,21 @@
                 <p id="option-right-sub-details"></p>
             </div>
         </div>
+    </div>
+</div>
+<div class="block-everything" id="option-dropdown-select-lang-block-everything">
+    <div class="options-dropdown-select" id="option-dropdown-select-lang">
+        <div class="option-dropdown-item" data-val="de-DE">Deutsch</div>
+        <div class="option-dropdown-item" data-val="en-US">English</div>
+        <div class="option-dropdown-item" data-val="es-ES">Español</div>
+        <div class="option-dropdown-item" data-val="fr-FR">Français</div>
+        <div class="option-dropdown-item" data-val="it-IT">Italiano</div>
+        <div class="option-dropdown-item" data-val="ja-JP">日本語</div>
+        <div class="option-dropdown-item" data-val="ko-KR">한국어</div>
+        <div class="option-dropdown-item" data-val="pl-PL">Polski</div>
+        <div class="option-dropdown-item" data-val="pt-BR">Português brasileiro</div>
+        <div class="option-dropdown-item" data-val="ru-RU">Русский</div>
+        <div class="option-dropdown-item" data-val="zh-HANS">汉语</div>
+        <div class="option-dropdown-item" data-val="zh-HANT">繁体中文</div>
     </div>
 </div>

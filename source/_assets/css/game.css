@@ -293,6 +293,7 @@
 
 .asset-panel-item-inner > img {
   width: 100vw;
+  aspect-ratio: 1;
   filter: drop-shadow(0 0 0.2vh #000);
 }
 

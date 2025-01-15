@@ -202,11 +202,11 @@ if (optionInterfaceButton) {
     })
 }
 
-function startInterface() {
+async function startInterface() {
     hideAll();
     const div = document.getElementById("option-interface");
     div.style.display = "flex";
-    document.querySelector(".options-dropdown-trigger-text").innerText = language;
+    document.querySelector(".options-dropdown-trigger-text").innerText = await getLangData("lang_title");
 }
 
 const optionInterfaceLanguage = document.getElementById("option-interface-language");
@@ -225,7 +225,9 @@ const optionDropdownTrigger = document.querySelector(".options-dropdown-trigger"
 if (optionDropdownTrigger) {
     const blockEverything = document.getElementById("option-dropdown-select-lang-block-everything");
     const langMenu = document.getElementById("option-dropdown-select-lang");
+    const arrow = document.querySelector(".options-dropdown-trigger-arrow");
     optionDropdownTrigger.addEventListener('click', () => {
+        arrow.style.maskImage = `url(${imageRepoPath}/cities2/Media/Glyphs/StrokeArrowDown.svg)`;
         blockEverything.style.display = "block";
         blockEverything.addEventListener('click', () => {
             langMenu.style.display = "none";
@@ -243,7 +245,9 @@ if (optionDropdownTrigger) {
             button.addEventListener('click', async () => {
                 language = button.dataset.val;
                 await reloadLang(language);
-                processAssetGroup();
+                if (typeof processAssetGroup == "function") {
+                    processAssetGroup();
+                }
                 langMenu.style.display = "none";
                 blockEverything.style.display = "none";
                 localStorage.setItem("language", JSON.stringify(language));

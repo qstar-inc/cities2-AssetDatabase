@@ -40,14 +40,16 @@
   height: 50vh;
   margin-left: auto;
   margin-right: auto;
-  display: grid;
+  margin-top: 3vh;
+  display: flex;
+  justify-content: center;
+  /* display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1.5fr;
   gap: 2vh;
   grid-template-areas:
     "A ."
-    "A .";
-  margin-top: 3vh;
+    "A ."; */
 }
 
 .mainmenu-start {
@@ -91,6 +93,16 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.mainmenu-start-icon {
+  background-color: var(--mainmenu-white-color);
+  margin-right: -3vw;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: 2vw;
+  height: 100%;
+  aspect-ratio: 1;
 }
 
 .mainmenu-info {

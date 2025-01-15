@@ -20,36 +20,36 @@
                 <div class="mainmenu-center">
                     <div class="mainmenu-start">
                         <a id="mainmenu-button-1" class="mainmenu-start-button disabled-link round-border" href="game">
-                            <div class="mainmenu-start-icon"></div>
+                            <div class="mainmenu-start-icon" style="mask-image: url({{ $page->imgRepo }}/cities2/Media/Glyphs/ArrowRight.svg)"></div>
                             <span class="mainmenu-start-text" data-lang="loading"></span>
                         </a>
                         <button id="mainmenu-button-continue" class="mainmenu-start-button round-border">
-                            <div class="mainmenu-start-icon"></div>
+                            <div class="mainmenu-start-icon" style="mask-image: url({{ $page->imgRepo }}/cities2/Media/Glyphs/ArrowCircular.svg)"></div>
                             <span class="mainmenu-start-text" data-lang="loading_screen"></span>
                         </button>
                         <button id="options-button" class="mainmenu-start-button round-border">
-                            <div class="mainmenu-start-icon"></div>
+                            <div class="mainmenu-start-icon" style="mask-image: url({{ $page->imgRepo }}/cities2/Media/Glyphs/Gear.svg)"></div>
                             <span class="mainmenu-start-text" data-lang="options"></span>
                         </button>
                         <a class="mainmenu-start-button round-border" href="https://mods.paradoxplaza.com/games/cities_skylines_2/" target="_blank">
-                            <div class="mainmenu-start-icon"></div>
+                            <div class="mainmenu-start-icon" style="mask-image: url({{ $page->imgRepo }}/cities2/Media/Glyphs/ParadoxMods.svg)"></div>
                             <span class="mainmenu-start-text" data-lang="pdx_mods"></span>
                         </a>
                         <button id="credit-button" class="mainmenu-start-button round-border">
-                            <div class="mainmenu-start-icon"></div>
+                            <div class="mainmenu-start-icon" style="mask-image: url({{ $page->imgRepo }}/cities2/Media/Glyphs/Credits.svg)"></div>
                             <span class="mainmenu-start-text" data-lang="credits"></span>
                         </button>
                         <a class="mainmenu-start-button round-border" href="https://buymeacoffee.com/starq" target="_blank">
-                            <div class="mainmenu-start-icon"></div>
+                            <div class="mainmenu-start-icon" style="mask-image: url({{ $page->imgRepo }}/cities2/bmac.svg)"></div>
                             <span class="mainmenu-start-text" data-lang="bmac"></span>
                         </a>
                     </div>
-                    <div class="mainmenu-info">
+                    {{-- <div class="mainmenu-info">
                         <div class="mainmenu-info-header round-border-top">
                             <div class="mainmenu-info-header-text">NOTHING HERE</div>
                         </div>
                     </div>
-                    <div class="mainmenu-notification round-border"></div>
+                    <div class="mainmenu-notification round-border"></div> --}}
                 </div>
                 <div class="mainmenu-version">{{ $page->version }}</div>
                 <a class="mainmenu-top-right" href="https://github.com/qstar-inc" target="_blank">
