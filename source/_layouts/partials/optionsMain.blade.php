@@ -4,14 +4,14 @@
             <div class="option-back-arrow" style="mask-image: url({{ $page->imgRepo }}/cities2/Media/Glyphs/TriangleArrowLeft.svg)"></div>
         </a>
         <div class="option-title">
-            <span data-lang="options"></span>
+            <span data-lang-game="Menu.OPTIONS"></span>
         </div>
     </div>
     <div id="options-main">
         <div id="options-left" class="options-layout options-left-layout">
             <button class="options-left-list-button" id="option-interface-btn">
                 <div class="options-left-list">
-                    <span>Interface</span>
+                    <span data-lang-game="Options.SECTION[Interface]"></span>
                 </div>
             </button>
             <hr class="options-divider" />
@@ -20,12 +20,18 @@
                     <span data-lang="hof"></span>
                 </div>
             </button>
+            <hr class="options-divider" />
+            <button class="options-left-list-button" id="option-coming-soon-btn">
+                <div class="options-left-list">
+                    <span data-lang="coming_soon"></span>
+                </div>
+            </button>
         </div>
         <div id="options-right" class="options-layout options-right-layout">
             <div class="option-right-main">
                 <div class="option-right-main-data" id="option-interface">
                     <div class="options-item options-dropdown-item" id="option-interface-language">
-                        <div class="options-label" data-lang="language"></div>
+                        <div class="options-label" data-lang-game="Options.OPTION[InterfaceSettings.currentLocale]"></div>
                         <div class="options-dropdown">
                             <div class="options-dropdown-trigger">
                                 <div class="options-dropdown-trigger-text"></div>
@@ -39,6 +45,19 @@
                         <div class="options-label" data-lang="enable"></div>
                         <div class="options-checkbox">
                             <div id="option-hof-enable-checkbox"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="option-right-main-data" id="option-coming-soon">
+                    <div class="options-item options-checkbox-item">
+                        <div class="options-label">
+                            <h1>Planned Features:</h1>
+                            <ul style="list-style: inside;">
+                                <li>Search / Find It</li>
+                                <li>Mod Details</li>
+                                <li>Skyve Integration</li>
+                                <li>Hall of Fame UI and Options</li>
+                            </ul>
                         </div>
                     </div>
                 </div>

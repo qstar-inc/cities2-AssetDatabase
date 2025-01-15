@@ -65,6 +65,8 @@ async function initDB(bool = false) {
 
     await getAssetData();
     console.log("IndexedDB opened successfully");
+    
+    updateLangGame();
   };
 
   request.onupgradeneeded = function (event) {
@@ -88,12 +90,8 @@ async function loadFile() {
 function findValueInLines(value) {
   if (!lines.length) {
     console.error("File is not loaded yet!");
-    return null;
+    findValueInLines(value);
   }
-
-  const getNameWithoutExtension = (line) => {
-    return line.substring(0, line.lastIndexOf(".")) || line;
-  };
 
   const inWhiteFolder = lines.find(line => {
     const nameWithoutExtension = getNameWithoutExtension(line);
@@ -113,10 +111,41 @@ function findValueInLines(value) {
     return inRoot;
   }
 
+  const inCail = lines.find(line => {
+    const nameWithoutExtension = getNameWithoutExtension(line);
+    return nameWithoutExtension === "cail\\"+value && line.startsWith("cail\\");
+  });
+
+  if (inCail) {
+    return inCail;
+  }
+
   return null;
 
   // return lines.some((line) => line.includes(value));
 }
+
+function findValueInLinesCail(value) {
+  if (!lines.length) {
+    console.error("File is not loaded yet!");
+    findValueInLinesCail(value);
+  }
+
+  const inCail = lines.find(line => {
+    const nameWithoutExtension = getNameWithoutExtension(line);
+    return nameWithoutExtension === "cail\\"+value && line.startsWith("cail\\");
+  });
+
+  if (inCail) {
+    return inCail;
+  }
+
+  return null;
+}
+
+const getNameWithoutExtension = (line) => {
+  return line.substring(0, line.lastIndexOf(".")) || line;
+};
 
 function createDBs(db) {
   if (!db.objectStoreNames.contains("assetData")) {
@@ -211,6 +240,13 @@ async function checkLangData() {
       console.log("Error retrieving data:", event);
       resolve(false);
     };
+  });
+}
+
+async function updateLangGame() {
+  document.querySelectorAll('[data-lang-game]').forEach(async (el) => {
+    const key = el.dataset.langGame;
+    el.textContent = await getLangData(key) || key;
   });
 }
 
@@ -856,5 +892,7 @@ window.addAssetDataAll = addAssetDataAll;
 window.addLangDataAll = addLangDataAll;
 window.loadFile = loadFile;
 window.findValueInLines = findValueInLines;
+window.findValueInLinesCail = findValueInLinesCail;
 window.searchInIndexedDB = searchInIndexedDB;
 window.getTimeSince = getTimeSince;
+window.updateLangGame = updateLangGame;

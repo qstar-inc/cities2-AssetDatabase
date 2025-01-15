@@ -211,9 +211,9 @@ async function startInterface() {
 
 const optionInterfaceLanguage = document.getElementById("option-interface-language");
 if (optionInterfaceLanguage && optionRightSubTitle && optionRightSubDesc) {
-    optionInterfaceLanguage.addEventListener('mouseover', () => {
-        optionRightSubTitle.innerText = getTranslation("language");
-        optionRightSubDesc.innerText = getTranslation("language_description");
+    optionInterfaceLanguage.addEventListener('mouseover', async () => {
+        optionRightSubTitle.innerText = await getLangData("Options.OPTION[InterfaceSettings.currentLocale]");
+        optionRightSubDesc.innerText = await getLangData("Options.OPTION_DESCRIPTION[InterfaceSettings.currentLocale]");
     });
     optionInterfaceLanguage.addEventListener('mouseout', () => {
         optionRightSubTitle.innerText = "";
@@ -245,13 +245,14 @@ if (optionDropdownTrigger) {
             button.addEventListener('click', async () => {
                 language = button.dataset.val;
                 await reloadLang(language);
+                await updateLangGame();
                 if (typeof processAssetGroup == "function") {
                     processAssetGroup();
                 }
                 langMenu.style.display = "none";
                 blockEverything.style.display = "none";
                 localStorage.setItem("language", JSON.stringify(language));
-                document.querySelector(".options-dropdown-trigger-text").innerText = language;
+                document.querySelector(".options-dropdown-trigger-text").innerText = await getLangData("lang_title");
             })
         }
     }
@@ -314,4 +315,17 @@ function checkHof(optionHofEnableCheckbox) {
         optionHofEnableCheckbox.style.maskImage = "none";
         optionHofEnableCheckbox.style.backgroundColor = "unset";
     }
+}
+
+const soonButton = document.getElementById("option-coming-soon-btn");
+if (soonButton) {
+    soonButton.addEventListener('click', () => {
+        startComingSoonOptions();
+    })
+}
+
+function startComingSoonOptions() {
+    hideAll();
+    const div = document.getElementById("option-coming-soon");
+    div.style.display = "flex";
 }

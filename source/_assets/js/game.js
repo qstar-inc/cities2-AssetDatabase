@@ -46,6 +46,13 @@ $(document).ready(async function () {
 //     .catch((error) => console.error(error));
 // });
 
+async function updateCityName() {
+  const cityName = document.getElementById("city_name");
+  if (cityName) {
+    cityName.innerText = await getLangDataRandomly("Assets.CITY_NAME");
+  }
+}
+
 function createButton(element) {
   const button = document.createElement("button");
   button.className = "asset-menu-icon";
@@ -74,11 +81,11 @@ async function processTime() {
       // const chirpArrow = document.querySelector(".chirp-arrow");
       chirpUserGender = Math.round(Math.random());
       if (chirpUserGender == 0) {
-        firstName = await getLangDataRandomly("Assets.CITIZEN_NAME_MALE");
-        lastName = await getLangDataRandomly("Assets.CITIZEN_SURNAME_MALE");
+        firstName = await getLangDataRandomly("Assets.CITIZEN_NAME_MALE") || "StarQ";
+        lastName = await getLangDataRandomly("Assets.CITIZEN_SURNAME_MALE") || "";
       } else {
-        firstName = await getLangDataRandomly("Assets.CITIZEN_NAME_FEMALE");
-        lastName = await getLangDataRandomly("Assets.CITIZEN_SURNAME_FEMALE");
+        firstName = await getLangDataRandomly("Assets.CITIZEN_NAME_FEMALE") || "StarQ";
+        lastName = await getLangDataRandomly("Assets.CITIZEN_SURNAME_FEMALE") || "";
       }
       chirpUser.innerHTML = `${firstName} ${lastName}`;
       chirpTime.innerHTML = timeAgo(last_updated_obj);
@@ -156,6 +163,7 @@ async function processAssetGroup() {
   // getAssetTabData();
   // getAssetPanelData();
   addAssetBarIconTrigger();
+  await updateCityName();
 
   const assetId = getQueryParam('prefab');
   if (assetId) {
@@ -521,6 +529,8 @@ function processCloseDetailsPane(event) {
     event.target === assetDetailsPaneX ||
     event.key === "Escape"
   ) {
+    console.log(isAssetPanelFlexed);
+    console.log(isAssetPanelOpen);
     document.getElementById("asset-details-pane").classList.remove("open");
     topIcons.classList.remove("behind");
     toggleBlur(false);
@@ -528,9 +538,10 @@ function processCloseDetailsPane(event) {
     toggleDetailsPane();
     revertAssetPanel();
 
+
     const newTitle = `Cities: Skylines II Asset Database`;
     document.title = newTitle;
-    history.pushState(null, newTitle, ``);
+    history.pushState(null, newTitle, window.location.pathname);
     detailsPane.style.display = "none";
   }
 }
@@ -558,10 +569,19 @@ function toggleDetailsPane() {
 }
 
 function iconDecider(name, ogicon) {
-  var icon = findValueInLines(name)
+  var icon = findValueInLinesCail(name)
+  if (icon != null) {
+    icon = `${imageRepoPath}/thumbs/${icon}`;
+    return icon;
+  }
+
+  icon = findValueInLines(name)
   if (icon != null) {
     icon = `https://raw.githubusercontent.com/JadHajjar/AssetIconLibrary-CSII/master/AssetIconLibrary/Thumbnails/${icon}`;
-  } else if (icon == null && ogicon != undefined && ogicon != "") {
+    return icon;
+  }
+  
+  if (icon == null && ogicon != undefined && ogicon != "") {
     if (ogicon.startsWith("coui://")) {
       if (ogicon.startsWith("coui://uil/")) {
         icon = `https://raw.githubusercontent.com/algernon-A/UnifiedIconLibrary/refs/heads/master/Icons/${ogicon.replace("coui://uil/", "")}`
@@ -570,16 +590,16 @@ function iconDecider(name, ogicon) {
       } else if (ogicon.startsWith("coui://customassets/")) {
         icon = imageRepoPath + `/thumbs/${ogicon.replace("coui://", "")}`;
       // } else if (ogicon.startsWith("coui://ail/")) {
-      //   icon = `https://raw.githubusercontent.com/JadHajjar/AssetIconLibrary-CSII/master/AssetIconLibrary/Thumbnails/${ogicon.replace("coui://ail/","")}`
+        // icon = `https://raw.githubusercontent.com/JadHajjar/AssetIconLibrary-CSII/master/AssetIconLibrary/Thumbnails/${ogicon.replace("coui://ail/","")}`
       } else {
         console.log(`Unsupported UI protocol: ${ogicon}`);
-        icon = imageRepoPath + "/cities2/Media/Placeholder.svg";
+        icon = `${imageRepoPath}/cities2/Media/Placeholder.svg`;
       }
     } else if (ogicon.startsWith("assetdb://")) {
-      icon = imageRepoPath + `/thumbs/assetdb/${ogicon.replace("assetdb://Global", "")}.png`;
+      icon = `${imageRepoPath}/thumbs/assetdb/${ogicon.replace("assetdb://Global", "")}.png`;
     } else {
       ogicon = ogicon.replace("Media/Game/Icons/Highways.svg", "Media/Game/Icons/HIghways.svg")
-      icon = imageRepoPath + "/cities2/" + decodeURIComponent(ogicon);
+      icon = `${imageRepoPath}/cities2/${decodeURIComponent(ogicon)}`;
     }
   } else {
     icon = imageRepoPath + "/cities2/Media/Placeholder.svg";
@@ -636,7 +656,6 @@ function getQueryParam(param) {
 
 function handleWheel(event) {
   if (api.classList.contains('flexed')) {
-    console.log("wheel");
     event.preventDefault();
     api.scrollLeft += event.deltaY;
   }

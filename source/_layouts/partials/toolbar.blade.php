@@ -2,7 +2,7 @@
     <div>Time Control</div>
     <div>Speed Control</div>
     <div>Temparature</div>
-    <div data-lang="city_name"></div>
+    <div id="city_name"></div>
     <div>Population</div>
     <div>Money</div>
     <div>Happiness</div>

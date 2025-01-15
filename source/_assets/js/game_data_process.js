@@ -1038,3 +1038,4 @@ function makeColor(rgba) {
 
 window.processAssetPanelUIData = processAssetPanelUIData;
 window.distributeDivsToColumnsByHeight = distributeDivsToColumnsByHeight;
+window.removePrefix = removePrefix;

@@ -4,7 +4,7 @@
             <div class="option-back-arrow" style="mask-image: url({{ $page->imgRepo }}/cities2/Media/Glyphs/TriangleArrowLeft.svg)"></div>
         </a>
         <div class="option-title">
-            <span data-lang="credits"></span>
+            <span data-lang-game="Menu.CREDITS"></span>
         </div>
     </div>
     <div class="options-layout credit-layout">
