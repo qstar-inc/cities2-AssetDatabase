@@ -69,7 +69,7 @@ function disablePauseMenu() {
 
 document.querySelectorAll('.top-game-icon-div.unused').forEach((container) => {
     const tooltipLeft = document.querySelector(".tooltip-35.left");
-    const tooltipRight = document.querySelector(".tooltip-35.right");
+    // const tooltipRight = document.querySelector(".tooltip-35.right");
 
     container.addEventListener('mouseenter', () => {
         const halfWidth = window.innerWidth / 2;
@@ -77,16 +77,16 @@ document.querySelectorAll('.top-game-icon-div.unused').forEach((container) => {
         const side = (bound.left + bound.right) / 2;
         if (halfWidth > side) {
             tooltipLeft.style.display = "block";
-            tooltipRight.style.display = "none";
+            // tooltipRight.style.display = "none";
         } else {
             tooltipLeft.style.display = "none";
-            tooltipRight.style.display = "block";
+            // tooltipRight.style.display = "block";
         }
     });
 
     container.addEventListener('mouseleave', () => {
         tooltipLeft.style.display = "none";
-        tooltipRight.style.display = "none";
+        // tooltipRight.style.display = "none";
     });
 });
 

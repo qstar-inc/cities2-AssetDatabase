@@ -22,7 +22,7 @@ $(document).ready(async function () {
   }
 });
 
-function triggerStartUp() {
+async function triggerStartUp() {
   if (db_found) {
     enableButtons();
   } else {
@@ -48,8 +48,9 @@ function triggerStartUp() {
   }
 }
 
-function enableButtons() {
+async function enableButtons() {
   button1.classList.remove("disabled-link");
   button1text.dataset.lang = "open_db";
   button1text.innerHTML = getTranslation("open_db");
+  await updateLangGame();
 }

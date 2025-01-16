@@ -1,0 +1,133 @@
+#finder {
+  position: absolute;
+  top: 7vh;
+  left: 1vh;
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+  /* display: none; */
+  transition: all 0.5s ease;
+  z-index: 1002;
+  border-radius: 5px;
+}
+
+#finder-block-everything {
+  z-index: 1001;
+}
+
+#finder-div {
+  max-width: 50vw;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  background-color: #0000009e;
+}
+
+input#search {
+  color: inherit;
+  padding: 12px 10px;
+  width: 50vw;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  border: none;
+  outline: none;
+  flex-grow: 1;
+}
+
+#search-box-line {
+  display: flex;
+  gap: 1vh;
+  background: #fff;
+  height: 6vh;
+  border-radius: 5px 5px 0 0;
+}
+
+#search-box-buttons {
+  display: flex;
+}
+
+.selection-button {
+  aspect-ratio: 1;
+  width: 5vh;
+  background: rgb(179, 179, 179);
+  border-radius: 30px;
+  margin: 0.5vh;
+  font-size: small;
+  color: rgb(45, 46, 46);
+  transition: all 0.5s ease;
+}
+
+.selection-button.active {
+  background-color: var(--vanilla-blue-accent-light);
+  color: black;
+  aspect-ratio: 2;
+  width: 10vh;
+  font-size: large;
+}
+
+.search-drop {
+  background: #1e1e1e78;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: 0.4s all ease;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  color: #fff;
+  max-height: 75vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 1vh 2vh;
+  width: calc(100% - 0vh);
+}
+
+.search-item {
+  padding: 1vh;
+  list-style: none;
+  display: flex;
+  gap: 1vh;
+  background: #84848478;
+  margin: 0.3vh;
+  border-radius: 13px;
+  width: calc(25vw - 0.6vh - 2vh);
+}
+
+.search-item-image {
+  width: 12vh;
+  aspect-ratio: 1;
+  height: 12vh;
+  background: #1e1e1e78;
+  border-radius: 20px;
+}
+
+.search-item-image > img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1;
+}
+
+.search-item-text {
+  flex-grow: 1;
+  width: 0%;
+}
+
+.search-item-header {
+  font-size: 150%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  text-wrap: nowrap;
+}
+
+.search-item-desc {
+  width: 0%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  text-wrap: nowrap;
+}
+
+.search-item-tags-icon {
+  width: 4vh;
+  aspect-ratio: 1;
+}

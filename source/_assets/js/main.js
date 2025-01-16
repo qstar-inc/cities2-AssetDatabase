@@ -6,6 +6,8 @@ var hof_enabled = JSON.parse(localStorage.getItem("hof_enabled")) ?? true;
 
 var isHofBG = false;
 var isOptionMenuOpen = false;
+let isAssetPanelOpen = false;
+let isAssetPanelFlexed = false;
 
 function random(min, max) {
   min = Math.ceil(min);
@@ -132,6 +134,14 @@ function getTranslation(key) {
   return translations[key] || defaultTranslations[key] || key;
 }
 
+function repeat(string, time) {
+  let final = "";
+  for (let i = 0; i < time; i++) {
+    final += string;
+  }
+  return final;
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
   await loadDefaultTranslations();
   reloadLang(language);
@@ -143,6 +153,8 @@ window.language = language;
 window.hof_enabled = hof_enabled;
 window.isHofBG = isHofBG;
 window.isOptionMenuOpen = isOptionMenuOpen;
+window.isAssetPanelOpen = isAssetPanelOpen;
+window.isAssetPanelFlexed = isAssetPanelFlexed;
 window.random = random;
 window.clearCacheAndRedirect = clearCacheAndRedirect;
 window.timeAgo = timeAgo;
@@ -150,3 +162,4 @@ window.getRandomHexColor = getRandomHexColor;
 window.reloadLang = reloadLang;
 window.loadDefaultTranslations = loadDefaultTranslations;
 window.getTranslation = getTranslation;
+window.repeat = repeat;

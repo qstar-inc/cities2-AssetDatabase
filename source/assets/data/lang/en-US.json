@@ -1,14 +1,16 @@
 {
   "bmac": "Nothing here, so BMAC",
+  "coming_soon": "Coming Soon",
   "enable_hof": "Activate Hall of Fame's background image service.",
   "enable": "Enable",
+  "go_to": "Go to",
   "hof": "Hall of Fame",
+  "input-3-characters": "Input more than 3 characters",
   "loading_screen": "Loading Screen",
   "loading": "Loading...",
+  "new_content": "New Content available.",
   "open_db": "Open Database",
   "reload_db": "Reload Database",
   "resume": "Resume",
-  "new_content": "New Content available.",
-  "go_to": "Go to",
-  "coming_soon": "Coming Soon"
+  "search": "Search"
 }

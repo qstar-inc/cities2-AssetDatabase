@@ -22,9 +22,6 @@ async function initDB(bool = false) {
     db = event.target.result;
     currentVersion = db.version;
     if (
-      // !db.objectStoreNames.contains("assetGroupData") ||
-      // !db.objectStoreNames.contains("assetTabData") ||
-      // !db.objectStoreNames.contains("assetPanelData") ||
       !db.objectStoreNames.contains("assetData") ||
       !db.objectStoreNames.contains("langData") ||
       !db.objectStoreNames.contains("timeSince")
@@ -32,41 +29,27 @@ async function initDB(bool = false) {
       db.close();
       deleteIndexedDB();
       createDBs(db);
-      // let upgradeRequest = indexedDB.open(
-      //   "cities2-AssetDatabase",
-      //   currentVersion + 1
-      // );
-      // upgradeRequest.onupgradeneeded = function (event) {
-      //   db = event.target.result;
-      //   createDBs(db);
-      // };
-
-      // upgradeRequest.onsuccess = function (event) {
-      //   db = event.target.result;
-      //   console.log("Database upgraded successfully to version", db.version);
-      // };
-
-      // upgradeRequest.onerror = function (event) {
-      //   console.error("Error upgrading IndexedDB:", event.target.errorCode);
-      // };
     }
     let hasEntry = await checkAssetData();
-    if (!hasEntry) {
-      fetchLangDataAll();
-      fetchAssetDataAll();
-      // await getAssetData();
+    if (hasEntry == 0) {
+      await fetchLangDataAll();
+      await fetchAssetDataAll();
       hasEntry = await checkAssetData();
     }
+    console.log(`Found ${hasEntry} items in IndexedDB`);
 
-    if (hasEntry && bool) {
+    if (hasEntry > 0 && bool) {
       const dbInitialized = new Event("dbInitialized");
       document.dispatchEvent(dbInitialized);
     }
-
-    await getAssetData();
-    console.log("IndexedDB opened successfully");
+    else if (typeof processAssetGroup == "function") {
+      await getAssetData();
+    }
     
-    updateLangGame();
+    const dbLoading = document.getElementById('db-loading');
+    dbLoading.classList.add("display-none");
+    console.log("IndexedDB opened successfully");
+    await processTime();
   };
 
   request.onupgradeneeded = function (event) {
@@ -76,11 +59,13 @@ async function initDB(bool = false) {
 }
 
 let lines = [];
+let ail_loaded = false;
 async function loadFile() {
   try {
     const response = await fetch(dataBasePath + "/ail_list.txt");
     const text = await response.text();
     lines = text.split("\n").map(line => line.trim());
+    ail_loaded = true;
     console.log("AIL list loaded and stored in memory");
   } catch (error) {
     console.error("Error reading AIL list:", error);
@@ -88,9 +73,13 @@ async function loadFile() {
 }
 
 function findValueInLines(value) {
-  if (!lines.length) {
-    console.error("File is not loaded yet!");
-    findValueInLines(value);
+  const checkInterval = setInterval(checkAndTrigger, 3000);
+  function checkAndTrigger() {
+    if (!ail_loaded) {
+      findValueInLines(value);
+    } else {
+      clearInterval(checkInterval);
+    }
   }
 
   const inWhiteFolder = lines.find(line => {
@@ -111,24 +100,19 @@ function findValueInLines(value) {
     return inRoot;
   }
 
-  const inCail = lines.find(line => {
-    const nameWithoutExtension = getNameWithoutExtension(line);
-    return nameWithoutExtension === "cail\\"+value && line.startsWith("cail\\");
-  });
-
-  if (inCail) {
-    return inCail;
-  }
-
   return null;
 
   // return lines.some((line) => line.includes(value));
 }
 
 function findValueInLinesCail(value) {
-  if (!lines.length) {
-    console.error("File is not loaded yet!");
-    findValueInLinesCail(value);
+  const checkInterval = setInterval(checkAndTrigger, 3000);
+  function checkAndTrigger() {
+    if (!ail_loaded) {
+      findValueInLines(value);
+    } else {
+      clearInterval(checkInterval);
+    }
   }
 
   const inCail = lines.find(line => {
@@ -209,9 +193,9 @@ function checkAssetData() {
     request.onsuccess = async function (event) {
       let result = event.target.result;
       if (result.length === 0 || result.length === undefined) {
-        resolve(false);
+        resolve(0);
       }
-      resolve(true);
+      resolve(result.length);
     };
 
     request.onerror = function (event) {
@@ -265,8 +249,6 @@ async function getAssetData() {
         resolve();
         return;
       } else {
-        const dbLoading = document.getElementById('db-loading');
-        dbLoading.classList.add("display-none");
         if (typeof processAssetGroup !== "function") {
           resolve();
           return;
@@ -463,6 +445,44 @@ async function getLangDataRandomly(format, lang = language) {
   });
 }
 
+async function searchAssets(searchTerm, by) {
+  return new Promise((resolve, reject) => {
+    const transaction = db.transaction(["assetData"], "readonly");
+    const objectStore = transaction.objectStore("assetData");
+    const results = [];
+    const request = objectStore.openCursor();
+
+    request.onsuccess = function (event) {
+      const cursor = event.target.result;
+
+      if (cursor) {
+        let find;
+        if (by == "name") {
+          find = cursor.value.PrefabID || "";
+        } else if (by == "guid") {
+          find = cursor.value.GUID || "";
+        } else {
+          reject();
+        }
+          
+        if (find.toLowerCase().includes(searchTerm.toLowerCase())) {
+          results.push(cursor.value);
+        }
+
+        cursor.continue();
+      } else {
+        resolve(results);
+      }
+    };
+
+    // 9511fbbc3b07b713222662e48f040e3f
+    request.onerror = function (event) {
+      console.error("Error searching assets:", event.target.error);
+      reject(event.target.error);
+    };
+  });
+}
+
 async function getAssetPanelData(PrefabID) {
   return new Promise((resolve, reject) => {
     let transaction = db.transaction(["assetData"], "readonly");
@@ -488,6 +508,78 @@ async function getAssetPanelData(PrefabID) {
 
     request.onerror = function (event) {
       console.log("Error retrieving tab data:", event);
+      reject(event);
+    };
+  });
+}
+
+async function getPrefabUIGroup(PrefabID) {
+  return new Promise((resolve, reject) => {
+    let transaction = db.transaction(["assetData"], "readonly");
+    let objectStore = transaction.objectStore("assetData");
+
+    let request = objectStore.get(PrefabID);
+
+    request.onsuccess = function (event) {
+      let data = event.target.result;
+
+      if (data) {
+        resolve(data.UI_Group);
+      } else {
+        resolve(null);
+      }
+    };
+
+    request.onerror = function (event) {
+      console.log("Error retrieving data:", event);
+      reject(event);
+    };
+  });
+}
+
+async function getPrefabUIMenu(PrefabID) {
+  return new Promise((resolve, reject) => {
+    let transaction = db.transaction(["assetData"], "readonly");
+    let objectStore = transaction.objectStore("assetData");
+
+    let request = objectStore.get(PrefabID);
+
+    request.onsuccess = function (event) {
+      let data = event.target.result;
+
+      if (data) {
+        resolve(data.UI_Menu);
+      } else {
+        resolve(null);
+      }
+    };
+
+    request.onerror = function (event) {
+      console.log("Error retrieving data:", event);
+      reject(event);
+    };
+  });
+}
+
+async function getPrefabUIIcon(PrefabID) {
+  return new Promise((resolve, reject) => {
+    let transaction = db.transaction(["assetData"], "readonly");
+    let objectStore = transaction.objectStore("assetData");
+
+    let request = objectStore.get(PrefabID);
+
+    request.onsuccess = function (event) {
+      let data = event.target.result;
+
+      if (data) {
+        resolve(data.UI_Icon);
+      } else {
+        resolve(null);
+      }
+    };
+
+    request.onerror = function (event) {
+      console.log("Error retrieving data:", event);
       reject(event);
     };
   });
@@ -780,7 +872,7 @@ async function getAssetDataSingle(prefab) {
     };
 
     request.onerror = function (event) {
-      console.log("Error retrieving lang data:", event);
+      console.log(`Error retrieving ${prefab} data: ${event}`);
       reject(event);
     };
   });
@@ -896,3 +988,7 @@ window.findValueInLinesCail = findValueInLinesCail;
 window.searchInIndexedDB = searchInIndexedDB;
 window.getTimeSince = getTimeSince;
 window.updateLangGame = updateLangGame;
+window.getPrefabUIGroup = getPrefabUIGroup;
+window.getPrefabUIMenu = getPrefabUIMenu;
+window.getPrefabUIIcon = getPrefabUIIcon;
+window.searchAssets = searchAssets;

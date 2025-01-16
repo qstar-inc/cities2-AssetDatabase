@@ -84,10 +84,11 @@ async function processAssetPanelUIData(d, containers) {
     }
   }
 
+  let upgrades;
   if (d.PrefabID.startsWith("BuildingPrefab:")) {
-    const bldgs = await getBuildingUpgrades(d.PrefabID);
-    if (bldgs.length > 0) {
-      await processUpgrades(bldgs);
+    upgrades = await getBuildingUpgrades(d.PrefabID);
+    if (upgrades.length > 0) {
+      await processUpgrades(upgrades);
     }
   }
 
@@ -483,7 +484,7 @@ async function processAssetPanelUIData(d, containers) {
     GroupAmbience: d.GroupAmbience
   }
   await processData(data_AudioVisual, "AudioVisual Data");
-  await processReferences(d.PrefabID, "References");
+  await processReferences(d.PrefabID, "References", upgrades);
   detailsArray.forEach(([key, value]) => {
     if (!doneArray.includes(key)) {
       const div = document.createElement("div");
@@ -608,9 +609,12 @@ async function processData(data, header) {
   }
 }
 
-async function processReferences(d, header) {
+async function processReferences(d, header, upgrades) {
   try {
     let matchingIds = await searchInIndexedDB(d);
+    if (upgrades) {
+      matchingIds = matchingIds.filter(id => !upgrades.some((upgrade) => upgrade.PrefabID === id));
+    }
     matchingIds = matchingIds.filter(id => id !== d);
     if (matchingIds.length > 0) {
       const mainDiv = document.createElement("div");
@@ -691,7 +695,7 @@ async function processBldg(bldgs) {
       const prefabName = bldg.PrefabID.replaceAll("BuildingPrefab:", "")
       textDiv.innerText = prefabName.replaceAll("_", " ");
       const imgDiv = document.createElement("img");
-      imgDiv.src = iconDecider(bldg.PrefabID.split(":")[1], bldg.UI_Icon);
+      imgDiv.src = iconDecider(bldg.PrefabID.split(":")[1], bldg.UI_Icon, bldg.PrefabID);
       imgDiv.alt = prefabName;
       imgDiv.width = "10vh";
       div.appendChild(textDiv);

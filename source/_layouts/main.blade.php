@@ -41,6 +41,7 @@
     <link rel="stylesheet" href="{{ $page->repo . mix('css/main.css', 'assets/build') }}">
     <link rel="stylesheet" href="{{ $page->repo . mix('css/splash.css', 'assets/build') }}">
     <link rel="stylesheet" href="{{ $page->repo . mix('css/main-menu.css', 'assets/build') }}">
+    <link rel="stylesheet" href="{{ $page->repo . mix('css/chirp.css', 'assets/build') }}">
     <link rel="stylesheet" href="{{ $page->repo . mix('css/starqstrap.css', 'assets/build') }}">
     @yield('style')
 </head>
@@ -64,6 +65,7 @@
     </script>
     <script defer src="{{ $page->repo . mix('js/main.js', 'assets/build') }}"></script>
     <script defer src="{{ $page->repo . mix('js/splash.js', 'assets/build') }}"></script>
+    <script defer src="{{ $page->repo . mix('js/chirp.js', 'assets/build') }}"></script>
     <script defer src="{{ $page->repo . mix('js/hall-of-fame.js', 'assets/build') }}"></script>
     @yield('js')
 </body>

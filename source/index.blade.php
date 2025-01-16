@@ -29,15 +29,15 @@
                         </button>
                         <button id="options-button" class="mainmenu-start-button round-border">
                             <div class="mainmenu-start-icon" style="mask-image: url({{ $page->imgRepo }}/cities2/Media/Glyphs/Gear.svg)"></div>
-                            <span class="mainmenu-start-text" data-lang-game="Menu.OPTIONS"></span>
+                            <span class="mainmenu-start-text" data-lang-game="Menu.OPTIONS">Options</span>
                         </button>
                         <a class="mainmenu-start-button round-border" href="https://mods.paradoxplaza.com/games/cities_skylines_2/" target="_blank">
                             <div class="mainmenu-start-icon" style="mask-image: url({{ $page->imgRepo }}/cities2/Media/Glyphs/ParadoxMods.svg)"></div>
-                            <span class="mainmenu-start-text" data-lang-game="Menu.PDX_MODS"></span>
+                            <span class="mainmenu-start-text" data-lang-game="Menu.PDX_MODS">PARADOX MODS</span>
                         </a>
                         <button id="credit-button" class="mainmenu-start-button round-border">
                             <div class="mainmenu-start-icon" style="mask-image: url({{ $page->imgRepo }}/cities2/Media/Glyphs/Credits.svg)"></div>
-                            <span class="mainmenu-start-text" data-lang-game="Menu.CREDITS"></span>
+                            <span class="mainmenu-start-text" data-lang-game="Menu.CREDITS">CREDITS</span>
                         </button>
                         <a class="mainmenu-start-button round-border" href="https://buymeacoffee.com/starq" target="_blank">
                             <div class="mainmenu-start-icon" style="mask-image: url({{ $page->imgRepo }}/cities2/bmac.svg)"></div>
@@ -50,6 +50,9 @@
                         </div>
                     </div>
                     <div class="mainmenu-notification round-border"></div> --}}
+                </div>
+                <div class="chirper-icons">
+                    @include('_layouts.partials.chirper')
                 </div>
                 <div class="mainmenu-version">{{ $page->version }}</div>
                 <a class="mainmenu-top-right" href="https://github.com/qstar-inc" target="_blank">

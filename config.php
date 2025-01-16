@@ -16,6 +16,6 @@ return [
     'images'      => $repo . "/assets/images",
     'fonts'       => $repo . "/assets/fonts",
     'repo'        => $repo,
-    'version'     => "1.2.0q7 [PROD] (Mimonsi, ZedeTTV, Bruceyboy, Sully, Tigon, DVNZ, Washi)",
+    'version'     => "1.2.0q8 [PROD] (Search)",
     'imgRepo'     => 'https://raw.githubusercontent.com/qstar-inc/cities2-AssetDatabase-imgRepo/refs/heads/main',
 ];

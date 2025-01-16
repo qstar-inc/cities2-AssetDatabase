@@ -30,9 +30,6 @@ const quickInfoBodyDescription = document.getElementById(
 );
 const gameBgElement = document.getElementById("game-bg");
 
-let isAssetPanelOpen = false;
-let isAssetPanelFlexed = false;
-
 $(document).ready(async function () {
   await initDB(false);
   loadFile();
@@ -58,57 +55,14 @@ function createButton(element) {
   button.className = "asset-menu-icon";
   button.setAttribute("data-name", element.PrefabID);
   var elementName = element.PrefabID.split(":")[1];
-  var icon = iconDecider(elementName, element.UI_Icon);
+  var icon = iconDecider(elementName, element.UI_Icon, element.PrefabID);
   button.innerHTML = `<img src="${icon}"/>`;
   return button;
 }
 
-async function processTime() {
-  setTimeout(async () => {
-    const time = await getTimeSince('assetData');
-    const last_updated = await fetchTimeTrack();
-    const last_updated_obj = new Date(last_updated);
-    if (last_updated_obj.getTime() > time) {
-      const chirper = document.querySelector(".chirper");
-      chirper.style.opacity = 0.9;
-      chirper.style.animation = "shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both";
-      const chirp = document.querySelector(".chirp");
-      const chirpAvatar = document.querySelector(".chirp-avatar");
-      const chirpUser = document.querySelector(".chirp-user");
-      const chirpTime = document.querySelector(".chirp-time");
-      const chirpText = document.querySelector(".chirp-text");
-      const chirpLike = document.querySelector(".chirp-like");
-      // const chirpArrow = document.querySelector(".chirp-arrow");
-      chirpUserGender = Math.round(Math.random());
-      if (chirpUserGender == 0) {
-        firstName = await getLangDataRandomly("Assets.CITIZEN_NAME_MALE") || "StarQ";
-        lastName = await getLangDataRandomly("Assets.CITIZEN_SURNAME_MALE") || "";
-      } else {
-        firstName = await getLangDataRandomly("Assets.CITIZEN_NAME_FEMALE") || "StarQ";
-        lastName = await getLangDataRandomly("Assets.CITIZEN_SURNAME_FEMALE") || "";
-      }
-      chirpUser.innerHTML = `${firstName} ${lastName}`;
-      chirpTime.innerHTML = timeAgo(last_updated_obj);
-      const t = getTranslation;
-      chirpText.innerHTML = `${t("new_content")}<br/>${t("go_to")} ${t("options")} > ${t("reload_db")}.`
-      chirpLike.innerHTML = Math.floor(Math.random() * 1000);
-      chirpLike.style.display = "block";
-      chirpAvatar.style.display = "flex";
-      chirpAvatar.style.backgroundColor = getRandomHexColor();
-      // chirpArrow.style.display = "flex";
-        chirp.style.display = "flex";
-      setTimeout(() => {
-        chirp.style.width = "unset";
-        chirp.style.padding = "2vh";
-        chirp.style.opacity = "1";
-      }, 100);
-    }
-  }, 3000);
-
-}
 
 async function processAssetGroup() {
-  await processTime();
+  await updateLangGame();
   let data = await getAssetGroupData();
   data.forEach((x) => {
     if (x.PrefabID === "UIAssetMenuPrefab:Zones") {
@@ -188,17 +142,17 @@ function addAssetBarIconTrigger() {
           const prefabID = icon.dataset.name;
           apht.innerHTML = "";
           api.innerHTML = "";
-          assetPanel.classList.add("opened");
+          openAssetPanel();
           addLoader(api);
-          let tabData = await getAssetTabData(prefabID);
-          processAssetTab(tabData);
+          await processAssetTab(prefabID);
         }
       }
     });
   });
 }
 
-function processAssetTab(data) {
+async function processAssetTab(prefabID, Group = null) {
+  let data = await getAssetTabData(prefabID);  
   apht.innerHTML = "";
   data.sort((a, b) => a.UI_Priority - b.UI_Priority);
   // if (data.length == 1) {
@@ -214,15 +168,17 @@ function processAssetTab(data) {
   // } else {
   data.forEach(async (element) => {
     let className = "multiple";
+
+    let active = "";
     if (data.length == 1) {
       className = "single";
     }
-    if (element == data[0]) {
-      var active = " active";
-      // let panelData = await getAssetPanelData(element.PrefabID);
-      // processAssetPanel(panelData);
+    if (element == data[0] && !Group) {
+      active = " active";
     } else {
-      var active = "";
+      if (element.PrefabID == Group) {
+        active = " active";
+      }
     }
     
     const tab = document.createElement("div");
@@ -231,7 +187,7 @@ function processAssetTab(data) {
       tab.classList.add("flexed");
     }
     var elementName = element.PrefabID.split(":")[1];
-    var icon = iconDecider(elementName, element.UI_Icon);
+    var icon = iconDecider(elementName, element.UI_Icon, element.PrefabID);
     const imgSrc = `<img src="${icon}"/>`;
     tab.setAttribute("data-id", element.PrefabID);
     tab.innerHTML = imgSrc;
@@ -259,7 +215,7 @@ function processAssetTab(data) {
 
     apht.appendChild(tab);
   
-    if (element == data[0]) { 
+    if (element == data[0] && !Group) { 
       let panelData = await getAssetPanelData(element.PrefabID);
       processAssetPanel(panelData);
     }
@@ -288,7 +244,7 @@ function createAssetPanelItem(element) {
   const itemDiv = document.createElement("div");
   itemDiv.className = "asset-panel-item-inner";
   var elementName = element.PrefabID.split(":")[1];
-  var icon = iconDecider(elementName, element.UI_Icon);
+  var icon = iconDecider(elementName, element.UI_Icon, element.PrefabID);
   itemDiv.innerHTML = `<img src="${icon}" loading="lazy"/>`;
   item.appendChild(itemDiv);
 
@@ -318,55 +274,72 @@ function createAssetPanelItem(element) {
   return item;
 }
 
-function processAssetPanel(data) {
+function processAssetPanel(data, activePrefab = null) {
   data.sort((a, b) => a.UI_Priority - b.UI_Priority);
   api.innerHTML = "";
 
-  let index = 0;
-  const batchSize = 25; // Number of elements to render per batch
-  const delay = 500; // Delay in milliseconds between batches
+  data.forEach((element) => {
+    const item = createAssetPanelItem(element);
+    api.appendChild(item);
+  });
 
-  function renderBatch() {
-    if (index >= data.length) {
-      // All items processed
-      api.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-      return;
+  if (activePrefab) {
+    const activePrefabElement = document.querySelector(`.asset-panel-item[data-prefab="${activePrefab}"]`);
+    if (activePrefabElement) {
+      activePrefabElement.classList.add("selected");
     }
-
-    // Process a batch of items
-    for (let i = 0; i < batchSize && index < data.length; i++, index++) {
-      const item = createAssetPanelItem(data[index]);
-      api.appendChild(item);
-    }
-
-    // Schedule the next batch
-    setTimeout(renderBatch, delay);
+    let i = 0;
+    const checkInterval = setInterval(checkAndTrigger, 500);
+    function checkAndTrigger() {
+      i++;
+      if (i > 10) {
+        clearInterval(checkInterval);
+      }
+      if (activePrefabElement.classList.contains("flexed")) {
+        if (api.scrollWidth > api.clientWidth) {
+          elementPosition = Math.max(activePrefabElement.offsetLeft - (api.clientWidth / 2), 0);
+          api.scrollTo({
+            left: elementPosition,
+            behavior: "smooth",
+          });
+          clearInterval(checkInterval);
+        }
+      }
+    }    
+  } else {
+    api.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   }
-
-  // Start rendering in batches
-  renderBatch();
-
-  // data.forEach((element) => {
-  //   const item = createAssetPanelItem(element);
-  //   api.appendChild(item);
-  // });
-  // api.scrollTo({
-  //   top: 0,
-  //   behavior: "smooth",
-  // });
 }
 
-async function processAssetData(PrefabID) {
+async function processAssetData(PrefabID, typeX) {
+  const data = await getAssetDataSingle(PrefabID);
+  // let panelGroup = await getPrefabUIGroup(PrefabID);
+  if (data.UI_Group) {
+    let panelData = await getAssetPanelData(data.UI_Group);
+    let panelMenu = await getPrefabUIMenu(data.UI_Group);
+    if (panelMenu) {
+      await processAssetTab(panelMenu, data.UI_Group);
+      openAssetPanel();
+      processAssetPanel(panelData, PrefabID);
+      const element = document.querySelector(`.asset-menu-icon[data-name="${panelMenu}"]`);
+      if (element) {
+        element.classList.add("active");
+      }
+    }
+  }
   detailsPane.style.display = "block";
   const newTitle = `${PrefabID} - Cities: Skylines II Asset Database`;
   document.title = newTitle;
   history.pushState(null, newTitle, `?prefab=${encodeURIComponent(PrefabID)}`);
-  const data = await getAssetDataSingle(PrefabID);
   topIcons.classList.add("behind");
   const assetDetailsPane = document.getElementById("asset-details-pane");
+  if (typeX == "type2") {
+    assetDetailsPane.style.left = "52vw";
+  }
+
   const assetDetailsPaneHeaderTitle = document.getElementById(
     "asset-details-pane-header-title"
   );
@@ -379,7 +352,7 @@ async function processAssetData(PrefabID) {
   const tagContainer = document.getElementById("tag-container");
   const notifContainer = document.getElementById("notif-container");
   var elementName = data.PrefabID.split(":")[1] ?? "";
-  var icon = iconDecider(elementName, data.UI_Icon);
+  var icon = iconDecider(elementName, data.UI_Icon, PrefabID);
 
   [langTitle, langDescription] = await getTitleAndDescription(data);
   assetDetailsPaneHeaderTitle.innerHTML = langTitle ?? "";
@@ -407,6 +380,7 @@ async function processAssetData(PrefabID) {
   } catch (error) {
     
   }
+
   await distributeDivsToColumnsByHeight();
 
   assetDetailsPane.classList.add("open");
@@ -443,8 +417,18 @@ function toggleBlur(shouldBlur) {
   hof.style.filter = shouldBlur ? `blur(${BLUR_ON})` : `blur(${BLUR_OFF})`;
 }
 
+function openAssetPanel() {
+  assetPanel.classList.add("opened");
+  window.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+      closeAssetPanel();
+    }
+  });
+}
+
 function closeAssetPanel() {
   assetPanel.classList.remove("opened");
+  window.removeEventListener("keydown", closeAssetPanel);
   const menuIcons = document.querySelectorAll('.asset-menu-icon');
   menuIcons.forEach(icon => icon.classList.remove('active'));
   toggleBlur(false);
@@ -529,15 +513,14 @@ function processCloseDetailsPane(event) {
     event.target === assetDetailsPaneX ||
     event.key === "Escape"
   ) {
-    console.log(isAssetPanelFlexed);
-    console.log(isAssetPanelOpen);
+    isAssetDetailsOpen = false;
     document.getElementById("asset-details-pane").classList.remove("open");
     topIcons.classList.remove("behind");
     toggleBlur(false);
     isAssetPanelOpen = false;
     toggleDetailsPane();
     revertAssetPanel();
-
+    openAssetPanel();
 
     const newTitle = `Cities: Skylines II Asset Database`;
     document.title = newTitle;
@@ -561,6 +544,7 @@ function toggleDetailsPane() {
       "click", processCloseDetailsPane
     );
   } else {
+    window.removeEventListener("keydown", closeAssetPanel);
     assetDetailsPaneContainer.addEventListener(
       "click", processCloseDetailsPane
     );
@@ -568,7 +552,7 @@ function toggleDetailsPane() {
   }
 }
 
-function iconDecider(name, ogicon) {
+function iconDecider(name, ogicon, prefabID) {
   var icon = findValueInLinesCail(name)
   if (icon != null) {
     icon = `${imageRepoPath}/thumbs/${icon}`;
@@ -601,8 +585,10 @@ function iconDecider(name, ogicon) {
       ogicon = ogicon.replace("Media/Game/Icons/Highways.svg", "Media/Game/Icons/HIghways.svg")
       icon = `${imageRepoPath}/cities2/${decodeURIComponent(ogicon)}`;
     }
+  } else if (prefabID.startsWith("ContentPrefab")) {
+    icon = `${imageRepoPath}/cities2/Media/DLC/${name}.svg`;
   } else {
-    icon = imageRepoPath + "/cities2/Media/Placeholder.svg";
+    icon = `${imageRepoPath}/cities2/Media/Placeholder.svg`;
   }
   return icon;
 }
@@ -631,11 +617,13 @@ async function getTitleAndDescriptionFromPrefab(PrefabID) {
   } else if (prefabType == "UIAssetCategoryPrefab") {
     title = await getLangData(`SubServices.NAME[${prefabName}]`);
     desc = await getLangData(`Assets.SUB_SERVICE_DESCRIPTION[${prefabName}]`);
+  } else if (prefabType == "ContentPrefab") {
+    title = await getLangData(`Common.DLC_TITLE[${prefabName}]`);
   } else {
     title = await getLangData(`Assets.NAME[${prefabName}]`);
     desc = await getLangData(`Assets.DESCRIPTION[${prefabName}]`);
   }
-  if (title.includes(".NAME[")) {
+  if (title.includes(".NAME[") || title.includes(".DLC_TITLE")) {
     title = prefabName;
   }
   if (desc.includes(".DESCRIPTION[")) {
