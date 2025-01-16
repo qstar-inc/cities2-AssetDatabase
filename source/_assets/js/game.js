@@ -81,7 +81,7 @@ async function processAssetGroup() {
 
         const tooltip = document.createElement("div");
         tooltip.className = "asset-group-tooltip";
-
+        let langTitle, langDescription;
         [langTitle, langDescription] = await getTitleAndDescription(element);
         const tooltipHeader = document.createElement("div");
         tooltipHeader.className = "asset-group-tooltip-header";
