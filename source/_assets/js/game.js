@@ -331,9 +331,12 @@ async function processAssetData(PrefabID, typeX) {
     }
   }
   detailsPane.style.display = "block";
-  const newTitle = `${PrefabID} - Cities: Skylines II Asset Database`;
-  document.title = newTitle;
-  history.pushState(null, newTitle, `?prefab=${encodeURIComponent(PrefabID)}`);
+  const current = getQueryParam('prefab');
+  if (current != PrefabID) {
+    const newTitle = `${PrefabID} - Cities: Skylines II Asset Database`;
+    document.title = newTitle;  
+    history.pushState(null, newTitle, `?prefab=${encodeURIComponent(PrefabID)}`);
+  }
   topIcons.classList.add("behind");
   const assetDetailsPane = document.getElementById("asset-details-pane");
   if (typeX == "type2") {
