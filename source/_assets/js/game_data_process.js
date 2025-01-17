@@ -845,7 +845,7 @@ function rangeXY(x, y, units = null, preUnit = false) {
   if (units == null) {
     return `${x}% to ${y}%`;
   }
-  if (preUnit == true) {
+  if (preUnit) {
     return `${units}${x} to ${units}${y}`;
   }
   return `${x}${units} to ${y}${units}`;

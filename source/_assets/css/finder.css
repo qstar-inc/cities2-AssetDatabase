@@ -9,6 +9,7 @@
   transition: all 0.5s ease;
   z-index: 1002;
   border-radius: 5px;
+  /* bottom: calc(10vw - 7vh - 1vh); */
 }
 
 #finder-block-everything {
@@ -74,7 +75,7 @@ input#search {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   color: #fff;
-  max-height: 75vh;
+  max-height: calc(100vh - 10vw + 1vh);
   overflow-y: auto;
   overflow-x: hidden;
   padding: 1vh 2vh;

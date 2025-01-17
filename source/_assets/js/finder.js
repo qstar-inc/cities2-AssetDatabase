@@ -23,17 +23,18 @@ async function openFinder() {
                 closeFinder();
             })
         }
-        const adp = document.querySelector(".asset-details-pane");
-        adp.style.left = "52vw";
+        // const adp = document.querySelector(".asset-details-pane");
+        // adp.style.left = "52vw";
+        // adp.style.bottom = "6vh";
     }
 }
 
 async function closeFinder() {
     blockEverything.style.display = "none";
     finder.style.height = 0;
-    const adp = document.querySelector(".asset-details-pane");
-    adp.style.left = "1vw";
-    
+    // const adp = document.querySelector(".asset-details-pane");
+    // adp.style.left = "1vw";
+    // adp.style.bottom = "10vw";
 }
 
 let debounceTimeout;
@@ -119,7 +120,6 @@ const formHandler = async (e) => {
             resultDiv.addEventListener('click', async () => {
                 isAssetDetailsOnRight = true;
                 processAssetData(item.PrefabID, "type2");
-                // await distributeDivsToColumnsByHeight(1);
                 blockEverything.style.width = "50%";
             });
             resultDivs.push(resultDiv);
@@ -128,7 +128,7 @@ const formHandler = async (e) => {
         resultDivs.forEach(div => {
             searchResults.appendChild(div);
         });
-    }, 500);
+    }, 1000);
 }
 
 if (search) {

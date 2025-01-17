@@ -11,6 +11,7 @@ const BLUR_OFF = "0vh";
 const assetBar = document.querySelector(".asset-bar");
 const bottomBar = document.querySelector(".bottom-bar");
 const detailsPane = document.querySelector(".details-pane");
+const assetDetailsPane = document.getElementById("asset-details-pane");
 const assetDetailsPaneContainer = document.querySelector(
   ".asset-details-pane-container"
 );
@@ -132,21 +133,44 @@ function addAssetBarIconTrigger() {
   const assetGroupContainers = document.querySelectorAll("[id^=asset-group-]");
   assetGroupContainers.forEach((assetContainer) => {
     assetContainer.addEventListener("click", async function (event) {
-      if (event.target.closest(".asset-menu-icon")) {
-        const icon = event.target.closest(".asset-menu-icon");
-        if (icon) {
-          toggleBlur(true);
-          allIcons = document.querySelectorAll(".asset-menu-icon");
-          allIcons.forEach((allIcon) => {
-            allIcon.classList.remove("active");
-          })
-          icon.classList.add("active");
-          const prefabID = icon.dataset.name;
-          apht.innerHTML = "";
-          api.innerHTML = "";
-          openAssetPanel();
-          addLoader(api);
-          await processAssetTab(prefabID);
+      if (!isAssetPanelOpen) {
+        if (event.target.closest(".asset-menu-icon")) {
+          const icon = event.target.closest(".asset-menu-icon");
+          if (icon) {
+            toggleBlur(true);
+            allIcons = document.querySelectorAll(".asset-menu-icon");
+            allIcons.forEach((allIcon) => {
+              allIcon.classList.remove("active");
+            })
+            icon.classList.add("active");
+            const prefabID = icon.dataset.name;
+            apht.innerHTML = "";
+            api.innerHTML = "";
+            openAssetPanel();
+            addLoader(api);
+            await processAssetTab(prefabID);
+          }
+        }
+      } else {
+        if (event.target.closest(".asset-menu-icon")) {
+          const icon = event.target.closest(".asset-menu-icon");
+          if (icon) {
+            if (!isAssetDetailsOpen) {
+              toggleBlur(false);
+            }
+            allIcons = document.querySelectorAll(".asset-menu-icon");
+            allIcons.forEach((allIcon) => {
+              allIcon.classList.remove("active");
+            })
+            // icon.classList.add("active");
+            // const prefabID = icon.dataset.name;
+            // apht.innerHTML = "";
+            // api.innerHTML = "";
+            // openAssetPanel();
+            // addLoader(api);
+            // await processAssetTab(prefabID);
+            closeAssetPanel();
+          }
         }
       }
     });
@@ -319,19 +343,7 @@ function processAssetPanel(data, activePrefab = null) {
 async function processAssetData(PrefabID, typeX) {
   const data = await getAssetDataSingle(PrefabID);
   // let panelGroup = await getPrefabUIGroup(PrefabID);
-  if (data.UI_Group) {
-    let panelData = await getAssetPanelData(data.UI_Group);
-    let panelMenu = await getPrefabUIMenu(data.UI_Group);
-    if (panelMenu) {
-      await processAssetTab(panelMenu, data.UI_Group);
-      openAssetPanel();
-      processAssetPanel(panelData, PrefabID);
-      const element = document.querySelector(`.asset-menu-icon[data-name="${panelMenu}"]`);
-      if (element) {
-        element.classList.add("active");
-      }
-    }
-  }
+  
   detailsPane.style.display = "block";
   const current = getQueryParam('prefab');
   if (current != PrefabID) {
@@ -340,7 +352,6 @@ async function processAssetData(PrefabID, typeX) {
     pushState(null, newTitle, `?prefab=${encodeURIComponent(PrefabID)}`);
   }
   topIcons.classList.add("behind");
-  const assetDetailsPane = document.getElementById("asset-details-pane");
   if (typeX == "type2") {
     assetDetailsPane.style.left = "52vw";
   }
@@ -385,24 +396,48 @@ async function processAssetData(PrefabID, typeX) {
   } catch (error) {
     
   }
+  isAssetDetailsOpen = true;
 
-  await distributeDivsToColumnsByHeight();
+  // if (!isAssetPanelOpen) {
+  //   assetDetailsPane.style.bottom = "6vh";
+  // } else {
+  //   assetDetailsPane.style.bottom = "10vw";
+  // }
 
   assetDetailsPane.classList.add("open");
   window.addEventListener("keydown", function (event) {
-    if (event.key === "Escape" && isAssetPanelOpen == true) {
+    if (event.key === "Escape" && isAssetDetailsOpen) {
       processCloseDetailsPane(event);
     }
   });
   assetDetailsPaneX.addEventListener("click", function (event) {
-    if (isAssetPanelOpen == true) {
+    if (isAssetDetailsOpen) {
       processCloseDetailsPane(event);
     }
   });
-  isAssetPanelOpen = true;
   transformAssetPanel();
   toggleBlur(true);
   toggleDetailsPane();
+  if (data.UI_Group) {
+    let panelData = await getAssetPanelData(data.UI_Group);
+    let panelMenu = await getPrefabUIMenu(data.UI_Group);
+    if (panelMenu) {
+      await processAssetTab(panelMenu, data.UI_Group);
+      openAssetPanel();
+      processAssetPanel(panelData, PrefabID);
+      const element = document.querySelector(`.asset-menu-icon[data-name="${panelMenu}"]`);
+      if (element) {
+        element.classList.add("active");
+      }
+    }
+  }
+  if (isAssetPanelOpen) {
+    assetDetailsPane.style.bottom = "10vw";
+  } else {
+    assetDetailsPane.style.bottom = "6vh";
+  }
+
+  await distributeDivsToColumnsByHeight();
 }
 
 function addLoader(div) {
@@ -423,15 +458,25 @@ function toggleBlur(shouldBlur) {
 }
 
 function openAssetPanel() {
+  isAssetPanelOpen = true;
+  assetDetailsPane.style.bottom = "10vw";
+  
   assetPanel.classList.add("opened");
-  window.addEventListener("keydown", function (event) {
-    if (event.key === "Escape") {
-      closeAssetPanel();
-    }
-  });
+  window.removeEventListener("keydown", closeAssetPanel);
+  if (!isAssetDetailsOpen) {
+    window.addEventListener("keydown", function (event) {
+      console.log("Trigger added to closeAssetPanel")
+      if (event.key === "Escape" && isAssetPanelOpen && !isAssetDetailsOpen) {
+        closeAssetPanel();
+      }
+    })
+  };
 }
 
 function closeAssetPanel() {
+  isAssetPanelOpen = false;
+  
+  assetDetailsPane.style.bottom = "6vh";
   assetPanel.classList.remove("opened");
   window.removeEventListener("keydown", closeAssetPanel);
   const menuIcons = document.querySelectorAll('.asset-menu-icon');
@@ -522,10 +567,19 @@ function processCloseDetailsPane(event) {
     document.getElementById("asset-details-pane").classList.remove("open");
     topIcons.classList.remove("behind");
     toggleBlur(false);
-    isAssetPanelOpen = false;
     toggleDetailsPane();
-    revertAssetPanel();
-    openAssetPanel();
+    if (isAssetPanelOpen) {
+      revertAssetPanel();
+      window.removeEventListener("keydown", closeAssetPanel);
+      if (!isAssetDetailsOpen) {
+        window.addEventListener("keydown", function (event) {
+          console.log("Trigger added to closeAssetPanel")
+          if (event.key === "Escape" && isAssetPanelOpen && !isAssetDetailsOpen) {
+            closeAssetPanel();
+          }
+        })
+      };
+    }
 
     const newTitle = `Cities: Skylines II Asset Database`;
     document.title = newTitle;
@@ -539,21 +593,20 @@ function toggleDetailsPane() {
     ".asset-details-pane-container"
   );
   window.removeEventListener("keydown", function (event) {
-    if (event.key === "Escape" && isAssetPanelOpen == true) {
+    if (event.key === "Escape") {
       toggleDetailsPane();
     }
   });
-
-  if (!isAssetPanelOpen) {
-    assetDetailsPaneContainer.removeEventListener(
-      "click", processCloseDetailsPane
-    );
-  } else {
+  if (isAssetPanelOpen) {
     window.removeEventListener("keydown", closeAssetPanel);
     assetDetailsPaneContainer.addEventListener(
       "click", processCloseDetailsPane
     );
     assetDetailsPaneX.removeEventListener("click", processCloseDetailsPane);
+  } else {
+    assetDetailsPaneContainer.removeEventListener(
+      "click", processCloseDetailsPane
+    );
   }
 }
 

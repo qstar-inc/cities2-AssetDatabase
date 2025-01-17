@@ -8,6 +8,7 @@ var isHofBG = false;
 var isOptionMenuOpen = false;
 let isAssetPanelOpen = false;
 let isAssetPanelFlexed = false;
+let isAssetDetailsOpen = false;
 
 function random(min, max) {
   min = Math.ceil(min);
@@ -155,6 +156,7 @@ window.isHofBG = isHofBG;
 window.isOptionMenuOpen = isOptionMenuOpen;
 window.isAssetPanelOpen = isAssetPanelOpen;
 window.isAssetPanelFlexed = isAssetPanelFlexed;
+window.isAssetDetailsOpen = isAssetDetailsOpen;
 window.random = random;
 window.clearCacheAndRedirect = clearCacheAndRedirect;
 window.timeAgo = timeAgo;
