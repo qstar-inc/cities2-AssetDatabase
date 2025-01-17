@@ -1,20 +1,16 @@
 {
-  "back_to_main_menu": "Back to Main Menu",
   "bmac": "Nothing here, so BMAC",
-  "city_name": "City Name",
-  "credits": "Credits",
+  "coming_soon": "Coming Soon",
   "enable_hof": "Activate Hall of Fame's background image service.",
   "enable": "Enable",
+  "go_to": "Go to",
   "hof": "Hall of Fame",
-  "language_description": "Select the game language from the drop-down list.",
-  "language": "Language",
+  "input-3-characters": "Input more than 3 characters",
   "loading_screen": "Loading Screen",
   "loading": "Loading...",
+  "new_content": "New Content available.",
   "open_db": "Open Database",
-  "options": "Options",
-  "pdx_mods": "Paradox Mods",
   "reload_db": "Reload Database",
   "resume": "Resume",
-  "new_content": "New Content available.",
-  "go_to": "Go to"
+  "search": "Search"
 }
