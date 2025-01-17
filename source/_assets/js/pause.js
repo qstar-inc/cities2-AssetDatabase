@@ -135,6 +135,11 @@ document.querySelectorAll('.top-game-icon-div.unused').forEach((container) => {
 const back = document.querySelectorAll(".option-back-icon")
 back.forEach((button) => {
     button.addEventListener('click', () => {
+        resetToMainOrPause()
+    })
+})
+
+function resetToMainOrPause() {
     document.querySelectorAll(".options-overlay").forEach((overlay) => {
         closeCredit();
         if (mainBgContainer) {
@@ -166,8 +171,7 @@ back.forEach((button) => {
     });
     const mainMenuLogo = document.querySelector(".mainmenu-logo");
     mainMenuLogo.classList.remove("display-none");
-    })
-})
+}
 
 const optionsButton = document.getElementById("options-button");
 if (optionsButton) {
@@ -329,3 +333,5 @@ function startComingSoonOptions() {
     const div = document.getElementById("option-coming-soon");
     div.style.display = "flex";
 }
+
+window.resetToMainOrPause = resetToMainOrPause;

@@ -15,15 +15,15 @@
             <p class="sm">* almost</p>
             <br class="lg" /><br class="lg" />
             <h2>Database by</h2>
-            <h1><img src="{{ $page->images }}/starq.svg" alt="StarQ Logo"></h1>
+            <h1><img src="{{ $page->images }}/starq.svg" alt="StarQ Logo" loading="lazy"></h1>
             <br class="lg" /><br class="lg" />
-            <h1><img src="{{ $page->imgRepo }}/cities2/Media/Menu/GameLogo.svg" alt="Cities: Skylines II Logo"></h1>
+            <h1><img src="{{ $page->imgRepo }}/cities2/Media/Menu/GameLogo.svg" alt="Cities: Skylines II Logo" loading="lazy"></h1>
             <br class="lg" />
             <h2>Game Developed by</h2>
-            <h1><img src="{{ $page->imgRepo }}/cities2/Media/Menu/ColossalLogo.svg" alt="Colossal Order Logo" /></h1>
+            <h1><img src="{{ $page->imgRepo }}/cities2/Media/Menu/ColossalLogo.svg" alt="Colossal Order Logo" loading="lazy" /></h1>
             <br class="lg" />
             <h2>Game Published by</h2>
-            <h1><img src="{{ $page->imgRepo }}/cities2/Media/Menu/ParadoxLogo.svg" alt="Paradox Logo" /></h1>
+            <h1><img src="{{ $page->imgRepo }}/cities2/Media/Menu/ParadoxLogo.svg" alt="Paradox Logo" loading="lazy" /></h1>
             <br class="lg" />
             <p class="sm">Cities: Skylines 2 is published by Paradox Interactive AB and developed by Colossal Order Ltd.</p><br /><br />
             <p class="sm">CITIES: SKYLINES and PARADOX INTERACTIVE are trademarks and/or registered trademarks</p><br /><br />
@@ -33,9 +33,10 @@
 
             <h2>Other contents used</h2>
             <br class="lg" />
-            <h1><img src="https://camo.githubusercontent.com/8c4efbbf4a6ec0873135e07676d7736c6eca26a82ebf664ec727cfdb43344e2b/68747470733a2f2f696d6775722e636f6d2f7a383553586b7a2e706e67" /></h1>
+            <h1><img src="https://camo.githubusercontent.com/8c4efbbf4a6ec0873135e07676d7736c6eca26a82ebf664ec727cfdb43344e2b/68747470733a2f2f696d6775722e636f6d2f7a383553586b7a2e706e67"
+                    loading="lazy" /></h1>
             <p><strong><a href="https://mods.paradoxplaza.com/mods/79634/Windows">Asset Icon Library</a></strong> by TDW</p>
-            <h1><img src="https://raw.githubusercontent.com/toverux/HallOfFame/refs/heads/main/logo.png" /></h1>
+            <h1><img src="https://raw.githubusercontent.com/toverux/HallOfFame/refs/heads/main/logo.png" loading="lazy" /></h1>
             <p><strong><a href="https://mods.paradoxplaza.com/mods/90641/Windows">Hall of Fame</a></strong> by toverux</p>
             <br class="lg" /><br class="lg" />
 
@@ -46,15 +47,15 @@
             <div class="display-flex gap2"><a href="https://discord.gg/q3dzd4p5Hx">@include('_layouts._logos.discord')</a> <span>Cities: Skylines Modding Discord</span></div>
             <br class="lg" />
 
-            <h1><img class="sm" src="https://pages.github.com/images/logo.svg" /></h1>
-            <h1><img class="md" src="https://raw.githubusercontent.com/tighten/jigsaw/main/jigsaw-banner.png" /></h1>
-            <h1><img class="md" src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" /></h1>
+            <h1><img class="sm" src="https://pages.github.com/images/logo.svg" loading="lazy" /></h1>
+            <h1><img class="md" src="https://raw.githubusercontent.com/tighten/jigsaw/main/jigsaw-banner.png" loading="lazy" /></h1>
+            <h1><img class="md" src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" loading="lazy" /></h1>
             <br class="lg" />
-            <h1><img class="sm" src="https://raw.githubusercontent.com/npm/logos/refs/heads/master/npm%20logo/npm-logo-red.svg" /></h1>
+            <h1><img class="sm" src="https://raw.githubusercontent.com/npm/logos/refs/heads/master/npm%20logo/npm-logo-red.svg" loading="lazy" /></h1>
             <br class="lg" />
-            <h1><img class="sm" src="https://code.visualstudio.com/assets/images/code-stable.png" /></h1>
+            <h1><img class="sm" src="https://code.visualstudio.com/assets/images/code-stable.png" loading="lazy" /></h1>
             <br class="lg" />
-            <h1><img class="sm" src="https://upload.wikimedia.org/wikipedia/commons/c/ca/MariaDB_colour_logo.svg" /></h1>
+            <h1><img class="sm" src="https://upload.wikimedia.org/wikipedia/commons/c/ca/MariaDB_colour_logo.svg" loading="lazy" /></h1>
             <br class="lg" /><br class="lg" />
 
 

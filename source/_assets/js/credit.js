@@ -19,7 +19,7 @@ if (creditOverlay) {
             creditText.style.animationPlayState = 'running';
             const duration = parseFloat(getComputedStyle(creditText).animationDuration) * 1000;
             setTimeout(() => {
-                closeCredit();
+                resetToMainOrPause();
             }, duration);
         });
     }
