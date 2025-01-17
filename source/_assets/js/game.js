@@ -1,4 +1,4 @@
-// const pushState = require("history-throttled");
+const { pushState } = require("history-throttled");
 
 const assetGroups = {
   "asset-group-1": "Zones Toolbar Group",
@@ -337,7 +337,7 @@ async function processAssetData(PrefabID, typeX) {
   if (current != PrefabID) {
     const newTitle = `${PrefabID} - Cities: Skylines II Asset Database`;
     document.title = newTitle;  
-    // pushState(null, newTitle, `?prefab=${encodeURIComponent(PrefabID)}`);
+    pushState(null, newTitle, `?prefab=${encodeURIComponent(PrefabID)}`);
   }
   topIcons.classList.add("behind");
   const assetDetailsPane = document.getElementById("asset-details-pane");
@@ -529,7 +529,7 @@ function processCloseDetailsPane(event) {
 
     const newTitle = `Cities: Skylines II Asset Database`;
     document.title = newTitle;
-    // pushState(null, newTitle, window.location.pathname);
+    pushState(null, newTitle, window.location.pathname);
     detailsPane.style.display = "none";
   }
 }
