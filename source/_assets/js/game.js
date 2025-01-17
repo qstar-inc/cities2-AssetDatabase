@@ -586,8 +586,9 @@ function iconDecider(name, ogicon, prefabID) {
       }
     } else if (ogicon.startsWith("assetdb://")) {
       icon = `${imageRepoPath}/thumbs/assetdb/${ogicon.replace("assetdb://Global", "")}.png`;
+    } else if (ogicon.startsWith("thumbnail://")) {
+      icon = `${imageRepoPath}/cities2/Media/Placeholder.svg`;
     } else {
-      ogicon = ogicon.replace("Media/Game/Icons/Highways.svg", "Media/Game/Icons/HIghways.svg")
       icon = `${imageRepoPath}/cities2/${decodeURIComponent(ogicon)}`;
     }
   } else if (prefabID.startsWith("ContentPrefab")) {
@@ -595,6 +596,8 @@ function iconDecider(name, ogicon, prefabID) {
   } else {
     icon = `${imageRepoPath}/cities2/Media/Placeholder.svg`;
   }
+
+  icon = icon.replace("Media/Game/Icons/Highways.svg", "Media/Game/Icons/HIghways.svg");
   return icon;
 }
 
