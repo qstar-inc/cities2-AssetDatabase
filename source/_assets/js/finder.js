@@ -12,29 +12,23 @@ async function openFinder() {
         finder.style.height = "max-content";
         finder.style.opacity = 1;
         finder.style.zIndex = 1002;
-        finder.style.display = "flex";
+        finder.classList.add("d-flex");
         if (search) {
             search.placeholder = await getTranslation("search");
             search.focus();
         }
         if (blockEverything) {
-            blockEverything.style.display = "block";
+            swapClass(blockEverything, "d-block", "d-none");
             blockEverything.addEventListener('click', () => {
                 closeFinder();
             })
         }
-        // const adp = document.querySelector(".asset-details-pane");
-        // adp.style.left = "52vw";
-        // adp.style.bottom = "6vh";
     }
 }
 
 async function closeFinder() {
-    blockEverything.style.display = "none";
+    swapClass(blockEverything, "d-block", "d-none");
     finder.style.height = 0;
-    // const adp = document.querySelector(".asset-details-pane");
-    // adp.style.left = "1vw";
-    // adp.style.bottom = "10vw";
 }
 
 let debounceTimeout;
@@ -148,7 +142,11 @@ function handleButtons(button) {
     });
     button.classList.add('active');
     searchType = button.textContent.toLowerCase();
-    formHandler(this.event);
+    const searchInput = document.querySelector('#search');
+    if (searchInput.value) {
+        const syntheticEvent = { target: searchInput };
+        formHandler(syntheticEvent);   
+    }
 }
 
 async function createTags(PrefabID) {

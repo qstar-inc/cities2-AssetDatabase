@@ -56,7 +56,6 @@
   min-width: 20vw;
   min-height: 15vh;
   transition: all 1s linear;
-  display: none;
   opacity: 0;
 }
 
@@ -69,7 +68,6 @@
   background-position: center;
   background-repeat: no-repeat;
   background-position-y: 20%;
-  display: none;
 }
 
 .chirp-user {
@@ -103,7 +101,6 @@
 .chirp-like {
   color: lightslategray;
   text-align: end;
-  display: none;
   margin-bottom: -1vh;
   font-size: 1.6vh;
   text-wrap: nowrap;

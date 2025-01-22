@@ -32,13 +32,13 @@ function checkAspectRatioAndHeight() {
   let isWidthValid = width >= 1000;
   const ignore = document.getElementById('invX');
   ignore.addEventListener('click', () => { 
-    overlay.classList.add('display-none');
+    overlay.classList.add('d-none');
   });
 
   if (isAspectRatioClose && isHeightValid && isWidthValid) {
-    overlay.classList.add('display-none');
+    overlay.classList.add('d-none');
   } else {
-    overlay.classList.remove('display-none');
+    overlay.classList.remove('d-none');
   }
 
   const text1 = document.getElementById('inv1');
@@ -143,6 +143,17 @@ function repeat(string, time) {
   return final;
 }
 
+function swapClass(element, class1, class2) {
+  if (element.classList.contains(class1) && !element.classList.contains(class2)) {
+    element.classList.remove(class1);
+    element.classList.add(class2);
+  } else if (!element.classList.contains(class1) && element.classList.contains(class2)) {
+    element.classList.add(class1);
+    element.classList.remove(class2);
+  }
+}
+
+
 document.addEventListener('DOMContentLoaded', async () => {
   await loadDefaultTranslations();
   reloadLang(language);
@@ -165,3 +176,4 @@ window.reloadLang = reloadLang;
 window.loadDefaultTranslations = loadDefaultTranslations;
 window.getTranslation = getTranslation;
 window.repeat = repeat;
+window.swapClass = swapClass;

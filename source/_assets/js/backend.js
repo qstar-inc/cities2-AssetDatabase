@@ -67,7 +67,7 @@ async function fetchAssetDataAll() {
     const dbLoading = document.getElementById('db-loading');
     const dbLoadingText = document.getElementById('db-loading-text');
     dbLoadingText.innerText = "Server not accessible. Try again later."
-    dbLoading.classList.remove("display-none");
+    dbLoading.classList.remove("d-none");
     throw error;
   }
 }
@@ -113,7 +113,7 @@ async function fetchAssetDataAll() {
   //           const dbLoading = document.getElementById('db-loading');
   //           const dbLoadingText = document.getElementById('db-loading-text');
   //           dbLoadingText.innerText = "Server not accessible. Try again later."
-  //           dbLoading.classList.remove("display-none");
+  //           dbLoading.classList.remove("d-none");
   //           reject(error);
   //         });
   //     });
@@ -148,7 +148,7 @@ function fetchLangDataAll(lang = language) {
         const dbLoading = document.getElementById('db-loading');
         const dbLoadingText = document.getElementById('db-loading-text');
         dbLoadingText.innerText = "Server not accessible. Try again later."
-        dbLoading.classList.remove("display-none");
+        dbLoading.classList.remove("d-none");
         reject(error);
       });
   });

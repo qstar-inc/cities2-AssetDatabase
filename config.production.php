@@ -17,6 +17,6 @@ return [
     'images'      => $repo . "/assets/images",
     'fonts'       => $repo . "/assets/fonts",
     'repo'        => $repo,
-    'version'     => "1.2.0q8 [PROD] (Search)",
+    'version'     => "1.2.3q1 [PROD] (Icon and I18N Lang)",
     'imgRepo'     => 'https://raw.githubusercontent.com/qstar-inc/cities2-AssetDatabase-imgRepo/refs/heads/main',
 ];

@@ -69,7 +69,7 @@
         </div>
     </div>
 </div>
-<div class="block-everything" id="option-dropdown-select-lang-block-everything">
+<div class="block-everything d-none" id="option-dropdown-select-lang-block-everything">
     <div class="options-dropdown-select" id="option-dropdown-select-lang">
         <div class="option-dropdown-item" data-val="de-DE">Deutsch</div>
         <div class="option-dropdown-item" data-val="en-US">English</div>

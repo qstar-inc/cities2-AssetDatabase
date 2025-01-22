@@ -4,7 +4,7 @@
             <img src="{{ $page->imgRepo }}/cities2/GameLogo.svg" alt="Cities: Skylines II" class="mainmenu-logo" />
         </div>
         <div class="mainmenu-center">
-            <div class="mainmenu-start display-grid">
+            <div class="mainmenu-start d-grid">
                 <a id="pause-button-1" class="mainmenu-start-button round-border" href="#">
                     <div class="mainmenu-start-icon" style="mask-image: url({{ $page->imgRepo }}/cities2/Media/Glyphs/Progress.svg)"></div>
                     <span class="mainmenu-start-text" data-lang="resume"></span>

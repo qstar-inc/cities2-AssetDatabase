@@ -47,9 +47,9 @@ async function initDB(bool = false) {
     }
     
     const dbLoading = document.getElementById('db-loading');
-    dbLoading.classList.add("display-none");
+    dbLoading.classList.add("d-none");
     console.log("IndexedDB opened successfully");
-    await processTime();
+    await wait3sec();
   };
 
   request.onupgradeneeded = function (event) {
@@ -137,6 +137,7 @@ function createDBs(db) {
       keyPath: "PrefabID",
     });
     assetPanelData.createIndex("PrefabID", "PrefabID", { unique: true });
+    assetPanelData.createIndex("GUID", "GUID", { unique: true });
   }
 
   if (!db.objectStoreNames.contains("langData")) {
@@ -445,7 +446,15 @@ async function getLangDataRandomly(format, lang = language) {
   });
 }
 
+let searchCache = new Map();
 async function searchAssets(searchTerm, by) {
+  for (let [cachedSearchTerm, cachedResults] of searchCache) {
+    if (`${by}--${searchTerm}`.toLowerCase().startsWith(cachedSearchTerm.toLowerCase())) {
+      if (cachedResults.length > 0) {
+        return Promise.resolve(cachedResults);
+      }
+    }
+  }
   return new Promise((resolve, reject) => {
     const transaction = db.transaction(["assetData"], "readonly");
     const objectStore = transaction.objectStore("assetData");
@@ -465,12 +474,15 @@ async function searchAssets(searchTerm, by) {
           reject();
         }
           
-        if (find.toLowerCase().includes(searchTerm.toLowerCase())) {
-          results.push(cursor.value);
+        if (find) {
+          if (find.toLowerCase().includes(searchTerm.toLowerCase())) {
+            results.push(cursor.value);
+          }
         }
 
         cursor.continue();
       } else {
+        searchCache.set(`${by}--${searchTerm}`, results);
         resolve(results);
       }
     };

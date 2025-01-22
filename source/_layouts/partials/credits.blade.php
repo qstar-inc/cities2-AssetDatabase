@@ -42,9 +42,9 @@
 
             <h2>Special Acknowledgments</h2>
             <br class="lg" />
-            <div class="display-flex gap2"><a href="https://discord.gg/citiesskylines">@include('_layouts._logos.discord')</a> <span>Cities: Skylines Official Discord</span></div>
+            <div class="d-flex gap2"><a href="https://discord.gg/citiesskylines">@include('_layouts._logos.discord')</a> <span>Cities: Skylines Official Discord</span></div>
             <br class="lg" />
-            <div class="display-flex gap2"><a href="https://discord.gg/q3dzd4p5Hx">@include('_layouts._logos.discord')</a> <span>Cities: Skylines Modding Discord</span></div>
+            <div class="d-flex gap2"><a href="https://discord.gg/q3dzd4p5Hx">@include('_layouts._logos.discord')</a> <span>Cities: Skylines Modding Discord</span></div>
             <br class="lg" />
 
             <h1><img class="sm" src="https://pages.github.com/images/logo.svg" loading="lazy" /></h1>

@@ -5,11 +5,9 @@
   height: 0;
   overflow: hidden;
   opacity: 0;
-  /* display: none; */
   transition: all 0.5s ease;
   z-index: 1002;
   border-radius: 5px;
-  /* bottom: calc(10vw - 7vh - 1vh); */
 }
 
 #finder-block-everything {
@@ -48,22 +46,21 @@ input#search {
 }
 
 .selection-button {
-  aspect-ratio: 1;
-  width: 5vh;
   background: rgb(179, 179, 179);
   border-radius: 30px;
   margin: 0.5vh;
+  width: max-content;
   font-size: small;
   color: rgb(45, 46, 46);
   transition: all 0.5s ease;
+  padding: 0 0.5rem;
 }
 
 .selection-button.active {
   background-color: var(--vanilla-blue-accent-light);
   color: black;
-  aspect-ratio: 2;
-  width: 10vh;
-  font-size: large;
+  font-size: 3vh;
+  padding: 0 1rem;
 }
 
 .search-drop {

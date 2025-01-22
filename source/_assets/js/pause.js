@@ -163,14 +163,14 @@ function resetToMainOrPause() {
             }
         }
         mainMenu.style.opacity = 1;
-        mainMenu.classList.remove('display-none');
+        mainMenu.classList.remove('d-none');
         overlay.style.opacity = 0;
         setTimeout(() => {
-            overlay.classList.add("display-none");
+            overlay.classList.add("d-none");
         }, 500);
     });
     const mainMenuLogo = document.querySelector(".mainmenu-logo");
-    mainMenuLogo.classList.remove("display-none");
+    mainMenuLogo.classList.remove("d-none");
 }
 
 const optionsButton = document.getElementById("options-button");
@@ -178,7 +178,7 @@ if (optionsButton) {
     optionsButton.addEventListener('click', () => {
         enablePauseMenu();
         isOptionMenuOpen = true;
-        overlay.classList.remove('display-none');
+        overlay.classList.remove('d-none');
         overlay.style.opacity = 1;
     
         overlay.style.opacity = 1;
@@ -186,8 +186,8 @@ if (optionsButton) {
         
         startInterface();
         setTimeout(() => {
-            mainMenu.classList.add('display-none');
-            overlay.classList.remove('display-none');
+            mainMenu.classList.add('d-none');
+            overlay.classList.remove('d-none');
         }, 500);
     })
 }

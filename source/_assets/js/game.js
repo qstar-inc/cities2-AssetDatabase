@@ -133,15 +133,30 @@ function addAssetBarIconTrigger() {
   const assetGroupContainers = document.querySelectorAll("[id^=asset-group-]");
   assetGroupContainers.forEach((assetContainer) => {
     assetContainer.addEventListener("click", async function (event) {
+      const icon = event.target.closest(".asset-menu-icon");
+      console.log(isAssetPanelOpen);
       if (!isAssetPanelOpen) {
-        if (event.target.closest(".asset-menu-icon")) {
-          const icon = event.target.closest(".asset-menu-icon");
-          if (icon) {
-            toggleBlur(true);
-            allIcons = document.querySelectorAll(".asset-menu-icon");
-            allIcons.forEach((allIcon) => {
-              allIcon.classList.remove("active");
-            })
+        if (icon) {
+          toggleBlur(true);
+          allIcons = document.querySelectorAll(".asset-menu-icon");
+          allIcons.forEach((allIcon) => {
+            allIcon.classList.remove("active");
+          })
+          icon.classList.add("active");
+          const prefabID = icon.dataset.name;
+          apht.innerHTML = "";
+          api.innerHTML = "";
+          openAssetPanel();
+          addLoader(api);
+          await processAssetTab(prefabID);
+          
+        }
+      } else {
+        if (icon) {
+          if (icon.classList.contains("active")) {
+            closeAssetPanel();
+            icon.classList.remove("active");
+          } else {
             icon.classList.add("active");
             const prefabID = icon.dataset.name;
             apht.innerHTML = "";
@@ -149,27 +164,6 @@ function addAssetBarIconTrigger() {
             openAssetPanel();
             addLoader(api);
             await processAssetTab(prefabID);
-          }
-        }
-      } else {
-        if (event.target.closest(".asset-menu-icon")) {
-          const icon = event.target.closest(".asset-menu-icon");
-          if (icon) {
-            if (!isAssetDetailsOpen) {
-              toggleBlur(false);
-            }
-            allIcons = document.querySelectorAll(".asset-menu-icon");
-            allIcons.forEach((allIcon) => {
-              allIcon.classList.remove("active");
-            })
-            // icon.classList.add("active");
-            // const prefabID = icon.dataset.name;
-            // apht.innerHTML = "";
-            // api.innerHTML = "";
-            // openAssetPanel();
-            // addLoader(api);
-            // await processAssetTab(prefabID);
-            closeAssetPanel();
           }
         }
       }
@@ -669,28 +663,29 @@ async function getTitleAndDescription(element) {
 }
 
 async function getTitleAndDescriptionFromPrefab(PrefabID) {
-  let title = PrefabID;
-  let desc = "";
+  // let title = PrefabID;
+  // let desc = "";
   const [prefabType, prefabName] = PrefabID.split(':');
+  let titlePromise, descPromise;
   if (prefabType == "UIAssetMenuPrefab" || prefabType == "ServicePrefab") {
-    title = await getLangData(`Services.NAME[${prefabName}]`);
-    desc = await getLangData(`Services.DESCRIPTION[${prefabName}]`);
+    titlePromise = getLangData(`Services.NAME[${prefabName}]`);
+    descPromise = getLangData(`Services.DESCRIPTION[${prefabName}]`);
   } else if (prefabType == "UIAssetCategoryPrefab") {
-    title = await getLangData(`SubServices.NAME[${prefabName}]`);
-    desc = await getLangData(`Assets.SUB_SERVICE_DESCRIPTION[${prefabName}]`);
+    titlePromise = getLangData(`SubServices.NAME[${prefabName}]`);
+    descPromise = getLangData(`Assets.SUB_SERVICE_DESCRIPTION[${prefabName}]`);
   } else if (prefabType == "ContentPrefab") {
-    title = await getLangData(`Common.DLC_TITLE[${prefabName}]`);
+    titlePromise = getLangData(`Common.DLC_TITLE[${prefabName}]`);
+    descPromise = Promise.resolve("");
   } else {
-    title = await getLangData(`Assets.NAME[${prefabName}]`);
-    desc = await getLangData(`Assets.DESCRIPTION[${prefabName}]`);
+    titlePromise = getLangData(`Assets.NAME[${prefabName}]`);
+    descPromise = getLangData(`Assets.DESCRIPTION[${prefabName}]`);
   }
-  if (title.includes(".NAME[") || title.includes(".DLC_TITLE")) {
-    title = prefabName;
-  }
-  if (desc.includes(".DESCRIPTION[")) {
-    desc = "";
-  }
-  return [title, desc];
+
+  const [title, desc] = await Promise.all([titlePromise, descPromise]);
+  const cleanTitle = title.includes(".NAME[") || title.includes(".DLC_TITLE") ? prefabName : title;
+  const cleanDesc = desc.includes(".DESCRIPTION[") ? "" : desc;
+
+  return [cleanTitle, cleanDesc];
 }
 
 async function getTitleResource(prefab) {

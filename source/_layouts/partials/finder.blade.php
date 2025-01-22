@@ -1,4 +1,4 @@
-<div class="block-everything" id="finder-block-everything">
+<div class="block-everything d-none" id="finder-block-everything">
 </div>
 <div id="finder">
     <div id="finder-div">
@@ -6,7 +6,7 @@
             <div id="search-box-line">
                 <input id="search" type="text" placeholder="" />
                 <div id="search-box-buttons">
-                    <button class="selection-button active" onclick="handleButtons(this)">Name</button>
+                    <button class="selection-button active" onclick="handleButtons(this)">PrefabID</button>
                     <button class="selection-button" onclick="handleButtons(this)">GUID</button>
                 </div>
             </div>

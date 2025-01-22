@@ -40,20 +40,18 @@
   filter: blur(2vh) !important;
 }
 
-.display-grid {
+.d-grid {
   display: grid !important;
 }
 
-.display-none {
+.d-none {
   display: none !important;
 }
-
-.display-unset {
-  display: unset !important;
-}
-
-.display-flex {
+.d-flex {
   display: flex !important;
+}
+.d-block {
+  display: block !important;
 }
 
 .gap1 {

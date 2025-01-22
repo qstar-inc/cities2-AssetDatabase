@@ -1,4 +1,4 @@
-async function processTime() {
+async function wait3sec() {
   setTimeout(async () => {
     const time = await getTimeSince('assetData');
     const last_updated = await fetchTimeTrack();
@@ -37,10 +37,10 @@ function triggerChirp(header, time, text, persist = true) {
     chirpText.innerHTML = text;
     chirpText.style.textWrap = "wrap";
     chirpLike.innerHTML = Math.floor(Math.random() * 1000);
-    chirpLike.style.display = "block";
-    chirpAvatar.style.display = "flex";
+    swapClass(chirpLike, "d-none", "d-block");
+    swapClass(chirpAvatar, "d-none", "d-flex");
     chirpAvatar.style.backgroundColor = getRandomHexColor();
-    chirp.style.display = "flex";
+    swapClass(chirp, "d-none", "d-flex");
     setTimeout(() => {
         chirp.style.width = "unset";
         chirp.style.padding = "2vh";
@@ -66,10 +66,10 @@ function triggerChirp(header, time, text, persist = true) {
             chirp.style.padding = "0vh";
             chirp.style.opacity = "0";
             setTimeout(() => {
-                chirp.style.display = "none";
+                swapClass(chirp,"d-none", "d-flex");
             }, 200);
         }, 10000);
     }
 }
 
-window.processTime = processTime;
+window.wait3sec = wait3sec;

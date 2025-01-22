@@ -6,14 +6,14 @@ if (creditOverlay) {
     const creditButton = document.getElementById('credit-button');
     if (creditButton) {
         creditButton.addEventListener('click', () => {
-            creditOverlay.classList.remove('display-none');
+            creditOverlay.classList.remove('d-none');
             creditOverlay.style.opacity = 1;
     
             creditOverlay.style.opacity = 1;
             mainMenu.style.opacity = 0;
             setTimeout(() => {
-                mainMenu.classList.add('display-none');
-                creditOverlay.classList.remove('display-none');
+                mainMenu.classList.add('d-none');
+                creditOverlay.classList.remove('d-none');
             }, 500);
 
             creditText.style.animationPlayState = 'running';
@@ -29,7 +29,7 @@ function closeCredit() {
     const creditText = creditOverlay.querySelector('.credit-text');
     if (creditOverlay && creditText) {
         creditOverlay.style.opacity = 0;
-        creditOverlay.classList.add('display-none');
+        creditOverlay.classList.add('d-none');
         creditText.style.animationPlayState = 'paused';
     }
 }

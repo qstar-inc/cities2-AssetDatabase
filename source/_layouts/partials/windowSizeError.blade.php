@@ -1,4 +1,4 @@
-<div id="window-size-error" class="display-none">
+<div id="window-size-error" class="d-none">
     <div class="window-size-message">
         <p class="window-size-header">Unsupported Window Size</p>
         <p id="inv1">Aspect Ratio should be between 2:1 and 1:2.</p>
