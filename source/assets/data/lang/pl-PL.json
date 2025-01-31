@@ -1,16 +1,16 @@
 {
   "bmac": "Nothing here, so BMAC",
-  "coming_soon": "Coming Soon",
-  "enable_hof": "Activate Hall of Fame's background image service.",
-  "enable": "Enable",
-  "go_to": "Go to",
+  "coming_soon": "Już wkrótce",
+  "enable_hof": "Aktywuj usługę obrazów tła Hall of Fame.",
+  "enable": "Włącz",
+  "go_to": "Przejdź do",
   "hof": "Hall of Fame",
-  "input-3-characters": "Input more than 3 characters",
-  "loading_screen": "Loading Screen",
-  "loading": "Loading...",
-  "new_content": "New Content available.",
-  "open_db": "Open Database",
-  "reload_db": "Reload Database",
-  "resume": "Resume",
-  "search": "Search"
+  "input-3-characters": "Wprowadź więcej niż 3 znaki",
+  "loading_screen": "Ekran wczytywania",
+  "loading": "Wczytywanie...",
+  "new_content": "Dostępna nowa zawartość.",
+  "open_db": "Otwórz bazę danych",
+  "reload_db": "Odśwież bazę danych",
+  "resume": "Wznów",
+  "search": "Szukaj"
 }
