@@ -12,15 +12,27 @@ const assetBar = document.querySelector(".asset-bar");
 const bottomBar = document.querySelector(".bottom-bar");
 const detailsPane = document.querySelector(".details-pane");
 const assetDetailsPane = document.getElementById("asset-details-pane");
-const assetDetailsPaneContainer = document.querySelector(
-  ".asset-details-pane-container"
-);
+// const assetDetailsPaneContainer = document.querySelector(
+//   ".asset-details-pane-container"
+// );
 const topIcons = document.querySelector(".top-icons");
 
 const assetDetailsPaneX = document.getElementById("details-pane-x");
 const api = document.getElementById("asset-panel-items");
 const apht = document.getElementById("asset-panel-header-tabs");
 const assetPanel = document.getElementById("asset-panel");
+const assetDetailsPaneHeaderTitle = document.getElementById(
+  "asset-details-pane-header-title"
+);
+const assetDetailsPaneImage = document.getElementById(
+  "asset-details-pane-image"
+);
+const assetDetailsPaneDescText = document.getElementById(
+  "asset-details-pane-desc-text"
+);
+const tagContainer = document.getElementById("tag-container");
+const notifContainer = document.getElementById("notif-container");
+
 const quickInfoDiv = document.getElementById("asset-quick-info");
 const quickInfoHeaderTitle = document.getElementById(
   "asset-quick-info-header-title"
@@ -33,9 +45,18 @@ const quickInfoBodyDescription = document.getElementById(
 );
 const gameBgElement = document.getElementById("game-bg");
 
+let isAssetDetailsOpen;
+let isAssetPanelOpen;
+let isAssetPanelFlexed;
+
 $(document).ready(async function () {
   await initDB(false);
   loadFile();
+  initResizer(
+    assetDetailsPane,
+    assetDetailsPaneHeaderTitle,
+    "assetDetailState"
+  );
   assetPanel.addEventListener("wheel", handleWheel);
 });
 
@@ -45,6 +66,104 @@ $(document).ready(async function () {
 //     .then((message) => console.log(message))
 //     .catch((error) => console.error(error));
 // });
+
+function initResizer(element, header, saveName) {
+  let offsetX = 0;
+  let offsetY = 0;
+  let isDragging = false;
+
+  const savedState = JSON.parse(localStorage.getItem(saveName));
+  if (savedState) {
+    element.style.left = `${savedState.left}px`;
+    element.style.top = `${savedState.top}px`;
+    element.style.width = `${savedState.width}px`;
+    element.style.height = `${savedState.height}px`;
+  }
+
+  function saveWindowState() {
+    const state = {
+      left: element.offsetLeft,
+      top: element.offsetTop,
+      width: element.offsetWidth,
+      height: element.offsetHeight,
+    };
+    localStorage.setItem(saveName, JSON.stringify(state));
+  }
+
+  header.addEventListener("mousedown", (e) => {
+    isDragging = true;
+    offsetX = e.clientX - element.offsetLeft;
+    offsetY = e.clientY - element.offsetTop;
+    document.addEventListener("mousemove", onMouseMove);
+    document.addEventListener("mouseup", onMouseUp);
+  });
+
+  function onMouseMove(e) {
+    if (isDragging) {
+      recalculateLimit(e);
+    }
+  }
+
+  function onMouseUp() {
+    isDragging = false;
+    recalculateLimit();
+    document.removeEventListener("mousemove", onMouseMove);
+    document.removeEventListener("mouseup", onMouseUp);
+  }
+
+  function recalculateLimit(e = null) {
+    let newLeft = element.offsetLeft;
+    let newTop = element.offsetTop;
+    let bottomY = window.innerHeight;
+
+    if (e) {
+      newLeft = e.clientX - offsetX;
+      newTop = e.clientY - offsetY;
+    }
+
+    newLeft = Math.max(0, newLeft);
+    newTop = Math.max(0, newTop);
+    if (isAssetPanelFlexed) {
+      bottomY = assetPanel.offsetTop;
+      element.style.maxHeight = `${assetPanel.offsetTop}px`;
+    }
+    if (element.offsetWidth + newLeft > window.innerWidth) {
+      newLeft = window.innerWidth - element.offsetWidth;
+    }
+    if (element.offsetHeight + newTop > bottomY) {
+      newTop = bottomY - element.offsetHeight;
+    }
+
+    element.style.left = `${newLeft}px`;
+    element.style.top = `${newTop}px`;
+
+    saveWindowState();
+  }
+
+  element.addEventListener("mousemove", (e) => {
+    recalculateLimit();
+    const minWidth = 200;
+    const minHeight = 150;
+    const maxWidth = window.innerWidth;
+    const maxHeight = window.innerHeight;
+
+    if (element.offsetWidth < minWidth) {
+      element.style.width = `${minWidth}px`;
+    } else if (element.offsetWidth > maxWidth) {
+      element.style.width = `${maxWidth}px`;
+    }
+
+    if (element.offsetHeight < minHeight) {
+      element.style.height = `${minHeight}px`;
+    } else if (element.offsetHeight > maxHeight) {
+      element.style.height = `${maxHeight}px`;
+    }
+  });
+
+  window.addEventListener("resize", () => {
+    recalculateLimit();
+  });
+}
 
 async function updateCityName() {
   const cityName = document.getElementById("city_name");
@@ -132,15 +251,15 @@ function addAssetBarIconTrigger() {
   const assetGroupContainers = document.querySelectorAll("[id^=asset-group-]");
   assetGroupContainers.forEach((assetContainer) => {
     assetContainer.addEventListener("click", async function (event) {
+      allIcons = document.querySelectorAll(".asset-menu-icon");
+      allIcons.forEach((allIcon) => {
+        allIcon.classList.remove("active");
+      });
       const icon = event.target.closest(".asset-menu-icon");
-      console.log(isAssetPanelOpen);
       if (!isAssetPanelOpen) {
         if (icon) {
           toggleBlur(true);
-          allIcons = document.querySelectorAll(".asset-menu-icon");
-          allIcons.forEach((allIcon) => {
-            allIcon.classList.remove("active");
-          });
+
           icon.classList.add("active");
           const prefabID = icon.dataset.name;
           apht.innerHTML = "";
@@ -211,23 +330,24 @@ async function processAssetTab(prefabID, Group = null) {
     tab.innerHTML = imgSrc;
 
     tab.addEventListener("mouseover", async function () {
-      if (!isAssetPanelFlexed) {
-        [langTitle, langDescription] = await getTitleAndDescription(element);
-        quickInfoHeaderTitle.innerHTML = langTitle ?? "";
-        quickInfoBodyImage.innerHTML = imgSrc;
-        quickInfoBodyDescription.innerHTML = langDescription ?? "";
-        quickInfoBodyDescription.innerHTML = quickInfoBodyDescription.innerHTML
-          .replace(/ \n/g, "<br>")
-          .replace(/\n/g, "<br>");
-        setDisplay(quickInfoDiv, "block");
+      if (isAssetPanelFlexed) {
+        quickInfoDiv.classList.add("flexed");
+      } else {
+        quickInfoDiv.classList.remove("flexed");
       }
+      [langTitle, langDescription] = await getTitleAndDescription(element);
+      quickInfoHeaderTitle.innerHTML = langTitle ?? "";
+      quickInfoBodyImage.innerHTML = imgSrc;
+      quickInfoBodyDescription.innerHTML = langDescription ?? "";
+      quickInfoBodyDescription.innerHTML = quickInfoBodyDescription.innerHTML
+        .replace(/ \n/g, "<br>")
+        .replace(/\n/g, "<br>");
+      setDisplay(quickInfoDiv, "block");
       tab.classList.add("hover");
     });
 
     tab.addEventListener("mouseout", function () {
-      if (!isAssetPanelFlexed) {
-        setDisplay(quickInfoDiv, "none");
-      }
+      setDisplay(quickInfoDiv, "none");
       tab.classList.remove("hover");
     });
 
@@ -267,22 +387,23 @@ function createAssetPanelItem(element) {
   item.appendChild(itemDiv);
 
   item.addEventListener("mouseover", async function () {
-    if (!isAssetPanelFlexed) {
-      [langTitle, langDescription] = await getTitleAndDescription(element);
-      quickInfoHeaderTitle.innerHTML = langTitle ?? "";
-      quickInfoBodyImage.innerHTML = `<img src="${icon}"/>`;
-      quickInfoBodyDescription.innerHTML = langDescription ?? "";
-      quickInfoBodyDescription.innerHTML = quickInfoBodyDescription.innerHTML
-        .replace(/ \n/g, "<br>")
-        .replace(/\n/g, "<br>");
-      setDisplay(quickInfoDiv, "block");
+    if (isAssetPanelFlexed) {
+      quickInfoDiv.classList.add("flexed");
+    } else {
+      quickInfoDiv.classList.remove("flexed");
     }
+    [langTitle, langDescription] = await getTitleAndDescription(element);
+    quickInfoHeaderTitle.innerHTML = langTitle ?? "";
+    quickInfoBodyImage.innerHTML = `<img src="${icon}"/>`;
+    quickInfoBodyDescription.innerHTML = langDescription ?? "";
+    quickInfoBodyDescription.innerHTML = quickInfoBodyDescription.innerHTML
+      .replace(/ \n/g, "<br>")
+      .replace(/\n/g, "<br>");
+    setDisplay(quickInfoDiv, "block");
   });
 
   item.addEventListener("mouseout", function () {
-    if (!isAssetPanelFlexed) {
-      setDisplay(quickInfoDiv, "none");
-    }
+    setDisplay(quickInfoDiv, "none");
   });
 
   item.addEventListener("click", function () {
@@ -353,17 +474,6 @@ async function processAssetData(PrefabID, typeX) {
     assetDetailsPane.style.left = "52vw";
   }
 
-  const assetDetailsPaneHeaderTitle = document.getElementById(
-    "asset-details-pane-header-title"
-  );
-  const assetDetailsPaneImage = document.getElementById(
-    "asset-details-pane-image"
-  );
-  const assetDetailsPaneDescText = document.getElementById(
-    "asset-details-pane-desc-text"
-  );
-  const tagContainer = document.getElementById("tag-container");
-  const notifContainer = document.getElementById("notif-container");
   var elementName = data.PrefabID.split(":")[1] ?? "";
   var icon = iconDecider(elementName, data.UI_Icon, PrefabID);
 
@@ -555,7 +665,7 @@ function processCloseDetailsPane(event) {
   if (
     event.target === assetBar ||
     event.target === bottomBar ||
-    event.target === assetDetailsPaneContainer ||
+    // event.target === assetDetailsPaneContainer ||
     event.target === assetDetailsPaneX ||
     event.key === "Escape"
   ) {
@@ -589,9 +699,6 @@ function processCloseDetailsPane(event) {
 }
 
 function toggleDetailsPane() {
-  const assetDetailsPaneContainer = document.querySelector(
-    ".asset-details-pane-container"
-  );
   window.removeEventListener("keydown", function (event) {
     if (event.key === "Escape") {
       toggleDetailsPane();
@@ -599,16 +706,10 @@ function toggleDetailsPane() {
   });
   if (isAssetPanelOpen) {
     window.removeEventListener("keydown", closeAssetPanel);
-    assetDetailsPaneContainer.addEventListener(
-      "click",
-      processCloseDetailsPane
-    );
+    detailsPane.addEventListener("click", processCloseDetailsPane);
     assetDetailsPaneX.removeEventListener("click", processCloseDetailsPane);
   } else {
-    assetDetailsPaneContainer.removeEventListener(
-      "click",
-      processCloseDetailsPane
-    );
+    detailsPane.removeEventListener("click", processCloseDetailsPane);
   }
 }
 

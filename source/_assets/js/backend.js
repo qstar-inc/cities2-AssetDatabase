@@ -71,54 +71,6 @@ async function fetchAssetDataAll() {
     throw error;
   }
 }
-// return new Promise(async (resolve, reject) => {
-//   if (allDataLoaded) { return resolve(); }
-
-//   delayRequest()
-//     .then(() => {
-//       fetch(atob(u) + "cities2_prefab_data", {
-//         method: "POST",
-//         headers: {
-//           "Accept-Encoding": "gzip",
-//           "Content-Type": "application/json",
-//           "Authorization": auth,
-//         },
-//         body: JSON.stringify({
-//           reqType: "asset-data-all",
-//           offset: currentOffset,
-//           limit: batchSize,
-//         }),
-//       })
-//         .then((response) => {
-//           if (!response.ok) {
-//             throw new Error("Network response was not ok " + response.statusText);
-//           }
-//           return response.json();
-//         })
-//         .then(async (data) => {
-//           dataLoaded += data.data.length;
-//           if (data.data.length === 0) {
-//             allDataLoaded = true;
-//             console.log(`All ${dataLoaded} asset data loaded.`);
-//             await getAssetData();
-//             return resolve();
-//           }
-//           await addAssetDataAll(data.data)
-//           currentOffset += batchSize;
-//           console.log(`Processing ${currentOffset}`)
-//           return await fetchAssetDataAll();
-//         })
-//         .catch((error) => {
-//           console.error("Error loading asset data batch:", error);
-//           const dbLoading = document.getElementById('db-loading');
-//           const dbLoadingText = document.getElementById('db-loading-text');
-//           dbLoadingText.innerText = "Server not accessible. Try again later."
-//           dbLoading.classList.remove("d-none");
-//           reject(error);
-//         });
-//     });
-//   });
-// }
 
 function fetchLangDataAll(lang = language) {
   return new Promise((resolve, reject) => {
@@ -141,6 +93,37 @@ function fetchLangDataAll(lang = language) {
       })
       .then((data) => {
         addLangDataAll(data.data);
+        resolve();
+      })
+      .catch((error) => {
+        console.error("Error loading lang data batch:", error);
+        const dbLoading = document.getElementById("db-loading");
+        const dbLoadingText = document.getElementById("db-loading-text");
+        dbLoadingText.innerText = "Server not accessible. Try again later.";
+        dbLoading.classList.remove("d-none");
+        reject(error);
+      });
+  });
+}
+
+function fetchSupportedMods() {
+  return new Promise((resolve, reject) => {
+    fetch(atob(u) + "cities2_mods_data", {
+      method: "POST",
+      headers: {
+        "Accept-Encoding": "gzip",
+        "Content-Type": "application/json",
+        Authorization: auth,
+      },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok " + response.statusText);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        addModsDataAll(data.data);
         resolve();
       })
       .catch((error) => {

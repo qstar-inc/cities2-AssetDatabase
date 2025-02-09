@@ -78,7 +78,7 @@ async function loadFile() {
     cail_loaded = true;
     console.log("Mod AIL list loaded and stored in memory");
   } catch (error) {
-    console.error("Error reading AIL list:", error);
+    console.error("Error reading Mod AIL list:", error);
   }
 }
 

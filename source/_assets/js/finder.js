@@ -22,6 +22,9 @@ async function openFinder() {
       blockEverything.addEventListener("click", () => {
         closeFinder();
       });
+      blockEverything.addEventListener("dragstart", () => {
+        closeFinder();
+      });
     }
   }
 }

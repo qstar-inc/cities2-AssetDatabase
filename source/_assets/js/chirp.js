@@ -18,7 +18,7 @@ async function wait3sec() {
       }
       chirpUserName = `${firstName} ${lastName}`.trim();
       const t = getTranslation;
-      text = `${t("new_content")}<br/>${t("go_to")} ${t("options")} > ${t(
+      text = `${t("new_content")}<br/>${t("go_to")} ${t("pause_menu")} > ${t(
         "reload_db"
       )}.`;
       triggerChirp(chirpUserName, timeAgo(last_updated_obj), text);

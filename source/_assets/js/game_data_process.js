@@ -1080,13 +1080,16 @@ function isEmptyArray(array) {
   return array.length === 0;
 }
 
+let ogDivs;
 async function distributeDivsToColumnsByHeight() {
   return new Promise(async (resolve, reject) => {
     try {
       const container = document.querySelector(
         ".asset-details-pane-body-bottom-boxes"
       );
-      if (!container) throw new Error("Container not found");
+      const assetDetailsPane = document.getElementById("asset-details-pane");
+      if (!container || !assetDetailsPane)
+        throw new Error("Container or #assetDetailsPane not found");
 
       const columns = [
         document.createElement("div"),
@@ -1099,13 +1102,15 @@ async function distributeDivsToColumnsByHeight() {
       });
 
       void container.offsetHeight;
-
-      const divs = Array.from(container.children).filter(
+      const originalDivs = Array.from(container.children).filter(
         (div) => !div.classList.contains("column")
       );
 
+      ogDivs = originalDivs;
+
       let totalHeights = 0;
       function calcTotalHeight(divs) {
+        totalHeights = 0;
         divs.forEach((div) => {
           totalHeights += div.clientHeight;
         });
@@ -1118,23 +1123,57 @@ async function distributeDivsToColumnsByHeight() {
         }
       }
 
-      await waitForHeight(divs);
+      await waitForHeight(originalDivs);
 
-      let halfHeight = totalHeights / 2;
-      let newHeight = 0;
-      divs.forEach((div) => {
-        let shorterColumn;
-        if (newHeight < halfHeight) {
-          shorterColumn = columns[0];
-        } else {
-          shorterColumn = columns[1];
-        }
-        newHeight += div.clientHeight;
-        shorterColumn.appendChild(div);
-        div.style.opacity = 1;
-      });
-      columns[0].style.opacity = 1;
-      columns[1].style.opacity = 1;
+      function distribute(divs) {
+        let halfHeight = totalHeights / 2;
+        let newHeight = 0;
+
+        columns.forEach((col) => (col.innerHTML = ""));
+        divs.forEach((div) => {
+          let shorterColumn;
+          if (newHeight < halfHeight) {
+            shorterColumn = columns[0];
+          } else {
+            shorterColumn = columns[1];
+          }
+          newHeight += div.clientHeight;
+          shorterColumn.appendChild(div);
+          div.style.opacity = 1;
+        });
+
+        columns[0].style.opacity = 1;
+        columns[1].style.opacity = 1;
+        columns.forEach((col) => (col.style.opacity = 1));
+      }
+
+      function revertToSingleColumn() {
+        columns.forEach((col) => col.remove());
+        container.classList.add("d-flex");
+        ogDivs.forEach((div) => {
+          container.appendChild(div);
+          div.style.opacity = 1;
+        });
+      }
+
+      // function handleResize() {
+      // console.log(container.offsetWidth);
+      // if (container.offsetWidth < 800) {
+      revertToSingleColumn();
+      // } else {
+      //   if (!columns[0].parentNode) {
+      //     columns.forEach((col) => container.appendChild(col));
+      //   }
+      //   container.classList.remove("d-flex");
+      //   distribute(originalDivs);
+      // }
+      // }
+
+      // handleResize();
+
+      // const observer = new ResizeObserver(() => handleResize());
+      // observer.observe(assetDetailsPane);
+      // window.addEventListener("resize", handleResize);
 
       resolve();
     } catch (error) {
