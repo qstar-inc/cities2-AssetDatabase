@@ -1,5 +1,4 @@
-const hofServer =
-  "https://halloffame.cs2.mtq.io/api/v1/screenshots/weighted";
+const hofServer = "https://halloffame.cs2.mtq.io/api/v1/screenshots/weighted";
 
 let bgElement =
   document.getElementById("game-bg") ||
@@ -22,7 +21,7 @@ async function updateGameBackground() {
         setTimeout(() => {
           bgElement.src = imageUrlFHD;
 
-          bgElement.onload = () => {            
+          bgElement.onload = () => {
             const hofTitle = document.createElement("div");
             hofTitle.id = "hof-title";
             hofTitle.textContent = data.cityName;
@@ -38,9 +37,9 @@ async function updateGameBackground() {
             const hofTime = document.createElement("div");
             hofTime.id = "hof-time";
             hofTime.textContent = data.createdAtFormattedDistance;
-            if (!isOptionMenuOpen) { 
+            if (!isOptionMenuOpen) {
               hof.style.display = "unset";
-              hof.style.opacity = 1; 
+              hof.style.opacity = 1;
             }
             bgElement.style.opacity = 1;
             hof.innerHTML = "";
@@ -68,7 +67,7 @@ async function updateGameBackground() {
 }
 
 $(document).ready(function () {
-   updateGameBackground();
+  updateGameBackground();
 });
 
 window.updateGameBackground = updateGameBackground;

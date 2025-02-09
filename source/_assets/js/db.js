@@ -41,12 +41,11 @@ async function initDB(bool = false) {
     if (hasEntry > 0 && bool) {
       const dbInitialized = new Event("dbInitialized");
       document.dispatchEvent(dbInitialized);
-    }
-    else if (typeof processAssetGroup == "function") {
+    } else if (typeof processAssetGroup == "function") {
       await getAssetData();
     }
-    
-    const dbLoading = document.getElementById('db-loading');
+
+    const dbLoading = document.getElementById("db-loading");
     dbLoading.classList.add("d-none");
     console.log("IndexedDB opened successfully");
     await wait3sec();
@@ -58,15 +57,26 @@ async function initDB(bool = false) {
   };
 }
 
-let lines = [];
+let lines_ail = [];
+let lines_mod_cail = [];
 let ail_loaded = false;
+let cail_loaded = false;
 async function loadFile() {
   try {
-    const response = await fetch(dataBasePath + "/ail_list.txt");
+    const response = await fetch(imageRepoPath + "/thumbs/ail.txt");
     const text = await response.text();
-    lines = text.split("\n").map(line => line.trim());
+    lines_ail = text.split("\n").map((line) => line.trim());
     ail_loaded = true;
     console.log("AIL list loaded and stored in memory");
+  } catch (error) {
+    console.error("Error reading AIL list:", error);
+  }
+  try {
+    const response = await fetch(imageRepoPath + "/thumbs/.ail.txt");
+    const text = await response.text();
+    lines_mod_cail = text.split("\n").map((line) => line.trim());
+    cail_loaded = true;
+    console.log("Mod AIL list loaded and stored in memory");
   } catch (error) {
     console.error("Error reading AIL list:", error);
   }
@@ -82,22 +92,33 @@ function findValueInLines(value) {
     }
   }
 
-  const inWhiteFolder = lines.find(line => {
+  const inWhiteFolder = lines_ail.find((line) => {
     const nameWithoutExtension = getNameWithoutExtension(line);
-    return nameWithoutExtension === "White\\"+value && line.startsWith("White\\");
+    return (
+      nameWithoutExtension === "White\\" + value && line.startsWith("White\\")
+    );
   });
 
   if (inWhiteFolder) {
-    return inWhiteFolder;
+    return [inWhiteFolder, 0];
   }
 
-  const inRoot = lines.find(line => {
+  const inRoot = lines_ail.find((line) => {
     const nameWithoutExtension = getNameWithoutExtension(line);
     return nameWithoutExtension === value;
   });
 
   if (inRoot) {
-    return inRoot;
+    return [inRoot, 0];
+  }
+
+  const inModCail = lines_mod_cail.find((line) => {
+    const nameWithoutExtension = getNameWithoutExtension(line);
+    return nameWithoutExtension === value;
+  });
+
+  if (inModCail) {
+    return [inModCail, 1];
   }
 
   return null;
@@ -115,9 +136,11 @@ function findValueInLinesCail(value) {
     }
   }
 
-  const inCail = lines.find(line => {
+  const inCail = lines_ail.find((line) => {
     const nameWithoutExtension = getNameWithoutExtension(line);
-    return nameWithoutExtension === "cail\\"+value && line.startsWith("cail\\");
+    return (
+      nameWithoutExtension === "cail\\" + value && line.startsWith("cail\\")
+    );
   });
 
   if (inCail) {
@@ -212,10 +235,15 @@ async function checkLangData() {
     let objectStore = transaction.objectStore("langData");
 
     let request = objectStore.get(`Assets.NAME[Small Road]`);
-    
+
     request.onsuccess = async function (event) {
       let result = event.target.result;
-      if (result === undefined || result.length === 0 || result.length === undefined || result[0][language] === undefined) {
+      if (
+        result === undefined ||
+        result.length === 0 ||
+        result.length === undefined ||
+        result[0][language] === undefined
+      ) {
         resolve(false);
       }
       resolve(true);
@@ -229,9 +257,9 @@ async function checkLangData() {
 }
 
 async function updateLangGame() {
-  document.querySelectorAll('[data-lang-game]').forEach(async (el) => {
+  document.querySelectorAll("[data-lang-game]").forEach(async (el) => {
     const key = el.dataset.langGame;
-    el.textContent = await getLangData(key) || key;
+    el.textContent = (await getLangData(key)) || key;
   });
 }
 
@@ -254,7 +282,7 @@ async function getAssetData() {
           resolve();
           return;
         }
-        
+
         await processAssetGroup(event.target.result);
         resolve();
       }
@@ -280,7 +308,10 @@ async function getAssetGroupData() {
       if (cursor) {
         let record = cursor.value;
 
-        if (record.UI_Group && record.UI_Group.startsWith("UIToolbarGroupPrefab")) {
+        if (
+          record.UI_Group &&
+          record.UI_Group.startsWith("UIToolbarGroupPrefab")
+        ) {
           assets.push(record);
         }
 
@@ -340,7 +371,10 @@ async function getZoneBuildings(PrefabID) {
       if (cursor) {
         let record = cursor.value;
 
-        if (record.SpawnableBuilding_Zone && record.SpawnableBuilding_Zone == PrefabID) {
+        if (
+          record.SpawnableBuilding_Zone &&
+          record.SpawnableBuilding_Zone == PrefabID
+        ) {
           assets.push(record);
         }
 
@@ -370,7 +404,10 @@ async function getBuildingUpgrades(PrefabID) {
       if (cursor) {
         let record = cursor.value;
 
-        if (record.ServiceUpgrade_Buildings && record.ServiceUpgrade_Buildings == PrefabID) {
+        if (
+          record.ServiceUpgrade_Buildings &&
+          record.ServiceUpgrade_Buildings == PrefabID
+        ) {
           assets.push(record);
         }
 
@@ -418,7 +455,7 @@ async function getLangDataRandomly(format, lang = language) {
 
     let range = IDBKeyRange.bound(format, `${format}\uffff`);
     let request = objectStore.openCursor(range);
-    
+
     let count = 0;
     let randomItem = null;
 
@@ -449,7 +486,11 @@ async function getLangDataRandomly(format, lang = language) {
 let searchCache = new Map();
 async function searchAssets(searchTerm, by) {
   for (let [cachedSearchTerm, cachedResults] of searchCache) {
-    if (`${by}--${searchTerm}`.toLowerCase().startsWith(cachedSearchTerm.toLowerCase())) {
+    if (
+      `${by}--${searchTerm}`
+        .toLowerCase()
+        .startsWith(cachedSearchTerm.toLowerCase())
+    ) {
       if (cachedResults.length > 0) {
         return Promise.resolve(cachedResults);
       }
@@ -473,7 +514,7 @@ async function searchAssets(searchTerm, by) {
         } else {
           reject();
         }
-          
+
         if (find) {
           if (find.toLowerCase().includes(searchTerm.toLowerCase())) {
             results.push(cursor.value);
@@ -919,7 +960,7 @@ function searchInIndexedDB(searchText) {
 
     const request = objectStore.openCursor();
 
-    request.onsuccess = function(event) {
+    request.onsuccess = function (event) {
       const cursor = event.target.result;
       if (cursor) {
         const object = cursor.value;
@@ -928,7 +969,10 @@ function searchInIndexedDB(searchText) {
         let found = false;
         for (let prop in object) {
           if (object.hasOwnProperty(prop)) {
-            if (typeof object[prop] === 'string' && object[prop].includes(searchText)) {
+            if (
+              typeof object[prop] === "string" &&
+              object[prop].includes(searchText)
+            ) {
               found = true;
               break;
             }
@@ -944,7 +988,7 @@ function searchInIndexedDB(searchText) {
       }
     };
 
-    request.onerror = function(event) {
+    request.onerror = function (event) {
       reject(event.target.error);
     };
   });

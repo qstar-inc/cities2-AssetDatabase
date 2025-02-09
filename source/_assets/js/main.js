@@ -22,78 +22,82 @@ function clearCacheAndRedirect() {
 }
 
 function checkAspectRatioAndHeight() {
-  const overlay = document.getElementById('window-size-error');
+  const overlay = document.getElementById("window-size-error");
   const width = window.innerWidth;
   const height = window.innerHeight;
 
   const aspectRatio = width / height;
-  let isAspectRatioClose = Math.abs(aspectRatio - (16 / 9)) <= 0.5;
+  let isAspectRatioClose = Math.abs(aspectRatio - 16 / 9) <= 0.5;
   let isHeightValid = height >= 500;
   let isWidthValid = width >= 1000;
-  const ignore = document.getElementById('invX');
-  ignore.addEventListener('click', () => { 
-    overlay.classList.add('d-none');
+  const ignore = document.getElementById("invX");
+  ignore.addEventListener("click", () => {
+    overlay.classList.add("d-none");
   });
 
   if (isAspectRatioClose && isHeightValid && isWidthValid) {
-    overlay.classList.add('d-none');
+    overlay.classList.add("d-none");
   } else {
-    overlay.classList.remove('d-none');
+    overlay.classList.remove("d-none");
   }
 
-  const text1 = document.getElementById('inv1');
-  const text2 = document.getElementById('inv2');
-  const text3 = document.getElementById('inv3');
+  const text1 = document.getElementById("inv1");
+  const text2 = document.getElementById("inv2");
+  const text3 = document.getElementById("inv3");
   if (!isAspectRatioClose) {
-    text1.style.color = 'antiquewhite';
+    text1.style.color = "antiquewhite";
   } else {
-    text1.style.color = 'unset';
+    text1.style.color = "unset";
   }
   if (!isWidthValid) {
-    text2.style.color = 'antiquewhite';
+    text2.style.color = "antiquewhite";
   } else {
-    text2.style.color = 'unset';
+    text2.style.color = "unset";
   }
   if (!isHeightValid) {
-    text3.style.color = 'antiquewhite';
+    text3.style.color = "antiquewhite";
   } else {
-    text3.style.color = 'unset';
+    text3.style.color = "unset";
   }
 }
 
 function timeAgo(date) {
-    const now = new Date();
-    const diffInSeconds = Math.floor((now - date) / 1000);
+  const now = new Date();
+  const diffInSeconds = Math.floor((now - date) / 1000);
 
-    const intervals = [
-        { label: 'second', seconds: 1 },
-        { label: 'minute', seconds: 60 },
-        { label: 'hour', seconds: 3600 },
-        { label: 'day', seconds: 86400 },
-        { label: 'month', seconds: 2592000 },
-        { label: 'year', seconds: 31536000 }
-    ];
+  const intervals = [
+    { label: "second", seconds: 1 },
+    { label: "minute", seconds: 60 },
+    { label: "hour", seconds: 3600 },
+    { label: "day", seconds: 86400 },
+    { label: "month", seconds: 2592000 },
+    { label: "year", seconds: 31536000 },
+  ];
 
-    for (let i = intervals.length - 1; i >= 0; i--) {
-        const interval = intervals[i];
-        const intervalValue = Math.floor(diffInSeconds / interval.seconds);
+  for (let i = intervals.length - 1; i >= 0; i--) {
+    const interval = intervals[i];
+    const intervalValue = Math.floor(diffInSeconds / interval.seconds);
 
-        if (intervalValue > 0) {
-            return `${intervalValue} ${interval.label}${intervalValue > 1 ? 's' : ''} ago`;
-        }
+    if (intervalValue > 0) {
+      return `${intervalValue} ${interval.label}${
+        intervalValue > 1 ? "s" : ""
+      } ago`;
     }
+  }
 
-    return "just now";
+  return "just now";
 }
 
 function getRandomHexColor() {
-  return `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0')}`;
+  return `#${Math.floor(Math.random() * 16777215)
+    .toString(16)
+    .padStart(6, "0")}`;
 }
 
-window.addEventListener('load', checkAspectRatioAndHeight);
-window.addEventListener('resize', checkAspectRatioAndHeight);
+window.addEventListener("load", checkAspectRatioAndHeight);
+window.addEventListener("resize", checkAspectRatioAndHeight);
 
-const defaultLang = 'en-US';
+const defaultLang = "en-US";
 let defaultTranslations = {};
 let translations = {};
 
@@ -102,7 +106,6 @@ async function reloadLang(lang = language) {
     const response = await fetch(`${dataBasePath}/lang/${lang}.json`);
     if (response.ok) {
       translations = await response.json();
-      
     } else {
       console.error(`${lang} not found.`);
       translations = {};
@@ -111,7 +114,7 @@ async function reloadLang(lang = language) {
   updateTexts();
   const translationsLoaded = new Event("translationsLoaded");
   document.dispatchEvent(translationsLoaded);
-  console.log("Translations loaded")
+  console.log("Translations loaded");
 }
 
 async function loadDefaultTranslations() {
@@ -125,7 +128,7 @@ async function loadDefaultTranslations() {
 }
 
 function updateTexts() {
-  document.querySelectorAll('[data-lang]').forEach((el) => {
+  document.querySelectorAll("[data-lang]").forEach((el) => {
     const key = el.dataset.lang;
     el.textContent = translations[key] || defaultTranslations[key] || key;
   });
@@ -144,17 +147,22 @@ function repeat(string, time) {
 }
 
 function swapClass(element, class1, class2) {
-  if (element.classList.contains(class1) && !element.classList.contains(class2)) {
+  if (
+    element.classList.contains(class1) &&
+    !element.classList.contains(class2)
+  ) {
     element.classList.remove(class1);
     element.classList.add(class2);
-  } else if (!element.classList.contains(class1) && element.classList.contains(class2)) {
+  } else if (
+    !element.classList.contains(class1) &&
+    element.classList.contains(class2)
+  ) {
     element.classList.add(class1);
     element.classList.remove(class2);
   }
 }
 
-
-document.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener("DOMContentLoaded", async () => {
   await loadDefaultTranslations();
   reloadLang(language);
 });

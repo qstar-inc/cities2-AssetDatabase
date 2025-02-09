@@ -31,7 +31,7 @@ async function triggerStartUp() {
       headers: {
         "Accept-Encoding": "gzip",
         "Content-Type": "application/json",
-        "Authorization": auth,
+        Authorization: auth,
       },
     })
       .then(async (response) => {

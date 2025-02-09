@@ -36,7 +36,7 @@ const gameBgElement = document.getElementById("game-bg");
 $(document).ready(async function () {
   await initDB(false);
   loadFile();
-  assetPanel.addEventListener('wheel', handleWheel);
+  assetPanel.addEventListener("wheel", handleWheel);
 });
 
 // const toolsPanel = document.getElementById("tools-panel");
@@ -62,7 +62,6 @@ function createButton(element) {
   button.innerHTML = `<img src="${icon}"/>`;
   return button;
 }
-
 
 async function processAssetGroup() {
   await updateLangGame();
@@ -122,7 +121,7 @@ async function processAssetGroup() {
   addAssetBarIconTrigger();
   await updateCityName();
 
-  const assetId = getQueryParam('prefab');
+  const assetId = getQueryParam("prefab");
   if (assetId) {
     await processAssetData(assetId);
   }
@@ -141,7 +140,7 @@ function addAssetBarIconTrigger() {
           allIcons = document.querySelectorAll(".asset-menu-icon");
           allIcons.forEach((allIcon) => {
             allIcon.classList.remove("active");
-          })
+          });
           icon.classList.add("active");
           const prefabID = icon.dataset.name;
           apht.innerHTML = "";
@@ -149,7 +148,6 @@ function addAssetBarIconTrigger() {
           openAssetPanel();
           addLoader(api);
           await processAssetTab(prefabID);
-          
         }
       } else {
         if (icon) {
@@ -172,7 +170,7 @@ function addAssetBarIconTrigger() {
 }
 
 async function processAssetTab(prefabID, Group = null) {
-  let data = await getAssetTabData(prefabID);  
+  let data = await getAssetTabData(prefabID);
   apht.innerHTML = "";
   data.sort((a, b) => a.UI_Priority - b.UI_Priority);
   // if (data.length == 1) {
@@ -200,7 +198,7 @@ async function processAssetTab(prefabID, Group = null) {
         active = " active";
       }
     }
-    
+
     const tab = document.createElement("div");
     tab.className = `asset-panel-header-tab ${className} round-border-top${active}`;
     if (isAssetPanelFlexed) {
@@ -234,8 +232,8 @@ async function processAssetTab(prefabID, Group = null) {
     });
 
     apht.appendChild(tab);
-  
-    if (element == data[0] && !Group) { 
+
+    if (element == data[0] && !Group) {
       let panelData = await getAssetPanelData(element.PrefabID);
       processAssetPanel(panelData);
     }
@@ -304,7 +302,9 @@ function processAssetPanel(data, activePrefab = null) {
   });
 
   if (activePrefab) {
-    const activePrefabElement = document.querySelector(`.asset-panel-item[data-prefab="${activePrefab}"]`);
+    const activePrefabElement = document.querySelector(
+      `.asset-panel-item[data-prefab="${activePrefab}"]`
+    );
     if (activePrefabElement) {
       activePrefabElement.classList.add("selected");
     }
@@ -317,7 +317,10 @@ function processAssetPanel(data, activePrefab = null) {
       }
       if (activePrefabElement.classList.contains("flexed")) {
         if (api.scrollWidth > api.clientWidth) {
-          elementPosition = Math.max(activePrefabElement.offsetLeft - (api.clientWidth / 2), 0);
+          elementPosition = Math.max(
+            activePrefabElement.offsetLeft - api.clientWidth / 2,
+            0
+          );
           api.scrollTo({
             left: elementPosition,
             behavior: "smooth",
@@ -325,7 +328,7 @@ function processAssetPanel(data, activePrefab = null) {
           clearInterval(checkInterval);
         }
       }
-    }    
+    }
   } else {
     api.scrollTo({
       top: 0,
@@ -337,12 +340,12 @@ function processAssetPanel(data, activePrefab = null) {
 async function processAssetData(PrefabID, typeX) {
   const data = await getAssetDataSingle(PrefabID);
   // let panelGroup = await getPrefabUIGroup(PrefabID);
-  
+
   detailsPane.style.display = "block";
-  const current = getQueryParam('prefab');
+  const current = getQueryParam("prefab");
   if (current != PrefabID) {
     const newTitle = `${PrefabID} - Cities: Skylines II Asset Database`;
-    document.title = newTitle;  
+    document.title = newTitle;
     pushState(null, newTitle, `?prefab=${encodeURIComponent(PrefabID)}`);
   }
   topIcons.classList.add("behind");
@@ -368,8 +371,7 @@ async function processAssetData(PrefabID, typeX) {
   assetDetailsPaneHeaderTitle.innerHTML = langTitle ?? "";
   assetDetailsPaneImage.innerHTML = `<img src="${icon}"/>`;
   assetDetailsPaneDescText.innerHTML =
-    langDescription ??
-    "".replace(/ \n/g, "<br>").replace(/\n/g, "<br>");
+    langDescription ?? "".replace(/ \n/g, "<br>").replace(/\n/g, "<br>");
 
   const temp = document.getElementById("temp");
   temp.innerHTML = "";
@@ -386,10 +388,8 @@ async function processAssetData(PrefabID, typeX) {
       tagContainer,
       notifContainer,
       temp,
-    ]); 
-  } catch (error) {
-    
-  }
+    ]);
+  } catch (error) {}
   isAssetDetailsOpen = true;
 
   // if (!isAssetPanelOpen) {
@@ -419,7 +419,9 @@ async function processAssetData(PrefabID, typeX) {
       await processAssetTab(panelMenu, data.UI_Group);
       openAssetPanel();
       processAssetPanel(panelData, PrefabID);
-      const element = document.querySelector(`.asset-menu-icon[data-name="${panelMenu}"]`);
+      const element = document.querySelector(
+        `.asset-menu-icon[data-name="${panelMenu}"]`
+      );
       if (element) {
         element.classList.add("active");
       }
@@ -454,27 +456,27 @@ function toggleBlur(shouldBlur) {
 function openAssetPanel() {
   isAssetPanelOpen = true;
   assetDetailsPane.style.bottom = "10vw";
-  
+
   assetPanel.classList.add("opened");
   window.removeEventListener("keydown", closeAssetPanel);
   if (!isAssetDetailsOpen) {
     window.addEventListener("keydown", function (event) {
-      console.log("Trigger added to closeAssetPanel")
+      console.log("Trigger added to closeAssetPanel");
       if (event.key === "Escape" && isAssetPanelOpen && !isAssetDetailsOpen) {
         closeAssetPanel();
       }
-    })
-  };
+    });
+  }
 }
 
 function closeAssetPanel() {
   isAssetPanelOpen = false;
-  
+
   assetDetailsPane.style.bottom = "6vh";
   assetPanel.classList.remove("opened");
   window.removeEventListener("keydown", closeAssetPanel);
-  const menuIcons = document.querySelectorAll('.asset-menu-icon');
-  menuIcons.forEach(icon => icon.classList.remove('active'));
+  const menuIcons = document.querySelectorAll(".asset-menu-icon");
+  menuIcons.forEach((icon) => icon.classList.remove("active"));
   toggleBlur(false);
 }
 
@@ -567,12 +569,16 @@ function processCloseDetailsPane(event) {
       window.removeEventListener("keydown", closeAssetPanel);
       if (!isAssetDetailsOpen) {
         window.addEventListener("keydown", function (event) {
-          console.log("Trigger added to closeAssetPanel")
-          if (event.key === "Escape" && isAssetPanelOpen && !isAssetDetailsOpen) {
+          console.log("Trigger added to closeAssetPanel");
+          if (
+            event.key === "Escape" &&
+            isAssetPanelOpen &&
+            !isAssetDetailsOpen
+          ) {
             closeAssetPanel();
           }
-        })
-      };
+        });
+      }
     }
 
     const newTitle = `Cities: Skylines II Asset Database`;
@@ -594,45 +600,61 @@ function toggleDetailsPane() {
   if (isAssetPanelOpen) {
     window.removeEventListener("keydown", closeAssetPanel);
     assetDetailsPaneContainer.addEventListener(
-      "click", processCloseDetailsPane
+      "click",
+      processCloseDetailsPane
     );
     assetDetailsPaneX.removeEventListener("click", processCloseDetailsPane);
   } else {
     assetDetailsPaneContainer.removeEventListener(
-      "click", processCloseDetailsPane
+      "click",
+      processCloseDetailsPane
     );
   }
 }
 
 function iconDecider(name, ogicon, prefabID) {
-  var icon = findValueInLinesCail(name)
+  var icon = findValueInLinesCail(name);
   if (icon != null) {
     icon = `${imageRepoPath}/thumbs/${icon}`;
     return icon;
   }
 
-  icon = findValueInLines(name)
-  if (icon != null) {
-    icon = `https://raw.githubusercontent.com/JadHajjar/AssetIconLibrary-CSII/master/AssetIconLibrary/Thumbnails/${icon}`;
-    return icon;
+  var iconX = findValueInLines(name);
+  if (iconX != null) {
+    if (iconX[1] == 0) {
+      icon = `https://raw.githubusercontent.com/JadHajjar/AssetIconLibrary-CSII/master/AssetIconLibrary/Thumbnails/${iconX[0]}`;
+      return icon;
+    } else {
+      icon = `${imageRepoPath}/thumbs/.ail/${iconX[0]}`;
+      return icon;
+    }
   }
-  
+
   if (icon == null && ogicon != undefined && ogicon != "") {
     if (ogicon.startsWith("coui://")) {
       if (ogicon.startsWith("coui://uil/")) {
-        icon = `https://raw.githubusercontent.com/algernon-A/UnifiedIconLibrary/refs/heads/master/Icons/${ogicon.replace("coui://uil/", "")}`
+        icon = `https://raw.githubusercontent.com/algernon-A/UnifiedIconLibrary/refs/heads/master/Icons/${ogicon.replace(
+          "coui://uil/",
+          ""
+        )}`;
       } else if (ogicon.startsWith("coui://ail/")) {
-        icon = `https://raw.githubusercontent.com/JadHajjar/AssetIconLibrary-CSII/master/AssetIconLibrary/Thumbnails/${ogicon.replace("coui://ail/","")}`
+        icon = `https://raw.githubusercontent.com/JadHajjar/AssetIconLibrary-CSII/master/AssetIconLibrary/Thumbnails/${ogicon.replace(
+          "coui://ail/",
+          ""
+        )}`;
       } else if (ogicon.startsWith("coui://customassets/")) {
         icon = imageRepoPath + `/thumbs/${ogicon.replace("coui://", "")}`;
-      // } else if (ogicon.startsWith("coui://ail/")) {
+        // } else if (ogicon.startsWith("coui://ail/")) {
         // icon = `https://raw.githubusercontent.com/JadHajjar/AssetIconLibrary-CSII/master/AssetIconLibrary/Thumbnails/${ogicon.replace("coui://ail/","")}`
       } else {
         console.log(`Unsupported UI protocol: ${ogicon}`);
         icon = `${imageRepoPath}/cities2/Media/Placeholder.svg`;
       }
     } else if (ogicon.startsWith("assetdb://")) {
-      icon = `${imageRepoPath}/thumbs/assetdb/${ogicon.replace("assetdb://Global", "")}.png`;
+      icon = `${imageRepoPath}/thumbs/assetdb/${ogicon.replace(
+        "assetdb://Global",
+        ""
+      )}.png`;
     } else if (ogicon.startsWith("thumbnail://")) {
       icon = `${imageRepoPath}/cities2/Media/Placeholder.svg`;
     } else {
@@ -644,7 +666,10 @@ function iconDecider(name, ogicon, prefabID) {
     icon = `${imageRepoPath}/cities2/Media/Placeholder.svg`;
   }
 
-  icon = icon.replace("Media/Game/Icons/Highways.svg", "Media/Game/Icons/HIghways.svg");
+  icon = icon.replace(
+    "Media/Game/Icons/Highways.svg",
+    "Media/Game/Icons/HIghways.svg"
+  );
   return icon;
 }
 
@@ -652,20 +677,20 @@ async function getTitleAndDescription(element) {
   let title = element.PrefabID;
   let desc = "";
   if (element.ServiceUpgrade_Buildings) {
-    const [_, prefabName] = element.PrefabID.split(':');
+    const [_, prefabName] = element.PrefabID.split(":");
     title = await getLangData(`Assets.UPGRADE_NAME[${prefabName}]`);
     desc = await getLangData(`Assets.UPGRADE_DESCRIPTION[${prefabName}]`);
   } else {
     [title, desc] = await getTitleAndDescriptionFromPrefab(element.PrefabID);
   }
-  
+
   return [title, desc];
 }
 
 async function getTitleAndDescriptionFromPrefab(PrefabID) {
   // let title = PrefabID;
   // let desc = "";
-  const [prefabType, prefabName] = PrefabID.split(':');
+  const [prefabType, prefabName] = PrefabID.split(":");
   let titlePromise, descPromise;
   if (prefabType == "UIAssetMenuPrefab" || prefabType == "ServicePrefab") {
     titlePromise = getLangData(`Services.NAME[${prefabName}]`);
@@ -682,7 +707,10 @@ async function getTitleAndDescriptionFromPrefab(PrefabID) {
   }
 
   const [title, desc] = await Promise.all([titlePromise, descPromise]);
-  const cleanTitle = title.includes(".NAME[") || title.includes(".DLC_TITLE") ? prefabName : title;
+  const cleanTitle =
+    title.includes(".NAME[") || title.includes(".DLC_TITLE")
+      ? prefabName
+      : title;
   const cleanDesc = desc.includes(".DESCRIPTION[") ? "" : desc;
 
   return [cleanTitle, cleanDesc];
@@ -699,7 +727,7 @@ function getQueryParam(param) {
 }
 
 function handleWheel(event) {
-  if (api.classList.contains('flexed')) {
+  if (api.classList.contains("flexed")) {
     event.preventDefault();
     api.scrollLeft += event.deltaY;
   }

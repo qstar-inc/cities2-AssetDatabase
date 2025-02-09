@@ -10,7 +10,7 @@ const guidList = [
   // { "5c1f656a5ea20284197a71e4997b4187": { name: "Parks and Recreation", category: "Service" } },
   // { "846c60044f7ead04d9b11f0d749ea5f2": { name: "European", category: "Theme"} },
   // { "6f24f89d231e81043b538ce3fb2b54ae": { name: "North American", category: "Theme"} },
-]; 
+];
 
 let tags = [];
 let notifications = [];
@@ -31,7 +31,6 @@ async function processAssetPanelUIData(d, containers) {
 
   const tempRight = document.getElementById("temp-right");
   tempRight.innerHTML = "";
-
 
   detailsArray.forEach(([key, value]) => {
     if (1 != 1) {
@@ -63,7 +62,7 @@ async function processAssetPanelUIData(d, containers) {
     tags.forEach((tag) => {
       const tagElement = document.createElement("span");
       tagElement.className = "asset-tag";
-      tagElement.textContent = `${tag['type']}: ${tag.name}`;
+      tagElement.textContent = `${tag["type"]}: ${tag.name}`;
       tagContainer.appendChild(tagElement);
     });
   }
@@ -116,9 +115,9 @@ async function processAssetPanelUIData(d, containers) {
     ServiceUpgrade_XP: d.ServiceUpgrade_XP,
     ServiceUpgrade_MaxOffset: d.ServiceUpgrade_MaxOffset,
     ServiceUpgrade_MaxDistance: d.ServiceUpgrade_MaxDistance,
-  }
+  };
   await processData(data_Buildings, "Building Data");
-  
+
   data_Network = {
     PlaceableNet_Elevation: d.PlaceableNet_Elevation,
     PlaceableNet_AllowParallel: d.PlaceableNet_AllowParallel,
@@ -149,7 +148,7 @@ async function processAssetPanelUIData(d, containers) {
     NetUpgrade_UnsetState: d.NetUpgrade_UnsetState,
     NetUpgrade_Standalone: d.NetUpgrade_Standalone,
     NetUpgrade_Underground: d.NetUpgrade_Underground,
-  }
+  };
   await processData(data_Network, "Network Data");
 
   if (d.Zone_Office) {
@@ -163,7 +162,7 @@ async function processAssetPanelUIData(d, containers) {
     Zone_ScaleResi: d.Zone_ScaleResi,
     Zone_ResiProperties: d.Zone_ResiProperties,
     Zone_SpaceMultiplier: d.Zone_SpaceMultiplier,
-  }
+  };
   await processData(data_Zones, "Zone Data");
 
   data_Areas = {
@@ -197,7 +196,7 @@ async function processAssetPanelUIData(d, containers) {
     TerrainArea_NoiseFactor: d.TerrainArea_NoiseFactor,
     SpawnableArea_Placeholders: d.SpawnableArea_Placeholders,
     SpawnableArea_Probability: d.SpawnableArea_Probability,
-  }
+  };
   await processData(data_Areas, "Area Data");
 
   data_Stamps = {
@@ -205,7 +204,7 @@ async function processAssetPanelUIData(d, containers) {
     AssetStamp_Depth: d.AssetStamp_Depth,
     AssetStamp_Cost: d.AssetStamp_Cost,
     AssetStamp_Upkeep: d.AssetStamp_Upkeep,
-  }
+  };
   await processData(data_Stamps, "Stamp Data");
 
   data_Vehicles = {
@@ -256,10 +255,13 @@ async function processAssetPanelUIData(d, containers) {
     MultipleUnitTrainFront_Turning: d.MultipleUnitTrainFront_Turning,
     MultipleUnitTrainFront_BogieOffset: d.MultipleUnitTrainFront_BogieOffset,
     MultipleUnitTrainFront_AttachOffset: d.MultipleUnitTrainFront_AttachOffset,
-    MultipleUnitTrainFront_MinMultipleUnitCount: d.MultipleUnitTrainFront_MinMultipleUnitCount,
-    MultipleUnitTrainFront_MaxMultipleUnitCount: d.MultipleUnitTrainFront_MaxMultipleUnitCount,
+    MultipleUnitTrainFront_MinMultipleUnitCount:
+      d.MultipleUnitTrainFront_MinMultipleUnitCount,
+    MultipleUnitTrainFront_MaxMultipleUnitCount:
+      d.MultipleUnitTrainFront_MaxMultipleUnitCount,
     MultipleUnitTrainFront_Carriages: d.MultipleUnitTrainFront_Carriages,
-    MultipleUnitTrainFront_AddReversedEndCarriage: d.MultipleUnitTrainFront_AddReversedEndCarriage,
+    MultipleUnitTrainFront_AddReversedEndCarriage:
+      d.MultipleUnitTrainFront_AddReversedEndCarriage,
     Watercraft_Size: d.Watercraft_Size,
     Watercraft_MaxSpeed: d.Watercraft_MaxSpeed,
     Watercraft_Acceleration: d.Watercraft_Acceleration,
@@ -273,7 +275,8 @@ async function processAssetPanelUIData(d, containers) {
     Helicopter_GroundTurning: d.Helicopter_GroundTurning,
     Helicopter_FlyingMaxSpeed: d.Helicopter_FlyingMaxSpeed,
     Helicopter_FlyingAcceleration: d.Helicopter_FlyingAcceleration,
-    Helicopter_FlyingAngularAcceleration: d.Helicopter_FlyingAngularAcceleration,
+    Helicopter_FlyingAngularAcceleration:
+      d.Helicopter_FlyingAngularAcceleration,
     Helicopter_AccelerationSwayFactor: d.Helicopter_AccelerationSwayFactor,
     Helicopter_VelocitySwayFactor: d.Helicopter_VelocitySwayFactor,
     Airplane_Size: d.Airplane_Size,
@@ -299,7 +302,7 @@ async function processAssetPanelUIData(d, containers) {
     Rocket_FlyingAngularAcceleration: d.Rocket_FlyingAngularAcceleration,
     Rocket_AccelerationSwayFactor: d.Rocket_AccelerationSwayFactor,
     Rocket_VelocitySwayFactor: d.Rocket_VelocitySwayFactor,
-  }
+  };
   await processData(data_Vehicles, "Vehicle Data");
 
   data_Objects = {
@@ -339,7 +342,7 @@ async function processAssetPanelUIData(d, containers) {
     RenterObject_ReqHomeless: d.RenterObject_ReqHomeless,
     RenterObject_ReqChildren: d.RenterObject_ReqChildren,
     RenterObject_ReqTeens: d.RenterObject_ReqTeens,
-  }
+  };
   await processData(data_Objects, "Object Data");
 
   data_Milestone = {
@@ -355,7 +358,7 @@ async function processAssetPanelUIData(d, containers) {
     Milestone_BgColor: d.Milestone_BgColor,
     Milestone_AccentColor: d.Milestone_AccentColor,
     Milestone_TextColor: d.Milestone_TextColor,
-  }
+  };
   await processData(data_Milestone, "Milestone Data");
 
   data_Resource = {
@@ -369,8 +372,8 @@ async function processAssetPanelUIData(d, containers) {
     Zone_Stored: d.Zone_Stored,
     ResourceProducer: d.ResourceProducer,
     StorageLimit: d.StorageLimit,
-    Resource_NoNotif: d.Resource_NoNotif
-  }
+    Resource_NoNotif: d.Resource_NoNotif,
+  };
   await processData(data_Resource, "Resource Data");
 
   data_ServiceConsumption = {
@@ -391,7 +394,7 @@ async function processAssetPanelUIData(d, containers) {
     Mail_ReqCollect: d.Mail_ReqCollect,
     Mail_SendingRate: d.Mail_SendingRate,
     Mail_ReceivingRate: d.Mail_ReceivingRate,
-  }
+  };
   await processData(data_ServiceConsumption, "Service Consumption Data");
 
   data_ServiceProvider = {
@@ -515,7 +518,7 @@ async function processAssetPanelUIData(d, containers) {
     TelecomFacility_PenetrateTerrain: d.TelecomFacility_PenetrateTerrain,
     LocalEffects: d.LocalEffects,
     CityEffects: d.CityEffects,
-  }
+  };
   await processData(data_ServiceProvider, "Service Provider Data");
 
   data_Workplace = {
@@ -524,15 +527,16 @@ async function processAssetPanelUIData(d, containers) {
     Work_Complexity: d.Work_Complexity,
     Work_EveningProb: d.Work_EveningProb,
     Work_NightProb: d.Work_NightProb,
-  }
+  };
   await processData(data_Workplace, "Workplace Data");
 
   data_Activity = {
     // ActivityLocation_Locations: d.ActivityLocation_Locations,
     ActivityLocation_AnimatedProp: d.ActivityLocation_AnimatedProp,
     ActivityLocation_InvertWhen: d.ActivityLocation_InvertWhen,
-    ActivityLocation_RequireAuthorization: d.ActivityLocation_RequireAuthorization,
-  }
+    ActivityLocation_RequireAuthorization:
+      d.ActivityLocation_RequireAuthorization,
+  };
   doneArray.push("ActivityLocation_Locations");
   await processData(data_Activity, "Activity Data");
 
@@ -549,7 +553,7 @@ async function processAssetPanelUIData(d, containers) {
     VehicleSideEffect_RoadWear: d.VehicleSideEffect_RoadWear,
     VehicleSideEffect_Noise: d.VehicleSideEffect_Noise,
     VehicleSideEffect_Air: d.VehicleSideEffect_Air,
-  }
+  };
   await processData(data_Pollution, "Pollution Data");
 
   data_Requirement = {
@@ -562,7 +566,7 @@ async function processAssetPanelUIData(d, containers) {
     Electricity_RequireAll: d.Electricity_RequireAll,
     Electricity_RequireAny: d.Electricity_RequireAny,
     Electricity_RequireNone: d.Electricity_RequireNone,
-  }
+  };
   await processData(data_Requirement, "Requirement Data");
 
   data_Other = {
@@ -574,12 +578,12 @@ async function processAssetPanelUIData(d, containers) {
     UI_Group: d.UI_Group,
     UI_Icon: d.UI_Icon,
     UI_Menu: d.UI_Menu,
-  }
+  };
   await processData(data_Other, "Other Data");
 
   data_AudioVisual = {
-    GroupAmbience: d.GroupAmbience
-  }
+    GroupAmbience: d.GroupAmbience,
+  };
   await processData(data_AudioVisual, "AudioVisual Data");
   await processReferences(d.PrefabID, "References", upgrades);
   detailsArray.forEach(([key, value]) => {
@@ -644,9 +648,8 @@ async function processData(data, header) {
     "UnlockOnBuild",
   ];
 
-  const noLinkPrefab = [
-  ]
-  
+  const noLinkPrefab = [];
+
   const mainDiv = document.createElement("div");
   mainDiv.classList.add("data-box");
   for (const [key, value] of Object.entries(data)) {
@@ -662,9 +665,9 @@ async function processData(data, header) {
           while ((match = regex.exec(value)) !== null) {
             const [_, prefabType, data] = match;
             const button = document.createElement("button");
-            const prefab = `${prefabType}:${data}`
+            const prefab = `${prefabType}:${data}`;
             button.innerText = prefab;
-              button.classList.add("data-link-button");
+            button.classList.add("data-link-button");
             if (!noLinkPrefab.includes(prefabType)) {
               button.addEventListener("click", () => processAssetData(prefab));
               button.classList.add("link");
@@ -674,24 +677,24 @@ async function processData(data, header) {
           }
           useDivX = true;
         } else {
-          if (!noLinkPrefab.some(type => value.startsWith(type))) {
+          if (!noLinkPrefab.some((type) => value.startsWith(type))) {
             div.addEventListener("click", function () {
               processAssetData(value);
             });
-            div.classList.add('link')
+            div.classList.add("link");
           }
-        };
+        }
       }
       div.classList.add("parent-div-with-subtext");
       makeSubTextDiv("", reprocessKeyName(key), div);
       if (useDivX) {
         div.appendChild(divX);
       } else {
-        if (typeof value === 'string' && value.startsWith("RGBA")) {
-          makeSubTextDiv("", makeColor(value), div);;
+        if (typeof value === "string" && value.startsWith("RGBA")) {
+          makeSubTextDiv("", makeColor(value), div);
         } else {
-          let valueText = (String)(value);
-          valueText = valueText.replace(/,(\S)/g, ', $1');
+          let valueText = String(value);
+          valueText = valueText.replace(/,(\S)/g, ", $1");
           makeSubTextDiv("", valueText, div);
           if (key == "GUID") {
             div.classList.add("guid-text");
@@ -700,7 +703,7 @@ async function processData(data, header) {
       }
       mainDiv.appendChild(div);
     }
-  };
+  }
   if (mainDiv.childElementCount > 0) {
     makeDataDiv(header, mainDiv);
   }
@@ -710,14 +713,16 @@ async function processReferences(d, header, upgrades) {
   try {
     let matchingIds = await searchInIndexedDB(d);
     if (upgrades) {
-      matchingIds = matchingIds.filter(id => !upgrades.some((upgrade) => upgrade.PrefabID === id));
+      matchingIds = matchingIds.filter(
+        (id) => !upgrades.some((upgrade) => upgrade.PrefabID === id)
+      );
     }
-    matchingIds = matchingIds.filter(id => id !== d);
+    matchingIds = matchingIds.filter((id) => id !== d);
     if (matchingIds.length > 0) {
       const mainDiv = document.createElement("div");
       mainDiv.classList.add("data-box");
       await Promise.all(
-        matchingIds.map(async id => {
+        matchingIds.map(async (id) => {
           const div = document.createElement("div");
           div.classList.add("parent-div-with-subtext");
           div.classList.add("d-flex");
@@ -725,7 +730,7 @@ async function processReferences(d, header, upgrades) {
           div.addEventListener("click", function () {
             processAssetData(id);
           });
-          div.classList.add('link');
+          div.classList.add("link");
           makeSubTextDiv("", bldgName, div);
           mainDiv.appendChild(div);
         })
@@ -734,10 +739,9 @@ async function processReferences(d, header, upgrades) {
         makeDataDiv(header, mainDiv);
       }
     }
+  } catch (err) {
+    console.error("Error:", err);
   }
-  catch (err) {
-    console.error('Error:', err);
-  };
 }
 
 async function processBldg(bldgs) {
@@ -749,12 +753,14 @@ async function processBldg(bldgs) {
   mainDiv.style.flexDirection = "row";
   mainDiv.style.backgroundColor = "#113442d1";
   const levelSelector = document.createElement("div");
-  levelSelector.classList.add("level-selector"); 
+  levelSelector.classList.add("level-selector");
   const levels = [1, 2, 3, 4, 5];
 
-  levels.forEach(level => {
+  levels.forEach((level) => {
     const button = document.createElement("button");
-    const buildingCount = bldgs.filter(bldg => bldg.SpawnableBuilding_Level === level).length;
+    const buildingCount = bldgs.filter(
+      (bldg) => bldg.SpawnableBuilding_Level === level
+    ).length;
     button.innerText = `Level ${level} (${buildingCount})`;
     button.classList.add("level-btn");
     button.disabled = buildingCount === 0;
@@ -765,15 +771,17 @@ async function processBldg(bldgs) {
 
   function filterBuildingsByLevel(level) {
     const buttons = levelSelector.querySelectorAll("button");
-    buttons.forEach(button => button.classList.remove("active"));
+    buttons.forEach((button) => button.classList.remove("active"));
 
-    Array.from(buttons).forEach(button => {
+    Array.from(buttons).forEach((button) => {
       if (button.innerText === String(`Level ${level}`)) {
         button.classList.add("active");
       }
     });
-    
-    const buildings = bldgs.filter(bldg => bldg.SpawnableBuilding_Level === level);
+
+    const buildings = bldgs.filter(
+      (bldg) => bldg.SpawnableBuilding_Level === level
+    );
     updateBuildingDisplay(buildings);
   }
 
@@ -781,18 +789,24 @@ async function processBldg(bldgs) {
   bldgDiv.classList.add("bldg-div");
 
   function updateBuildingDisplay(filteredBldgs) {
-    const existingDivs = mainDiv.querySelectorAll(".asset-icon-box:not(.level-btn-container)");
-    existingDivs.forEach(div => div.remove());
+    const existingDivs = mainDiv.querySelectorAll(
+      ".asset-icon-box:not(.level-btn-container)"
+    );
+    existingDivs.forEach((div) => div.remove());
 
-    filteredBldgs.forEach(bldg => {
+    filteredBldgs.forEach((bldg) => {
       const div = document.createElement("div");
       div.classList.add("asset-icon-box");
       const textDiv = document.createElement("div");
       textDiv.classList.add("text-overlay");
-      const prefabName = bldg.PrefabID.replaceAll("BuildingPrefab:", "")
+      const prefabName = bldg.PrefabID.replaceAll("BuildingPrefab:", "");
       textDiv.innerText = prefabName.replaceAll("_", " ");
       const imgDiv = document.createElement("img");
-      imgDiv.src = iconDecider(bldg.PrefabID.split(":")[1], bldg.UI_Icon, bldg.PrefabID);
+      imgDiv.src = iconDecider(
+        bldg.PrefabID.split(":")[1],
+        bldg.UI_Icon,
+        bldg.PrefabID
+      );
       imgDiv.alt = prefabName;
       imgDiv.width = "10vh";
       div.appendChild(textDiv);
@@ -816,7 +830,7 @@ async function processUpgrades(bldgs) {
   mainDiv.classList.add("data-box");
   bldgs.sort((a, b) => a.GUID - b.GUID);
   await Promise.all(
-    bldgs.map(async bldg => {
+    bldgs.map(async (bldg) => {
       const div = document.createElement("div");
       div.classList.add("parent-div-with-subtext");
       div.style.display = "flex";
@@ -824,7 +838,7 @@ async function processUpgrades(bldgs) {
       div.addEventListener("click", function () {
         processAssetData(bldg.PrefabID);
       });
-      div.classList.add('link');
+      div.classList.add("link");
       makeSubTextDiv("", bldgName, div);
       mainDiv.appendChild(div);
     })
@@ -902,7 +916,7 @@ async function createResourceAllowTable(resourceData) {
     resourceDiv.innerHTML = `<div class="resource-inline-icon">${icon}<div class="resource-inline-text">${name}</div></div>`;
 
     mainDiv.appendChild(resourceDiv);
-  };
+  }
   return mainDiv;
 }
 
@@ -975,12 +989,7 @@ function enumWorkplaceComplexity(id) {
 }
 
 function enumSchoolType(id) {
-  d = [
-    "Elementary",
-    "High School",
-    "College",
-    "University",
-  ];
+  d = ["Elementary", "High School", "College", "University"];
   return d[id];
 }
 
@@ -1009,7 +1018,10 @@ function removeSuffix(str, suffix) {
 }
 
 function sanitizeValueText(valueText) {
-  if ((typeof valueText === "number") || (typeof valueText === "string" && /^\d+$/.test(valueText))) {
+  if (
+    typeof valueText === "number" ||
+    (typeof valueText === "string" && /^\d+$/.test(valueText))
+  ) {
     return Number(valueText).toLocaleString();
   }
   if (valueText.startsWith("[") && valueText.endsWith("]")) {
@@ -1029,27 +1041,27 @@ function getGUID(text) {
   let removedText = Array.isArray(text) ? text.join(",") : text;
   removedText = text
     .replaceAll("[", "")
-    .replaceAll("]","")
+    .replaceAll("]", "")
     .replaceAll("$fstrref:UnityGUID:", "")
     .replaceAll("$fstrref:CID:", "");
-  
+
   splittedText = removedText.split(",");
   returnText = [];
 
-  splittedText.forEach(key  => {
-    const result = guidList.find(obj => obj.hasOwnProperty(key));
+  splittedText.forEach((key) => {
+    const result = guidList.find((obj) => obj.hasOwnProperty(key));
     if (result) {
       returnText.push({
-        name: result[key]['name'],
-        type: result[key]['category']
+        name: result[key]["name"],
+        type: result[key]["category"],
       });
     } else {
       returnText.push({
         name: key,
-        type: "Unknown Type"
+        type: "Unknown Type",
       });
     }
-  })
+  });
   return returnText;
 }
 
@@ -1071,23 +1083,30 @@ function isEmptyArray(array) {
 async function distributeDivsToColumnsByHeight() {
   return new Promise(async (resolve, reject) => {
     try {
-      const container = document.querySelector('.asset-details-pane-body-bottom-boxes');
+      const container = document.querySelector(
+        ".asset-details-pane-body-bottom-boxes"
+      );
       if (!container) throw new Error("Container not found");
 
-      const columns = [document.createElement('div'), document.createElement('div')];
+      const columns = [
+        document.createElement("div"),
+        document.createElement("div"),
+      ];
 
-      columns.forEach(col => {
-        col.classList.add('column');
+      columns.forEach((col) => {
+        col.classList.add("column");
         container.appendChild(col);
       });
 
       void container.offsetHeight;
 
-      const divs = Array.from(container.children).filter(div => !div.classList.contains('column'));
+      const divs = Array.from(container.children).filter(
+        (div) => !div.classList.contains("column")
+      );
 
       let totalHeights = 0;
       function calcTotalHeight(divs) {
-        divs.forEach(div => {
+        divs.forEach((div) => {
           totalHeights += div.clientHeight;
         });
       }
@@ -1095,7 +1114,7 @@ async function distributeDivsToColumnsByHeight() {
       async function waitForHeight(divs) {
         while (totalHeights === 0) {
           calcTotalHeight(divs);
-          await new Promise(resolve => setTimeout(resolve, 100));
+          await new Promise((resolve) => setTimeout(resolve, 100));
         }
       }
 
@@ -1103,7 +1122,7 @@ async function distributeDivsToColumnsByHeight() {
 
       let halfHeight = totalHeights / 2;
       let newHeight = 0;
-      divs.forEach(div => {
+      divs.forEach((div) => {
         let shorterColumn;
         if (newHeight < halfHeight) {
           shorterColumn = columns[0];
