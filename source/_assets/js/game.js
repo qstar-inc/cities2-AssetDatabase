@@ -769,7 +769,12 @@ function iconDecider(name, ogicon, prefabID) {
         console.log(`Unsupported UI protocol: ${ogicon}`);
         icon = `${imageRepoPath}/cities2/Media/Placeholder.svg`;
       }
-    } else if (ogicon.startsWith("assetdb://")) {
+    } else if (ogicon.startsWith("assetdb://global")) {
+      icon = `${imageRepoPath}/thumbs/assetdb/${ogicon.replace(
+        "assetdb://global",
+        ""
+      )}.png`;
+    } else if (ogicon.startsWith("assetdb://Global")) {
       icon = `${imageRepoPath}/thumbs/assetdb/${ogicon.replace(
         "assetdb://Global",
         ""
