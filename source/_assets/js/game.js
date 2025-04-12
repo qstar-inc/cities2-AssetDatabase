@@ -714,6 +714,7 @@ function toggleDetailsPane() {
 }
 
 function iconDecider(name, ogicon, prefabID) {
+  const frPrefabID = prefabID.replace(":", ".");
   var icon = findValueInLinesCail(name);
   if (icon != null) {
     icon = `${imageRepoPath}/thumbs/${icon}`;
@@ -727,6 +728,23 @@ function iconDecider(name, ogicon, prefabID) {
       return icon;
     } else {
       icon = `${imageRepoPath}/thumbs/.ail/${iconX[0]}`;
+      return icon;
+    }
+  }
+
+  var iconY = findValueInLinesCail(frPrefabID);
+  if (iconY != null) {
+    icon = `${imageRepoPath}/thumbs/${icon}`;
+    return icon;
+  }
+
+  var iconZ = findValueInLines(frPrefabID);
+  if (iconZ != null) {
+    if (iconZ[1] == 0) {
+      icon = `https://raw.githubusercontent.com/JadHajjar/AssetIconLibrary-CSII/master/AssetIconLibrary/Thumbnails/${iconZ[0]}`;
+      return icon;
+    } else {
+      icon = `${imageRepoPath}/thumbs/.ail/${iconZ[0]}`;
       return icon;
     }
   }

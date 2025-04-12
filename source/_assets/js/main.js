@@ -1,5 +1,5 @@
-var u = "aHR0cHM6Ly9hcGkuc2sta20uY29tLmJkL2FwaS8="; //web
-// var u = "aHR0cDovL2xvY2FsaG9zdDoxNTAvYXBpLw=="; //local
+// var u = "aHR0cHM6Ly9hcGkuc2sta20uY29tLmJkL2FwaS8="; //web
+var u = "aHR0cDovL2xvY2FsaG9zdDoxNTAvYXBpLw=="; //local
 var auth = "ZUJImMyi0d7ycNC9Nnrixku9WM4nbWY9";
 var language = JSON.parse(localStorage.getItem("language")) ?? "en-US";
 var hof_enabled = JSON.parse(localStorage.getItem("hof_enabled")) ?? true;

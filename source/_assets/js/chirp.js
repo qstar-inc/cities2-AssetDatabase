@@ -1,9 +1,11 @@
 async function wait3sec() {
   setTimeout(async () => {
-    const time = await getTimeSince("assetData");
+    const old_time = new Date(
+      localStorage.getItem("trackerUpdatedAt")
+    ).getTime();
     const last_updated = await fetchTimeTrack();
     const last_updated_obj = new Date(last_updated);
-    if (last_updated_obj.getTime() > time) {
+    if (last_updated_obj.getTime() > old_time) {
       chirpUserGender = Math.round(Math.random());
       if (chirpUserGender == 0) {
         firstName =
